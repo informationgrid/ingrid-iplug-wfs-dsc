@@ -1,0 +1,43 @@
+<de.ingrid.utils.PlugDescription>
+	<int>19</int>
+	<string>personPhone</string>
+	<string>0345 5 222 702</string>
+	<string>personName</string>
+	<string>Frank</string>
+	<string>dataType</string>
+	<list>
+		<string>dsc_other</string>
+	</list>
+	<string>proxyServiceUrl</string>
+	<string>socket://localhost:50002</string>
+	<string>plugId</string>
+	<string>192.168.0.2-1138524346937</string>
+	<string>personTitle</string>
+	<string/>
+	<string>workingDirectory</string>
+	<string>./</string>
+	<string>dataSourceDescription</string>
+	<string>enthaelt Daten ueber Messstellen, deutschlandweit</string>
+	<string>personSureName</string>
+	<string>Henze</string>
+	<string>dataSourceName</string>
+	<string>LDB-Wasser</string>
+	<string>organisationAbbr</string>
+	<string>NLWKN</string>
+	<string>iPlugClass</string>
+	<string>de.ingrid.iplug.dsc.index.DSCSearcher</string>
+	<string>personMail</string>
+	<string>fh@media-style.com</string>
+	<string>organisation</string>
+	<string>Niedersaechsischer Landesbetrieb fuer Wasserwirtschaft, Kuesten- und Naturschutz</string>
+	<string>partner</string>
+	<string>Anhalt</string>
+	<string>motherIbusUrl</string>
+	<string>j</string>
+	<string>serviceUrl</string>
+	<string>http://www.pegelonline.wsv.de:80/webservices/gis/aktuell/wfs</string>
+	<string>updateStrategy</string>
+	<string>incremental</string> <!-- default|incremental -->
+	<string>directData</string>
+	<boolean>true</boolean>
+</de.ingrid.utils.PlugDescription>

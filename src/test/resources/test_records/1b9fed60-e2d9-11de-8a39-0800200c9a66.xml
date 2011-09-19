@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gk:waterlevels gml:id="waterlevels.204" xmlns:gk="http://gkinfo.wsv.de"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml">
+	<gml:boundedBy>
+		<gml:Envelope srsDimension="2" srsName="urn:x-ogc:def:crs:EPSG:4326">
+			<gml:lowerCorner>52.250500403826315 11.740830578191726
+			</gml:lowerCorner>
+			<gml:upperCorner>52.250500403826315 11.740830578191726
+			</gml:upperCorner>
+		</gml:Envelope>
+	</gml:boundedBy>
+	<gk:the_geom>
+		<gml:Point srsDimension="2" srsName="urn:x-ogc:def:crs:EPSG:4326">
+			<gml:pos>52.250500403826315 11.740830578191726</gml:pos>
+		</gml:Point>
+	</gk:the_geom>
+	<gk:water>ELBE</gk:water>
+	<gk:station>NIEGRIPP AP</gk:station>
+	<gk:station_id>502240</gk:station_id>
+	<gk:kilometer>343.6</gk:kilometer>
+	<gk:date>2011-09-19T15:00:00+01:00</gk:date>
+	<gk:value>316.0</gk:value>
+	<gk:unit>cm</gk:unit>
+	<gk:chart_url>http://www.pegelonline.wsv.de/webservices/zeitreihe/visualisierung?pegelnummer=502240&amp;ansicht=einzeln
+	</gk:chart_url>
+	<gk:trend>increasing</gk:trend>
+	<gk:status>up-to-date</gk:status>
+	<gk:comment />
+</gk:waterlevels>

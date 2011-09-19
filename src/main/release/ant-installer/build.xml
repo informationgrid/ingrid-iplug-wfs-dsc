@@ -1,0 +1,59 @@
+<project name="PortalU Installation">
+    <description>
+        InGrid iPlug WFS-DSC Installation Script
+    </description>
+	<!-- set global properties for this build -->
+	<property name="componentName" 			value="${project.build.finalName}"/>
+	<property name="xml-communication" 	value="${installDir}/conf/communication.xml"/>
+    <property name="start-script"       value="${installDir}/start.sh"/>
+	
+	<target name="extract" description="Extract all files to the installation directory.">
+		<unzip src="${antinstaller.jar}" dest="${installDir}">
+			<patternset>
+				<include name="${componentName}/**/*.*"/>
+			</patternset>
+		</unzip>
+		
+		<move toDir="${installDir}">
+			<fileset dir="${installDir}/${componentName}"/>
+		</move>
+		
+		<mkdir dir="${installDir}/logs"/>
+        
+        <replace file="${start-script}" token="@SERVER_PORT@" value="${localServerPort}"/>
+    
+        <condition property="copy.plugDescription">
+          <not>
+            <equals arg1="${plugDescription}" arg2="noPlugDescription"/>
+          </not>
+        </condition>
+	</target>
+
+	<target name="startComponent">
+		<echo>
+=================
+Weiteres Vorgehen
+=================
+
+		</echo>
+		<echo>
+Gehen Sie ins Verzeichnis:
+${installDir}
+und rufen sie von der Kommandozeile folgendes auf
+"sh start.sh start", um im Webbrowser die Komponente unter
+der folgenden Adresse "http://localhost:${localServerPort}"
+zu konfigurieren. Anstelle von localhost koennen Sie
+auch die IP-Adresse des Computers eingeben!
+Bitte lesen Sie bzgl. der Administration die Kapitel unter
+"http://www.kst.portalu.de/wiki/index.php/Allgemeines_zu_den_iPlugs".
+
+Bevor das iPlug benutzt werden kann, muss es in der iBus-
+Administration (im Portal) eingeschaltet werden.
+
+Weitere Informationen entnehmen Sie bitte dem
+Online-Handbuch unter 
+http://www.kst.portalu.de/wiki/index.php/InGrid_Installation.
+		</echo>
+	</target>
+	
+</project>

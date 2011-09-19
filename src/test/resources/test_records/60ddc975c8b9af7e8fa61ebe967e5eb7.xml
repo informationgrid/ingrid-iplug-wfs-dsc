@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gk:waterlevels gml:id="waterlevels.1" xmlns:gk="http://gkinfo.wsv.de"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml">
+	<gml:boundedBy>
+		<gml:Envelope srsDimension="2" srsName="urn:x-ogc:def:crs:EPSG:4326">
+			<gml:lowerCorner>53.568523252032215 9.703319238921454</gml:lowerCorner>
+			<gml:upperCorner>53.568523252032215 9.703319238921454</gml:upperCorner>
+		</gml:Envelope>
+	</gml:boundedBy>
+	<gk:the_geom>
+		<gml:Point srsDimension="2" srsName="urn:x-ogc:def:crs:EPSG:4326">
+			<gml:pos>53.568523252032215 9.703319238921454</gml:pos>
+		</gml:Point>
+	</gk:the_geom>
+	<gk:water>ELBE</gk:water>
+	<gk:station>SCHULAU</gk:station>
+	<gk:station_id>5950090</gk:station_id>
+	<gk:kilometer>641.0</gk:kilometer>
+	<gk:date>2011-09-19T16:56:00+01:00</gk:date>
+	<gk:value>589.0</gk:value>
+	<gk:unit>cm</gk:unit>
+	<gk:chart_url>http://www.pegelonline.wsv.de/webservices/zeitreihe/visualisierung?pegelnummer=5950090&amp;ansicht=einzeln
+	</gk:chart_url>
+	<gk:trend>increasing</gk:trend>
+	<gk:status>up-to-date</gk:status>
+	<gk:comment />
+</gk:waterlevels>

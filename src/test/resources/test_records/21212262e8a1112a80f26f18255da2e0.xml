@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gk:waterlevels gml:id="waterlevels.211" xmlns:gk="http://gkinfo.wsv.de"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml">
+	<gml:boundedBy>
+		<gml:Envelope srsDimension="2" srsName="urn:x-ogc:def:crs:EPSG:4326">
+			<gml:lowerCorner>51.4553094702349 6.727942107803828</gml:lowerCorner>
+			<gml:upperCorner>51.4553094702349 6.727942107803828</gml:upperCorner>
+		</gml:Envelope>
+	</gml:boundedBy>
+	<gk:the_geom>
+		<gml:Point srsDimension="2" srsName="urn:x-ogc:def:crs:EPSG:4326">
+			<gml:pos>51.4553094702349 6.727942107803828</gml:pos>
+		</gml:Point>
+	</gk:the_geom>
+	<gk:water>RHEIN</gk:water>
+	<gk:station>RUHRORT</gk:station>
+	<gk:station_id>2770010</gk:station_id>
+	<gk:kilometer>780.8</gk:kilometer>
+	<gk:date>2011-09-19T15:15:00+01:00</gk:date>
+	<gk:value>280.0</gk:value>
+	<gk:unit>cm</gk:unit>
+	<gk:chart_url>http://www.pegelonline.wsv.de/webservices/zeitreihe/visualisierung?pegelnummer=2770010&amp;ansicht=einzeln
+	</gk:chart_url>
+	<gk:trend>unchanging</gk:trend>
+	<gk:status>up-to-date</gk:status>
+	<gk:comment />
+</gk:waterlevels>
