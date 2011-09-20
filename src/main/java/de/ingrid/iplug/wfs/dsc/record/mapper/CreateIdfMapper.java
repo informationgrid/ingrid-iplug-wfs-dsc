@@ -21,15 +21,11 @@ public class CreateIdfMapper implements IIdfMapper {
 
 	@Override
 	public void map(SourceRecord record, Document doc) throws Exception {
-		Element html = doc.createElementNS("http://www.portalu.de/IDF/1.0",
-				"html");
+		Element html = doc.createElementNS("http://www.portalu.de/IDF/1.0", "html");
 		doc.appendChild(html);
-		Element head = doc.createElementNS("http://www.portalu.de/IDF/1.0",
-				"head");
+		Element head = doc.createElementNS("http://www.portalu.de/IDF/1.0", "head");
 		html.appendChild(head);
-		Element body = doc.createElementNS("http://www.portalu.de/IDF/1.0",
-				"body");
+		Element body = doc.createElementNS("http://www.portalu.de/IDF/1.0", "body");
 		html.appendChild(body);
 	}
-
 }

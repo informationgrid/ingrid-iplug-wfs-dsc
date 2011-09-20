@@ -43,7 +43,6 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 
 		// set up client
 		WFSClient client = factory.createClient();
-		client.configure(factory);
 
 		// get all feature types from the capabilities document
 		WFSCapabilities capabilities = client.getCapabilities();

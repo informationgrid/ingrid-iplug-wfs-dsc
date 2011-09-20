@@ -18,8 +18,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
             value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericQueryResult" />
         <property name="featureImpl" 
         	value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature" />
+
         <property name="queryTemplate" ref="wfsQueryTemplate" />    
-        <property name="mappings" ref="wfsMappings" />    
+        <property name="featureTemplate" ref="wfsFeatureTemplate" />    
     </bean>
 
     <bean id="wfsRequestImpl" class="org.springframework.beans.factory.config.MapFactoryBean">
@@ -38,18 +39,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="resultType" value="RESULTS" />
     </bean>
 
+    <bean id="wfsFeatureTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature">
+        <property name="idMappingScript" value="src/main/resources/mapping/generic-feature_to_feature-id.js" />
+    </bean> 
+
     <bean id="wfsCache" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultFileCache">
         <property name="cachePath" value="./wfs_cache" />
     </bean>
-
-    <bean id="wfsMappings" class="org.springframework.beans.factory.config.MapFactoryBean">
-      <property name="sourceMap">
-          <map>
-            <entry key="featureToId" value="src/main/resources/mapping/generic-feature_to_feature-id.js"/>
-            <entry key="featureToDocument" value="src/main/resources/mapping/wfs-1.1.0_to_lucene-igc-1.0.3.js"/>
-          </map>
-      </property>
-    </bean> 
 
     <!--
         Define the WFS filter queries to query the WFS data source. Duplicates resulting from
@@ -208,7 +204,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     </bean>
     
     
-    <bean id="updateJob" class="de.ingrid.iplug.wfs.dsc.cache.UpdateJob" init-method="init">
+    <bean id="wfsUpdateJob" class="de.ingrid.iplug.wfs.dsc.cache.UpdateJob" init-method="init">
         <property name="updateStrategy" ref="wfsDefaultUpdateStrategy" />
         <property name="filterStrSet" ref="wfsHarvestFilter" />
         <property name="cache" ref="wfsCache" />
@@ -225,14 +221,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </property>
         <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
-        <property name="job" ref="updateJob" />
+        <property name="job" ref="wfsUpdateJob" />
     </bean>
 
     <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.WfsRecordSetProducer"/>
 
-    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.ScriptedDocumentMapper">
-        <property name="mappingScript" value="classpath:mapping/wfs-1.1.0_to_lucene-igc-1.0.3.js" />
-        <property name="compile" value="false" />
+    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
+        <property name="mappingScript" value="src/main/resources/mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js"/>
+        <property name="compile" value="false"/>
     </bean>
     
     <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
@@ -258,7 +254,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <bean id="createIdfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.CreateIdfMapper" />
     
     <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
-        <property name="styleSheetResource" value="classpath:mapping/iso_metadata_to_idf-1.0.0.xsl"/>
+        <property name="mappingScript" value="src/main/resources/mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js"/>
+        <property name="compile" value="false"/>
     </bean>
 
 

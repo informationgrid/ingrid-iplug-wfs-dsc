@@ -41,7 +41,7 @@ public class GenericClient implements WFSClient {
 
 				String serviceUrl = this.factory.getServiceUrl();
 				Document capDoc = this.factory.createRequest(Operation.GET_CAPABILITIES).doGetCapabilities(serviceUrl);
-				this.capabilities.initialize(capDoc, this.factory);
+				this.capabilities.initialize(capDoc);
 			}
 			else
 				throw new RuntimeException("WFSClient is not configured properly. Make sure to call WFSClient.configure.");
@@ -65,7 +65,7 @@ public class GenericClient implements WFSClient {
 			Document responseDoc = this.factory.createRequest(Operation.GET_FEATURE).doGetFeature(opUrl, query);
 
 			WFSQueryResult result = this.factory.createQueryResult();
-			result.initialize(responseDoc, query, this.factory);
+			result.initialize(responseDoc, query);
 			return result;
 		}
 		else

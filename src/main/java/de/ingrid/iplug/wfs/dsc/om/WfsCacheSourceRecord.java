@@ -6,7 +6,7 @@ package de.ingrid.iplug.wfs.dsc.om;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 
 /**
- * Represents a record set from a wfs cache.
+ * Represents a record from a wfs cache.
  * 
  * @author joachim@wemove.com
  * 

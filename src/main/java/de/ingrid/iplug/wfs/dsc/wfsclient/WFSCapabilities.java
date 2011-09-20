@@ -18,9 +18,8 @@ public interface WFSCapabilities {
 	/**
 	 * Initialize the WFSCapabilities instance.
 	 * @param capDoc The capabilities document received from a WFS server
-	 * @param factory The WFSFactory instance
 	 */
-	public void initialize(Document capDoc, WFSFactory factory);
+	public void initialize(Document capDoc);
 
 	/**
 	 * Check if the WFS server supports the given operations.

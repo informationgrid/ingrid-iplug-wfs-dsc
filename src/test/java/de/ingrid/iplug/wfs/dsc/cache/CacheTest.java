@@ -18,7 +18,6 @@ import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
-import de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature;
 import de.ingrid.utils.PlugDescription;
 
 public class CacheTest extends TestCase {
@@ -141,13 +140,13 @@ public class CacheTest extends TestCase {
 		Cache cache = this.setupCache();
 
 		// create original set
-		WFSFeature originalRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		String originalValue = TestUtil.getRecordValue(originalRecord);
 		cache.putRecord(originalRecord);
 
 		// start transaction
 		Cache tmpCache = cache.startTransaction();
-		WFSFeature modifiedRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature modifiedRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		String modifiedValue = "Modified Value "+System.currentTimeMillis();
 		TestUtil.setRecordValue(modifiedRecord, modifiedValue);
 		tmpCache.putRecord(modifiedRecord);
@@ -177,13 +176,13 @@ public class CacheTest extends TestCase {
 		Cache cache = this.setupCache();
 
 		// create original set
-		WFSFeature originalRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		String originalTitle = TestUtil.getRecordValue(originalRecord);
 		cache.putRecord(originalRecord);
 
 		// start transaction
 		Cache tmpCache = cache.startTransaction();
-		WFSFeature modifiedRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature modifiedRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		String modifiedTitle = "Modified Value "+System.currentTimeMillis();
 		TestUtil.setRecordValue(modifiedRecord, modifiedTitle);
 		tmpCache.putRecord(modifiedRecord);
@@ -213,7 +212,7 @@ public class CacheTest extends TestCase {
 		Cache cache = this.setupCache();
 
 		// create original set
-		WFSFeature originalRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		cache.putRecord(originalRecord);
 
 		// start transaction
@@ -244,7 +243,7 @@ public class CacheTest extends TestCase {
 		Cache cache = this.setupCache();
 
 		// create original set
-		WFSFeature originalRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		cache.putRecord(originalRecord);
 
 		// start transaction
@@ -304,7 +303,7 @@ public class CacheTest extends TestCase {
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
 
 		// create original set
-		WFSFeature originalRecord = TestUtil.getRecord(id, new GenericFeature(), this.factory);
+		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		String xml = StringUtils.nodeToString(originalRecord.getOriginalResponse());
 		assertTrue("The String '53.568523252032215 9.703319238921454' is in the transformed original response string.", xml.indexOf("53.568523252032215 9.703319238921454") > -1);
 

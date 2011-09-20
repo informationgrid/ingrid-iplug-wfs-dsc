@@ -14,19 +14,30 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.xpath.XPathUtils;
 
 public class GenericQueryResult implements WFSQueryResult {
 
-	protected static final XPathUtils xPathUtils = new XPathUtils(WfsNamespaceContext.INSTANCE);
+	protected static final XPathUtils xPathUtils = new XPathUtils(new WfsNamespaceContext());
 
+	private WFSFactory factory = null;
 	protected WFSQuery query = null;
 	protected Document document = null;
 	protected List<WFSFeature> features = null;
 	protected int featuresTotal = 0;
 
 	@Override
-	public void initialize(Document document, WFSQuery query, WFSFactory factory) throws Exception {
+	public void configure(WFSFactory factory) {
+		this.factory  = factory;
+	}
+
+	@Override
+	public void initialize(Document document, WFSQuery query) throws Exception {
+		if (this.factory == null) {
+			throw new RuntimeException("WFSQueryResult is not configured properly. Make sure to call WFSQueryResult.configure.");
+		}
+
 		this.query = query;
 		this.document = document;
 		this.features = new ArrayList<WFSFeature>();
@@ -40,8 +51,8 @@ public class GenericQueryResult implements WFSQueryResult {
 			if (featureNodes != null) {
 				for (int i=0; i<featureNodes.getLength(); i++) {
 					// create the feature
-					WFSFeature feature = factory.createFeature();
-					feature.initialize(featureNodes.item(i), factory);
+					WFSFeature feature = this.factory.createFeature();
+					feature.initialize(featureNodes.item(i));
 					this.features.add(feature);
 				}
 			}

@@ -16,30 +16,35 @@ import junit.framework.TestCase;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
+import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
+import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 import de.ingrid.utils.PlugDescription;
 
 public class WFSClientTest extends TestCase {
 
-	String storedRecordId = null;
+	private WFSFactory factory;
 
+	@Override
+	protected void setUp() {
+		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
+		this.factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
+
+		PlugDescription desc = new PlugDescription();
+		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
+		this.factory.configure(desc);
+	}
 
 	public void testGetCapabilitiesKVPGet() throws Exception {
 
-		TestServer server = TestServer.PEGELONLINE;
-
 		// set up factory - KVPGet requests
-		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", server.getCapUrl());
 		Map<String, String> requestImpl = new Hashtable<String, String>();
 		requestImpl.put(Operation.GET_CAPABILITIES.toString(), WFSFactoryTest.wfsRequestKVPGetImpl);
-		desc.put("wfsRequestImpl", requestImpl);
-		WFSFactory f = WFSFactoryTest.createFactory(desc);
+		this.factory.setRequestImpl(requestImpl);
 
 		// set up client
-		WFSClient client = f.createClient();
-		client.configure(f);
+		WFSClient client = this.factory.createClient();
 
 		// do request
 		WFSCapabilities cap = client.getCapabilities();
@@ -55,16 +60,13 @@ public class WFSClientTest extends TestCase {
 
 	public void testGetCapabilitiesPost() throws Exception {
 
-		TestServer server = TestServer.PEGELONLINE;
-
-		// set up factory - Soap requests
-		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", server.getCapUrl());
-		WFSFactory f = WFSFactoryTest.createFactory(desc);
+		// set up factory - Post requests
+		Map<String, String> requestImpl = new Hashtable<String, String>();
+		requestImpl.put(Operation.GET_CAPABILITIES.toString(), WFSFactoryTest.wfsRequestPostImpl);
+		this.factory.setRequestImpl(requestImpl);
 
 		// set up client
-		WFSClient client = f.createClient();
-		client.configure(f);
+		WFSClient client = this.factory.createClient();
 
 		// do request
 		WFSCapabilities cap = client.getCapabilities();
@@ -80,16 +82,8 @@ public class WFSClientTest extends TestCase {
 
 	public void testGetOperationUrl() throws Exception {
 
-		TestServer server = TestServer.PEGELONLINE;
-
-		// set up factory - Soap requests
-		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", server.getCapUrl());
-		WFSFactory f = WFSFactoryTest.createFactory(desc);
-
 		// set up client
-		WFSClient client = f.createClient();
-		client.configure(f);
+		WFSClient client = this.factory.createClient();
 
 		// do request
 		WFSCapabilities cap = client.getCapabilities();
@@ -100,22 +94,30 @@ public class WFSClientTest extends TestCase {
 				equals(cap.getOperationUrl(Operation.GET_FEATURE)));
 	}
 
+	public void testGetTypeNames() throws Exception {
+
+		// set up client
+		WFSClient client = this.factory.createClient();
+
+		// do request
+		WFSCapabilities cap = client.getCapabilities();
+
+		// tests
+		String[] typeNames = cap.getFeatureTypeNames();
+		assertTrue("Expected type names found",
+				typeNames.length == 1 && typeNames[0].equals("gk:waterlevels"));
+	}
+
 	public void testGetFeature() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
 		int recordCount = 482;
 
-		// set up factory - Soap requests
-		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", server.getCapUrl());
-		WFSFactory f = WFSFactoryTest.createFactory(desc);
-
 		// set up client
-		WFSClient client = f.createClient();
-		client.configure(f);
+		WFSClient client = this.factory.createClient();
 
 		// create the query
-		WFSQuery query = server.getQuery(f.createQuery());
+		WFSQuery query = server.getQuery(this.factory.createQuery());
 
 		query.setTypeName("gk:waterlevels");
 
@@ -132,17 +134,10 @@ public class WFSClientTest extends TestCase {
 		TestServer server = TestServer.PEGELONLINE;
 		int recordCount = 57;
 
-		// set up factory - Soap requests
-		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", server.getCapUrl());
-		WFSFactory f = WFSFactoryTest.createFactory(desc);
-
 		// set up client
-		WFSClient client = f.createClient();
-		client.configure(f);
+		WFSClient client = this.factory.createClient();
 
 		// create the query
-
 		String filterStr = "<ogc:Filter xmlns:ogc=\"http://www.opengis.net/ogc\"><ogc:And>" +
 				"<ogc:PropertyIsEqualTo>" +
 				"<ogc:PropertyName>water</ogc:PropertyName><ogc:Literal>ELBE</ogc:Literal>" +
@@ -151,7 +146,7 @@ public class WFSClientTest extends TestCase {
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 		Document filter = docBuilder.parse(new InputSource(new StringReader(filterStr)));
-		WFSQuery query = server.getQuery(f.createQuery());
+		WFSQuery query = server.getQuery(this.factory.createQuery());
 
 		query.setTypeName("gk:waterlevels");
 		query.setFilter(filter);

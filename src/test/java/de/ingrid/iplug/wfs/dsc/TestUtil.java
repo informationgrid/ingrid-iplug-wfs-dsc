@@ -20,13 +20,15 @@ import de.ingrid.iplug.wfs.dsc.tools.FileUtils;
 import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLSerializer;
-import de.ingrid.utils.xml.XPathUtils;
+import de.ingrid.utils.xpath.XPathUtils;
 
 public class TestUtil {
 
-	final protected static Log log = LogFactory.getLog(TestUtil.class);
+	protected final static Log log = LogFactory.getLog(TestUtil.class);
+	protected static final XPathUtils xPathUtils = new XPathUtils(new WfsNamespaceContext());
 
 	/**
 	 * File related methods
@@ -104,7 +106,7 @@ public class TestUtil {
 				File file = file2;
 				if (!file.isDirectory() && file.getName().endsWith(".xml")) {
 					String filename = file.getName();
-					recordIds.add(filename.substring(0, filename.lastIndexOf("_")));
+					recordIds.add(filename.substring(0, filename.lastIndexOf(".")));
 				}
 			}
 		}
@@ -121,11 +123,11 @@ public class TestUtil {
 	}
 
 	public static String getRecordValue(WFSFeature record) {
-		return XPathUtils.getString(record.getOriginalResponse(), "//*");
+		return xPathUtils.getString(record.getOriginalResponse(), "//*");
 	}
 
 	public static void setRecordValue(WFSFeature record, String value) {
-		Node valueNode = XPathUtils.getNode(record.getOriginalResponse(), "//*");
+		Node valueNode = xPathUtils.getNode(record.getOriginalResponse(), "//*");
 		valueNode.setTextContent(value);
 	}
 
@@ -144,7 +146,7 @@ public class TestUtil {
 			input = null;
 
 			Document document = StringUtils.stringToDocument(content.toString());
-			record.initialize(document.getFirstChild(), factory);
+			record.initialize(document.getFirstChild());
 			return record;
 		}
 		finally {

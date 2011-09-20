@@ -4,8 +4,11 @@
 
 package de.ingrid.iplug.wfs.dsc.wfsclient;
 
-import org.springframework.core.io.Resource;
+import java.io.File;
+
 import org.w3c.dom.Node;
+
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 
 /**
  * Representation of a feature returned by a WFS server.
@@ -14,11 +17,16 @@ import org.w3c.dom.Node;
 public interface WFSFeature {
 
 	/**
+	 * Configure the feature
+	 * @param factory
+	 */
+	public void configure(WFSFactory factory);
+
+	/**
 	 * Initialize the feature.
 	 * @param node The DOM Node describing the feature
-	 * @param factory The WFSFactory instance
 	 */
-	public void initialize(Node node, WFSFactory factory) throws Exception;
+	public void initialize(Node node) throws Exception;
 
 	/**
 	 * Get the id of the feature
@@ -33,8 +41,20 @@ public interface WFSFeature {
 	public Node getOriginalResponse();
 
 	/**
-	 * Set the mapping script for mapping the feature to an id
-	 * @param mappingScript
+	 * Set the file of the mapping script for mapping the feature to an id
+	 * @param idMappingScript
 	 */
-	public void setIdMappingScript(Resource mappingScript);
+	public void setIdMappingScript(File idMappingScript);
+
+	/**
+	 * Get the file of the mapping script for mapping the feature to an id
+	 * @return File
+	 */
+	public File getIdMappingScript();
+
+	/**
+	 * Get the namespace context for this feature
+	 * @return NamespaceContext
+	 */
+	public WfsNamespaceContext getNamespaceContext();
 }

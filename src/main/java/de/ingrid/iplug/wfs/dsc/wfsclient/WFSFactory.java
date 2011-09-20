@@ -7,8 +7,6 @@ package de.ingrid.iplug.wfs.dsc.wfsclient;
 import java.io.Serializable;
 import java.util.Map;
 
-import org.springframework.core.io.FileSystemResource;
-
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 import de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericClient;
 import de.ingrid.utils.IConfigurable;
@@ -24,7 +22,6 @@ public class WFSFactory implements IConfigurable, Serializable {
 
 	private static final long serialVersionUID = WFSFactory.class.getName().hashCode();
 	private static final String serviceUrlKey = "serviceUrl";
-	private static final String featureToIdMappingKey = "featureToId";
 
 	private PlugDescription plugDescription;
 
@@ -36,10 +33,10 @@ public class WFSFactory implements IConfigurable, Serializable {
 	private String queryResultImpl;
 	private String featureImpl;
 	private WFSQuery queryTemplate;
-	private Map<String, String> mappings;
+	private WFSFeature featureTemplate;
 
 	/**
-	 * get the service url.
+	 * Get the service url.
 	 * @return The service url
 	 * @throws RuntimeException
 	 */
@@ -129,11 +126,19 @@ public class WFSFactory implements IConfigurable, Serializable {
 	}
 
 	/**
-	 * Set the mappings used in the application
-	 * @param mappings Associative array with ids as keys and mapping script filenames as values
+	 * Set the feature template, which will be used when creating features
+	 * @param featureTemplate
 	 */
-	public void setMappings(Map<String, String> mappings) {
-		this.mappings = mappings;
+	public void setFeatureTemplate(WFSFeature featureTemplate) {
+		this.featureTemplate = featureTemplate;
+	}
+
+	/**
+	 * Get the feature template, which will be used when creating features
+	 * @return WFSFeature
+	 */
+	public WFSFeature getFeatureTemplate() {
+		return this.featureTemplate;
 	}
 
 	/**
@@ -148,6 +153,7 @@ public class WFSFactory implements IConfigurable, Serializable {
 		GenericClient client;
 		try {
 			client = (GenericClient)Class.forName(this.clientImpl).newInstance();
+			client.configure(this);
 		} catch (Exception e) {
 			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'clientImpl' is missing or wrong.");
 		}
@@ -225,6 +231,7 @@ public class WFSFactory implements IConfigurable, Serializable {
 		WFSQueryResult result;
 		try {
 			result = (WFSQueryResult)Class.forName(this.queryResultImpl).newInstance();
+			result.configure(this);
 		} catch (Exception e) {
 			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'queryResultImpl' is missing or wrong.");
 		}
@@ -236,18 +243,17 @@ public class WFSFactory implements IConfigurable, Serializable {
 	 * @return A concrete WFSFeature instance
 	 */
 	public WFSFeature createFeature() throws RuntimeException {
-		if (this.mappings == null) {
-			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'mappings' is missing or wrong.");
-		}
-		if (!this.mappings.containsKey(featureToIdMappingKey)) {
-			throw new RuntimeException("WFSFactory is not configured properly. Mapping key '"+featureToIdMappingKey+"' is missing.");
-		}
 		WFSFeature feature;
 		try {
 			feature = (WFSFeature)Class.forName(this.featureImpl).newInstance();
-			feature.setIdMappingScript(new FileSystemResource(this.mappings.get(featureToIdMappingKey)));
+			feature.configure(this);
+
+			// set default config values from the template feature
+			if (this.featureTemplate != null) {
+				feature.setIdMappingScript(this.featureTemplate.getIdMappingScript());
+			}
 		} catch (Exception e) {
-			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'createFeature' is missing or wrong.");
+			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'featureImpl' is missing or wrong.");
 		}
 		return feature;
 	}

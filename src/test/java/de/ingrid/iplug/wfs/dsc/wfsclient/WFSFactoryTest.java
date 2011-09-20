@@ -87,16 +87,6 @@ public class WFSFactoryTest extends TestCase {
 			f.setFeatureImpl(desc.get("wfsFeatureImpl").toString());
 		}
 
-		if (!desc.containsKey("mappings")) {
-			Map<String, String> mappings = new Hashtable<String, String>();
-			mappings.put("featureToId", "src/test/resources/mapping/waterlevel-feature_to_feature-id.js");
-			mappings.put("featureToDocument", "src/main/resources/mapping/wfs-1.1.0_to_lucene-igc-1.0.3.js");
-			f.setMappings(mappings);
-		}
-		else {
-			f.setMappings((Map<String, String>)desc.get("mappings"));
-		}
-
 		f.configure(desc);
 
 		return f;

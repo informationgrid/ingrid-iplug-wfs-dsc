@@ -15,12 +15,17 @@ import org.w3c.dom.Document;
 public interface WFSQueryResult {
 
 	/**
+	 * Configure the WFSClient
+	 * @param factory
+	 */
+	public void configure(WFSFactory factory);
+
+	/**
 	 * Initialize the result.
 	 * @param document
 	 * @param query
-	 * @param factory
 	 */
-	public void initialize(Document document, WFSQuery query, WFSFactory factory) throws Exception;
+	public void initialize(Document document, WFSQuery query) throws Exception;
 
 	/**
 	 * Get the associated query

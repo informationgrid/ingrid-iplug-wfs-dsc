@@ -4,23 +4,20 @@
 
 package de.ingrid.iplug.wfs.dsc.wfsclient.impl;
 
-import java.io.InputStreamReader;
+import java.io.File;
 import java.security.MessageDigest;
-
-import javax.script.Bindings;
-import javax.script.Compilable;
-import javax.script.CompiledScript;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
+import java.util.Hashtable;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.springframework.core.io.Resource;
 import org.w3c.dom.Comment;
 import org.w3c.dom.Node;
 
 import de.ingrid.iplug.wfs.dsc.tools.NodeUtils;
+import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.xpath.XPathUtils;
 
 /**
@@ -32,17 +29,22 @@ import de.ingrid.utils.xpath.XPathUtils;
  */
 public class GenericFeature implements WFSFeature {
 
-	protected static final XPathUtils xPathUtils = new XPathUtils(WfsNamespaceContext.INSTANCE);
 
-	protected static ScriptEngine engine = null;
-	protected static Resource mappingScript = null;
-	protected static CompiledScript compiledScript = null;
-	protected static boolean compile = true;
+	protected File idMappingScript = null;
+	protected boolean compile = true;
 
 	private static final Logger log = Logger.getLogger(GenericFeature.class);
 
+	protected WFSFactory factory = null;
+	protected XPathUtils xPathUtils = null;
 	protected String id = null;
 	protected Node node = null;
+	protected WfsNamespaceContext namespaceContext = null;
+
+	@Override
+	public void configure(WFSFactory factory) {
+		this.factory = factory;
+	}
 
 	/**
 	 * Initializes the feature. The node will be detached (cloned) from it's owner document.
@@ -50,15 +52,25 @@ public class GenericFeature implements WFSFeature {
 	 * @param node The DOM Node describing the feature. The node will be detached (cloned).
 	 */
 	@Override
-	public void initialize(Node node, WFSFactory factory) throws Exception {
+	public void initialize(Node node) throws Exception {
+		if (this.factory == null) {
+			throw new RuntimeException("WFSFeature is not configured properly. Make sure to call WFSFeature.configure.");
+		}
+
 		// detach node from whole document including all namespace definitions
 		while (node instanceof Comment) {
 			node = node.getNextSibling();
 		}
 		this.node = NodeUtils.detachWithNameSpaces(node);
 
+		// create namespace context for this feature
+		this.namespaceContext = new WfsNamespaceContext();
+		this.namespaceContext.addNamespace(node.getPrefix(), node.getNamespaceURI());
+		this.xPathUtils = new XPathUtils(this.namespaceContext);
+
 		// get the feature id
-		this.id = encodeId(factory.getServiceUrl()+":"+extractFeatureId(this.node));
+		String featureId = this.extractFeatureId(this.node);
+		this.id = encodeId(this.factory.getServiceUrl()+":"+featureId);
 	}
 
 	@Override
@@ -82,8 +94,18 @@ public class GenericFeature implements WFSFeature {
 	}
 
 	@Override
-	public void setIdMappingScript(Resource mappingScript) {
-		GenericFeature.mappingScript = mappingScript;
+	public void setIdMappingScript(File idMappingScript) {
+		this.idMappingScript = idMappingScript;
+	}
+
+	@Override
+	public File getIdMappingScript() {
+		return this.idMappingScript;
+	}
+
+	@Override
+	public WfsNamespaceContext getNamespaceContext() {
+		return this.namespaceContext;
 	}
 
 	/**
@@ -111,49 +133,16 @@ public class GenericFeature implements WFSFeature {
 	 * @return String
 	 * @throws Exception
 	 */
-	protected static String extractFeatureId(Node featureNode) throws Exception {
-		String id = null;
-		Bindings bindings = getScriptingEngine().createBindings();
-		bindings.put("featureNode", featureNode);
-		bindings.put("xPathUtils", xPathUtils);
-		bindings.put("log", log);
-		if (compiledScript != null) {
-			id = (String)compiledScript.eval(bindings);
-		} else {
-			id = (String)engine.eval(new InputStreamReader(mappingScript.getInputStream()), bindings);
+	protected String extractFeatureId(Node featureNode) throws Exception {
+		if (this.idMappingScript == null) {
+			throw new RuntimeException("GenericFeature is not configured properly. Parameter 'idMappingScript' is missing or wrong.");
 		}
+		Map<String, Object> parameters = new Hashtable<String, Object>();
+		parameters.put("featureNode", featureNode);
+		parameters.put("xPathUtils", this.xPathUtils);
+		parameters.put("log", log);
+		String id = (String)ScriptEngine.execute(this.idMappingScript, parameters, this.compile);
+
 		return id;
-	}
-
-	/**
-	 * Get the ScriptEngine instance
-	 * @return ScriptEngine instance
-	 * @throws Exception
-	 */
-	protected static ScriptEngine getScriptingEngine() throws Exception {
-		if (mappingScript == null) {
-			throw new RuntimeException("GenericFeature is not configured properly. Parameter 'mappingScript' is missing or wrong.");
-		}
-		if (engine == null) {
-			initializeScripting();
-		}
-		return engine;
-	}
-
-	/**
-	 * Initialize the ScriptEngine and compile the mapping script
-	 * @throws Exception
-	 */
-	protected static void initializeScripting() throws Exception {
-		String scriptName = mappingScript.getFilename();
-		String extension = scriptName.substring(scriptName.lastIndexOf('.') + 1, scriptName.length());
-		ScriptEngineManager mgr = new ScriptEngineManager();
-		engine = mgr.getEngineByExtension(extension);
-		if (compile) {
-			if (engine instanceof Compilable) {
-				Compilable compilable = (Compilable)engine;
-				compiledScript = compilable.compile(new InputStreamReader(mappingScript.getInputStream()));
-			}
-		}
 	}
 }

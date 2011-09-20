@@ -16,18 +16,18 @@ import org.w3c.dom.NodeList;
 
 import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSCapabilities;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.xpath.XPathUtils;
 
 public class GenericCapabilities implements WFSCapabilities {
 
-	protected static final XPathUtils xPathUtils = new XPathUtils(WfsNamespaceContext.INSTANCE);
+	protected static final XPathUtils xPathUtils = new XPathUtils(new WfsNamespaceContext());
 
 	protected Document capDoc = null;
 
 	@Override
-	public void initialize(Document capDoc, WFSFactory factory) {
+	public void initialize(Document capDoc) {
 
 		// check if capDoc is a valid capabilities document
 		Node rootNode = xPathUtils.getNode(capDoc, "/wfs:WFS_Capabilities");

@@ -293,7 +293,7 @@ public class DefaultFileCache implements Cache, Serializable {
 
 				Document document = StringUtils.stringToDocument(content.toString());
 				WFSFeature record = this.factory.createFeature();
-				record.initialize(document.getFirstChild(), this.factory);
+				record.initialize(document.getFirstChild());
 				return record;
 			}
 			catch (Exception e) {
