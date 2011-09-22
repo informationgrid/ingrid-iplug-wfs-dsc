@@ -43,12 +43,13 @@ var coordList = addOutput(idfBody, "ul");
 addOutput(coordList, "li", "Nord: "+boundingBox.y2);
 addOutput(coordList, "li", "West: "+boundingBox.x1);
 addOutput(coordList, "li", "Ost: "+boundingBox.x2);
-addOutput(coordList, "li", "Süd: "+boundingBox.y1);
+addOutput(coordList, "li", "SÃ¼d: "+boundingBox.y1);
+addOutput(idfBody, "br");
 
 // add details
 addOutput(idfBody, "h2", "Details:");
 var detailList = addOutput(idfBody, "ul");
-addOutput(detailList, "li", "Gewässer: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:water"));
+addOutput(detailList, "li", "GewÃ¤sser: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:water"));
 addOutput(detailList, "li", "Station: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station"));
 addOutput(detailList, "li", "Station ID: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station_id"));
 addOutput(detailList, "li", "Kilometer: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:kilometer"));
@@ -61,6 +62,7 @@ addLink(chartElement, chartUrl, chartUrl);
 addOutput(detailList, "li", "Trend: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:trend"));
 addOutput(detailList, "li", "Status: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:status"));
 addOutput(detailList, "li", "Kommentar: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:comment"));
+addOutput(idfBody, "br");
 
 // functions
 function getTitle(recordNode) {
