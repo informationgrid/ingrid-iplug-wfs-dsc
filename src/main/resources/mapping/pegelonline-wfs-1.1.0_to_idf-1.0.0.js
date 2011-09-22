@@ -31,9 +31,36 @@ var recordNode = wfsRecord.getOriginalResponse();
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
 
 // add the title
-var title = document.createElement("h1")
-title.appendChild(document.createTextNode(getTitle(recordNode)));
-idfBody.appendChild(title);
+addOutput(idfBody, "h1", getTitle(recordNode));
+
+//add the summary
+addOutput(idfBody, "p", getSummary(recordNode));
+
+//add the bounding box
+var boundingBox = getBoundingBox(recordNode);
+addOutput(idfBody, "h2", "Ort:");
+var coordList = addOutput(idfBody, "ul");
+addOutput(coordList, "li", "Nord: "+boundingBox.y2);
+addOutput(coordList, "li", "West: "+boundingBox.x1);
+addOutput(coordList, "li", "Ost: "+boundingBox.x2);
+addOutput(coordList, "li", "Süd: "+boundingBox.y1);
+
+// add details
+addOutput(idfBody, "h2", "Details:");
+var detailList = addOutput(idfBody, "ul");
+addOutput(detailList, "li", "Gewässer: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:water"));
+addOutput(detailList, "li", "Station: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station"));
+addOutput(detailList, "li", "Station ID: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station_id"));
+addOutput(detailList, "li", "Kilometer: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:kilometer"));
+addOutput(detailList, "li", "Datum: "+DateUtil.formatDate(xPathUtils.getString(recordNode, "/gk:waterlevels/gk:date")));
+addOutput(detailList, "li", "Wert: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:value"));
+addOutput(detailList, "li", "Einheit: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:unit"));
+var chartElement = addOutput(detailList, "li", "Chart: ");
+var chartUrl = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:chart_url");
+addLink(chartElement, chartUrl, chartUrl);
+addOutput(detailList, "li", "Trend: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:trend"));
+addOutput(detailList, "li", "Status: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:status"));
+addOutput(detailList, "li", "Kommentar: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:comment"));
 
 // functions
 function getTitle(recordNode) {
@@ -47,5 +74,49 @@ function getSummary(recordNode) {
 	var part1 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:date");
 	var part2 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:value");
 	var part3 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:unit");
-	return part1+": "+part2+""+part3;
+	return DateUtil.formatDate(part1)+": "+part2+""+part3;
+}
+
+function getBoundingBox(recordNode) {
+	var gmlEnvelope = xPathUtils.getNode(recordNode, "/gk:waterlevels/gml:boundedBy/gml:Envelope");
+	if (hasValue(gmlEnvelope)) {
+		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
+		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
+		return {
+			x1: lowerCoords[0],
+			x2: upperCoords[0],
+			y1: lowerCoords[1],
+			y2: upperCoords[1]
+		}
+	}
+}
+
+function addOutput(parent, elementName, textContent) {
+	var element = document.createElement(elementName);
+	if (textContent != undefined) {
+		element.appendChild(document.createTextNode(textContent));
+	}
+	parent.appendChild(element);
+	return element;
+}
+
+function addLink(parent, name, url) {
+	var link = document.createElement("a");
+	link.setAttribute("href", url);
+	link.setAttribute("target", "_blank");
+	link.appendChild(document.createTextNode(name));
+	parent.appendChild(link);
+	return link;
+}
+
+function hasValue(val) {
+	if (typeof val == "undefined") {
+		return false; 
+	} else if (val == null) {
+		return false; 
+	} else if (typeof val == "string" && val == "") {
+		return false;
+	} else {
+	  return true;
+	}
 }

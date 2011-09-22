@@ -13,11 +13,7 @@ import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
 
 /**
- * Takes care of selecting all source record Ids from a database. The SQL
- * statement is configurable via Spring.
- * 
- * The database connection is configured via the PlugDescription.
- * 
+ * Takes care of selecting all source record Ids from the configured cache.
  * 
  * @author joachim@wemove.com
  * 

@@ -243,7 +243,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
                 <ref bean="idfMapper"/>
             </list>
         </property>
-        <property name="compressed" value="true" />
+        <property name="compressed" value="false" />
     </bean>
     
     <bean id="recordProducer" class="de.ingrid.iplug.wfs.dsc.record.producer.WfsRecordProducer">

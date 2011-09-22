@@ -15,7 +15,8 @@ public class ConfigurationKeys {
 	public final static String WFS_HARVEST_FILTER 				= "wfsHarvestFilter";
 	public final static String WFS_UPDATE_STRATEGIES			= "wfsUpdateStrategies";
 	public final static String WFS_UPDATE_JOB					= "wfsUpdateJob";
-	public final static String WFS_MAPPER		 				= "wfsMapper";
+	public final static String WFS_DOCUMENT_PRODUCER			= "wfsDscDocumentProducer";
+	public final static String WFS_RECORD_PRODUCER				= "dscRecordProducer";
 
 	public final static String PLUGDESCRIPTION					= "plugDescription";
 

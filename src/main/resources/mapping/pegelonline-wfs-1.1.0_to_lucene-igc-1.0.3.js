@@ -56,13 +56,50 @@ var transformationDescriptions = [
 			"funct":mapSummary,
 			"params":[recordNode]
 		}
-	}/*,
-	// geographic elements
+	},
+	// bounding box
 	{	"execute":{
-			"funct":mapGeographicElements,
+			"funct":mapBoundingBox,
 			"params":[recordNode]
 		}
-	}*/
+	},
+	// details
+	{	"indexField":"water",
+		"xpath":"/gk:waterlevels/gk:water"
+	},	
+	{	"indexField":"station",
+		"xpath":"/gk:waterlevels/gk:station"
+	},	
+	{	"indexField":"station_id",
+		"xpath":"/gk:waterlevels/gk:station_id"
+	},	
+	{	"indexField":"kilometer",
+		"xpath":"/gk:waterlevels/gk:kilometer"
+	},	
+	{	"indexField":"date",
+		"xpath":"/gk:waterlevels/gk:date",
+		"transform":{
+			"funct":DateUtil.formatDate
+		}
+	},	
+	{	"indexField":"value",
+		"xpath":"/gk:waterlevels/gk:value"
+	},	
+	{	"indexField":"unit",
+		"xpath":"/gk:waterlevels/gk:unit"
+	},	
+	{	"indexField":"chart_url",
+		"xpath":"/gk:waterlevels/gk:chart_url"
+	},	
+	{	"indexField":"trend",
+		"xpath":"/gk:waterlevels/gk:trend"
+	},	
+	{	"indexField":"status",
+		"xpath":"/gk:waterlevels/gk:status"
+	},	
+	{	"indexField":"comment",
+		"xpath":"/gk:waterlevels/gk:comment"
+	}	
 ];
 
 document.add(new Field("datatype", "default", Field.Store.NO, Field.Index.ANALYZED));
@@ -143,29 +180,18 @@ function mapSummary(recordNode) {
 	var part1 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:date");
 	var part2 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:value");
 	var part3 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:unit");
-	addToDoc("summary", part1+": "+part2+""+part3, true);
+	addToDoc("summary", DateUtil.formatDate(part1)+": "+part2+""+part3, true);
 }
 
-function mapGeographicElements(recordNode) {
-	// TODO
-	var geographicElements = xPathUtils.getNodeList(recordNode, "//gmd:identificationInfo//gmd:extent/gmd:EX_Extent/gmd:geographicElement");
-	if (hasValue(geographicElements)) {
-		for (i=0; i<geographicElements.getLength(); i++ ) {
-			var value = xPathUtils.getString(geographicElements.item(i), "gmd:EX_GeographicDescription/gmd:geographicIdentifier/gmd:MD_Identifier/gmd:code/gco:CharacterString");
-			if (hasValue(value)) {
-				addToDoc("location", value, true);
-			}
-			var boundingBoxes = xPathUtils.getNodeList(geographicElements.item(i), "gmd:EX_GeographicBoundingBox");
-			for (j=0; j<boundingBoxes.getLength(); j++ ) {
-				if (hasValue(boundingBoxes.item(j)) && hasValue(xPathUtils.getString(boundingBoxes.item(j), "gmd:westBoundLongitude/gco:Decimal"))) {
-					addToDoc("location", "", true);
-					addNumericToDoc("x1", xPathUtils.getString(boundingBoxes.item(j), "gmd:westBoundLongitude/gco:Decimal"), false);
-					addNumericToDoc("x2", xPathUtils.getString(boundingBoxes.item(j), "gmd:eastBoundLongitude/gco:Decimal"), false);
-					addNumericToDoc("y1", xPathUtils.getString(boundingBoxes.item(j), "gmd:southBoundLatitude/gco:Decimal"), false);
-					addNumericToDoc("y2", xPathUtils.getString(boundingBoxes.item(j), "gmd:northBoundLatitude/gco:Decimal"), false);
-				}
-			}
-		}
+function mapBoundingBox(recordNode) {
+	var gmlEnvelope = xPathUtils.getNode(recordNode, "/gk:waterlevels/gml:boundedBy/gml:Envelope");
+	if (hasValue(gmlEnvelope)) {
+		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
+		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
+		addNumericToDoc("x1", lowerCoords[0], false); // west
+		addNumericToDoc("x2", upperCoords[0], false); // east
+		addNumericToDoc("y1", lowerCoords[1], false); // south
+		addNumericToDoc("y2", lowerCoords[1], false); // north
 	}
 }
 

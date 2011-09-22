@@ -45,7 +45,8 @@ public class MapperToIndexTest extends TestCase {
 
 		assertTrue("Lucene doc found.", doc != null);
 		assertEquals(testRecordId, doc.get("t01_object.obj_id"));
+		System.out.println(doc);
 		assertEquals("RHEIN RUHRORT (km 780.8)", doc.get("title"));
-		assertEquals("2011-09-19T15:15:00+01:00: 280.0cm", doc.get("summary"));
+		assertEquals("19.09.2011 16:15:00: 280.0cm", doc.get("summary"));
 	}
 }
