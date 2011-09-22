@@ -266,7 +266,7 @@
            <archive>
              <manifestEntries>
                <!-- see ingrid-utils:de.ingrid.utils.metadata.IPlugType-->
-               <iPlug-Type>IPLUG_WFS_DSC</iPlug-Type>
+               <iPlug-Type>IPLUG_DSC</iPlug-Type>
              </manifestEntries>
            </archive>
          </configuration>
