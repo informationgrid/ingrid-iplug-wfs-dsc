@@ -25,7 +25,7 @@ if (log.isDebugEnabled()) {
 var recordNode = wfsRecord.getOriginalResponse();
 
 // add id field
-addToDoc("t01_object.obj_id", wfsRecord.getId(), true);
+addToDoc(document, "t01_object.obj_id", wfsRecord.getId(), true);
 
 // additional mappings
 /**
@@ -140,7 +140,7 @@ for (var i in transformationDescriptions) {
 					}
 				}
 				if (hasValue(value)) {
-					addToDoc(t.indexField, value, tokenized);
+					addToDoc(document, t.indexField, value, tokenized);
 				}
 			}
 		} else {
@@ -162,7 +162,7 @@ for (var i in transformationDescriptions) {
 					}
 				}
 				if (hasValue(value)) {
-					addToDoc(t.indexField, value, tokenized);
+					addToDoc(document, t.indexField, value, tokenized);
 				}
 			}
 		}
@@ -173,14 +173,14 @@ function mapTitle(recordNode) {
 	var part1 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:water");
 	var part2 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station");
 	var part3 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:kilometer");
-	addToDoc("title", part1+" "+part2+" (km "+part3+")", true);
+	addToDoc(document, "title", part1+" "+part2+" (km "+part3+")", true);
 }
 
 function mapSummary(recordNode) {
 	var part1 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:date");
 	var part2 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:value");
 	var part3 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:unit");
-	addToDoc("summary", DateUtil.formatDate(part1)+": "+part2+""+part3, true);
+	addToDoc(document, "summary", DateUtil.formatDate(part1)+": "+part2+""+part3, true);
 }
 
 function mapBoundingBox(recordNode) {
@@ -188,67 +188,9 @@ function mapBoundingBox(recordNode) {
 	if (hasValue(gmlEnvelope)) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-		addNumericToDoc("x1", lowerCoords[0], false); // west
-		addNumericToDoc("x2", upperCoords[0], false); // east
-		addNumericToDoc("y1", lowerCoords[1], false); // south
-		addNumericToDoc("y2", lowerCoords[1], false); // north
+		addNumericToDoc(document, "x1", lowerCoords[0], false); // west
+		addNumericToDoc(document, "x2", upperCoords[0], false); // east
+		addNumericToDoc(document, "y1", lowerCoords[1], false); // south
+		addNumericToDoc(document, "y2", lowerCoords[1], false); // north
 	}
 }
-
-function addToDoc(field, content, tokenized) {
-	if (typeof content != "undefined" && content != null) {
-		if (log.isDebugEnabled()) {
-			log.debug("Add '" + field + "'='" + content + "' to lucene index");
-		}
-		var analyzed = Field.Index.ANALYZED;
-		if (!tokenized) analyzed = Field.Index.NOT_ANALYZED;
-		document.add(new Field(field, content, Field.Store.YES, analyzed));
-		document.add(new Field("content", content, Field.Store.NO, analyzed));
-		document.add(new Field("content", LuceneTools.filterTerm(content), Field.Store.NO, Field.Index.ANALYZED));
-	}
-}
-
-function addNumericToDoc(field, content) {
-	if (typeof content != "undefined" && content != null) {
-        try {
-    		if (log.isDebugEnabled()) {
-    			log.debug("Add numeric '" + field + "'='" + content + "' to lucene index.");
-    		}
-            document.add(new NumericField(field, Field.Store.YES, true).setDoubleValue(content));
-        } catch (e) {
-            if (log.isDebugEnabled()) {
-                log.debug("Value '" + content + "' is not a number. Ignoring field '" + field + "'.");
-            }
-        }
-	}
-}
-
-function hasValue(val) {
-	if (typeof val == "undefined") {
-		return false; 
-	} else if (val == null) {
-		return false; 
-	} else if (typeof val == "string" && val == "") {
-		return false;
-	} else {
-	  return true;
-	}
-}
-
-function call_f(f,args) {
-  f.call_self = function(ars) {
-	  var callstr = "";
-	  if (hasValue(ars)) {
-		  for(var i = 0; i < ars.length; i++) {
-			  callstr += "ars["+i+"]";
-			  if(i < ars.length - 1) {
-				  callstr += ',';
-			  }
-		  }
-	  }
-	  return eval("this("+callstr+")");
-  };
-  return f.call_self(args);
-}
-
-

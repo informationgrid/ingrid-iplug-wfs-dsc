@@ -1,7 +1,5 @@
 package de.ingrid.iplug.wfs.dsc.record;
 
-import java.io.File;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -40,10 +38,8 @@ public class MapperToIngridTest extends TestCase {
 		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
 		factory.configure(desc);
 
-		CreateIdfMapper createIdfMapper = new CreateIdfMapper();
-		WfsIdfMapper wfsIdfMapper = new WfsIdfMapper();
-		wfsIdfMapper.setCompile(false);
-		wfsIdfMapper.setMappingScript(new File("src/main/resources/mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js"));
+		CreateIdfMapper createIdfMapper = SimpleSpringBeanFactory.INSTANCE.getBean("createIdfMapper", CreateIdfMapper.class);
+		WfsIdfMapper wfsIdfMapper = SimpleSpringBeanFactory.INSTANCE.getBean("idfMapper", WfsIdfMapper.class);
 
 		String testRecordId = "21212262e8a1112a80f26f18255da2e0";
 		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);

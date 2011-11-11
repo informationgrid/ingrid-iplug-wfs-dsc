@@ -30,16 +30,16 @@ import de.ingrid.utils.xpath.XPathUtils;
  */
 public class WfsDocumentMapper implements IRecordMapper {
 
-	private File mappingScript;
+	private File[] mappingScripts;
 	private boolean compile = false;
 
 	private static final Logger log = Logger.getLogger(WfsDocumentMapper.class);
 
 	@Override
 	public void map(SourceRecord record, Document doc) throws Exception {
-		if (this.mappingScript == null) {
-			log.error("Mapping script is not set!");
-			throw new IllegalArgumentException("Mapping script is not set!");
+		if (this.mappingScripts == null) {
+			log.error("Mapping scripts are not set!");
+			throw new IllegalArgumentException("Mapping scripts are not set!");
 		}
 
 		if (!(record instanceof WfsCacheSourceRecord)) {
@@ -56,15 +56,15 @@ public class WfsDocumentMapper implements IRecordMapper {
 			parameters.put("document", doc);
 			parameters.put("xPathUtils", xPathUtils);
 			parameters.put("log", log);
-			ScriptEngine.execute(this.mappingScript, parameters, this.compile);
+			ScriptEngine.execute(this.mappingScripts, parameters, this.compile);
 		} catch (Exception e) {
 			log.error("Error mapping source record to lucene document.", e);
 			throw e;
 		}
 	}
 
-	public void setMappingScript(File mappingScript) {
-		this.mappingScript = mappingScript;
+	public void setMappingScripts(File[] mappingScripts) {
+		this.mappingScripts = mappingScripts;
 	}
 
 	public void setCompile(boolean compile) {

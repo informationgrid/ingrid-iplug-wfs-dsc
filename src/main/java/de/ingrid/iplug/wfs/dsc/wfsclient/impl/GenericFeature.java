@@ -24,7 +24,7 @@ import de.ingrid.utils.xpath.XPathUtils;
  * Implementation of a WFSFeature. Since feature types are defined
  * in an arbitrary namespace, it is necessary to provide a feature specific rule
  * for extracting the id of the feature instance. This is done using a javascript
- * mapping script.
+ * mapping file.
  * @author ingo@wemove.com
  */
 public class GenericFeature implements WFSFeature {
@@ -141,8 +141,9 @@ public class GenericFeature implements WFSFeature {
 		parameters.put("featureNode", featureNode);
 		parameters.put("xPathUtils", this.xPathUtils);
 		parameters.put("log", log);
-		String id = (String)ScriptEngine.execute(this.idMappingScript, parameters, this.compile);
-
+		File[] scripts = new File[]{ this.idMappingScript };
+		Map<String, Object> results = ScriptEngine.execute(scripts, parameters, this.compile);
+		String id = (String)results.get(this.idMappingScript.getAbsolutePath());
 		return id;
 	}
 }

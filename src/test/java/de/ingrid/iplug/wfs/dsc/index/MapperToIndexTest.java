@@ -1,7 +1,5 @@
 package de.ingrid.iplug.wfs.dsc.index;
 
-import java.io.File;
-
 import junit.framework.TestCase;
 
 import org.apache.lucene.document.Document;
@@ -30,9 +28,7 @@ public class MapperToIndexTest extends TestCase {
 		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
 		factory.configure(desc);
 
-		WfsDocumentMapper mapper = new WfsDocumentMapper();
-		mapper.setCompile(false);
-		mapper.setMappingScript(new File("src/main/resources/mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js"));
+		WfsDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", WfsDocumentMapper.class);
 
 		String testRecordId = "21212262e8a1112a80f26f18255da2e0";
 		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);

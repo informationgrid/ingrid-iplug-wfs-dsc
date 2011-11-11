@@ -227,8 +227,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.WfsRecordSetProducer"/>
 
     <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
-        <property name="mappingScript" value="classpath:mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js"/>
-        <property name="compile" value="false"/>
+        <property name="mappingScripts">
+	    	<list>
+	    		<value>classpath:mapping/lib.js</value>
+	    		<value>classpath:mapping/lucene_helper.js</value>
+	    		<value>classpath:mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js</value>
+	    	</list>
+        </property> 
+        <property name="compile" value="true"/>
     </bean>
     
     <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
@@ -254,9 +260,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <bean id="createIdfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.CreateIdfMapper" />
     
     <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
-        <property name="mappingScript" value="classpath:mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js"/>
-        <property name="compile" value="false"/>
+        <property name="mappingScripts">
+	    	<list>
+	    		<value>classpath:mapping/lib.js</value>
+	    		<value>classpath:mapping/document_helper.js</value>
+	    		<value>classpath:mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js</value>
+	    	</list>
+        </property> 
+        <property name="compile" value="true"/>
     </bean>
-
-
 </beans>
