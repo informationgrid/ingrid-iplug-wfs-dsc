@@ -111,7 +111,7 @@ public class WFSClientTest extends TestCase {
 	public void testGetFeature() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
-		int recordCount = 482;
+		int recordCount = 488;
 
 		// set up client
 		WFSClient client = this.factory.createClient();
@@ -125,14 +125,14 @@ public class WFSClientTest extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertTrue("Fetched "+recordCount+" records from the server",
-				recordCount == result.getNumberOfFeatures());
+		assertEquals("Fetched "+recordCount+" records from the server",
+				recordCount, result.getNumberOfFeatures());
 	}
 
 	public void testGetFeatureWithFilter() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
-		int recordCount = 57;
+		int recordCount = 56;
 
 		// set up client
 		WFSClient client = this.factory.createClient();
@@ -155,7 +155,7 @@ public class WFSClientTest extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertTrue("Fetched "+recordCount+" records from the server",
-				recordCount == result.getNumberOfFeatures());
+		assertEquals("Fetched "+recordCount+" records from the server",
+				recordCount, result.getNumberOfFeatures());
 	}
 }

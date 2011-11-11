@@ -1,0 +1,1360 @@
+<?xml version='1.0' encoding="UTF-8" ?>
+<wfs:FeatureCollection
+   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"
+   xmlns:gml="http://www.opengis.net/gml"
+   xmlns:wfs="http://www.opengis.net/wfs"
+   xmlns:ogc="http://www.opengis.net/ogc"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://mapserver.gis.umn.edu/mapserver http://10.140.105.55/cgi-bin/wfswadaba?SERVICE=WFS&amp;VERSION=1.1.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=abflussmessstellen&amp;OUTPUTFORMAT=text/xml;%20subtype=gml/3.1.1  http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd">
+      <gml:boundedBy>
+      	<gml:Envelope srsName="EPSG:4326">
+      		<gml:lowerCorner>48.910594 7.241971</gml:lowerCorner>
+      		<gml:upperCorner>53.021414 12.015277</gml:upperCorner>
+      	</gml:Envelope>
+      </gml:boundedBy>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1464356">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.190694 9.076823</gml:lowerCorner>
+        		<gml:upperCorner>52.190694 9.076823</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.190694 9.076823</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1464356</ms:OBJN_I>
+        <ms:WADABA_ID>2523718001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3718</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Nordrhein-Westfalen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>5201</ms:BWSTR>
+        <ms:HOCH_D>5784125</ms:HOCH_D>
+        <ms:RECHTS_D>3505326</ms:RECHTS_D>
+        <ms:KM_ANF_D>197,3</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Porta</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>3</ms:MB_SI>
+        <ms:UB_SI>13</ms:UB_SI>
+        <ms:AB_SI>3</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>09.10.09 10:25:39</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Martina.Rohe@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>3</ms:USERM_SI>
+        <ms:USERU_SI>13</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3718001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK2_NW177</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3718001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523718001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1464398">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.241456 8.912450</gml:lowerCorner>
+        		<gml:upperCorner>52.241456 8.912450</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.241456 8.912450</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1464398</ms:OBJN_I>
+        <ms:WADABA_ID>2523920001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3920</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Niedersachsen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>5201</ms:BWSTR>
+        <ms:HOCH_D>5789774</ms:HOCH_D>
+        <ms:RECHTS_D>3494092</ms:RECHTS_D>
+        <ms:KM_ANF_D>163,59</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Rinteln</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>3</ms:MB_SI>
+        <ms:UB_SI>13</ms:UB_SI>
+        <ms:AB_SI>3</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>09.10.09 10:24:45</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Martina.Rohe@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>3</ms:USERM_SI>
+        <ms:USERU_SI>13</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3920001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK2_NI100</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3920001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523920001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1508710">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>48.947379 12.015277</gml:lowerCorner>
+        		<gml:upperCorner>48.947379 12.015277</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>48.947379 12.015277</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1508710</ms:OBJN_I>
+        <ms:WADABA_ID>2527138001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>7138</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Bayern</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>1 linker Bereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0404</ms:BWSTR>
+        <ms:HOCH_D>5423334</ms:HOCH_D>
+        <ms:RECHTS_D>4501226</ms:RECHTS_D>
+        <ms:KM_ANF_D>2397,38</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Oberndorf</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG>Oberndorf</ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>6</ms:MB_SI>
+        <ms:UB_SI>14</ms:UB_SI>
+        <ms:AB_SI>4</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>05.05.09 09:57:20</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Helmut.Voegele@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>6</ms:USERM_SI>
+        <ms:USERU_SI>14</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 2101, Kategorie B</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>7138001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK3_BY120</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=7138001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2527138001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1508527">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>48.910594 11.934954</gml:lowerCorner>
+        		<gml:upperCorner>48.910594 11.934954</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>48.910594 11.934954</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1508527</ms:OBJN_I>
+        <ms:WADABA_ID>2527136002</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>7136</ms:MTBL_SI>
+        <ms:LFNR_SI>2</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Bayern</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0401</ms:BWSTR>
+        <ms:HOCH_D>5419245</ms:HOCH_D>
+        <ms:RECHTS_D>4495339</ms:RECHTS_D>
+        <ms:KM_ANF_D>2409,46</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Ultraschallmessanlage</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG>Ultraschallmeßanlage</ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>6</ms:MB_SI>
+        <ms:UB_SI>14</ms:UB_SI>
+        <ms:AB_SI>4</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>05.05.09 09:56:49</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Helmut.Voegele@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>6</ms:USERM_SI>
+        <ms:USERU_SI>14</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 2101, Kategorie B</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>7136002</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK3_BY120</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=7136002&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2527136002</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747123">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>51.522054 11.935643</gml:lowerCorner>
+        		<gml:upperCorner>51.522054 11.935643</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>51.522054 11.935643</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747123</ms:OBJN_I>
+        <ms:WADABA_ID>2524536001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>4536</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>6401</ms:BWSTR>
+        <ms:HOCH_D>5710315</ms:HOCH_D>
+        <ms:RECHTS_D>4495660</ms:RECHTS_D>
+        <ms:KM_ANF_D>87,25</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Trotha UP</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>5</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:33:03</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>4536001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=4536001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2524536001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1902162">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>50.250172 7.446101</gml:lowerCorner>
+        		<gml:upperCorner>50.250172 7.446101</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>50.250172 7.446101</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1902162</ms:OBJN_I>
+        <ms:WADABA_ID>2525710001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>5710</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Rheinland-Pfalz</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>2 rechter Bereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>3201</ms:BWSTR>
+        <ms:HOCH_D>5569236,37</ms:HOCH_D>
+        <ms:RECHTS_D>2603181,13</ms:RECHTS_D>
+        <ms:KM_ANF_D>24,128</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Alken</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG>Gruppierung: b, Pegel Nr.: 26900131</ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>5</ms:MB_SI>
+        <ms:UB_SI>16</ms:UB_SI>
+        <ms:AB_SI>3</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>13.01.10 13:13:13</ms:CHANGE_DT>
+        <ms:CHANGE_USER>ulrich.sigmund@dlz-it-bvbs.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>0</ms:USERM_SI>
+        <ms:USERU_SI>0</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW></ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>5710001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK3_RP101</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=5710001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2525710001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1895179">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.670767 7.259962</gml:lowerCorner>
+        		<gml:upperCorner>52.670767 7.259962</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.670767 7.259962</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1895179</ms:OBJN_I>
+        <ms:WADABA_ID>2523308002</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3308</ms:MTBL_SI>
+        <ms:LFNR_SI>2</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Niedersachsen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>1101</ms:BWSTR>
+        <ms:HOCH_D>5838289</ms:HOCH_D>
+        <ms:RECHTS_D>2585271</ms:RECHTS_D>
+        <ms:KM_ANF_D>119,55</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Pegel Rühle</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>4</ms:MB_SI>
+        <ms:UB_SI>15</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>30.09.09 15:16:28</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Andreas.Vieler@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>4</ms:USERM_SI>
+        <ms:USERU_SI>15</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3308002</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK4_NI200</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3308002&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523308002</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1895181">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.496663 7.288093</gml:lowerCorner>
+        		<gml:upperCorner>52.496663 7.288093</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.496663 7.288093</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1895181</ms:OBJN_I>
+        <ms:WADABA_ID>2523508001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3508</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Niedersachsen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>1101</ms:BWSTR>
+        <ms:HOCH_D>5818950</ms:HOCH_D>
+        <ms:RECHTS_D>2587520</ms:RECHTS_D>
+        <ms:KM_ANF_D>88,219</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Pegel Lingen Darme</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>4</ms:MB_SI>
+        <ms:UB_SI>15</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>30.09.09 15:14:58</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Andreas.Vieler@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>4</ms:USERM_SI>
+        <ms:USERU_SI>15</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3508001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK4_NI200</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3508001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523508001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747114">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>51.799375 11.740670</gml:lowerCorner>
+        		<gml:upperCorner>51.799375 11.740670</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>51.799375 11.740670</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747114</ms:OBJN_I>
+        <ms:WADABA_ID>2524136004</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>4136</ms:MTBL_SI>
+        <ms:LFNR_SI>4</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>6401</ms:BWSTR>
+        <ms:HOCH_D>5741200</ms:HOCH_D>
+        <ms:RECHTS_D>4482237</ms:RECHTS_D>
+        <ms:KM_ANF_D>35,6</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Bernburg UP</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>4</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:32:25</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>4136004</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=4136004&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2524136004</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747115">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>51.911526 11.793081</gml:lowerCorner>
+        		<gml:upperCorner>51.911526 11.793081</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>51.911526 11.793081</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747115</ms:OBJN_I>
+        <ms:WADABA_ID>2524136003</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>4136</ms:MTBL_SI>
+        <ms:LFNR_SI>3</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>6401</ms:BWSTR>
+        <ms:HOCH_D>5753667</ms:HOCH_D>
+        <ms:RECHTS_D>4485888</ms:RECHTS_D>
+        <ms:KM_ANF_D>19</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Calbe UP</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>4</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:31:51</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>4136003</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=4136003&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2524136003</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747116">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>51.915839 11.814004</gml:lowerCorner>
+        		<gml:upperCorner>51.915839 11.814004</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>51.915839 11.814004</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747116</ms:OBJN_I>
+        <ms:WADABA_ID>2524136002</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>4136</ms:MTBL_SI>
+        <ms:LFNR_SI>2</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>6401</ms:BWSTR>
+        <ms:HOCH_D>5754143</ms:HOCH_D>
+        <ms:RECHTS_D>4487329</ms:RECHTS_D>
+        <ms:KM_ANF_D>17,3</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Calbe/Grizehne</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>4</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:31:14</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>4136002</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=4136002&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2524136002</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747117">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>51.977611 11.885030</gml:lowerCorner>
+        		<gml:upperCorner>51.977611 11.885030</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>51.977611 11.885030</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747117</ms:OBJN_I>
+        <ms:WADABA_ID>2524136001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>4136</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5761006</ms:HOCH_D>
+        <ms:RECHTS_D>4492227</ms:RECHTS_D>
+        <ms:KM_ANF_D>294</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Barby</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:26:24</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>4136001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=4136001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2524136001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747118">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.127731 11.641970</gml:lowerCorner>
+        		<gml:upperCorner>52.127731 11.641970</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.127731 11.641970</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747118</ms:OBJN_I>
+        <ms:WADABA_ID>2523934001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3934</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5777764</ms:HOCH_D>
+        <ms:RECHTS_D>4475608</ms:RECHTS_D>
+        <ms:KM_ANF_D>326,4</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Magdeburg, Strombrücke</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:27:17</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3934001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3934001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523934001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747119">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.152504 11.671007</gml:lowerCorner>
+        		<gml:upperCorner>52.152504 11.671007</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.152504 11.671007</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747119</ms:OBJN_I>
+        <ms:WADABA_ID>2523936001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3936</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5780511</ms:HOCH_D>
+        <ms:RECHTS_D>4477609</ms:RECHTS_D>
+        <ms:KM_ANF_D>329,8</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Rothensee</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:28:00</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3936001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3936001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523936001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747120">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.270253 11.744187</gml:lowerCorner>
+        		<gml:upperCorner>52.270253 11.744187</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.270253 11.744187</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747120</ms:OBJN_I>
+        <ms:WADABA_ID>2523736001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3736</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5793593</ms:HOCH_D>
+        <ms:RECHTS_D>4482664</ms:RECHTS_D>
+        <ms:KM_ANF_D>345,4</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Niegripp</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:28:37</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3736001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3736001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523736001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747121">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.546762 11.983021</gml:lowerCorner>
+        		<gml:upperCorner>52.546762 11.983021</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.546762 11.983021</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747121</ms:OBJN_I>
+        <ms:WADABA_ID>2523536001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3536</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Sachsen-Anhalt</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5824331</ms:HOCH_D>
+        <ms:RECHTS_D>4498975</ms:RECHTS_D>
+        <ms:KM_ANF_D>388,8</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Tangermünde</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>2</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:30:10</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3536001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3536001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523536001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1747122">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.984742 11.720407</gml:lowerCorner>
+        		<gml:upperCorner>52.984742 11.720407</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.984742 11.720407</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1747122</ms:OBJN_I>
+        <ms:WADABA_ID>2523136001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3136</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Brandenburg</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5873107</ms:HOCH_D>
+        <ms:RECHTS_D>4481349</ms:RECHTS_D>
+        <ms:KM_ANF_D>456,75</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Wittenberge</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>12</ms:UB_SI>
+        <ms:AB_SI>3</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>19.01.10 14:30:45</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Sandra.Altrichter@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>7</ms:USERM_SI>
+        <ms:USERU_SI>12</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3136001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_42-83_3GK4</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3136001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523136001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1895177">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>53.021414 7.321444</gml:lowerCorner>
+        		<gml:upperCorner>53.021414 7.321444</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>53.021414 7.321444</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1895177</ms:OBJN_I>
+        <ms:WADABA_ID>2522908001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>2908</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Niedersachsen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0501</ms:BWSTR>
+        <ms:HOCH_D>5877382</ms:HOCH_D>
+        <ms:RECHTS_D>2588712</ms:RECHTS_D>
+        <ms:KM_ANF_D>210,765</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Pegel Heede</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>4</ms:MB_SI>
+        <ms:UB_SI>15</ms:UB_SI>
+        <ms:AB_SI>2</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>30.09.09 15:17:34</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Andreas.Vieler@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>4</ms:USERM_SI>
+        <ms:USERU_SI>15</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>2908001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK4_NI200</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=2908001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2522908001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1895178">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.595427 7.248309</gml:lowerCorner>
+        		<gml:upperCorner>52.595427 7.248309</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.595427 7.248309</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1895178</ms:OBJN_I>
+        <ms:WADABA_ID>2523308001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3308</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Niedersachsen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>1101</ms:BWSTR>
+        <ms:HOCH_D>5829892</ms:HOCH_D>
+        <ms:RECHTS_D>2584628</ms:RECHTS_D>
+        <ms:KM_ANF_D>106,85</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Pegel Dalum</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>4</ms:MB_SI>
+        <ms:UB_SI>15</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>30.09.09 15:15:58</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Andreas.Vieler@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>4</ms:USERM_SI>
+        <ms:USERU_SI>15</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3308001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK4_NI200</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3308001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523308001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1895180">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.732768 7.241971</gml:lowerCorner>
+        		<gml:upperCorner>52.732768 7.241971</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.732768 7.241971</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1895180</ms:OBJN_I>
+        <ms:WADABA_ID>2523308003</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3308</ms:MTBL_SI>
+        <ms:LFNR_SI>3</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Niedersachsen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>1101</ms:BWSTR>
+        <ms:HOCH_D>5845167</ms:HOCH_D>
+        <ms:RECHTS_D>2583935</ms:RECHTS_D>
+        <ms:KM_ANF_D>172,61</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Pegel Versen</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>4</ms:MB_SI>
+        <ms:UB_SI>15</ms:UB_SI>
+        <ms:AB_SI>1</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>30.09.09 15:17:05</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Andreas.Vieler@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>4</ms:USERM_SI>
+        <ms:USERU_SI>15</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3308003</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK4_NI200</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3308003&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523308003</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+    <gml:featureMember>
+      <ms:abflussmessstellen gml:id="abflussmessstellen.1464430">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>52.177743 8.862081</gml:lowerCorner>
+        		<gml:upperCorner>52.177743 8.862081</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>52.177743 8.862081</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1464430</ms:OBJN_I>
+        <ms:WADABA_ID>2523918001</ms:WADABA_ID>
+        <ms:PARENTN_I></ms:PARENTN_I>
+        <ms:MTBL_SI>3918</ms:MTBL_SI>
+        <ms:LFNR_SI>1</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND>Nordrhein-Westfalen</ms:BUNDESLAND>
+        <ms:BAUJAHR_SI></ms:BAUJAHR_SI>
+        <ms:SEITENBEZ>0 Gesamtbereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>5201</ms:BWSTR>
+        <ms:HOCH_D>5782690</ms:HOCH_D>
+        <ms:RECHTS_D>3490638</ms:RECHTS_D>
+        <ms:KM_ANF_D>184,15</ms:KM_ANF_D>
+        <ms:KM_END_D></ms:KM_END_D>
+        <ms:BENENNUNG>Abflussmessstelle Vlotho</ms:BENENNUNG>
+        <ms:BETREIBER>WSV</ms:BETREIBER>
+        <ms:EIGENT>WSV</ms:EIGENT>
+        <ms:BEMERKUNG></ms:BEMERKUNG>
+        <ms:ZUSATZ_SI></ms:ZUSATZ_SI>
+        <ms:KATBLATT_SI></ms:KATBLATT_SI>
+        <ms:MB_SI>3</ms:MB_SI>
+        <ms:UB_SI>13</ms:UB_SI>
+        <ms:AB_SI>3</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>nein</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW>in Betrieb/Funktion</ms:STATUS_ASW>
+        <ms:CHANGE_DT>09.10.09 10:25:13</ms:CHANGE_DT>
+        <ms:CHANGE_USER>Martina.Rohe@wsv.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>3</ms:USERM_SI>
+        <ms:USERU_SI>13</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG></ms:EXPORTFLAG>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW>VV-WSV 1116</ms:PRUEFUNGNACH_ASW>
+        <ms:ART_SI>252</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>35</ms:ARTKAT_SI>
+        <ms:TEILART_SI></ms:TEILART_SI>
+        <ms:TEILARTKAT_SI></ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D></ms:Z_KOORD_D>
+        <ms:TEIL_ID>3918001</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK2_NW177</ms:KURZBEZ>
+        <ms:LAYERNAME>Abflussmessstellen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=252&amp;teile_stamm.wsv_ob_teil_id=3918001&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=2523918001</ms:PDF_REPORT>
+      </ms:abflussmessstellen>
+    </gml:featureMember>
+</wfs:FeatureCollection>
+

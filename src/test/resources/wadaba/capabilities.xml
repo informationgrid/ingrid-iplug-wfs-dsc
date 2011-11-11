@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding="UTF-8" ?>
+<WFS_Capabilities 
+   version="1.0.0" 
+   updateSequence="0" 
+   xmlns="http://www.opengis.net/wfs" 
+   xmlns:ogc="http://www.opengis.net/ogc" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.0.0/WFS-capabilities.xsd">
+
+<!-- MapServer version 6.1-dev OUTPUT=GIF OUTPUT=PNG OUTPUT=JPEG SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=ICONV SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=FASTCGI SUPPORTS=THREADS SUPPORTS=GEOS INPUT=POSTGIS INPUT=ORACLESPATIAL INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE -->
+
+<Service>
+  <Name>MapServer WFS</Name>
+  <Title>Wasserstrassendatenbank der WSV</Title>
+  <OnlineResource>http://10.140.105.55/cgi-bin/wfswadaba?</OnlineResource>
+  <Fees>keine, Grundversorgung gemaess den Musterbedingungen fuer Lieferungen und Leistungen im Geoinformationswesen des Bundes</Fees>
+  <AccessConstraints>Die WSV uebernimmt keine Gewaehr fuer die Richtigkeit und Vollstaendigkeit der Daten. Die Nutzer muessen bei der Verwertung der Dienste jeglicher Art einen deutlich sichtbaren Quellenvermerk an den Daten/Diensten anbringen - Name des Dienstes (C) WSV (www.wsv.de). Die WSV besitzt alle Rechte an den von ihr hergestellten Daten.</AccessConstraints>
+</Service>
+
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <DCPType>
+        <HTTP>
+          <Get onlineResource="http://10.140.105.55/cgi-bin/wfswadaba?" />
+        </HTTP>
+      </DCPType>
+      <DCPType>
+        <HTTP>
+          <Post onlineResource="http://10.140.105.55/cgi-bin/wfswadaba?" />
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+    <DescribeFeatureType>
+      <SchemaDescriptionLanguage>
+        <XMLSCHEMA/>
+      </SchemaDescriptionLanguage>
+      <DCPType>
+        <HTTP>
+          <Get onlineResource="http://10.140.105.55/cgi-bin/wfswadaba?" />
+        </HTTP>
+      </DCPType>
+      <DCPType>
+        <HTTP>
+          <Post onlineResource="http://10.140.105.55/cgi-bin/wfswadaba?" />
+        </HTTP>
+      </DCPType>
+    </DescribeFeatureType>
+    <GetFeature>
+      <ResultFormat>
+        <GML2/>
+      </ResultFormat>
+      <DCPType>
+        <HTTP>
+          <Get onlineResource="http://10.140.105.55/cgi-bin/wfswadaba?" />
+        </HTTP>
+      </DCPType>
+      <DCPType>
+        <HTTP>
+          <Post onlineResource="http://10.140.105.55/cgi-bin/wfswadaba?" />
+        </HTTP>
+      </DCPType>
+    </GetFeature>
+  </Request>
+</Capability>
+
+<FeatureTypeList>
+  <Operations>
+    <Query/>
+  </Operations>
+    <FeatureType>
+        <Name>kanalbrueckenanlagen</Name>
+        <Title>112 Kanalbrueckenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>schifffahrtstunnelanlagen</Name>
+        <Title>113 Schifffahrtstunnelanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>flussbuhnen</Name>
+        <Title>122 Flussbuhnen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>grund_und_sohlenschwellen</Name>
+        <Title>123 Grund- und Sohlschwellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>kies_und_sandfaenge</Name>
+        <Title>124 Kies- und Sandfaenge</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>seebuhnen</Name>
+        <Title>143 Seebuhnen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>talsperren</Name>
+        <Title>211 Talsperren einschl. Staubecken</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>pumpspeicheranlagen</Name>
+        <Title>212 Pumpspeicheranlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>wehr_und_wasserverteilungsanlagen</Name>
+        <Title>213 Wehr- und Wasserverteilungsanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>speisungspumpwerkanlagen</Name>
+        <Title>221 Speisungspumpwerkanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>einlass_und_auslassbauwerke</Name>
+        <Title>222 Einlass- und Auslassbauwerke, Ueberlaeufe</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>hochwasserrueckhaltebecken</Name>
+        <Title>223 Speicher- und Hochwasserrueckhaltebecken</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>sperrwerksanlagen</Name>
+        <Title>231 Sperrwerksanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>hochwassersperrtoranlagen</Name>
+        <Title>232 Hochwassersperrtoranlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>sicherheitstoranlagen</Name>
+        <Title>233 Sicherheitstoranlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>schiffsschleusenanlagen</Name>
+        <Title>311 Schiffsschleusenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>schiffshebewerksanlagen</Name>
+        <Title>312 Schiffshebewerksanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bootsschleusensanlagen</Name>
+        <Title>311 Bootsschleusensanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bootsgassenanlagen</Name>
+        <Title>314 Bootsgassen- und Bootsschleppenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>ausweichstellen</Name>
+        <Title>321 Ausweichstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>wendestellen</Name>
+        <Title>322 Wendestellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>schutz_und_liegehaefen</Name>
+        <Title>324 Schutz, und Liegehaefen, feste Bootsschuppen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>liege_und_ankerstellen</Name>
+        <Title>323 Liege-, Anker- und Koppelstellen, Reeden</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bau_und_liegehaefen</Name>
+        <Title>741 Bau- und Liegehaefen, feste Bootsschuppen (Regiebetrieb)</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>umschlagstellen</Name>
+        <Title>331 Umschlag- und Ersatzumschlagstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>leichterstellen</Name>
+        <Title>332 Leichterstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>anlegestellen_mit_festen_landebruecken</Name>
+        <Title>333 Anlegestellen mit festen Landebruecken/Landestegen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>liege_und_anlegestellen</Name>
+        <Title>747 Liegestellen und Anlegestellen mit festen Landebruecken/Landestegen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>hafenanlagen</Name>
+        <Title>334 Hafenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>anlegestellen_mit_schwimmenden_landebruecken_landestegen</Name>
+        <Title>335 Anlegestellen mit schwimmenden Landebruecken/Landestegen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>schwimmdocks_schwimmende_bootsschuppen_und_anlegestellen</Name>
+        <Title>742 Schwimmdocks, schwimmende Bootsschuppen und Anlegestellen mit schwimmenden Landebruecken (Regiebetrieb)</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bahnbrueckenanlagen</Name>
+        <Title>511 Bahnbrueckenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>strassen_und_wegebrueckenanlagen</Name>
+        <Title>512 Strassen- und Wegebrueckenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bahn_und_strassenbrueckenanlagen</Name>
+        <Title>513 Bahn- und Strassenbrueckenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>fussgaengerbruecken_und_stegeanlagen</Name>
+        <Title>514 Fussgaengerbruecken- und Fuss-gaengerstegeanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>materialtransportbruecken_und_seilbahnanlagen</Name>
+        <Title>515 Materialtransportbruecken- und Seil-bahnanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>freileitungen</Name>
+        <Title>516 Freileitungen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>rohr_und_kabelbrueckenanlagen</Name>
+        <Title>517 Rohr- und Kabelbrueckenanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>faehranlagen</Name>
+        <Title>521 Faehranlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bahntunnelanlagen</Name>
+        <Title>531 Bahntunnel- und Bahnunterfuehrungsanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>strassentunnelanlagen</Name>
+        <Title>532 Strassentunnel- und Strassenunterfuehrungsanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>bahn_und_strassentunnelanlagen</Name>
+        <Title>533 Bahn- und Strassentunnelanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>fussgaengertunnelanlagen</Name>
+        <Title>534 Fussgaengertunnel- und Fussgaengerunterfuehrungsanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>durchlassanlagen</Name>
+        <Title>535 Durchlassanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>rohrdueker_und_kabelduekeranlagen</Name>
+        <Title>536 Rohrdueker- und Kabelduekeranlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>duekeranlagen</Name>
+        <Title>537 Duekeranlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>entwaesserungs_und_sielanlagen</Name>
+        <Title>614 Einleitungsbauwerke von Entwaesserungs- und Sielanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>schoepfwerksanlagen</Name>
+        <Title>615 Schoepfwerksanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>entnahmebauwerke</Name>
+        <Title>621 Entnahmebauwerke</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>einleitungsbauwerke</Name>
+        <Title>622 Einleitungsbauwerke</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>wasserkraftanlagen</Name>
+        <Title>651 Wasserkraftanlagen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>anlagen_hydrologische_messstellen</Name>
+        <Title>250 Anlagen fuer hydrologische Messstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>wasserstandsmessstellen</Name>
+        <Title>251 Wasserstandsmessstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>abflussmessstellen</Name>
+        <Title>252 Abflussmessstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>wasserbeschaffenheitsmessstellen</Name>
+        <Title>253 Wasserbeschaffenheitsmessstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+    <FeatureType>
+        <Name>hydrometeorologische_messstellen</Name>
+        <Title>254 Hydrometeorologische Messstellen</Title>
+        <SRS>EPSG:4326</SRS>
+        <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
+    </FeatureType>
+</FeatureTypeList>
+
+<ogc:Filter_Capabilities>
+  <ogc:Spatial_Capabilities>
+    <ogc:Spatial_Operators>
+      <ogc:Equals/>
+      <ogc:Disjoint/>
+      <ogc:Touches/>
+      <ogc:Within/>
+      <ogc:Overlaps/>
+      <ogc:Crosses/>
+      <ogc:Intersect/>
+      <ogc:Contains/>
+      <ogc:DWithin/>
+      <ogc:BBOX/>
+    </ogc:Spatial_Operators>
+  </ogc:Spatial_Capabilities>
+  <ogc:Scalar_Capabilities>
+    <ogc:Logical_Operators />
+    <ogc:Comparison_Operators>
+      <ogc:Simple_Comparisons />
+      <ogc:Like />
+      <ogc:Between />
+    </ogc:Comparison_Operators>
+  </ogc:Scalar_Capabilities>
+</ogc:Filter_Capabilities>
+
+</WFS_Capabilities>

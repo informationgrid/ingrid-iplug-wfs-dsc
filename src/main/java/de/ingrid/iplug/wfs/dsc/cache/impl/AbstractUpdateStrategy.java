@@ -152,7 +152,7 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 	 * @return The list of ids of the fetched records
 	 * @throws Exception
 	 */
-	private List<String> processResult(WFSQueryResult result, boolean doCache)
+	protected List<String> processResult(WFSQueryResult result, boolean doCache)
 			throws Exception {
 
 		Cache cache = this.getExecutionContext().getCache();
