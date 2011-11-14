@@ -7,6 +7,7 @@ package de.ingrid.iplug.wfs.dsc.wfsclient;
 public class WFSConstants {
 
 	public static final String SERVICE_TYPE = "WFS";
+	public static final String VERSION_1_0_0 = "1.0.0";
 	public static final String VERSION_1_1_0 = "1.1.0";
 
 	/**

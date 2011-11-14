@@ -159,7 +159,7 @@ public class PostRequest implements WFSRequest {
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			conn.setRequestProperty("Content-Length", "" + Integer.toString(payload.getBytes().length));
 			conn.setAllowUserInteraction(false);
-			conn.setReadTimeout(10000);
+			conn.setReadTimeout(300000); // 5 minutes
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			conn.setRequestProperty("Content-type", "text/xml");
