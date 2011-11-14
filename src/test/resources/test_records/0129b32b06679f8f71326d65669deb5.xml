@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ms:flussbuhnen xmlns:ms="http://mapserver.gis.umn.edu/mapserver" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:wfs="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="flussbuhnen.1966238">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>53.443132 10.097856</gml:lowerCorner>
+        		<gml:upperCorner>53.443132 10.097856</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>53.443132 10.097856</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJN_I>1966238</ms:OBJN_I>
+        <ms:WADABA_ID>1222526130</ms:WADABA_ID>
+        <ms:PARENTN_I>1943222</ms:PARENTN_I>
+        <ms:MTBL_SI>2526</ms:MTBL_SI>
+        <ms:LFNR_SI>130</ms:LFNR_SI>
+        <ms:SELBST_SI>0</ms:SELBST_SI>
+        <ms:IS_DELETED_SI>0</ms:IS_DELETED_SI>
+        <ms:IS_INVISIBLE_SI>0</ms:IS_INVISIBLE_SI>
+        <ms:IS_CONFIRMED_SI>1</ms:IS_CONFIRMED_SI>
+        <ms:IS_ABGLEICH_SI>0</ms:IS_ABGLEICH_SI>
+        <ms:BUNDESLAND/>
+        <ms:BAUJAHR_SI/>
+        <ms:SEITENBEZ>2 rechter Bereich</ms:SEITENBEZ>
+        <ms:BEZIEHUNG>1 WSV (Eigenverwaltung)</ms:BEZIEHUNG>
+        <ms:BWSTR>0701</ms:BWSTR>
+        <ms:HOCH_D>5924059</ms:HOCH_D>
+        <ms:RECHTS_D>3573020</ms:RECHTS_D>
+        <ms:KM_ANF_D>606,802</ms:KM_ANF_D>
+        <ms:KM_END_D/>
+        <ms:BENENNUNG>Flussbuhne Nr.2, km 606,802 re.Ufer</ms:BENENNUNG>
+        <ms:BETREIBER/>
+        <ms:EIGENT/>
+        <ms:BEMERKUNG/>
+        <ms:ZUSATZ_SI/>
+        <ms:KATBLATT_SI/>
+        <ms:MB_SI>7</ms:MB_SI>
+        <ms:UB_SI>13</ms:UB_SI>
+        <ms:AB_SI>3</ms:AB_SI>
+        <ms:DENKMALGESCHUETZT>unbekannt</ms:DENKMALGESCHUETZT>
+        <ms:STATUS_ASW/>
+        <ms:CHANGE_DT>10.03.11 22:22:22</ms:CHANGE_DT>
+        <ms:CHANGE_USER>renate.bierschenk@dlz-it-bvbs.bund.de</ms:CHANGE_USER>
+        <ms:USERM_SI>0</ms:USERM_SI>
+        <ms:USERU_SI>0</ms:USERU_SI>
+        <ms:USERA_SI>0</ms:USERA_SI>
+        <ms:EXPORTFLAG/>
+        <ms:BEARBZUSTAND>0</ms:BEARBZUSTAND>
+        <ms:PRUEFUNGNACH_ASW/>
+        <ms:ART_SI>122</ms:ART_SI>
+        <ms:BLATTNR>27</ms:BLATTNR>
+        <ms:ARTKAT_SI>61</ms:ARTKAT_SI>
+        <ms:TEILART_SI/>
+        <ms:TEILARTKAT_SI>62</ms:TEILARTKAT_SI>
+        <ms:Z_KOORD_D/>
+        <ms:TEIL_ID>2526130</ms:TEIL_ID>
+        <ms:KURZBEZ>DE_DHDN_3GK2_NI100</ms:KURZBEZ>
+        <ms:LAYERNAME>Flussbuhnen</ms:LAYERNAME>
+        <ms:DVTU_LINK>http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=122&amp;teile_stamm.wsv_ob_teil_id=2526130&amp;_external_=1</ms:DVTU_LINK>
+        <ms:PDF_REPORT>http://wadaba.wsv.bvbs.bund.de/wadaba/web/template/ims,ImsReportView.vm/action/LoginUser?username=wadabainfo@baw.de&amp;password=info&amp;strukturkode=1222526130</ms:PDF_REPORT>
+      </ms:flussbuhnen>

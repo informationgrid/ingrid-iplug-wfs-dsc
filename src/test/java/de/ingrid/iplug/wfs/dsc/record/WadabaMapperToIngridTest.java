@@ -5,7 +5,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import junit.framework.TestCase;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
-import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
 import de.ingrid.iplug.wfs.dsc.record.mapper.CreateIdfMapper;
@@ -16,24 +15,24 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLUtils;
 
-public class MapperToIngridTest extends TestCase {
+public class WadabaMapperToIngridTest extends TestCase {
 
 	/**
 	 * @throws Exception
 	 */
 	public void testMapper() throws Exception {
 
-		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
+		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_wadaba.xml");
 		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 
 		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
+		desc.put("serviceUrl", "");
 		factory.configure(desc);
 
 		CreateIdfMapper createIdfMapper = SimpleSpringBeanFactory.INSTANCE.getBean("createIdfMapper", CreateIdfMapper.class);
 		WfsIdfMapper wfsIdfMapper = SimpleSpringBeanFactory.INSTANCE.getBean("idfMapper", WfsIdfMapper.class);
 
-		String testRecordId = "21212262e8a1112a80f26f18255da2e0";
+		String testRecordId = "0129b32b06679f8f71326d65669deb5";
 		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
@@ -49,7 +48,8 @@ public class MapperToIngridTest extends TestCase {
 		assertTrue("Idf found.", idfDoc.hasChildNodes());
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
-		assertTrue(documentString.contains("<h1>RHEIN RUHRORT (km 780.8)</h1>"));
-		assertTrue(documentString.contains("<p>19.09.2011 16:15:00: 280.0cm</p>"));
+		assertTrue(documentString.contains("<h1>Flussbuhne Nr.2, km 606,802 re.Ufer</h1>"));
+		assertTrue(documentString.contains("<p>Flussbuhnen - DE_DHDN_3GK2_NI100</p>"));
+		assertTrue(documentString.contains("<li>WADABA_ID: 1222526130</li>"));
 	}
 }

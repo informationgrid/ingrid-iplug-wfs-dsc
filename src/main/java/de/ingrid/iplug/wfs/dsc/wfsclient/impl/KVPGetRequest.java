@@ -100,7 +100,7 @@ public class KVPGetRequest implements WFSRequest {
 			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setAllowUserInteraction(false);
-			conn.setReadTimeout(10000);
+			conn.setReadTimeout(300000); // 5 minutes
 			conn.setDoOutput(true);
 			conn.setRequestProperty("Content-type", "text/xml");
 			//conn.connect();

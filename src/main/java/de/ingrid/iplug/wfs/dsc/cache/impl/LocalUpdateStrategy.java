@@ -18,7 +18,8 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
 
 /**
- * This UpdateStrategy processed local files.
+ * This UpdateStrategy processes local files. Filter queries are not supported.
+ * Each feature type is fetched in one call.
  * 
  * @author ingo@wemove.com
  */

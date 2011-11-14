@@ -238,7 +238,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	    	<list>
 	    		<value>src/main/resources/mapping/lib.js</value>
 	    		<value>src/main/resources/mapping/lucene_helper.js</value>
-	    		<value>src/main/resources/mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js</value>
+	    		<value>src/main/resources/mapping/wadaba-wfs-1.0.0_to_lucene-igc-1.0.3.js</value>
 	    	</list>
         </property> 
         <property name="compile" value="false"/>
@@ -271,7 +271,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	    	<list>
 	    		<value>src/main/resources/mapping/lib.js</value>
 	    		<value>src/main/resources/mapping/document_helper.js</value>
-	    		<value>src/main/resources/mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js</value>
+	    		<value>src/main/resources/mapping/wadaba-wfs-1.0.0_to_idf-1.0.0.js</value>
 	    	</list>
         </property> 
         <property name="compile" value="false"/>
