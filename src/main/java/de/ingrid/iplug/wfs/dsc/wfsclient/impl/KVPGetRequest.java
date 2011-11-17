@@ -10,14 +10,19 @@ import java.net.URL;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 
+import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSConstants;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSRequest;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 
 public class KVPGetRequest implements WFSRequest {
+
+	final protected static Log log = LogFactory.getLog(KVPGetRequest.class);
 
 	/**
 	 * WFSRequest implementation
@@ -92,6 +97,9 @@ public class KVPGetRequest implements WFSRequest {
 	 * @throws Exception
 	 */
 	protected Document sendRequest(String requestURL) throws Exception {
+
+		log.debug("Sending GET request: "+requestURL);
+
 		// and make the call
 		Document result = null;
 		HttpURLConnection conn = null;
@@ -106,11 +114,15 @@ public class KVPGetRequest implements WFSRequest {
 			//conn.connect();
 
 			int code = conn.getResponseCode();
+			log.debug("Response code: "+code);
 			if (code >= 200 && code < 300) {
 				DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 				domFactory.setNamespaceAware(true);
 				DocumentBuilder builder = domFactory.newDocumentBuilder();
 				result = builder.parse(conn.getInputStream());
+				if (log.isDebugEnabled()) {
+					log.debug("Response: "+StringUtils.nodeToString(result));
+				}
 			}
 		}
 		catch (Exception e) {

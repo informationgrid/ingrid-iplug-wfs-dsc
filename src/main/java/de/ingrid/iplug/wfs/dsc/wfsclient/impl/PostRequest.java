@@ -20,6 +20,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 
+import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSConstants;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSRequest;
@@ -28,7 +29,7 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 
 public class PostRequest implements WFSRequest {
 
-	final protected static Log log = LogFactory.getLog(WFSRequest.class);
+	final protected static Log log = LogFactory.getLog(PostRequest.class);
 
 	/**
 	 * WFSRequest implementation
@@ -148,6 +149,10 @@ public class PostRequest implements WFSRequest {
 	 * @throws Exception
 	 */
 	protected Document sendRequest(String requestURL, String payload) throws Exception {
+
+		log.debug("Sending POST request to "+requestURL);
+		log.debug("Body: "+payload);
+
 		// and make the call
 		Document result = null;
 		HttpURLConnection conn = null;
@@ -169,11 +174,15 @@ public class PostRequest implements WFSRequest {
 			os.flush();
 
 			int code = conn.getResponseCode();
+			log.debug("Response code: "+code);
 			if (code >= 200 && code < 300) {
 				DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 				domFactory.setNamespaceAware(true);
 				DocumentBuilder builder = domFactory.newDocumentBuilder();
 				result = builder.parse(conn.getInputStream());
+				if (log.isDebugEnabled()) {
+					log.debug("Response: "+StringUtils.nodeToString(result));
+				}
 			}
 		}
 		catch (Exception e) {
