@@ -51,5 +51,7 @@ public class WadabaMapperToIngridTest extends TestCase {
 		assertTrue(documentString.contains("<h1>Flussbuhne Nr.2, km 606,802 re.Ufer</h1>"));
 		assertTrue(documentString.contains("<p>Flussbuhnen - DE_DHDN_3GK2_NI100</p>"));
 		assertTrue(documentString.contains("<li>WADABA_ID: 1222526130</li>"));
+		assertTrue(documentString.contains("CHANGE_USER: <a href=\"mailto:renate.bierschenk@dlz-it-bvbs.bund.de\">renate.bierschenk@dlz-it-bvbs.bund.de</a>"));
+		assertTrue(documentString.contains("DVTU_LINK: <a href=\"http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=122&amp;teile_stamm.wsv_ob_teil_id=2526130&amp;_external_=1\" target=\"_blank\">http://dvtucl2.ilmenau.baw.de/cdbweb/ak-ldap/byname/classname/model/query?teile_stamm.wsv_ob_art_nr=122&amp;teile_stamm.wsv_ob_teil_id=2526130&amp;_external_=1</a>"));
 	}
 }

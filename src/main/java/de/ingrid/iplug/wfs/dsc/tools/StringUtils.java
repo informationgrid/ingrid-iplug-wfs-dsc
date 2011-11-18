@@ -19,7 +19,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 
@@ -47,6 +49,30 @@ public class StringUtils {
 			transformer.setOutputProperty(OutputKeys.STANDALONE, "no");
 			transformer.transform(source, result);
 			return stringWriter.getBuffer().toString();
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+
+	public static String extractNodeContent(Node node) {
+		try {
+			Source source = null;
+			StringWriter stringWriter = new StringWriter();
+			Result result = new StreamResult(stringWriter);
+			TransformerFactory factory = TransformerFactory.newInstance();
+			Transformer transformer = factory.newTransformer();
+			// extract node children
+			NodeList nl = node.getChildNodes();
+			for(int x=0, count=nl.getLength(); x<count; x++) {
+				Node e = nl.item(x);
+				if(e instanceof Element) {
+					source = new DOMSource(e);
+					transformer.transform(source, result);
+				}
+			}
+			String docStr = stringWriter.getBuffer().toString();
+			String content = docStr.replaceAll("^<[^<]+>", "").replaceAll("\\r|\\n|\\t", "");
+			return content;
 		} catch (Exception e) {
 			return e.getMessage();
 		}

@@ -145,6 +145,7 @@ public class TestUtil {
 			input.close();
 			input = null;
 
+			log.debug("content: \n"+content.toString());
 			Document document = StringUtils.stringToDocument(content.toString());
 			record.initialize(document.getFirstChild());
 			return record;

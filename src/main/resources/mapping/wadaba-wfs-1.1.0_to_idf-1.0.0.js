@@ -54,7 +54,7 @@ for (var i=0, count=detailNodes.length; i<count; i++) {
 	var detailNode = detailNodes.item(i);
 	var nodeName = detailNode.getLocalName();
 	if (hasValue(nodeName)) {
-		addOutput(detailList, "li", detailNode.getLocalName()+": "+detailNode.getTextContent());
+		addOutputWithLinks(detailList, "li", detailNode.getLocalName()+": "+detailNode.getTextContent());
 	}
 }
 addOutput(idfBody, "br");
