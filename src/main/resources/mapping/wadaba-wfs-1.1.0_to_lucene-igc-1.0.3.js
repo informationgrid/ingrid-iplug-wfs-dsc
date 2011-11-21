@@ -42,7 +42,7 @@ for (var i=0, count=detailNodes.length; i<count; i++) {
 	var detailNode = detailNodes.item(i);
 	var nodeName = detailNode.getLocalName();
 	if (hasValue(nodeName)) {
-		addToDoc(document, detailNode.getLocalName(), detailNode.getTextContent(), true);
+		addToDoc(document, nodeName.toLowerCase(), detailNode.getTextContent(), true);
 	}
 }
 

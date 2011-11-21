@@ -13,7 +13,7 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
 
-public class WadabaMapperToIndexTest extends TestCase {
+public class WadabaMapperToIndexTestLocal extends TestCase {
 
 	/**
 	 * @throws Exception

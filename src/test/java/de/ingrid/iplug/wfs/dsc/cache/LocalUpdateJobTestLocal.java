@@ -10,7 +10,7 @@ import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.PlugDescription;
 
-public class LocalUpdateJobTest extends TestCase {
+public class LocalUpdateJobTestLocal extends TestCase {
 
 	public void testExecute() throws Exception {
 

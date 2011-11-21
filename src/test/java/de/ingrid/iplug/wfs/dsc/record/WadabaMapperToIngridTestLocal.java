@@ -15,7 +15,7 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLUtils;
 
-public class WadabaMapperToIngridTest extends TestCase {
+public class WadabaMapperToIngridTestLocal extends TestCase {
 
 	/**
 	 * @throws Exception

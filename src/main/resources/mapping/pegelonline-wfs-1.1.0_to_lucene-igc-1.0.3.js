@@ -140,7 +140,7 @@ for (var i in transformationDescriptions) {
 					}
 				}
 				if (hasValue(value)) {
-					addToDoc(document, t.indexField, value, tokenized);
+					addToDoc(document, t.indexField.toLowerCase(), value, tokenized);
 				}
 			}
 		} else {
@@ -162,7 +162,7 @@ for (var i in transformationDescriptions) {
 					}
 				}
 				if (hasValue(value)) {
-					addToDoc(document, t.indexField, value, tokenized);
+					addToDoc(document, t.indexField.toLowerCase(), value, tokenized);
 				}
 			}
 		}
