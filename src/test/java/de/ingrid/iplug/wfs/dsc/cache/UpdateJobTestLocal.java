@@ -11,7 +11,7 @@ import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.PlugDescription;
 
-public class UpdateJobTest extends TestCase {
+public class UpdateJobTestLocal extends TestCase {
 
 	public void testExecute() throws Exception {
 
@@ -26,6 +26,6 @@ public class UpdateJobTest extends TestCase {
 		job.execute();
 
 		Cache cache = job.getCache();
-		assertEquals(488, cache.getCachedRecordIds().size());
+		assertEquals(487, cache.getCachedRecordIds().size());
 	}
 }

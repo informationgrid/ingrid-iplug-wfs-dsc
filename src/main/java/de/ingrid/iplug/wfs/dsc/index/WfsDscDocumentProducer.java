@@ -83,6 +83,9 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 			}
 		} catch (Exception e) {
 			log.error("Error obtaining information about a next record. Skip all records.", e);
+            // make sure the tmp cache is released after exception occurs
+            // otherwise the indexer will never "heal" from this exception
+            tmpCache = null;
 			return false;
 		}
 	}
