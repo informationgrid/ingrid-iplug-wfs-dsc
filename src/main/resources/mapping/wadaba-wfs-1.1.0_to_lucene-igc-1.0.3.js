@@ -36,6 +36,9 @@ mapSummary(recordNode);
 //add the bounding box
 mapBoundingBox(recordNode);
 
+//add the map preview
+mapPreview(recordNode);
+
 // add details (content of all child nodes)
 var detailNodes = recordNode.getChildNodes();
 for (var i=0, count=detailNodes.length; i<count; i++) {
@@ -68,6 +71,36 @@ function mapBoundingBox(recordNode) {
 		addNumericToDoc(document, "x1", lowerCoords[0], false); // west
 		addNumericToDoc(document, "x2", upperCoords[0], false); // east
 		addNumericToDoc(document, "y1", lowerCoords[1], false); // south
-		addNumericToDoc(document, "y2", lowerCoords[1], false); // north
+		addNumericToDoc(document, "y2", upperCoords[1], false); // north
 	}
+}
+
+function mapPreview(recordNode) {
+    var gmlEnvelope = xPathUtils.getNode(recordNode, "//gml:boundedBy/gml:Envelope");
+    if (hasValue(gmlEnvelope)) {
+    	// BBOX
+        var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
+        var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
+        var W = Number(lowerCoords[0]); // WEST
+        var N = Number(upperCoords[1]); // NORTH
+        var BBOX = "" + (N - 0.048) + "," + (W - 0.012) + "," + (N + 0.048) + "," + (W + 0.012);
+
+        //  Fields for link
+        var BWSTR = xPathUtils.getString(recordNode, "//ms:BWSTR");
+        var KM_ANF_D = xPathUtils.getString(recordNode, "//ms:KM_ANF_D");
+
+        var addHtml = "<a href=\"http://wsvmapserv.wsv.bvbs.bund.de/ol_bwastr/index.html?bwastr=" + BWSTR + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
+            "<div style=\"background-image: url(http://wsvmapserv.ilmenau.baw.de/cgi-bin/wmstk?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;BBOX=" + BBOX +
+            "&amp;LAYERS=TK1000,TK500,TK200,TK100,TK50,TK25&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
+            "<div style=\"background-image: url(http://wsvmapserv.wsv.bund.de/ienc?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
+            "&amp;Layers=Harbour&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px;\">" +
+            "<img src=\"/ingrid-portal-apps/images/map_punkt.png\" alt=\"\">" +
+            "</div></div></a>";
+
+        if (log.isDebugEnabled()) {
+            log.debug("Mapping field \"additional_html_1\": " + addHtml);
+        }
+
+        addToDoc(document, "additional_html_1", addHtml, false);
+    }
 }
