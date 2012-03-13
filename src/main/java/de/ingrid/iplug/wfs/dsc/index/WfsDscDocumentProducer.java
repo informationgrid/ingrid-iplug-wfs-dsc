@@ -58,14 +58,13 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 				try {
 					// start transaction
 					this.tmpCache = this.cache.startTransaction();
+                    this.recordSetProducer.setCache(this.tmpCache);
 					this.tmpCache.removeAllRecords();
 
 					// run the update job: fetch all wfs data from wfs source
 					this.job.setCache(this.tmpCache);
 					this.job.init();
 					this.job.execute();
-
-					this.recordSetProducer.setCache(this.tmpCache);
 
 				} catch (Exception e) {
 					log.error("Error harvesting WFS datasource.", e);
@@ -77,7 +76,12 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 			if (this.recordSetProducer.hasNext()) {
 				return true;
 			} else {
-				this.tmpCache.commitTransaction();
+			    // prevent runtime exception if the cache was not in transaction
+			    // this can happen if the harvest process throws an exception and the
+			    // transaction was rolled back (see above)
+			    if (tmpCache.isInTransaction()) {
+			        tmpCache.commitTransaction();
+			    }				
 				this.tmpCache = null;
 				return false;
 			}

@@ -38,15 +38,18 @@ public class WfsRecordSetProducer implements IWfsCacheRecordSetProducer {
 	 */
 	@Override
 	public boolean hasNext() {
-		if (this.recordIdIterator == null) {
-			this.recordIdIterator = this.cache.getCachedRecordIds().iterator();
+		try {
+    	    if (this.recordIdIterator == null) {
+    			this.recordIdIterator = this.cache.getCachedRecordIds().iterator();
+    		}
+    		if (this.recordIdIterator.hasNext()) {
+    			return true;
+    		}
+		} catch (Exception e) {
+		    log.error("Error obtaining record from cache:" + cache, e);
 		}
-		if (this.recordIdIterator.hasNext()) {
-			return true;
-		} else {
-			this.recordIdIterator = null;
-			return false;
-		}
+        this.recordIdIterator = null;
+        return false;
 	}
 
 	/*
