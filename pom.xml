@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.ingrid</groupId>
 		<artifactId>ingrid-releases-pom</artifactId>
-		<version>3.3.0-SNAPSHOT</version>
+		<version>3.3.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.ingrid</groupId>
@@ -28,21 +28,6 @@
 		</repository>
 	</repositories>
 
-	<!-- ==================== DEPENDENCY MANAGEMENT ==================== -->
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>de.ingrid</groupId>
-				<artifactId>ingrid-utils</artifactId>
-				<version>3.2.0-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>de.ingrid</groupId>
-				<artifactId>ingrid-search-utils</artifactId>
-				<version>1.0.1</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>de.ingrid</groupId>
@@ -275,7 +260,7 @@
 					<archive>
 						<manifestEntries>
 							<!-- see ingrid-utils:de.ingrid.utils.metadata.IPlugType-->
-							<iPlug-Type>IPLUG_DSC</iPlug-Type>
+							<iPlug-Type>IPLUG_WFS_DSC</iPlug-Type>
 						</manifestEntries>
 					</archive>
 				</configuration>

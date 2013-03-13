@@ -5,9 +5,9 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
-    <release version="3.2.0" date="2012-xx-xx" description="Release 3.2.0">
+    <release version="3.3.0" date="2013-03-13" description="Release InGrid 3.3">
       <action type="add">
-        Initiales Release.
+        Initial release.
       </action>
     </release>
   </body>
