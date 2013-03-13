@@ -111,7 +111,7 @@ public class WFSClientTestLocal extends TestCase {
 	public void testGetFeature() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
-		int recordCount = 487;
+		int recordCount = 483;
 
 		// set up client
 		WFSClient client = this.factory.createClient();
@@ -132,7 +132,7 @@ public class WFSClientTestLocal extends TestCase {
 	public void testGetFeatureWithFilter() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
-		int recordCount = 56;
+		int recordCount = 59;
 
 		// set up client
 		WFSClient client = this.factory.createClient();

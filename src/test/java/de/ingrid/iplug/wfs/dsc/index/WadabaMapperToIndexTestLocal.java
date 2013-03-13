@@ -43,6 +43,6 @@ public class WadabaMapperToIndexTestLocal extends TestCase {
 		System.out.println(doc);
 		assertEquals("Flussbuhne Nr.2, km 606,802 re.Ufer", doc.get("title"));
 		assertEquals("Flussbuhnen - DE_DHDN_3GK2_NI100", doc.get("summary"));
-		assertEquals("1222526130", doc.get("WADABA_ID"));
+		assertEquals("1222526130", doc.get("wadaba_id"));
 	}
 }
