@@ -8,16 +8,19 @@ import java.io.StringReader;
 
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.de.GermanAnalyzer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import de.ingrid.admin.search.Stemmer;
 
 /**
  * @author joachim
  *
  */
+@Service
 public class LuceneTools {
 
-	private static GermanAnalyzer fAnalyzer = new GermanAnalyzer(new String[0]);
-
+    private static Stemmer _defaultStemmer;
 
 	/**
 	 * @param term
@@ -27,7 +30,7 @@ public class LuceneTools {
 	public static String filterTerm(String term) throws IOException {
 		String result = "";
 
-		TokenStream ts = fAnalyzer.tokenStream(null, new StringReader(term));
+		TokenStream ts = _defaultStemmer.getAnalyzer().tokenStream(null, new StringReader(term));
 		Token token = ts.next();
 		while (null != token) {
 			result = result + " " + token.termText();
@@ -37,5 +40,11 @@ public class LuceneTools {
 		return result.trim();
 	}
 
-
+	/** Injects default stemmer via autowiring !
+     * @param defaultStemmer
+     */
+    @Autowired
+    public void setDefaultStemmer(Stemmer defaultStemmer) {
+    	_defaultStemmer = defaultStemmer;
+	}
 }

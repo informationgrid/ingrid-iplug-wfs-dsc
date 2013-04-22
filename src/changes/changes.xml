@@ -7,7 +7,8 @@
   <body>
     <release version="3.4.0-SNAPSHOT" date="2013-xx-xx" description="Release InGrid 3.4.0-SNAPSHOT">
       <action type="update" dev="wemove" issue="INGRID-2246">
-          Use german analyzer when creating/searching lucene index.
+          Use german analyzer when creating/searching lucene index, now configured via XML.
+          Also fix encoding of umlaute in request parameters (test search with umlaute works now in admin-gui).
       </action>
     </release>
 
