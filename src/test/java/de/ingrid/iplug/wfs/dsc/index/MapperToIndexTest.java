@@ -4,11 +4,13 @@ import junit.framework.TestCase;
 
 import org.apache.lucene.document.Document;
 
+import de.ingrid.admin.search.GermanStemmer;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper;
 import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.tools.LuceneTools;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
@@ -29,6 +31,9 @@ public class MapperToIndexTest extends TestCase {
 		factory.configure(desc);
 
 		WfsDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", WfsDocumentMapper.class);
+        // is autowired in spring environment !
+        LuceneTools tmpLuceneTools = new LuceneTools();
+        tmpLuceneTools.setDefaultStemmer(new GermanStemmer());
 
 		String testRecordId = "21212262e8a1112a80f26f18255da2e0";
 		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
