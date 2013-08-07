@@ -7,6 +7,7 @@ package de.ingrid.iplug.wfs.dsc.wfsclient.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -20,6 +21,7 @@ import de.ingrid.utils.xpath.XPathUtils;
 public class GenericQueryResult implements WFSQueryResult {
 
 	protected static final XPathUtils xPathUtils = new XPathUtils(new WfsNamespaceContext());
+	private static final Logger log = Logger.getLogger(GenericQueryResult.class);
 
 	private WFSFactory factory = null;
 	protected WFSQuery query = null;
@@ -50,9 +52,17 @@ public class GenericQueryResult implements WFSQueryResult {
 		if (featureNodes != null) {
 			for (int i=0; i<featureNodes.getLength(); i++) {
 				// create the feature
-				WFSFeature feature = this.factory.createFeature();
-				feature.initialize(featureNodes.item(i));
-				this.features.add(feature);
+				try {
+					WFSFeature feature = this.factory.createFeature();
+					feature.initialize(featureNodes.item(i));
+					this.features.add(feature);										
+				} catch (Exception ex) {
+					String msg = "Problems creating WFSFeature from feature node '" + featureNodes.item(i) + "', we skip this one !";
+					log.error(msg + " -> " + ex.getMessage());
+					if (log.isDebugEnabled()) {
+						log.debug("Caused Exception:", ex);
+					}
+				}
 			}
 			this.featuresTotal = this.features.size();
 		}

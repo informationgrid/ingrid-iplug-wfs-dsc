@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding="UTF-8" ?>
+<wfs:FeatureCollection
+	xmlns:ms="http://mapserver.gis.umn.edu/mapserver"
+	xmlns:gml="http://www.opengis.net/gml"
+	xmlns:wfs="http://www.opengis.net/wfs"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://mapserver.gis.umn.edu/mapserver http://www.kuestendaten.de/cgi-bin/bs?SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType&TYPENAME=abfluss&OUTPUTFORMAT=text/xml;%20subtype=gml/3.1.1  http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd">
+	<gml:boundedBy>
+		<gml:Envelope srsName="EPSG:4326">
+			<gml:lowerCorner>53.232277 9.860756</gml:lowerCorner>
+			<gml:upperCorner>53.546596 10.888809</gml:upperCorner>
+		</gml:Envelope>
+	</gml:boundedBy>
+	<gml:featureMember>
+		<ms:abfluss gml:id="abfluss.78351782">
+			<gml:boundedBy>
+				<gml:Envelope srsName="EPSG:4326">
+					<gml:lowerCorner>53.456649 10.068015</gml:lowerCorner>
+					<gml:upperCorner>53.456649 10.068015</gml:upperCorner>
+				</gml:Envelope>
+			</gml:boundedBy>
+			<ms:msGeometry>
+				<gml:Point srsName="EPSG:4326">
+					<gml:pos>53.456649 10.068015</gml:pos>
+				</gml:Point>
+			</ms:msGeometry>
+			<ms:OBJEKT_ID>78351782</ms:OBJEKT_ID>
+			<ms:STATION_ID>92</ms:STATION_ID>
+			<ms:STATION_NAME>Bunthaus Süd</ms:STATION_NAME>
+			<ms:OBERTHEMA_ID>27</ms:OBERTHEMA_ID>
+			<ms:STATION_AKTIV>1</ms:STATION_AKTIV>
+			<ms:SUCHFELD>Bunthaus Süd</ms:SUCHFELD>
+			<ms:PORTAL_TIDEELBE>1</ms:PORTAL_TIDEELBE>
+			<ms:PORTAL_NOK>0</ms:PORTAL_NOK>
+			<ms:PORTAL_OSK>0</ms:PORTAL_OSK>
+			<ms:PORTAL_NSK>0</ms:PORTAL_NSK>
+		</ms:abfluss>
+	</gml:featureMember>
+	<gml:featureMember>
+		<ms:abfluss gml:id="abfluss.78351824">
+			<gml:boundedBy>
+				<gml:Envelope srsName="EPSG:4326">
+					<gml:lowerCorner>53.546596 9.860756</gml:lowerCorner>
+					<gml:upperCorner>53.546596 9.860756</gml:upperCorner>
+				</gml:Envelope>
+			</gml:boundedBy>
+			<ms:msGeometry>
+				<gml:Point srsName="EPSG:4326">
+					<gml:pos>53.546596 9.860756</gml:pos>
+				</gml:Point>
+			</ms:msGeometry>
+			<ms:OBJEKT_ID>78351824</ms:OBJEKT_ID>
+			<ms:STATION_ID>134</ms:STATION_ID>
+			<ms:STATION_NAME>Teufelsbrück, Elbe-Km 630,3</ms:STATION_NAME>
+			<ms:OBERTHEMA_ID>27</ms:OBERTHEMA_ID>
+			<ms:STATION_AKTIV>1</ms:STATION_AKTIV>
+			<ms:SUCHFELD>Teufelsbrück, Elbe-Km 630,3</ms:SUCHFELD>
+			<ms:PORTAL_TIDEELBE>1</ms:PORTAL_TIDEELBE>
+			<ms:PORTAL_NOK>0</ms:PORTAL_NOK>
+			<ms:PORTAL_OSK>0</ms:PORTAL_OSK>
+			<ms:PORTAL_NSK>0</ms:PORTAL_NSK>
+		</ms:abfluss>
+	</gml:featureMember>
+	<gml:featureMember>
+		<ms:abfluss gml:id="abfluss.78351783">
+			<gml:boundedBy>
+				<gml:Envelope srsName="EPSG:4326">
+					<gml:lowerCorner>53.457284 10.069371</gml:lowerCorner>
+					<gml:upperCorner>53.457284 10.069371</gml:upperCorner>
+				</gml:Envelope>
+			</gml:boundedBy>
+			<ms:msGeometry>
+				<gml:Point srsName="EPSG:4326">
+					<gml:pos>53.457284 10.069371</gml:pos>
+				</gml:Point>
+			</ms:msGeometry>
+			<ms:OBJEKT_ID>78351783</ms:OBJEKT_ID>
+			<ms:STATION_ID>93</ms:STATION_ID>
+			<ms:STATION_NAME>Bunthaus Nord</ms:STATION_NAME>
+			<ms:OBERTHEMA_ID>27</ms:OBERTHEMA_ID>
+			<ms:STATION_AKTIV>1</ms:STATION_AKTIV>
+			<ms:SUCHFELD>Bunthaus Nord</ms:SUCHFELD>
+			<ms:PORTAL_TIDEELBE>1</ms:PORTAL_TIDEELBE>
+			<ms:PORTAL_NOK>0</ms:PORTAL_NOK>
+			<ms:PORTAL_OSK>0</ms:PORTAL_OSK>
+			<ms:PORTAL_NSK>0</ms:PORTAL_NSK>
+		</ms:abfluss>
+	</gml:featureMember>
+	<gml:featureMember>
+		<ms:abfluss gml:id="abfluss.78351748">
+			<gml:boundedBy>
+				<gml:Envelope srsName="EPSG:4326">
+					<gml:lowerCorner>53.232277 10.888809</gml:lowerCorner>
+					<gml:upperCorner>53.232277 10.888809</gml:upperCorner>
+				</gml:Envelope>
+			</gml:boundedBy>
+			<ms:msGeometry>
+				<gml:Point srsName="EPSG:4326">
+					<gml:pos>53.232277 10.888809</gml:pos>
+				</gml:Point>
+			</ms:msGeometry>
+			<ms:OBJEKT_ID>78351748</ms:OBJEKT_ID>
+			<ms:STATION_ID>58</ms:STATION_ID>
+			<ms:STATION_NAME>Neu Darchau</ms:STATION_NAME>
+			<ms:OBERTHEMA_ID>27</ms:OBERTHEMA_ID>
+			<ms:STATION_AKTIV>1</ms:STATION_AKTIV>
+			<ms:SUCHFELD>Neu Darchau</ms:SUCHFELD>
+			<ms:PORTAL_TIDEELBE>1</ms:PORTAL_TIDEELBE>
+			<ms:PORTAL_NOK>0</ms:PORTAL_NOK>
+			<ms:PORTAL_OSK>0</ms:PORTAL_OSK>
+			<ms:PORTAL_NSK>0</ms:PORTAL_NSK>
+		</ms:abfluss>
+	</gml:featureMember>
+</wfs:FeatureCollection>

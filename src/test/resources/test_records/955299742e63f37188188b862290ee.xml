@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ms:abfluss
+    xmlns:ms="http://mapserver.gis.umn.edu/mapserver"
+    xmlns:gml="http://www.opengis.net/gml"
+	gml:id="abfluss.78351782">
+	<gml:boundedBy>
+		<gml:Envelope srsName="EPSG:4326">
+			<gml:lowerCorner>53.456649 10.068015</gml:lowerCorner>
+			<gml:upperCorner>53.456649 10.068015</gml:upperCorner>
+		</gml:Envelope>
+	</gml:boundedBy>
+	<ms:msGeometry>
+		<gml:Point srsName="EPSG:4326">
+			<gml:pos>53.456649 10.068015</gml:pos>
+		</gml:Point>
+	</ms:msGeometry>
+	<ms:OBJEKT_ID>78351782</ms:OBJEKT_ID>
+	<ms:STATION_ID>92</ms:STATION_ID>
+	<ms:STATION_NAME>Bunthaus Süd</ms:STATION_NAME>
+	<ms:OBERTHEMA_ID>27</ms:OBERTHEMA_ID>
+	<ms:STATION_AKTIV>1</ms:STATION_AKTIV>
+	<ms:SUCHFELD>Bunthaus Süd</ms:SUCHFELD>
+	<ms:PORTAL_TIDEELBE>1</ms:PORTAL_TIDEELBE>
+	<ms:PORTAL_NOK>0</ms:PORTAL_NOK>
+	<ms:PORTAL_OSK>0</ms:PORTAL_OSK>
+	<ms:PORTAL_NSK>0</ms:PORTAL_NSK>
+</ms:abfluss>

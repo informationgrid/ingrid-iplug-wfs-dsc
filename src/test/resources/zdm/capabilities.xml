@@ -1,0 +1,3255 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<wfs:WFS_Capabilities
+    version="1.1.0"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:wfs="http://www.opengis.net/wfs"
+    xmlns:ows="http://www.opengis.net/ows"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns="http://www.opengis.net/wfs"
+    xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd">
+  <ows:ServiceIdentification>
+    <ows:Title>ZDM der WSD Nord</ows:Title>
+    <ows:Abstract>Der WMS des Zentralen Datenmanagement zeigt Daten von Aus- und Neubauvorhaben an den Bundeswasserstrassen im Zustaendigkeitsbereich der Wasser- und Schifffahrtsdirektion Nord. Diese Service ist ein oeffentlicher und kostenfreier Dienst der Wasser- und Schifffahrtsverwaltung des Bundes.</ows:Abstract>
+    <ows:Keywords>
+      <ows:Keyword>Portal Tideelbe</ows:Keyword>
+      <ows:Keyword> Portal-Tideelbe</ows:Keyword>
+      <ows:Keyword> Portaltideelbe</ows:Keyword>
+      <ows:Keyword> Portal Ostseekueste</ows:Keyword>
+      <ows:Keyword> Portalosk</ows:Keyword>
+      <ows:Keyword> Portal Nordseekueste</ows:Keyword>
+      <ows:Keyword> Portalnsk</ows:Keyword>
+      <ows:Keyword> Portal Nord-Ostsee-Kanal</ows:Keyword>
+      <ows:Keyword> Portalnok</ows:Keyword>
+      <ows:Keyword> Nord-Ostsee-Kanal</ows:Keyword>
+      <ows:Keyword> Kiel-canal</ows:Keyword>
+      <ows:Keyword> BS-Elbe</ows:Keyword>
+      <ows:Keyword> Beweissicherung</ows:Keyword>
+      <ows:Keyword> Monitoring</ows:Keyword>
+      <ows:Keyword> Unterelbe</ows:Keyword>
+      <ows:Keyword> Zeitreihen</ows:Keyword>
+      <ows:Keyword> Aussenelbe</ows:Keyword>
+      <ows:Keyword> Tideelbe</ows:Keyword>
+      <ows:Keyword> WSV</ows:Keyword>
+      <ows:Keyword> Ausbauprojekt</ows:Keyword>
+      <ows:Keyword> Neubauprojekt</ows:Keyword>
+      <ows:Keyword> Strombau</ows:Keyword>
+      <ows:Keyword> Sediment</ows:Keyword>
+      <ows:Keyword> Fahrrinnenanpassung</ows:Keyword>
+      <ows:Keyword> Fahrrinnenausbau</ows:Keyword>
+      <ows:Keyword> Elbvertiefung</ows:Keyword>
+      <ows:Keyword> Kompensation</ows:Keyword>
+      <ows:Keyword> Roehricht</ows:Keyword>
+      <ows:Keyword> Aestuar</ows:Keyword>
+      <ows:Keyword> Wismarausbau</ows:Keyword>
+      <ows:Keyword> Salzgehaltsmessung</ows:Keyword>
+      <ows:Keyword> Salzgehalt</ows:Keyword>
+      <ows:Keyword> Zeitreihen</ows:Keyword>
+      <ows:Keyword> Umweltueberwachung</ows:Keyword>
+      <ows:Keyword> Deutsche Kueste</ows:Keyword>
+      <ows:Keyword> Kuestendaten</ows:Keyword>
+    </ows:Keywords>
+    <ows:ServiceType codeSpace="OGC">OGC WFS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.1.0</ows:ServiceTypeVersion>
+    <ows:Fees>none</ows:Fees>
+    <ows:AccessConstraints>Contact preferably by e-mail</ows:AccessConstraints>
+  </ows:ServiceIdentification>
+  <ows:ServiceProvider>
+    <ows:ProviderName/>
+<!--WARNING: Mandatory metadata "ows_contactorganization" was missing for ows:ProviderName-->
+    <ows:ProviderSite xlink:type="simple" xlink:href=""/>
+<!--WARNING: Optional metadata "ows_service_onlineresource" was missing for ows:ProviderSite/@xlink:href-->
+    <ows:ServiceContact>
+      <ows:IndividualName/>
+<!--WARNING: Optional metadata "ows_contactperson" was missing for ows:IndividualName-->
+      <ows:PositionName/>
+<!--WARNING: Optional metadata "ows_contactposition" was missing for ows:PositionName-->
+      <ows:ContactInfo>
+        <ows:Phone>
+          <ows:Voice>+49 40 44110-461</ows:Voice>
+          <ows:Facsimile>+49 40 44110-76</ows:Facsimile>
+        </ows:Phone>
+        <ows:Address>
+          <ows:DeliveryPoint>ZDM der WSD Nord im Wasser- und Schifffahrtsamt Hamburg, Sachbereich 4 Neubau, Moorweidenstrasse 14</ows:DeliveryPoint>
+          <ows:City>Hamburg</ows:City>
+          <ows:AdministrativeArea>Hamburg</ows:AdministrativeArea>
+          <ows:PostalCode>20148</ows:PostalCode>
+          <ows:Country>Germany</ows:Country>
+          <ows:ElectronicMailAddress>zdm.wsd-n@wsv.bund.de</ows:ElectronicMailAddress>
+        </ows:Address>
+        <ows:OnlineResource xlink:type="simple" xlink:href=""/>
+<!--WARNING: Optional metadata "ows_service_onlineresource" was missing for ows:OnlineResource/@xlink:href-->
+        <ows:HoursOfService/>
+<!--WARNING: Optional metadata "ows_hoursofservice" was missing for ows:HoursOfService-->
+        <ows:ContactInstructions/>
+<!--WARNING: Optional metadata "ows_contactinstructions" was missing for ows:ContactInstructions-->
+      </ows:ContactInfo>
+      <ows:Role/>
+<!--WARNING: Optional metadata "ows_role" was missing for ows:Role-->
+    </ows:ServiceContact>
+  </ows:ServiceProvider>
+  <ows:OperationsMetadata>
+    <ows:Operation name="GetCapabilities">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://www.kuestendaten.de/cgi-bin/bs?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://www.kuestendaten.de/cgi-bin/bs?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="service">
+        <ows:Value>WFS</ows:Value>
+      </ows:Parameter>
+      <ows:Parameter name="AcceptVersions">
+        <ows:Value>1.0.0</ows:Value>
+        <ows:Value>1.1.0</ows:Value>
+      </ows:Parameter>
+      <ows:Parameter name="AcceptFormats">
+        <ows:Value>text/xml</ows:Value>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="DescribeFeatureType">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://www.kuestendaten.de/cgi-bin/bs?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://www.kuestendaten.de/cgi-bin/bs?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:Value>XMLSCHEMA</ows:Value>
+        <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+        <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetFeature">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://www.kuestendaten.de/cgi-bin/bs?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://www.kuestendaten.de/cgi-bin/bs?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="resultType">
+        <ows:Value>results</ows:Value>
+        <ows:Value>hits</ows:Value>
+      </ows:Parameter>
+      <ows:Parameter name="outputFormat">
+        <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+      </ows:Parameter>
+    </ows:Operation>
+  </ows:OperationsMetadata>
+  <FeatureTypeList>
+    <Operations>
+      <Operation>Query</Operation>
+    </Operations>
+    <FeatureType>
+      <Name>Fahrrinne1999</Name>
+      <Title>Fahrrinne (1999)</Title>
+      <Abstract>Verlauf der Fahrrine an der Unterelbe nach der Fahrrinnenanpassung 1999/2000 - Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.47017668286428 53.5206716545586</ows:LowerCorner>
+        <ows:UpperCorner>9.9616940393195 53.980486077419</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>ElbeFrKilometrierung</Name>
+      <Title>Elbe-Fahrrinnen km</Title>
+      <Abstract>Kilometrierung der Fahrrine an der Unterelbe - Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.36376569561581 53.3945926879718</ows:LowerCorner>
+        <ows:UpperCorner>10.4325790884668 53.9898595506321</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>ElbeStrKilometrierung</Name>
+      <Title>Elbe-Strom km</Title>
+      <Abstract>Stromkilometrierung an der Unterelbe - Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.47560395890476 53.4562798858916</ows:LowerCorner>
+        <ows:UpperCorner>10.0876576924319 53.9808920086392</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>NebenflussKm</Name>
+      <Title>Nebenfluesse - Kilometrierung</Title>
+      <Abstract>Kilometrierung der Nebenfluesse an der Unterelbe - Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.03812909303758 53.4789119624722</ows:LowerCorner>
+        <ows:UpperCorner>9.80211606211235 54.0228207118736</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>dop25_kachelung</Name>
+      <Title>Luftbildbefliegung 2006 (RGB) - Kachelung</Title>
+      <Abstract>Eine hochaufloesende Luftbildbefliegung von 2006 deckt einen Streifen beidseits der Unterelbe von der Ortschaft Over bis zur Nordseeinsel Scharhoern ab. Herausgeber: WSA Hamburg - Beweissicherung - Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.3893444236849 53.425748523493</ows:LowerCorner>
+        <ows:UpperCorner>10.1601506719489 54.0422528552131</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>dop25_2006_cir_kachelung</Name>
+      <Title>Luftbildbefliegung 2006 (CIR) - Kachelung</Title>
+      <Abstract>Eine Luftbildbefliegung von 2006 im Unterelbebereich mit Color Infrarot Film (CIR) zur differenzierten Beurteilung von Vegetation. Herausgeber: WSA Hamburg - Beweissicherung - Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.73974931090903 53.3722154748726</ows:LowerCorner>
+        <ows:UpperCorner>10.5259599042423 54.1734009540029</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>dop25_2010_kachelung</Name>
+      <Title>Luftbildbefliegung 2010 - Kachelung</Title>
+      <Abstract>Eine hochaufloesende Luftbildbefliegung von 2010 deckt einen Streifen beidseits der Unterelbe von Geesthacht bis zur Aussenelbe inklusive der Nebenfluesse ab. Im Hamburger Stadtbereich betraegt die Bodenaufloesung 10cm und im uebrigen Gebiet 20cm. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.29516659171943 53.3516765326923</ows:LowerCorner>
+        <ows:UpperCorner>10.3788587925885 54.1950012122942</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>GrenzenBS1999</Name>
+      <Title>Grenze des BS-Gebietes von 1999</Title>
+      <Abstract>Die Grenze des Beweissicherungsgebietes, wie es im Planfestellungsbeschluss fuer die Fahrrinnenanpassung 1999/2000 festgelegt wurde. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.40212793473893 53.2853895142982</ows:LowerCorner>
+        <ows:UpperCorner>10.826384922896 54.0311739903436</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Kreisgrenzen</Name>
+      <Title>Kreisgrenzen</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.47501961299919 53.1287044611068</ows:LowerCorner>
+        <ows:UpperCorner>10.9801036557695 54.3803783370396</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>WSAZustaendigkeit</Name>
+      <Title>WSA-Zustaendigkeit</Title>
+      <Abstract>Die Grenzen der Zustaendigkeitsbereiche der verschiedenen Wasser- und Schifffahrtsaemter innerhalb des Zustaendigkeitsbereichs der Wasser- und Schifffahrtsdirektion Nord. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.48393728066128 53.0082145205184</ows:LowerCorner>
+        <ows:UpperCorner>14.427216188105 55.0754458697784</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>WSAZustaendigkeitBeschriftung</Name>
+      <Title>WSA-Zustaendigkeit - Beschriftung</Title>
+      <Abstract>Die Grenzen der Zustaendigkeitsbereiche der verschiedenen Wasser- und Schifffahrtsaemter innerhalb des Zustaendigkeitsbereichs der Wasser- und Schifffahrtsdirektion Nord. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.48393728066128 53.0082145205184</ows:LowerCorner>
+        <ows:UpperCorner>14.427216188105 55.0754458697784</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>DeichverbandZustaendigkeit</Name>
+      <Title>Zustaendigkeiten der Deichverbaende-Nds.</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.61392968374582 53.3912880013752</ows:LowerCorner>
+        <ows:UpperCorner>10.3534584889303 53.894559960189</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>DeichverbandZustaendigkeitBeschriftung</Name>
+      <Title>Zustaendigkeiten der Deichverbaende-Nds. - Beschriftung</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.61392968374582 53.3912880013752</ows:LowerCorner>
+        <ows:UpperCorner>10.3534584889303 53.894559960189</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>morphologie_2010</Name>
+      <Title>Morphologie 2010</Title>
+      <Abstract>Morphologie der Unterelbe aus dem Jahr 2010. Die Morphologie der Nebenfluesse basiert, im Gegensatz zur Elbe, auf Daten aus dem Jahr 1997. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.30256316898575 53.3613252443496</ows:LowerCorner>
+        <ows:UpperCorner>10.3589115505604 54.0330432091641</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>topographie_2006_isolinien</Name>
+      <Title>Topographie Unterelbe 2006 - Isolinien</Title>
+      <Abstract>Topographie der Unterelbe aus dem Jahr 2006 abgeleitet aus einem Digitalen Gelaendemodell mit 10m Rasteraufloesung. Die Datengrundlage sind u.a.:   -Jahreshauptpeilungen der WSAe Cuxhaven, Hamburg, Lauenburg und der HPA (2006) -Querprofile Terrestrische Vermessung (2005/06) -Laserscanningdaten aus Befliegungen (2002 und 2006). Im Massstab 1:10.000 � 1:20.000 sind zusaetzlich Isolinien dargestellt. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.40368158880938 53.391571441634</ows:LowerCorner>
+        <ows:UpperCorner>10.3581930215986 54.0292510339092</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>topographie_ems_2010_isolinien</Name>
+      <Title>Topographie Ems 2010 - Isolinien</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.37051361688795 52.9434681393722</ows:LowerCorner>
+        <ows:UpperCorner>7.49628851431982 53.7337283101634</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>topographie_2010_isolinien</Name>
+      <Title>Topographie Unterelbe 2010 - Isolinien</Title>
+      <Abstract>Topographie der Unterelbe aus dem Jahr 2010 abgeleitet aus einem Digitalen Gelaendemodell (DGM) mit 10m Rasteraufloesung. Die Datengrundlage des DGM sind u.a.: -Peildaten der WSV (2008-2011) -Laserscanningdaten (Befliegungen 2010 und 2011). Im Massstab 1:10.000 � 1:20.000 sind zusaetzlich Isolinien dargestellt. Bitte beachten Sie die Informationen und weitere Datenformate im Downloadbereich! Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.40368158880938 53.391571441634</ows:LowerCorner>
+        <ows:UpperCorner>10.3581930215986 54.0292510339092</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>alleMessstationen</Name>
+      <Title>Alle Messstationen</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>abfluss</Name>
+      <Title>Abflussstationen</Title>
+      <Abstract>Abflussmessungen an drei Flussabschnitten der Unterelbe. Der Abfluss gibt das Volumen an, das in einem Fliessgewaesser in einem Zeitraum durch den Querschnitt stroemt. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.85566917864851 52.4464395426034</ows:LowerCorner>
+        <ows:UpperCorner>22.7500457010722 53.5481434498572</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>chloridgehaltsstationen</Name>
+      <Title>Chloridgehaltsstationen</Title>
+      <Abstract>Chloridgehaltsmessungen an der Unterelbe und ihren Nebenfluessen. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.32609915967146 53.5709716657245</ows:LowerCorner>
+        <ows:UpperCorner>9.69698904083077 53.8275912685818</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>leitfaehigkeit</Name>
+      <Title>Leitfaehigkeitsstationen</Title>
+      <Abstract>Leitfaehigkeitsmessungen an der Unterelbe und ihren Nebenfluessen. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.44520700431657 53.5709716657245</ows:LowerCorner>
+        <ows:UpperCorner>9.69942479496267 53.9741441825498</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>pegel</Name>
+      <Title>Pegelstationen</Title>
+      <Abstract>Wasserstandsmessungen an der Unterelbe und ihren Nebenfluessen. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.87548957609507 53.3616534103766</ows:LowerCorner>
+        <ows:UpperCorner>10.3602028341918 54.1856296667281</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>salzgehalt</Name>
+      <Title>Salzgehaltsstationen</Title>
+      <Abstract>Salzgehaltsmessungen an der Unterelbe und ihren Nebenfluessen. Die Messdaten sind plausibilisiert. Die Datenerhebung erfolgt entweder durch Dauermessungen oder turnusmaessige Schoepfproben. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.44520700431657 53.5709716657245</ows:LowerCorner>
+        <ows:UpperCorner>9.69942479496267 53.9741441825498</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>sauerstoff</Name>
+      <Title>Sauerstoffstationen</Title>
+      <Abstract>Messung der Sauerstoffsaettigung an der Unterelbe und ihren Nebenfluessen. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.30847521047544 53.3965363143181</ows:LowerCorner>
+        <ows:UpperCorner>10.3714046526401 54.0529272731951</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>stroemungsparam</Name>
+      <Title>Stroemungsstationen</Title>
+      <Abstract>Dauermessstationen fuer verschiedene Parameter wie Stroemungsgeschwindigkeit, Stroemungsrichtung, Ebbestromdauer und Kenterpunkte. Messstationen werden unterhalten an der Unterelbe und ihren Nebenfluessen von Bunthaus bis Scharhoern. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.44520700431657 53.4581737507577</ows:LowerCorner>
+        <ows:UpperCorner>10.0836421560145 53.9741441962857</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>temperatur</Name>
+      <Title>Temperaturstationen</Title>
+      <Abstract>Temperaturmessstationen an der Unterelbe und ihren Nebenfluessen von Geesthacht bis in das Aussenelbewatt westlich von Scharhoern. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.30847521047544 53.3965363143181</ows:LowerCorner>
+        <ows:UpperCorner>10.3714046526401 54.0529272731951</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>truebung</Name>
+      <Title>Truebungsstationen</Title>
+      <Abstract>Truebungsmessungen an 13 aktiven Stationen an der Unterelbe. Die Messdaten sind plausibilisiert. Herausgeber: WSA Hamburg, WSA Cuxhaven - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.68308096111357 53.8356025836365</ows:LowerCorner>
+        <ows:UpperCorner>9.17646142608585 53.9394155431551</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Abstich</Name>
+      <Title>Grundwasser</Title>
+      <Abstract>Grundwasserstandsmessungen an der Oststrecke des Nord-Ostsee-Kanals. Erhebung der Parameter Abstich, Temperatur und Salzgehalt. Die Messdaten sind plausibilisiert. Herausgeber: WSA Kiel-Holtenau - Planungsgruppe Ausbau NOK</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.89184713700408 54.3197388192848</ows:LowerCorner>
+        <ows:UpperCorner>10.0371498587728 54.3637796007122</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_gebiete_point</Name>
+      <Title>Kompensationsgebiete Punkte</Title>
+      <Abstract>Darstellung der Kompensationsgebiete im Rahmen der Kompensationsmassnahmen zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.98902109260279 53.5966007334534</ows:LowerCorner>
+        <ows:UpperCorner>9.64883047970543 53.9920071453633</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_gebiete_poly</Name>
+      <Title>Kompensationsgebiete Flaechen</Title>
+      <Abstract>Darstellung der Kompensationsgebiete im Rahmen der Kompensationsmassnahmen zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.94856245435824 53.5905670600624</ows:LowerCorner>
+        <ows:UpperCorner>9.66841899700343 54.0203379743039</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_bestand_poly</Name>
+      <Title>Kompensation Bestand Flaechen</Title>
+      <Abstract>Flaechenhafte Darstellung der Bestandsaufnahme der Kompensationsgebiete im Rahmen der Kompensation zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.94856245435824 53.5905670600624</ows:LowerCorner>
+        <ows:UpperCorner>9.66841899700343 54.0203379743039</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_bestand_linien</Name>
+      <Title>Kompensation Bestand Linien</Title>
+      <Abstract>Linienhafte Darstellung der Bestandsaufnahme der Kompensationsgebiete im Rahmen der Kompensation zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.9485929941798 53.590831488856</ows:LowerCorner>
+        <ows:UpperCorner>9.66606911204644 54.0203200023826</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_bewertung_poly</Name>
+      <Title>Kompensation Bewertung Flaechen</Title>
+      <Abstract>Flaechenhafte Darstellung der Bewertung der Kompensationsgebiete im Rahmen der Kompensation zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.94856245435824 53.5903693817764</ows:LowerCorner>
+        <ows:UpperCorner>9.66841899700343 54.0203379743039</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_bewertung_linien</Name>
+      <Title>Kompensation Bewertung Linien</Title>
+      <Abstract>Linienhafte Darstellung der Bewertung der Kompensationsgebiete im Rahmen der Kompensation zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.9485929941798 53.590831488856</ows:LowerCorner>
+        <ows:UpperCorner>9.66606911204644 54.0203200023826</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>komp_pflege_poly</Name>
+      <Title>Kompensation Pflegemassnahmen</Title>
+      <Abstract>Flaechenhafte Darstellung der Pflegemassnahmen der Kompensationsgebiete im Rahmen der Kompensation zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.9525144920506 53.5908276359748</ows:LowerCorner>
+        <ows:UpperCorner>9.66841899700343 54.0203379500986</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>abbruchkanten</Name>
+      <Title>Abbruchkanten (Gesamt)</Title>
+      <Abstract>Terrestrische Vermessungen von Abbruchkanten an der Unterelbe, die im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden haben. - 1996-1999 Nullmessung - 2001-2002 1. Wiederholungsmessung - 2005-2006 2. Wiederholungsmessung - 2003 Zwischenmessung - 2010-2011 3. Wiederholungsmessung. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.76739737042591 29.6039408621529</ows:LowerCorner>
+        <ows:UpperCorner>42.5224568856531 53.984313804729</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>abbruchbereiche</Name>
+      <Title>Abbruchbereiche</Title>
+      <Abstract>Beschreibung der terrestrisch gemessenen Abbruchkanten und Untersuchung ihrer Entwicklung basierend auf den Messungen, die im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden haben. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.87035157372422 29.5990802169242</ows:LowerCorner>
+        <ows:UpperCorner>42.5204489619512 53.988963083696</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>mthw</Name>
+      <Title>MThw-Linie (Gesamt)</Title>
+      <Abstract>Terrestrische Vermessungen der Linie fuer das mittlere Tidehochwasser, die im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden haben. - 1996-1999 Nullmessung - 2001-2002 1. Wiederholungsmessung - 2005-2006 2. Wiederholungsmessung - 2003 Zwischenmessung - 2010-2011 3. Wiederholungsmessung. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.48640749816194 53.381962816581</ows:LowerCorner>
+        <ows:UpperCorner>10.3561636356763 54.0282986606534</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>ufer</Name>
+      <Title>Uferentwicklung (Elbe)</Title>
+      <Abstract>Beschreibung von 37 Uferabschnitten an der Unterelbe basierend auf den Querprofilmessungen (Messungsjahre 1958- 2010) die im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden haben. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.48788108256533 53.3914895765134</ows:LowerCorner>
+        <ows:UpperCorner>10.3583117744117 54.0300868472716</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>querprofile</Name>
+      <Title>Elbe (QP)</Title>
+      <Abstract>Terrestrische Vermessung von ca. 1.300 Querprofilen an der Tideelbe von Geesthacht bis Cuxhaven bzw. Friedrichskoog (Messungsjahre 1958- 2010). Der Profilabstand betraegt etwa 200m. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.4092524798443 29.9818745288176</ows:LowerCorner>
+        <ows:UpperCorner>42.356657909398 54.0247881686338</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_barnkruger_loch</Name>
+      <Title>Barnkruger Loch (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen am Barnkruger Loch (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.47125598945145 53.6875325093089</ows:LowerCorner>
+        <ows:UpperCorner>9.47717657692981 53.6957413879964</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_buetzflether_suederelbe</Name>
+      <Title>Buetzflether Suederelbe (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Buetzflether Suederelbe (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.48918963990874 53.6583088333784</ows:LowerCorner>
+        <ows:UpperCorner>9.49962914727165 53.6725663517668</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_este</Name>
+      <Title>Este (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Este (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.70461699315539 53.4818777677054</ows:LowerCorner>
+        <ows:UpperCorner>9.7901090724789 53.5361745188462</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_freiburger_hafenpriel</Name>
+      <Title>Freiburger Hafenpriel (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen am Freiburger Hafenpriel (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.2919015225283 53.8259899209822</ows:LowerCorner>
+        <ows:UpperCorner>9.31547435017427 53.8383325217885</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_gauens_schlfl</Name>
+      <Title>Gauensieker Schleusenfleth (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen am Gauensieker Schleusenfleth (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.39691276038221 53.7117719251432</ows:LowerCorner>
+        <ows:UpperCorner>9.42079762325903 53.7177926831621</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_hetl_binnene</Name>
+      <Title>Hetlinger Binnenelbe (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Hetlinger Binnenelbe (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.63088243104919 53.5803087555999</ows:LowerCorner>
+        <ows:UpperCorner>9.67580013811293 53.6041027270311</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_ilmenau</Name>
+      <Title>Ilmenau (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Ilmenau (Messungsjahre 1994-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>10.1754760639007 53.3618300714332</ows:LowerCorner>
+        <ows:UpperCorner>10.317561591792 53.3965001129088</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_krueckau</Name>
+      <Title>Krueckau (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Krueckau (Messungsjahre 1995-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.51175767844058 53.7148462225706</ows:LowerCorner>
+        <ows:UpperCorner>9.65535425083289 53.7544580323495</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_luehe</Name>
+      <Title>Luehe (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Luehe (Messungsjahre 1997-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.59201748376333 53.5148062709286</ows:LowerCorner>
+        <ows:UpperCorner>9.78431792061414 53.5727219940737</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_oste</Name>
+      <Title>Oste (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Oste (Messungsjahre 1999-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.0407391049475 53.4851820707235</ows:LowerCorner>
+        <ows:UpperCorner>9.27710133944715 53.8207185140336</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_pinnau</Name>
+      <Title>Pinnau (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Pinnau (Messungsjahre 1997-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.53510928599425 53.6634118828941</ows:LowerCorner>
+        <ows:UpperCorner>9.78901028449291 53.6822722002112</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_ruthenstrom</Name>
+      <Title>Ruthenstrom (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen am Ruthenstrom (Messungsjahre 1990-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.40246470866122 53.6935310732194</ows:LowerCorner>
+        <ows:UpperCorner>9.43863355913592 53.7401835266291</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_schwinge</Name>
+      <Title>Schwinge (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Schwinge (Messungsjahre 1997-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.47961169893246 53.6033232929319</ows:LowerCorner>
+        <ows:UpperCorner>9.52705617442991 53.6295347867138</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_stoer</Name>
+      <Title>Stoer (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Stoer (Messungsjahre 1997-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.40156763298168 53.825226043422</ows:LowerCorner>
+        <ows:UpperCorner>9.73380086092934 53.9618866587312</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_wedeler_au</Name>
+      <Title>Wedeler Au (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Wedeler Au (Messungsjahre 2002-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.67813606714881 53.5788745672689</ows:LowerCorner>
+        <ows:UpperCorner>9.6937037118897 53.5827283286258</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>qp_wischh_se</Name>
+      <Title>Wischhafener Suederelbe (QP)</Title>
+      <Abstract>Terrestrische Vermessung von Querprofilen an der Wischhafener Suederelbe (Messungsjahre 1994-2010). Die Messungen haben im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000 stattgefunden. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.32385478081459 53.7309608271156</ows:LowerCorner>
+        <ows:UpperCorner>9.3738644351221 53.784344494787</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_barnkruger_loch</Name>
+      <Title>Barnkruger Loch (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.47155984897813 53.6876324951977</ows:LowerCorner>
+        <ows:UpperCorner>9.4768860604392 53.6954886017976</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_buetzflether_suederelbe</Name>
+      <Title>Buetzflether Suederelbe (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.48994829494238 53.6585085331782</ows:LowerCorner>
+        <ows:UpperCorner>9.49913779750233 53.6719612277689</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_este</Name>
+      <Title>Este (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.70513229825444 53.4820699387134</ows:LowerCorner>
+        <ows:UpperCorner>9.78958051276912 53.5361355507335</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_freiburger_hafenpriel</Name>
+      <Title>Freiburger Hafenpriel (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.29205446450405 53.826143631914</ows:LowerCorner>
+        <ows:UpperCorner>9.31510811486122 53.838116500312</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_gauens_schlfl</Name>
+      <Title>Gauensieker Schleusenfleth (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.39756618334619 53.7119975741306</ows:LowerCorner>
+        <ows:UpperCorner>9.42050675092148 53.7174850140774</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_hetl_binnene</Name>
+      <Title>Hetlinger Binnenelbe (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.63143413455242 53.5798260572959</ows:LowerCorner>
+        <ows:UpperCorner>9.67852980131123 53.6038032588238</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_ilmenau</Name>
+      <Title>Ilmenau (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>10.1756462299771 53.3620099160441</ows:LowerCorner>
+        <ows:UpperCorner>10.3175404563508 53.3963008274178</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_krueckau</Name>
+      <Title>Krueckau (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.51243040265756 53.7153591239279</ows:LowerCorner>
+        <ows:UpperCorner>9.65521724184415 53.7544192383763</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_luehe</Name>
+      <Title>Luehe (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.59216924822074 53.5157525427893</ows:LowerCorner>
+        <ows:UpperCorner>9.63679891104767 53.5725505210058</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_oste</Name>
+      <Title>Oste (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.04177871915076 53.485227901212</ows:LowerCorner>
+        <ows:UpperCorner>9.27670478837828 53.8204575675841</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_pinnau</Name>
+      <Title>Pinnau (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.53545987172949 53.6701736281154</ows:LowerCorner>
+        <ows:UpperCorner>9.6938088088991 53.6820193897847</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_ruthenstrom</Name>
+      <Title>Ruthenstrom (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.40341956492252 53.6936396196325</ows:LowerCorner>
+        <ows:UpperCorner>9.43843231371757 53.7397759641424</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_schwinge</Name>
+      <Title>Schwinge (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.48006554059728 53.6033789345966</ows:LowerCorner>
+        <ows:UpperCorner>9.5266613477464 53.6293891981373</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_stoer</Name>
+      <Title>Stoer (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.40233237309703 53.8257840324561</ows:LowerCorner>
+        <ows:UpperCorner>9.73364850425736 53.9618841019143</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_wedeler_au</Name>
+      <Title>Wedeler Au (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.68472113653632 53.5790103975931</ows:LowerCorner>
+        <ows:UpperCorner>9.69351928020795 53.5824931520199</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>lp_wischh_se</Name>
+      <Title>Wischhafener Suederelbe (LP)</Title>
+      <Abstract>Darstellung der Laengsprofile und der Flussentwicklung der Nebenfluesse an der Unterelbe. Herausgeber: WSA Hamburg � Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.32496141441313 53.731015071004</ows:LowerCorner>
+        <ows:UpperCorner>9.37375646932426 53.7841438126815</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Vorhabensbereich</Name>
+      <Title>Vorhabensbereich (Ems-km 40,7 - 74,6)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.82046447822581 53.3227083713271</ows:LowerCorner>
+        <ows:UpperCorner>7.18736757454896 53.4897326440985</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Gebiet_UVU</Name>
+      <Title>Gebiet der Umweltvertraeglichkeitsuntersuchung</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49522237532815 53.0277289521857</ows:LowerCorner>
+        <ows:UpperCorner>7.70809039737044 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Klappstellen</Name>
+      <Title>Vorgesehene Klappstellen</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.51184238089793 53.3157470332473</ows:LowerCorner>
+        <ows:UpperCorner>7.10569822159386 53.6236716326545</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Lebensstaetten</Name>
+      <Title>BR Teilaspekt Lebens- und Arbeisstaetten sowie Immissionen (Laerm und Erschuetterungen)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49673082908107 53.3058026944281</ows:LowerCorner>
+        <ows:UpperCorner>7.20644073905494 53.6327213493328</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Immissionen</Name>
+      <Title>BR Teilaspekt Immissionen (Luftschadstoffe)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49522237532815 53.0277287411688</ows:LowerCorner>
+        <ows:UpperCorner>7.70810550850444 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Freizeit</Name>
+      <Title>BR Teilaspekt Freizeit und Erholung</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49738770100534 53.2189535616489</ows:LowerCorner>
+        <ows:UpperCorner>7.44736542432652 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Avifauna</Name>
+      <Title>BR Avifauna</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49522237532815 53.0277287411688</ows:LowerCorner>
+        <ows:UpperCorner>7.70810550850444 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Meeressaeuger</Name>
+      <Title>BR Meeressaeuger</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49755761154635 53.2350841359459</ows:LowerCorner>
+        <ows:UpperCorner>7.31751288545641 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Fische</Name>
+      <Title>BR Fische, Rundmaeuler, Makrozoobenthos, Zooplankton</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49729535950368 53.2110144862546</ows:LowerCorner>
+        <ows:UpperCorner>7.44488668377661 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Phytoplankton</Name>
+      <Title>BR Phytoplankton und Phytobenthos</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49729535950368 53.2109851736426</ows:LowerCorner>
+        <ows:UpperCorner>7.44735031006841 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Hydrologie</Name>
+      <Title>BR Aspekte Hydrologie, Gewaessermorphologie, Wasserbeschaffenheit</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49522237532815 53.0277287411688</ows:LowerCorner>
+        <ows:UpperCorner>7.70810550850444 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Schadstoffe</Name>
+      <Title>BR Aspekt Schadstoffe in Sedimenten und oekotoxikologisches Wirkungspotenzial</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49729535950368 53.2109849936566</ows:LowerCorner>
+        <ows:UpperCorner>7.44736542432652 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Grundwasser</Name>
+      <Title>BR Aspekt Grundwasser</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49632826216126 53.1239261837014</ows:LowerCorner>
+        <ows:UpperCorner>7.70810550850444 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Kultur</Name>
+      <Title>BR Kultur- und sonstige Sachgueter</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.51184248841777 53.314945789206</ows:LowerCorner>
+        <ows:UpperCorner>7.19107418844453 53.6236716326545</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Klima</Name>
+      <Title>BR Klima und Landschaft, Schutzgut Landschaft</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.49691365479774 53.1746247404508</ows:LowerCorner>
+        <ows:UpperCorner>7.70810550850444 53.6416730522214</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BR_Pflanzen</Name>
+      <Title>BR Aspekt Hoehere Pflanzen, Schutzgut Boden</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>6.64969020199114 53.2188728881798</ows:LowerCorner>
+        <ows:UpperCorner>7.44595040477682 53.5999738842325</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>biotoptypenpoly1997</Name>
+      <Title>Flaechenobjekte der Biotoptypenkartierung 1997</Title>
+      <Abstract>Flaechenhafte Darstellung der Biotoptypenkartierung von 1997. Die Daten sind Inhalt der Umweltvertraeglichkeitsstudie zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Eine umfangreiche Legende dokumentiert die Inhalte des Themas. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>biotoptypenline1997</Name>
+      <Title>Linienobjekte der Biotoptypenkartierung 1997</Title>
+      <Abstract>Linienhafte Darstellung der Biotoptypenkartierung von 1997. Die Daten sind Inhalt der Umweltvertraeglichkeitsstudie zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>biotoptypenpoint1997</Name>
+      <Title>Punktobjekte der Biotoptypenkartierung 1997</Title>
+      <Abstract>Punkthafte Darstellung der Biotoptypenkartierung von 1997. Die Daten sind Inhalt der Umweltvertraeglichkeitsstudie zur Fahrrinnenanpassung 1999/2000 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>biotoptypenpoly1999</Name>
+      <Title>Biotoptypenkartierung 1999</Title>
+      <Abstract>Flaechenhafte Darstellung der Biotoptypenkartierung 1999 an der Unterelbe auf Pagensand.    Eine umfangreiche Legende dokumentiert die Inhalte des Themas. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>biotoptypenpoly2000</Name>
+      <Title>Biotoptypenkartierung 2000</Title>
+      <Abstract>Flaechenhafte Darstellung der Biotoptypenkartierung 2000 an der Unterelbe von Geesthacht bis Glueckstadt.   Eine umfangreiche Legende dokumentiert die Inhalte des Themas. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>biotoptypenpoly2002</Name>
+      <Title>Biotoptypenkartierung 2002</Title>
+      <Abstract>Flaechenhafte Darstellung der Biotoptypenkartierung 2002 an der Unterelbe von Geesthacht bis Glueckstadt.   Eine umfangreiche Legende dokumentiert die Inhalte des Themas. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BiotoptypenPoly2006</Name>
+      <Title>Biotoptypenkartierung 2006 vollstaendig</Title>
+      <Abstract>Flaechenhafte Darstellung der Biotoptypenkartierung 2006 an der Unterelbe von Hamburg bis Belum. Eine umfangreiche Legende dokumentiert die Inhalte des Themas. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.94721918380669 53.4549201777268</ows:LowerCorner>
+        <ows:UpperCorner>10.0882300282276 53.9121715214686</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BiotoptypenPoly2011</Name>
+      <Title>Biotoptypenkartierung 2011 vollstaendig</Title>
+      <Abstract>Flaechenhafte Darstellung der Biotoptypenkartierung 2011 an der Unterelbe von Hamburg bis Belum. Die Kartierung erfolgte im Jahr 2011 auf der Datengrundlage einer Luftbildbefliegung 2010. Eine umfangreiche Legende dokumentiert die Inhalte des Themas. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.94723439185483 53.4549200420759</ows:LowerCorner>
+        <ows:UpperCorner>10.0882454766181 53.9121805064182</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BiotoptypenNOKAusbauFlaechen</Name>
+      <Title>Bestandskartierung 2007 - 2009 (Flaechen)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.68660799101034 54.190736876808</ows:LowerCorner>
+        <ows:UpperCorner>10.0683763593568 54.4545486689325</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BiotoptypenNOKAusbauLinien</Name>
+      <Title>Bestandskartierung 2007 - 2009 (Linien)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.89095202128831 54.3045242946211</ows:LowerCorner>
+        <ows:UpperCorner>10.0493850985492 54.368841644741</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BiotoptypenNOKAusbauPunkte</Name>
+      <Title>Bestandskartierung 2007 - 2009 (Punkte)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.94542520686456 54.3066336700225</ows:LowerCorner>
+        <ows:UpperCorner>9.94932846187525 54.309385885383</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>BiotoptypenLevensauFlaechen</Name>
+      <Title>Bestandskartierung 2011 (Flaechen)</Title>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>10.0559020088576 54.3571727108444</ows:LowerCorner>
+        <ows:UpperCorner>10.1133792845142 54.383824041006</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>RoehrichtZunahmenVerluste2000-2002ungefiltert</Name>
+      <Title>Roehrichtzunahmen und -Verluste 2000 bis 2002 (ungefiltert)</Title>
+      <Abstract>Ungefilterte Ergebnisdarstellung der Roehrichtentwicklung aus dem Untersuchungszeitraum 2000 bis 2002. Die Untersuchung erfolgte im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.34025862787942 53.3676007990034</ows:LowerCorner>
+        <ows:UpperCorner>10.3505713099304 53.8134127612491</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>RoehrichtZunahmenVerluste2000-2002gefiltert</Name>
+      <Title>Roehrichtzunahmen und -Verluste 2000 bis 2002 (gefiltert)</Title>
+      <Abstract>Gefilterte Ergebnisdarstellung der Roehrichtentwicklung aus dem Untersuchungszeitraum 2000 bis 2002. Die Untersuchung   erfolgte im Rahmen der Beweissicherung der Fahrrinnenanpassung 1999/2000. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.34275038769055 53.3691565414115</ows:LowerCorner>
+        <ows:UpperCorner>10.3484501499871 53.8021647129851</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>HaseldorfRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Haseldorf</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1953-2002) im Gebiet Haseldorf. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.53723990413556 53.6275368572606</ows:LowerCorner>
+        <ows:UpperCorner>9.57513392886643 53.677570134184</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>HeuckenlockRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Heuckenlock</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1970-2002) im Gebiet Heuckenlock. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>10.0123314072578 53.464244883067</ows:LowerCorner>
+        <ows:UpperCorner>10.0572572815776 53.4796890942115</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>MuehlenbergerRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Muehlenberg</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1978-2002) im Gebiet Muehlenberg. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.65555470134764 53.5305418470505</ows:LowerCorner>
+        <ows:UpperCorner>9.83176327146838 53.5647445803192</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>PagensandRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Pagensand</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1963-2002) im Gebiet Pagensand. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.49058407452389 53.6674124257644</ows:LowerCorner>
+        <ows:UpperCorner>9.55713073295159 53.7263931119822</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>RhinplateRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Rhinplate</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1963-2002) im Gebiet Rhinplate. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.39144349087696 53.7441762167008</ows:LowerCorner>
+        <ows:UpperCorner>9.4434243328817 53.8022305412541</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>SchwarztonnensandRoehrichtEn5m2</Name>
+      <Title>Historische Roehrichtentwicklung Schwarztonnensand</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1963-2002) im Gebiet Schwarztonnensand. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.41856998868934 53.6807328182096</ows:LowerCorner>
+        <ows:UpperCorner>9.49251418409587 53.7270718446498</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>WischhafenRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Wischhafen</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1978-2002) im Gebiet Wischhafen. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.34580533919186 53.76144914381</ows:LowerCorner>
+        <ows:UpperCorner>9.38517491774722 53.7899985612535</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>ZollenspiekerRoehrichtEnt5m2</Name>
+      <Title>Historische Roehrichtentwicklung Zollenspieker</Title>
+      <Abstract>Darstellung der Roehrichtentwicklung (1970-2002) im Gebiet Zollenspieker. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>10.1771683085275 53.3934077813686</ows:LowerCorner>
+        <ows:UpperCorner>10.2519912477781 53.4075246120664</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Baudaten</Name>
+      <Title>Baudaten</Title>
+      <Abstract>Baudatenbank zu allen baulichen Massnahmen seit 1850 an der Unterelbe. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.49883326471337 53.4584026869389</ows:LowerCorner>
+        <ows:UpperCorner>10.0873538981859 53.9797598754509</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>foto</Name>
+      <Title>Fotostandorte</Title>
+      <Abstract>Fotos werden in zeitlichen Abstaenden zur Dokumentation von Uferveraenderungen an wichtigen Standorten im Verlauf der Unterelbe aufgenommen. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>hafen</Name>
+      <Title>Hafendaten</Title>
+      <Abstract>Wichtige Daten von Haefen im Bereich der Unterelbe. Daten u. a. zur Anzahl der Liegeplaetze, Art, Lage, Tiefe und Oeffnungsbreite der Haefen. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>sedimentprobenahmestellen</Name>
+      <Title>Sedimentprobenahmestellen</Title>
+      <Abstract>Sedimentprobennahmestellen im Bereich der Unterelbe (2004-2005). Zu jeder Probestelle ist eine Siebkurve hinterlegt. Herausgeber: WSA Hamburg - Beweissicherung</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>8.1609944649496 53.1232049621862</ows:LowerCorner>
+        <ows:UpperCorner>16.1980980203835 54.1128818618027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+    <FeatureType>
+      <Name>Sperrwerke</Name>
+      <Title>Sperrwerke</Title>
+      <Abstract>Lage der Sperrwerke und Anzahl der Sperrwerksschliessungen an den Nebenflussmuendungen der Unterelbe.   [i]Herausgeber:[/i] ZDM, WSA Hamburg</Abstract>
+      <DefaultSRS>urn:ogc:def:crs:EPSG::4326</DefaultSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::4258</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3857</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31466</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31467</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31468</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::31469</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2397</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2398</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::2399</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25831</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25832</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::25833</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3034</OtherSRS>
+      <OtherSRS>urn:ogc:def:crs:EPSG::3035</OtherSRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>7.79280226227694 52.7696323815589</ows:LowerCorner>
+        <ows:UpperCorner>11.0106424027708 54.6482349513693</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    </FeatureType>
+  </FeatureTypeList>
+  <ogc:Filter_Capabilities>
+    <ogc:Spatial_Capabilities>
+      <ogc:GeometryOperands>
+        <ogc:GeometryOperand>gml:Point</ogc:GeometryOperand>
+        <ogc:GeometryOperand>gml:LineString</ogc:GeometryOperand>
+        <ogc:GeometryOperand>gml:Polygon</ogc:GeometryOperand>
+        <ogc:GeometryOperand>gml:Envelope</ogc:GeometryOperand>
+      </ogc:GeometryOperands>
+      <ogc:SpatialOperators>
+        <ogc:SpatialOperator name="BBOX"/>
+      </ogc:SpatialOperators>
+    </ogc:Spatial_Capabilities>
+    <ogc:Scalar_Capabilities>
+      <ogc:LogicalOperators/>
+      <ogc:ComparisonOperators>
+        <ogc:ComparisonOperator>LessThan</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>GreaterThan</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>LessThanEqualTo</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>GreaterThanEqualTo</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>EqualTo</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>NotEqualTo</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>Like</ogc:ComparisonOperator>
+        <ogc:ComparisonOperator>Between</ogc:ComparisonOperator>
+      </ogc:ComparisonOperators>
+    </ogc:Scalar_Capabilities>
+    <ogc:Id_Capabilities>
+      <ogc:EID/>
+      <ogc:FID/>
+    </ogc:Id_Capabilities>
+  </ogc:Filter_Capabilities>
+</wfs:WFS_Capabilities>

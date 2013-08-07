@@ -49,12 +49,25 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
 		List<String> allRecordIds = new ArrayList<String>();
+//		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
 			// fetch all features for the current type
 			if (log.isInfoEnabled()) {
 				log.info("Fetching features of type "+typeName+"...");
 			}
-			allRecordIds.addAll(this.fetchRecords(client, typeName, filterSet, true));
+			try {
+				allRecordIds.addAll(this.fetchRecords(client, typeName, filterSet, true));				
+			} catch (Exception ex) {
+				log.error("Problems fetching features of type '" + typeName + "', we skip these ones !", ex);
+			}
+
+			// activate this for local testing !
+/*
+			numFeatureTypesFetched++;
+			if (numFeatureTypesFetched > 5) {
+				break;
+			}
+*/
 		}
 		return allRecordIds;
 	}

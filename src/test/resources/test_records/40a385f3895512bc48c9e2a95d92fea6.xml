@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ms:NebenflussKm xmlns:ms="http://mapserver.gis.umn.edu/mapserver" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:wfs="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="NebenflussKm.26,8">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="EPSG:4326">
+        		<gml:lowerCorner>53.628519 9.229423</gml:lowerCorner>
+        		<gml:upperCorner>53.628519 9.229423</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:msGeometry>
+          <gml:Point srsName="EPSG:4326">
+            <gml:pos>53.628519 9.229423</gml:pos>
+          </gml:Point>
+        </ms:msGeometry>
+        <ms:OBJEKT_ID>1050</ms:OBJEKT_ID>
+        <ms:KM>26,8</ms:KM>
+        <ms:ANZEIGE>0</ms:ANZEIGE>
+        <ms:VOLLER_KM>0</ms:VOLLER_KM>
+        <ms:LABEL_WERT/>
+        <ms:GEWAESSER>Oste</ms:GEWAESSER>
+        <ms:TEXT>024</ms:TEXT>
+        <ms:SUCHFELD>26,8 - Oste - 024</ms:SUCHFELD>
+      </ms:NebenflussKm>

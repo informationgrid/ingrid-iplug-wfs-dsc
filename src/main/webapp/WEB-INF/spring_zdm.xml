@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="wfsFactory" class="de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory">
+        <property name="clientImpl"
+            value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericClient" />
+        <property name="requestImpl" ref="wfsRequestImpl" />
+        <property name="capabilitiesImpl"
+            value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericCapabilities" />
+        <property name="featureTypeImpl"
+            value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeatureType" />
+        <property name="queryImpl"
+            value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericQuery" />
+        <property name="queryResultImpl"
+            value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericQueryResult" />
+        <property name="featureImpl" 
+        	value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature" />
+
+        <property name="queryTemplate" ref="wfsQueryTemplate" />    
+        <property name="featureTemplate" ref="wfsFeatureTemplate" />    
+    </bean>
+
+    <bean id="wfsRequestImpl" class="org.springframework.beans.factory.config.MapFactoryBean">
+      <property name="sourceMap">
+          <map>
+            <entry key="GetCapabilities" value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.PostRequest"/>
+            <entry key="DescribeFeatureType" value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.PostRequest"/>
+            <entry key="GetFeature" value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.PostRequest"/>
+          </map>
+      </property>
+    </bean> 
+
+    <bean id="wfsQueryTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericQuery">
+        <property name="outputFormat" value="TEXT_XML_GML" />
+        <property name="version" value="1.1.0" />
+        <property name="resultType" value="RESULTS" />
+    </bean>
+
+    <bean id="wfsFeatureTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature">
+        <property name="idMappingScript" value="classpath:mapping/generic-feature_to_feature-id.js" />
+    </bean> 
+
+    <bean id="wfsCache" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultFileCache">
+        <property name="cachePath" value="./wfs_cache" />
+    </bean>
+
+    <!--
+        Define the WFS filter queries to query the WFS data source. Duplicates resulting from
+        the queries will be detected based on the Identifier and be removed.
+        
+        To produce one WFS Query without a filter element, please remove any <value> elements.
+        Many systems support this to get all results from the WFS data source.
+     -->
+    <bean id="wfsHarvestFilter" class="org.springframework.beans.factory.config.SetFactoryBean">
+        <property name="sourceSet">
+            <set>
+<!-- 
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>00*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>1*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>2*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>3*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>4*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>5*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>6*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>7*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>8*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>9*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>a*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>b*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>c*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>d*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>e*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+                    <ogc:PropertyIsLike escapeChar="\\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>Identifier</ogc:PropertyName>
+                    <ogc:Literal>f*</ogc:Literal>
+                    </ogc:PropertyIsLike>
+                    </ogc:Filter>]]>
+                </value>
+-->
+            </set>
+        </property>
+    </bean>
+    
+    <bean id="wfsUpdateStrategies" class="org.springframework.beans.factory.config.MapFactoryBean">
+        <property name="sourceMap">
+            <map>
+                <entry key="default" value="wfsDefaultUpdateStrategy"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultUpdateStrategy">
+        <property name="requestPause" value="1000" />
+    </bean>
+    
+    
+    <bean id="wfsUpdateJob" class="de.ingrid.iplug.wfs.dsc.cache.UpdateJob" init-method="init">
+        <property name="updateStrategy" ref="wfsDefaultUpdateStrategy" />
+        <property name="filterStrSet" ref="wfsHarvestFilter" />
+        <property name="cache" ref="wfsCache" />
+        <property name="factory" ref="wfsFactory" />
+    </bean>
+    
+    
+    <bean id="wfsDscDocumentProducer" class="de.ingrid.iplug.wfs.dsc.index.WfsDscDocumentProducer" init-method="init">
+        <property name="recordSetProducer" ref="recordSetProducer" />
+        <property name="recordMapperList">
+            <list>
+                <ref bean="recordMapper"/>
+            </list>
+        </property>
+        <property name="cache" ref="wfsCache" />
+        <property name="factory" ref="wfsFactory" />
+        <property name="job" ref="wfsUpdateJob" />
+    </bean>
+
+    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.WfsRecordSetProducer"/>
+
+    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
+        <property name="mappingScripts">
+	    	<list>
+	    		<value>classpath:mapping/lib.js</value>
+	    		<value>classpath:mapping/lucene_helper.js</value>
+	    		<value>classpath:mapping/zdm-wfs-1.1.0_to_lucene-igc.js</value>
+	    	</list>
+        </property> 
+        <property name="compile" value="true"/>
+    </bean>
+    
+    <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
+        <property name="dscRecordProducer" ref="dscRecordProducer" />
+    </bean>
+    
+    <bean id="dscRecordProducer" class="de.ingrid.iplug.wfs.dsc.record.IdfRecordCreator">
+        <property name="recordProducer" ref="recordProducer" />
+        <property name="record2IdfMapperList">
+            <list>
+                <ref bean="createIdfMapper"/>
+                <ref bean="idfMapper"/>
+            </list>
+        </property>
+        <property name="compressed" value="true" />
+    </bean>
+    
+    <bean id="recordProducer" class="de.ingrid.iplug.wfs.dsc.record.producer.WfsRecordProducer">
+        <property name="cache" ref="wfsCache" />
+        <property name="factory" ref="wfsFactory" />
+    </bean>
+    
+    <bean id="createIdfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.CreateIdfMapper" />
+    
+    <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
+        <property name="mappingScripts">
+	    	<list>
+	    		<value>classpath:mapping/lib.js</value>
+	    		<value>classpath:mapping/document_helper.js</value>
+	    		<value>classpath:mapping/zdm-wfs-1.1.0_to_idf.js</value>
+	    	</list>
+        </property> 
+        <property name="compile" value="true"/>
+    </bean>
+</beans>

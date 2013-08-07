@@ -18,4 +18,8 @@ if (log.isDebugEnabled()) {
 // get the gml:id attribute value of the root element
 // last evaluated expression is the return value
 var rootNode = xPathUtils.getNode(featureNode, "/*");
-rootNode.getAttributes().getNamedItem("gml:id").getNodeValue();
+var idAttr = rootNode.getAttributes().getNamedItem("gml:id");
+if (idAttr == null) {
+	log.error("Id Attribute 'gml:id' not set in feature " + rootNode);
+}
+idAttr.getNodeValue();
