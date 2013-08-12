@@ -17,7 +17,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="queryResultImpl"
             value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericQueryResult" />
         <property name="featureImpl" 
-        	value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature" />
+            value="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature" />
 
         <property name="queryTemplate" ref="wfsQueryTemplate" />    
         <property name="featureTemplate" ref="wfsFeatureTemplate" />    
@@ -199,8 +199,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </property>
     </bean>
 
-    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultUpdateStrategy">
-        <property name="requestPause" value="1000" />
+    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.PagingUpdateStrategy">
+        <property name="requestPause" value="100" />
+        <property name="maxFeatures" value="1000" />
     </bean>
     
     
@@ -228,11 +229,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
     <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
         <property name="mappingScripts">
-	    	<list>
-	    		<value>classpath:mapping/lib.js</value>
-	    		<value>classpath:mapping/lucene_helper.js</value>
-	    		<value>classpath:mapping/zdm-wfs-1.1.0_to_lucene-igc.js</value>
-	    	</list>
+            <list>
+                <value>classpath:mapping/lib.js</value>
+                <value>classpath:mapping/lucene_helper.js</value>
+                <value>classpath:mapping/zdm-wfs-1.1.0_to_lucene-igc.js</value>
+            </list>
         </property> 
         <property name="compile" value="true"/>
     </bean>
@@ -261,11 +262,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     
     <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
         <property name="mappingScripts">
-	    	<list>
-	    		<value>classpath:mapping/lib.js</value>
-	    		<value>classpath:mapping/document_helper.js</value>
-	    		<value>classpath:mapping/zdm-wfs-1.1.0_to_idf.js</value>
-	    	</list>
+            <list>
+                <value>classpath:mapping/lib.js</value>
+                <value>classpath:mapping/document_helper.js</value>
+                <value>classpath:mapping/zdm-wfs-1.1.0_to_idf.js</value>
+            </list>
         </property> 
         <property name="compile" value="true"/>
     </bean>

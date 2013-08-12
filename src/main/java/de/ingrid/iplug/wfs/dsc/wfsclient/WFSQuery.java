@@ -67,6 +67,30 @@ public interface WFSQuery {
 	public ResultType getResultType();
 
 	/**
+	 * Paging: Set the maximum number of features to fetch for this query.
+	 * @param maxFeatures PASS NULL IF ALL FEATURES !
+	 */
+	public void setMaxFeatures(Integer maxFeatures);
+
+	/**
+	 * Paging: Get the maximum number of features to fetch for this query.
+	 * @return Integer NULL IF ALL FEATURES !
+	 */
+	public Integer getMaxFeatures();
+
+	/**
+	 * Paging: Set the start index of features to fetch for this query
+	 * @param startIndex PASS NULL IF ALL FEATURES !
+	 */
+	public void setStartIndex(Integer startIndex);
+
+	/**
+	 * Paging: Get the start index of features to fetch for this query
+	 * @return Integer NULL IF ALL FEATURES !
+	 */
+	public Integer getStartIndex();
+
+	/**
 	 * Set the OGC filter for this query
 	 * @param filter
 	 */

@@ -94,6 +94,27 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 	 */
 	protected List<String> fetchRecords(WFSClient client, String typeName, Set<Document> filterSet,
 			boolean doCache) throws Exception {
+		
+		return fetchRecordsPaged(client, typeName, filterSet, doCache, null, null);
+	}
+
+	/**
+	 * Fetch all records PAGED that satisfy the given filter using the GetFeature method and
+	 * return the ids and put them into the cache
+	 * @note This method guarantees to query the server without a constraint, if the
+	 * provided filter set is empty
+	 * 
+	 * @param client The WSFClient to use
+	 * @param typeName The feature type of the records
+	 * @param filterSet The filter set used to select the records
+	 * @param doCache Determines whether to cache the records or not
+	 * @param maxNumFeatures maximum number of features to fetch. PASS NULL IF ALL FEATURES !
+	 * @param startIndex where to start fetching ? PASS NULL IF ALL FEATURES !
+	 * @return A list of ids of the fetched records
+	 * @throws Exception
+	 */
+	protected List<String> fetchRecordsPaged(WFSClient client, String typeName, Set<Document> filterSet,
+			boolean doCache, Integer maxNumFeatures, Integer startIndex) throws Exception {
 
 		WFSFactory factory = client.getFactory();
 		Log log = this.getLog();
@@ -125,6 +146,8 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 			query.setTypeName(typeName);
 			query.setFilter(filter);
 			query.setResultType(ResultType.RESULTS);
+			query.setMaxFeatures(maxNumFeatures);
+			query.setStartIndex(startIndex);
 
 			// do request
 			WFSQueryResult result = client.getFeature(query);
@@ -145,6 +168,29 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 	}
 
 	/**
+	 * Fetch total number of records of given feature type.
+	 * 
+	 * @param client The WSFClient to use
+	 * @param typeName The feature type of the records
+	 * @return the total number of records
+	 * @throws Exception
+	 */
+	protected int fetchTotalNumRecords(WFSClient client, String typeName) throws Exception {
+		WFSFactory factory = client.getFactory();
+
+		// create the query
+		WFSQuery query = factory.createQuery();
+		query.setTypeName(typeName);
+		// number of HITS, not RESULTS 
+		query.setResultType(ResultType.HITS);
+
+		// do request
+		WFSQueryResult result = client.getFeature(query);
+
+		return result.getNumberOfFeaturesTotal();
+	}
+
+	/**
 	 * Process a fetched search result (collect ids and cache records)
 	 * 
 	 * @param result The search result
@@ -162,8 +208,8 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 		for (WFSFeature record : result.getFeatureList()) {
 			String id = record.getId();
 
-			if (log.isInfoEnabled()) {
-				log.info("Fetched record: "+id);
+			if (log.isDebugEnabled()) {
+				log.debug("Fetched record: "+id);
 			}
 			if (fetchedRecordIds.contains(id)) {
 				log.warn("Duplicated id: "+id+". Overriding previous entry.");

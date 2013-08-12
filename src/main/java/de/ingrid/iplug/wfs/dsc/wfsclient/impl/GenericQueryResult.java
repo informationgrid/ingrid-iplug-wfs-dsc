@@ -43,7 +43,7 @@ public class GenericQueryResult implements WFSQueryResult {
 		this.query = query;
 		this.document = document;
 		this.features = new ArrayList<WFSFeature>();
-
+		
 		// parse the document and create the feature list
 		// NOTE: in version 1.1.0 all features are encapsulated in a featureMembers node
 		//       in version 1.0.0 each feature is encapsulated in a featureMember node
@@ -65,6 +65,15 @@ public class GenericQueryResult implements WFSQueryResult {
 				}
 			}
 			this.featuresTotal = this.features.size();
+		}
+		
+		// Check whether only total number of features was queried (e.g. ...SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=xxx&RESULTTYPE=hits).
+		// Then total number is in numberOfFeatures attribute in top FeatureCollection node
+		if (featureNodes == null || featureNodes.getLength() == 0) {
+			Integer numFeatures = xPathUtils.getInt(document, "/wfs:FeatureCollection/@numberOfFeatures");
+			if (numFeatures != null) {
+				featuresTotal = numFeatures;
+			}
 		}
 	}
 

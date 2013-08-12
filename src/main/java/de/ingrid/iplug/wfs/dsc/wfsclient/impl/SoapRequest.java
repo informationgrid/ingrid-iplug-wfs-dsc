@@ -118,6 +118,12 @@ public class SoapRequest implements WFSRequest {
 		// add the query specific parameters
 		method.addAttribute("outputFormat", query.getOutputFormat().toString(), null);
 		method.addAttribute("resultType", query.getResultType().toString(), null);
+		if (query.getMaxFeatures() != null) {
+			method.addAttribute("maxFeatures", query.getMaxFeatures().toString(), null);
+		}
+		if (query.getStartIndex() != null) {
+			method.addAttribute("startIndex", query.getStartIndex().toString(), null);
+		}
 
 		// create Query element
 		OMElement queryElem = fac.createOMElement("Query", wfsNs);

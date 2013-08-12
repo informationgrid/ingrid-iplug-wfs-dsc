@@ -25,6 +25,11 @@ public class GenericQuery implements Serializable, WFSQuery {
 	protected String typeName = "";
 	protected Document filter = null;
 
+	// Paging
+	protected Integer maxFeatures = null;
+	protected Integer startIndex = null;
+	
+
 	/**
 	 * GetFeature specific
 	 */
@@ -99,5 +104,25 @@ public class GenericQuery implements Serializable, WFSQuery {
 			} catch (TransformerException e) {}
 		}
 		return "";
+	}
+
+	@Override
+	public void setMaxFeatures(Integer maxFeatures) {
+		this.maxFeatures  = maxFeatures;
+	}
+
+	@Override
+	public Integer getMaxFeatures() {
+		return this.maxFeatures;
+	}
+
+	@Override
+	public void setStartIndex(Integer startIndex) {
+		this.startIndex  = startIndex;
+	}
+
+	@Override
+	public Integer getStartIndex() {
+		return this.startIndex;
 	}
 }

@@ -200,8 +200,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </property>
     </bean>
 
-    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultUpdateStrategy">
-        <property name="requestPause" value="1000" />
+    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.PagingUpdateStrategy">
+        <property name="requestPause" value="100" />
+        <property name="maxFeatures" value="1000" />
     </bean>
     
     

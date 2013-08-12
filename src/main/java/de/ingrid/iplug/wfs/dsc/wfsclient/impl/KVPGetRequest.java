@@ -72,14 +72,27 @@ public class KVPGetRequest implements WFSRequest {
 
 		// add the GetFeature request parameters,
 		// @note Parameters must be treated in case-insensitive manner on the server side
-		String requestURL = serverURL+
-				"?SERVICE="+WFSConstants.SERVICE_TYPE+
+		String requestURL = serverURL;
+		if (!requestURL.endsWith("?")) {
+			requestURL += "?";
+		}
+		requestURL += "SERVICE="+WFSConstants.SERVICE_TYPE+
 				"&REQUEST="+Operation.GET_FEATURE+
 				"&VERSION="+query.getVersion()+
 				"&TYPENAME="+query.getTypeName()+
-				"&OUTPUTFORMAT="+query.getOutputFormat().toString()+
-				"&RESULTTYPE="+query.getResultType()+
-				"&FILTER="+query.getFilterAsString();
+				"&RESULTTYPE="+query.getResultType();
+		if (query.getOutputFormat() != null) {
+			requestURL += "&OUTPUTFORMAT="+query.getOutputFormat().toString().replace(" ", "%20");			
+		}
+		if (query.getFilter() != null) {
+			requestURL += "&FILTER="+query.getFilterAsString();
+		}
+		if (query.getMaxFeatures() != null) {
+			requestURL += "&MAXFEATURES="+query.getMaxFeatures();
+		}
+		if (query.getStartIndex() != null) {
+			requestURL += "&STARTINDEX="+query.getStartIndex();
+		}
 
 		Document result = this.sendRequest(requestURL);
 		return result;
