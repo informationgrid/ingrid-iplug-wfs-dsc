@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -21,6 +23,8 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.xpath.XPathUtils;
 
 public class GenericCapabilities implements WFSCapabilities {
+
+	final protected static Log log = LogFactory.getLog(GenericCapabilities.class);
 
 	protected static final XPathUtils xPathUtils = new XPathUtils(new WfsNamespaceContext());
 
@@ -103,8 +107,15 @@ public class GenericCapabilities implements WFSCapabilities {
 		List<String> types = new ArrayList<String>();
 		NodeList featureTypeNameNodes = xPathUtils.getNodeList(this.capDoc, "/wfs:WFS_Capabilities/wfs:FeatureTypeList/wfs:FeatureType/wfs:Name");
 		if (featureTypeNameNodes != null) {
+			if (log.isInfoEnabled()) {
+				log.info("Fetched Number of FeatureTypes from Capabilities: "+featureTypeNameNodes.getLength());
+			}
+
 			for (int i=0; i<featureTypeNameNodes.getLength(); i++) {
 				String curName = featureTypeNameNodes.item(i).getTextContent();
+				if (log.isDebugEnabled()) {
+					log.debug("    " + curName);
+				}
 				types.add(curName);
 			}
 		}
