@@ -1,42 +1,108 @@
-<project name="PortalU Installation">
+<project name="IPlug WFS-DSC Installation" basedir=".">
     <description>
         InGrid iPlug WFS-DSC Installation Script
     </description>
-	<!-- set global properties for this build -->
-	<property name="componentName" 			value="${project.build.finalName}"/>
-	<property name="xml-communication" 	value="${installDir}/conf/communication.xml"/>
+
+    <import file="build-installer-utils.xml"  as="utils" />
+    <import file="build-patch.xml"            as="patch" />
+
+    <!-- set global properties for this build -->
+    <property name="componentName"      value="${project.build.finalName}"/>
+    <property name="xml-communication"  value="${installDir}/conf/communication.xml"/>
     <property name="start-script"       value="${installDir}/start.sh"/>
-	
-	<target name="extract" description="Extract all files to the installation directory.">
-		<unzip src="${antinstaller.jar}" dest="${installDir}">
-			<patternset>
-				<include name="${componentName}/**/*.*"/>
-			</patternset>
-		</unzip>
-		
-		<move toDir="${installDir}">
-			<fileset dir="${installDir}/${componentName}"/>
-		</move>
-		
-		<mkdir dir="${installDir}/logs"/>
+
+    <!-- THIS PORPERTIES ARE NECESSARY FOR UPDATES -->
+    <property name="libraryDir"         value="lib" />
+    <property name="libraryIdent"       value="ingrid-iplug-wfs-dsc-" />
+    <property name="versionsWithConfigurations"  value="" />
+    <property name="minSupportedVersion" value="3.3.0" />
+
+    <!--
+
+    ***************************************************************************************
+    * NEW INSTALLATION
+    ***************************************************************************************
+
+    -->
+    
+    <target name="setInstallProperty" depends="extract">
+        <property name="installProcedure" value="true" />
+    </target>
+    
+    <target name="extract" description="Extract all files to the installation directory.">
+        <unzip src="${antinstaller.jar}" dest="${installDir}">
+            <patternset>
+                <include name="${componentName}/**/*.*" />
+            </patternset>
+        </unzip>
+        
+        <move toDir="${installDir}">
+            <fileset dir="${installDir}/${componentName}"/>
+        </move>
+        
+        <mkdir dir="${installDir}/logs"/>
+        <mkdir dir="${installDir}/webapp/WEB-INF/work"/>
         
         <replace file="${start-script}" token="@SERVER_PORT@" value="${localServerPort}"/>
-    
-        <condition property="copy.plugDescription">
-          <not>
-            <equals arg1="${plugDescription}" arg2="noPlugDescription"/>
-          </not>
-        </condition>
-	</target>
+    </target>
 
-	<target name="startComponent">
-		<echo>
+    <!--
+
+    ***************************************************************************************
+    * UPDATE
+    ***************************************************************************************
+
+    -->
+
+    <target name="setUpdateProperty" depends="checkPreconditionsForUpdate, extractUpdate">
+        <property name="installType" value="update" />
+        <property name="updateProcedure" value="true" />
+    </target>
+
+    <target name="extractUpdate" description="Extract all files to the installation directory without overwriting config files.">
+        <echo message="Unzip to basedir: ." />
+        <unzip src="${antinstaller.jar}" dest=".">
+            <patternset>
+                <include name="**/*.*"/>
+                <exclude name="${componentName}/webapp/WEB-INF/spring.xml" />
+                <exclude name="${componentName}/start.sh" />
+                <exclude name="${componentName}/conf/communication.xml" />
+            </patternset>
+        </unzip>
+
+        <delete dir="${installDir}/lib"/>
+
+        <move toDir="${installDir}">
+            <fileset dir="./${componentName}"/>
+        </move>
+
+        <mkdir dir="${installDir}/webapp/WEB-INF/work"/>
+
+    </target>
+
+    <!--
+
+    ***************************************************************************************
+    * PATCHING
+    ***************************************************************************************
+
+    -->
+
+    <target name="patchFiles" description="Patch all config files that have been modified during last update." unless="unsupportedVersion">
+
+        <echo message="Patch from Version: ${oldVersion}" />
+        <runtarget target="patch.doPatch"/>
+
+    </target>
+
+    <target name="startComponent">
+        <echo>
 =================
 Weiteres Vorgehen
 =================
 
-		</echo>
-		<echo>
+        </echo>
+        <echo>
 Gehen Sie ins Verzeichnis:
 ${installDir}
 und rufen sie von der Kommandozeile folgendes auf
@@ -45,15 +111,16 @@ der folgenden Adresse "http://localhost:${localServerPort}"
 zu konfigurieren. Anstelle von localhost koennen Sie
 auch die IP-Adresse des Computers eingeben!
 Bitte lesen Sie bzgl. der Administration die Kapitel unter
-"http://www.kst.portalu.de/wiki/index.php/Allgemeines_zu_den_iPlugs".
+"http://kst.portalu.de/foswiki/bin/view/InGrid3/AllgemeinesZuDenIPlugs".
 
 Bevor das iPlug benutzt werden kann, muss es in der iBus-
 Administration (im Portal) eingeschaltet werden.
 
 Weitere Informationen entnehmen Sie bitte dem
 Online-Handbuch unter 
-http://www.kst.portalu.de/wiki/index.php/InGrid_Installation.
-		</echo>
-	</target>
-	
+http://kst.portalu.de/foswiki/bin/view/InGrid3/InGridBetriebshandbuch
+        </echo>
+
+        <runtarget target="showPatchErrors" />
+    </target>
 </project>

@@ -5,7 +5,10 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
-    <release version="3.4.0-SNAPSHOT" date="2013-xx-xx" description="Release InGrid 3.4.0-SNAPSHOT">
+    <release version="3.4.0" date="2014-02-26" description="Release InGrid 3.4.0">
+      <action type="add" dev="wemove">
+      	Added update / patch mechanism to installer.
+      </action>
       <action type="add" dev="wemove" issue="AF-00186">
       	Added mapping and configuration for ZDM-WFS.
       	Added paging mechanism for fetching features.
