@@ -8,12 +8,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.ingrid</groupId>
 	<artifactId>ingrid-iplug-wfs-dsc</artifactId>
-	<version>3.4.0-SNAPSHOT</version>
+	<version>3.4.0</version>
 	<packaging>jar</packaging>
 	<name>ingrid-iplug-wfs-dsc:war</name>
 	<scm>
-		<connection>scm:svn:https://harrison.its-technidata.de:444/svn/ingrid/ingrid-iplug-wfs-dsc/trunk</connection>
-		<developerConnection>scm:svn:https://harrison.its-technidata.de:444/svn/ingrid/ingrid-iplug-wfs-dsc/trunk</developerConnection>
+		<connection>scm:svn:https://harrison.its-technidata.de:444/svn/ingrid/ingrid-iplug-wfs-dsc/tags/ingrid-iplug-wfs-dsc-3.4.0</connection>
+		<developerConnection>scm:svn:https://harrison.its-technidata.de:444/svn/ingrid/ingrid-iplug-wfs-dsc/tags/ingrid-iplug-wfs-dsc-3.4.0</developerConnection>
 	</scm>
 	<repositories>
 		<!--
