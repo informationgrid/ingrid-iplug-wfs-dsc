@@ -85,10 +85,11 @@ function getBoundingBox(recordNode) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
 		return {
-			x1: lowerCoords[0],
-			x2: upperCoords[0],
-			y1: lowerCoords[1],
-			y2: upperCoords[1]
+            // Latitude first (Breitengrad = y), longitude second (Längengrad = x)
+			y1: lowerCoords[0], // south
+			x1: lowerCoords[1], // west
+			y2: upperCoords[0], // north
+			x2: upperCoords[1]  // east
 		}
 	}
 }

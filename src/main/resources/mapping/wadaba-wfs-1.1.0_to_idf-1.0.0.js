@@ -83,10 +83,11 @@ function getBoundingBox(recordNode) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
 		return {
-			x1: lowerCoords[0],
-			x2: upperCoords[0],
-			y1: lowerCoords[1],
-			y2: upperCoords[1]
+            // Latitude first (Breitengrad = y), longitude second (Längengrad = x)
+			y1: lowerCoords[0], // south
+			x1: lowerCoords[1], // west
+			y2: upperCoords[0], // north
+			x2: upperCoords[1]  // east
 		}
 	}
 }
@@ -97,9 +98,11 @@ function getMapPreview(recordNode) {
         // BBOX
         var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
         var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-        var W = Number(lowerCoords[0]); // WEST
-        var N = Number(upperCoords[1]); // NORTH
-        var BBOX = "" + (N - 0.048) + "," + (W - 0.012) + "," + (N + 0.048) + "," + (W + 0.012);
+        var S = Number(lowerCoords[0]); // SOUTH
+        var E = Number(upperCoords[1]); // EAST
+        // NOTICE: 
+        // lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
+        var BBOX = "" + (E - 0.048) + "," + (S - 0.012) + "," + (E + 0.048) + "," + (S + 0.012);
 
         //  Fields for link
         var BWSTR = xPathUtils.getString(recordNode, "//ms:BWSTR");

@@ -68,10 +68,11 @@ function mapBoundingBox(recordNode) {
 	if (hasValue(gmlEnvelope)) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-		addNumericToDoc(document, "x1", lowerCoords[0], false); // west
-		addNumericToDoc(document, "x2", upperCoords[0], false); // east
-		addNumericToDoc(document, "y1", lowerCoords[1], false); // south
-		addNumericToDoc(document, "y2", upperCoords[1], false); // north
+        // Latitude first (Breitengrad = y), longitude second (Längengrad = x)
+		addNumericToDoc(document, "y1", lowerCoords[0], false); // south
+		addNumericToDoc(document, "x1", lowerCoords[1], false); // west
+		addNumericToDoc(document, "y2", upperCoords[0], false); // north
+		addNumericToDoc(document, "x2", upperCoords[1], false); // east
 	}
 }
 
@@ -81,9 +82,11 @@ function mapPreview(recordNode) {
     	// BBOX
         var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
         var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-        var W = Number(lowerCoords[0]); // WEST
-        var N = Number(upperCoords[1]); // NORTH
-        var BBOX = "" + (N - 0.048) + "," + (W - 0.012) + "," + (N + 0.048) + "," + (W + 0.012);
+        var S = Number(lowerCoords[0]); // SOUTH
+        var E = Number(upperCoords[1]); // EAST
+        // NOTICE: 
+        // lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
+        var BBOX = "" + (E - 0.048) + "," + (S - 0.012) + "," + (E + 0.048) + "," + (S + 0.012);
 
         //  Fields for link
         var BWSTR = xPathUtils.getString(recordNode, "//ms:BWSTR");
