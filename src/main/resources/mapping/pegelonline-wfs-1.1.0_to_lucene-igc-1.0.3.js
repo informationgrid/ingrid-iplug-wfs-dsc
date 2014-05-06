@@ -192,6 +192,6 @@ function mapBoundingBox(recordNode) {
 		addNumericToDoc(document, "y1", lowerCoords[0], false); // south
 		addNumericToDoc(document, "x1", lowerCoords[1], false); // west
 		addNumericToDoc(document, "y2", upperCoords[0], false); // north
-		addNumericToDoc(document, "x2", lowerCoords[1], false); // east
+		addNumericToDoc(document, "x2", upperCoords[1], false); // east
 	}
 }
