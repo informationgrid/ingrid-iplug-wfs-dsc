@@ -55,7 +55,7 @@
                     <tr>
                         <td class="leftCol">Service Url</td>
                         <td>
-                            <form:input path="serviceUrl" />
+                            <div class="input full"><form:input path="serviceUrl" /></div>
                             <form:errors path="serviceUrl" cssClass="error" element="div" />
                             <br />
                             <fmt:message key="WfsConfiguration.serviceUrl.help"/>

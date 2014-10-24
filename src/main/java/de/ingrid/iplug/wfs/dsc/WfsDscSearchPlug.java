@@ -12,6 +12,9 @@ import org.apache.lucene.document.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tngtech.configbuilder.ConfigBuilder;
+
+import de.ingrid.admin.JettyStarter;
 import de.ingrid.admin.search.IngridIndexSearcher;
 import de.ingrid.iplug.HeartBeatPlug;
 import de.ingrid.iplug.IPlugdescriptionFieldFilter;
@@ -41,6 +44,8 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 */
 	private static Log log = LogFactory.getLog(WfsDscSearchPlug.class);
 
+	public static Configuration conf;
+	
 	private IdfRecordCreator dscRecordProducer = null;
 
 	private final IngridIndexSearcher _indexSearcher;
@@ -151,4 +156,8 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 		document.put(ConfigurationKeys.RESPONSE_KEY_IDF_RECORD, r);
 	}
 
+	public static void main(String[] args) throws Exception {
+        conf = new ConfigBuilder<Configuration>(Configuration.class).withCommandLineArgs(args).build();
+        new JettyStarter( conf );
+    }
 }
