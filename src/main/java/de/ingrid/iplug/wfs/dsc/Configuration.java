@@ -22,13 +22,6 @@ public class Configuration implements IConfig {
     @PropertyValue("plugdescription.fields")
     public String fields;
     
-    @PropertyValue("plugdescription.isRecordLoader")
-    @DefaultValue("false")
-    public boolean recordLoader;
-    
-    @PropertyValue("plugdescription.ranking")
-    public String rankings;
-    
     @PropertyValue("plugdescription.serviceUrl")
     @DefaultValue("")
     public String serviceUrl;
@@ -47,27 +40,6 @@ public class Configuration implements IConfig {
         		for(String field : fieldsList){
         			pdObject.addField(field);
         		}
-        	}
-    	}
-        
-        pdObject.setRecordLoader(recordLoader);
-        
-        if(pdObject.getRankingTypes().length == 0){
-        	if(rankings != null){
-        		String[] rankingList = rankings.split(",");
-        		boolean score = false;
-				boolean date = false;
-				boolean notRanked = false;
-				for(String ranking : rankingList){
-        			if(ranking.equals("score")){
-        				score = true;
-        			}else if (ranking.equals("date")) {
-        				date = true;
-					}else if (ranking.equals("notRanked")) {
-						notRanked = true;
-					}
-        		}
-				pdObject.setRankinTypes(score, date, notRanked);
         	}
     	}
         
