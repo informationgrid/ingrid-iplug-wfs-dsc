@@ -10,10 +10,10 @@
 	<artifactId>ingrid-iplug-wfs-dsc</artifactId>
 	<version>3.5.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>ingrid-iplug-wfs-dsc:war</name>
+	<name>InGrid iPlug-WFS-DSC</name>
 	<scm>
-		<connection>scm:svn:https://harrison.its-technidata.de:444/svn/ingrid/ingrid-iplug-wfs-dsc/trunk</connection>
-		<developerConnection>scm:svn:https://harrison.its-technidata.de:444/svn/ingrid/ingrid-iplug-wfs-dsc/trunk</developerConnection>
+		<connection>scm:git:git@github.com:informationgrid/ingrid-iplug-wfs-dsc.git</connection>
+		<developerConnection>scm:git:git@github.com:informationgrid/ingrid-iplug-wfs-dsc.git</developerConnection>
 	</scm>
 	<repositories>
 		<!--
@@ -23,7 +23,7 @@
 		<repository>
 			<id>de.ingrid.all</id>
 			<name>Maven Repo InGrid</name>
-			<url>http://harrison.its-technidata.de/archiva/repository/ingrid-all</url>
+			<url>https://dev.informationgrid.eu/archiva/repository/ingrid-all</url>
 		</repository>
 	</repositories>
 
