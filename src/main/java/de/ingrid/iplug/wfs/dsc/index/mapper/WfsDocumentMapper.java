@@ -77,6 +77,7 @@ public class WfsDocumentMapper implements IRecordMapper {
 			parameters.put("wfsRecord", wfsRecord);
 			parameters.put("document", doc);
 			parameters.put("xPathUtils", xPathUtils);
+			parameters.put("javaVersion", System.getProperty( "java.version" ));
 			parameters.put("log", log);
 			ScriptEngine.execute(this.mappingScripts, parameters, this.compile);
 		} catch (Exception e) {

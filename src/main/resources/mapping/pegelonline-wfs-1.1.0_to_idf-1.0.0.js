@@ -35,6 +35,10 @@
  * @param log
  *            A Log instance
  */
+if (javaVersion.indexOf( "1.8" ) === 0) {
+    load("nashorn:mozilla_compat.js");
+}
+
 importPackage(Packages.org.apache.lucene.document);
 importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
 importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);

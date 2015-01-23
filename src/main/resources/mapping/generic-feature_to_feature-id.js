@@ -31,6 +31,10 @@
  * @param log A Log instance
  * @return String
  */
+if (javaVersion.indexOf( "1.8" ) === 0) {
+    load("nashorn:mozilla_compat.js");
+}
+
 importPackage(Packages.org.w3c.dom);
 
 if (log.isDebugEnabled()) {

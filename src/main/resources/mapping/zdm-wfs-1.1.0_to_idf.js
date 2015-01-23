@@ -35,6 +35,10 @@
  * @param log
  *            A Log instance
  */
+if (javaVersion.indexOf( "1.8" ) === 0) {
+    load("nashorn:mozilla_compat.js");
+}
+
 importPackage(Packages.org.apache.lucene.document);
 importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
 importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);
@@ -112,7 +116,7 @@ function getBoundingBox(recordNode) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
 		return {
-            // Latitude first (Breitengrad = y), longitude second (Längengrad = x)
+            // Latitude first (Breitengrad = y), longitude second (Lï¿½ngengrad = x)
 			y1: lowerCoords[0], // south
 			x1: lowerCoords[1], // west
 			y2: upperCoords[0], // north

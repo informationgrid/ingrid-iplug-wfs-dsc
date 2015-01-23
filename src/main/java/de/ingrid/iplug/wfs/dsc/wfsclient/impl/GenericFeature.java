@@ -162,6 +162,7 @@ public class GenericFeature implements WFSFeature {
 		Map<String, Object> parameters = new Hashtable<String, Object>();
 		parameters.put("featureNode", featureNode);
 		parameters.put("xPathUtils", this.xPathUtils);
+		parameters.put("javaVersion", System.getProperty( "java.version" ));
 		parameters.put("log", log);
 		File[] scripts = new File[]{ this.idMappingScript };
 		Map<String, Object> results = ScriptEngine.execute(scripts, parameters, this.compile);
