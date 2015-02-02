@@ -28,7 +28,13 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
-    <release version="3.5.0-SNAPSHOT" date="???" description="Release InGrid ???">
+    <release version="3.5.0" date="2015-02-02" description="Release InGrid 3.5.0">
+      <action type="fix" dev="wemove" issue="REDMINE-595">
+        Update URL on Wadaba mapping.
+      </action>
+      <action type="fix" dev="wemove" issue="REDMINE-190">
+        Fixed mappings for correct mapping of bbox.
+      </action>
       <action type="add" dev="wemove" issue="REDMINE-524">
         Added license header to all source files for Open Source migration.
       </action>
