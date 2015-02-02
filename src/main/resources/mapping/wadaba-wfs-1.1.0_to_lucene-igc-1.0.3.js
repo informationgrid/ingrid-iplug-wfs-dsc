@@ -118,7 +118,7 @@ function mapPreview(recordNode) {
         var BWSTR = xPathUtils.getString(recordNode, "//ms:BWSTR");
         var KM_ANF_D = xPathUtils.getString(recordNode, "//ms:KM_ANF_D");
 
-        var addHtml = "<a href=\"http://atlas.wsv.bvbs.bund.de/positionfinder/map/index.html?bwastr=" + BWSTR + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
+        var addHtml = "<a href=\"http://atlas.wsv.bvbs.bund.de/positionfinder/map/index.html?bwastr=" + BWSTR.trim() + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
             "<div style=\"background-image: url(http://wsvmapserv.ilmenau.baw.de/cgi-bin/wmstk?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;BBOX=" + BBOX +
             "&amp;LAYERS=TK1000,TK500,TK200,TK100,TK50,TK25&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
             "<div style=\"background-image: url(http://wsvmapserv.wsv.bund.de/ienc?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
