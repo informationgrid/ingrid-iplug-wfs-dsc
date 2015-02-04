@@ -8,13 +8,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.ingrid</groupId>
 	<artifactId>ingrid-iplug-wfs-dsc</artifactId>
-	<version>3.5.0</version>
+	<version>3.6.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>InGrid iPlug-WFS-DSC</name>
 	<scm>
 		<connection>scm:git:git@github.com:informationgrid/ingrid-iplug-wfs-dsc.git</connection>
 		<developerConnection>scm:git:git@github.com:informationgrid/ingrid-iplug-wfs-dsc.git</developerConnection>
-	  <tag>ingrid-iplug-wfs-dsc-3.5.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<repositories>
 		<!--
