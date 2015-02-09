@@ -53,18 +53,11 @@ and import project into eclipse.
 
 ### Debug under eclipse
 
-- create a `conf` directory in the projects root directory
-- copy the following files from `test/resources` into the directory `/conf`
-  - ingrid.auth
-  - plugdescription.xml
-  - communication.xml
-  - log4j.properties
 - execute `mvn install` to expand the base web application
-- set up a java application Run Configuration
-- start Class is `de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug`
+- set up a java application Run Configuration with start class `de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug`
 - add the VM argument `-Djetty.webapp=src/main/webapp` to the Run Configuration
 - add src/main/resources to class path
-- the admin gui start per default on port 8082, change this with VM argument `-Djetty.port=8083`
+- the admin gui starts per default on port 8082, change this with VM argument `-Djetty.port=8083`
 
 Support
 -------
