@@ -20,18 +20,21 @@ Requirements
 Installation
 ------------
 
-- download from https://dev.informationgrid.eu/ingrid-distributions/ingrid-iplug-wfs-dsc/
+Download from https://dev.informationgrid.eu/ingrid-distributions/ingrid-iplug-wfs-dsc/
  
 or
 
-- build from source with `mvn assembly-single`
+build from source with `mvn assembly-single`.
+
+Execute
 
 ```
 java -jar ingrid-iplug-wfs-dsc-x.x.x-installer.jar
 ```
-- follow install instructions
 
-- further information https://dev.informationgrid.eu/github-pages/3.4/components/iplug_dsc_wfs.html
+and follow the install instructions.
+
+Obtain further information at https://dev.informationgrid.eu/
 
 
 Contribute
