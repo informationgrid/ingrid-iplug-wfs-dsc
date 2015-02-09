@@ -24,7 +24,7 @@ Download from https://dev.informationgrid.eu/ingrid-distributions/ingrid-iplug-w
  
 or
 
-build from source with `mvn assembly-single`.
+build from source with `mvn package assembly:single`.
 
 Execute
 
@@ -61,10 +61,10 @@ and import project into eclipse.
   - log4j.properties
 - execute `mvn install` to expand the base web application
 - set up a java application Run Configuration
-- start Class is `de.ingrid.iplug.dsc.JettyStarter`
+- start Class is `de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug`
 - add the VM argument `-Djetty.webapp=src/main/webapp` to the Run Configuration
 - add src/main/resources to class path
-
+- the admin gui start per default on port 8082, change this with VM argument `-Djetty.port=8083`
 
 Support
 -------
