@@ -21,9 +21,13 @@ Installation
 ------------
 
 - download from https://dev.informationgrid.eu/ingrid-distributions/ingrid-iplug-wfs-dsc/
+ 
+or
+
+- build from source with `mvn assembly-single`
 
 ```
-java -jar ingrid-iplug-wfs-dsc-x.x.x.jar
+java -jar ingrid-iplug-wfs-dsc-x.x.x-installer.jar
 ```
 - follow install instructions
 
@@ -35,11 +39,34 @@ Contribute
 
 - Issue Tracker: https://github.com/informationgrid/ingrid-iplug-wfs-dsc/issues
 - Source Code: https://github.com/informationgrid/ingrid-iplug-wfs-dsc
+ 
+### Set up eclipse project
+
+```
+mvn eclipse:eclipse
+```
+
+and import project into eclipse.
+
+### Debug under eclipse
+
+- create a `conf` directory in the projects root directory
+- copy the following files from `test/resources` into the directory `/conf`
+  - ingrid.auth
+  - plugdescription.xml
+  - communication.xml
+  - log4j.properties
+- execute `mvn install` to expand the base web application
+- set up a java application Run Configuration
+- start Class is `de.ingrid.iplug.dsc.JettyStarter`
+- add the VM argument `-Djetty.webapp=src/main/webapp` to the Run Configuration
+- add src/main/resources to class path
+
 
 Support
 -------
 
-If you are having issues, please let us know: ingrid@wemove.com
+If you are having issues, please let us know: info@informationgrid.eu
 
 License
 -------
