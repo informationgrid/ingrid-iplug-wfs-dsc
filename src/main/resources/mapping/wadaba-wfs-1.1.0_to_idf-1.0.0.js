@@ -137,7 +137,7 @@ function getMapPreview(recordNode) {
         var addHtml = "<a href=\"http://atlas.wsv.bvbs.bund.de/positionfinder/map/index.html?bwastr=" + BWSTR.trim() + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
             "<div style=\"background-image: url(http://atlas.wsv.bvbs.bund.de/tk/wms?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;BBOX=" + BBOX +
             "&amp;LAYERS=TK1000,TK500,TK200,TK100,TK50,TK25&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
-            "<div style=\"background-image: url(http://wsvmapserv.wsv.bund.de/ienc?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
+            "<div style=\"background-image: url(http://atlas.wsv.bund.de/ienc/group/wms?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
             "&amp;Layers=Harbour&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px;\">" +
             "<img src=\"/ingrid-portal-apps/images/map_punkt.png\" alt=\"\">" +
             "</div></div></a>";
