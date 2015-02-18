@@ -34,6 +34,7 @@ import com.tngtech.configbuilder.annotation.valueextractor.PropertyValue;
 
 import de.ingrid.admin.IConfig;
 import de.ingrid.admin.command.PlugdescriptionCommandObject;
+import de.ingrid.utils.PlugDescription;
 
 @PropertiesFiles( {"config"} )
 @PropertyLocations(directories = {"conf"}, fromClassLoader = true)
@@ -64,6 +65,14 @@ public class Configuration implements IConfig {
         		}
         	}
     	}
+    	// add necessary fields so iBus actually will query us
+        // remove field first to prevent multiple equal entries
+        pdObject.removeFromList(PlugDescription.FIELDS, "incl_meta");
+        pdObject.addField("incl_meta");
+        pdObject.removeFromList(PlugDescription.FIELDS, "t01_object.obj_class");
+        pdObject.addField("t01_object.obj_class");
+        pdObject.removeFromList(PlugDescription.FIELDS, "metaclass");
+        pdObject.addField("metaclass");
         
         pdObject.put("serviceUrl", serviceUrl);
     }
