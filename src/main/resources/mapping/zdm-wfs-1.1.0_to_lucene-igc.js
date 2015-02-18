@@ -126,9 +126,10 @@ function mapPreview(recordNode) {
 
         var addHtml = "" + 
 //            "<a href=\"http://wsvmapserv.wsv.bvbs.bund.de/ol_bwastr/index.html?bwastr=" + BWSTR + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
-            "<div style=\"background-image: url(http://wsvmapserv.ilmenau.baw.de/cgi-bin/wmstk?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;BBOX=" + BBOX +
-            "&amp;LAYERS=TK1000,TK500,TK200,TK100,TK50,TK25&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
-            "<div style=\"background-image: url(http://wsvmapserv.wsv.bund.de/ienc?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
+            "<div style=\"background-image: url(http://atlas.wsv.bvbs.bund.de/tkgroup/wms?LAYERS=TK&amp;EXCEPTIONS=application%2Fvnd.ogc.se_inimage&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=TRUE" + 
+            "&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetMap&amp;STYLES=&amp;INFO_FORMAT=&amp;SRS=EPSG%3A4326&amp;BBOX=" + BBOX + "&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; " +
+            "width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
+            "<div style=\"background-image: url(http://atlas.wsv.bund.de/ienc/group/wms?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
             "&amp;Layers=Harbour&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px;\">" +
             "<img src=\"/ingrid-portal-apps/images/map_punkt.png\" alt=\"\">" +
             "</div></div>";
