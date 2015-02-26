@@ -24,9 +24,6 @@ package de.ingrid.iplug.wfs.dsc;
 
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.tngtech.configbuilder.annotation.propertyloaderconfiguration.PropertiesFiles;
 import com.tngtech.configbuilder.annotation.propertyloaderconfiguration.PropertyLocations;
 import com.tngtech.configbuilder.annotation.valueextractor.DefaultValue;
@@ -40,10 +37,7 @@ import de.ingrid.utils.PlugDescription;
 @PropertyLocations(directories = {"conf"}, fromClassLoader = true)
 public class Configuration implements IConfig {
     
-    private static Log log = LogFactory.getLog(Configuration.class);
-    
-    @PropertyValue("plugdescription.fields")
-    public String fields;
+    //private static Log log = LogFactory.getLog(Configuration.class);
     
     @PropertyValue("plugdescription.serviceUrl")
     @DefaultValue("")
@@ -57,14 +51,6 @@ public class Configuration implements IConfig {
     public void addPlugdescriptionValues( PlugdescriptionCommandObject pdObject ) {
         pdObject.put( "iPlugClass", "de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug");
         
-    	if(pdObject.getFields().length == 0){
-        	if(fields != null){
-        		String[] fieldsList = fields.split(",");
-        		for(String field : fieldsList){
-        			pdObject.addField(field);
-        		}
-        	}
-    	}
     	// add necessary fields so iBus actually will query us
         // remove field first to prevent multiple equal entries
         pdObject.removeFromList(PlugDescription.FIELDS, "incl_meta");

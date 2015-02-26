@@ -129,8 +129,10 @@ public class UpdateJob {
 			String line = input.readLine();
 			if (line != null) {
 				Date date = DATEFORMAT.parse(line.trim());
+				input.close();
 				return date;
 			}
+			input.close();
 		}
 		catch (Exception e) {
 			log.warn("Could not read from "+DATE_FILENAME+". " +
