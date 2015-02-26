@@ -65,8 +65,6 @@ public class Configuration implements IConfig {
 
     @Override
     public void setPropertiesFromPlugdescription( Properties props, PlugdescriptionCommandObject pd ) {
-    	if(pd.get("serviceUrl") != null){
-        	props.setProperty("plugdescription.serviceUrl", (String) pd.get("serviceUrl"));
-    	}
+        props.setProperty("plugdescription.serviceUrl", serviceUrl);
     }
 }

@@ -33,9 +33,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import de.ingrid.admin.command.PlugdescriptionCommandObject;
 import de.ingrid.admin.controller.AbstractController;
+import de.ingrid.iplug.wfs.dsc.Configuration;
+import de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug;
 import de.ingrid.iplug.wfs.dsc.webapp.object.WfsConfiguration;
 import de.ingrid.iplug.wfs.dsc.webapp.validation.WfsParameterValidator;
-import de.ingrid.utils.PlugDescription;
 
 /**
  * Control the wfs parameter page.
@@ -89,9 +90,8 @@ public class WfsParameterController extends AbstractController {
 	private void mapParamsToPD(WfsConfiguration commandObject,
 			PlugdescriptionCommandObject pdCommandObject) {
 
-		pdCommandObject.put("serviceUrl", commandObject.getServiceUrl());
-
-		pdCommandObject.setRankinTypes(true, false, false);
+	    Configuration conf = WfsDscSearchPlug.conf;
+		conf.serviceUrl = commandObject.getServiceUrl();
 
 		// add required datatypes to PD
 		// -> is added in GeneralController with forced added datatype!
