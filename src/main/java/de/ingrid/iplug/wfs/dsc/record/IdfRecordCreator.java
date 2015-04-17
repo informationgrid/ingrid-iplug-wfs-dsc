@@ -32,11 +32,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.log4j.Logger;
-import org.apache.lucene.document.Document;
 
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.record.mapper.IIdfMapper;
 import de.ingrid.iplug.wfs.dsc.record.producer.IRecordProducer;
+import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.dsc.Record;
 import de.ingrid.utils.idf.IdfTool;
 import de.ingrid.utils.xml.XMLUtils;
@@ -71,14 +71,14 @@ public class IdfRecordCreator {
 	 * "compressed" is set to "true" if the IDF document is compressed, "false"
 	 * if the IDF document is not compressed.
 	 * 
-	 * @param idxDoc
+	 * @param document
 	 * @return
 	 * @throws Exception
 	 */
-	public Record getRecord(Document idxDoc) throws Exception {
+	public Record getRecord(ElasticDocument document) throws Exception {
 		try {
 			this.recordProducer.openDatasource();
-			SourceRecord sourceRecord = this.recordProducer.getRecord(idxDoc);
+			SourceRecord sourceRecord = this.recordProducer.getRecord(document);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = dbf.newDocumentBuilder();
 			org.w3c.dom.Document idfDoc = docBuilder.newDocument();

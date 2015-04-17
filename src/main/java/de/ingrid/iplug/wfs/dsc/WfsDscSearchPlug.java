@@ -30,18 +30,18 @@ import java.io.IOException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.lucene.document.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tngtech.configbuilder.ConfigBuilder;
 
 import de.ingrid.admin.JettyStarter;
-import de.ingrid.admin.search.IngridIndexSearcher;
+import de.ingrid.admin.elasticsearch.IndexImpl;
 import de.ingrid.iplug.HeartBeatPlug;
 import de.ingrid.iplug.IPlugdescriptionFieldFilter;
 import de.ingrid.iplug.PlugDescriptionFieldFilters;
 import de.ingrid.iplug.wfs.dsc.record.IdfRecordCreator;
+import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.IRecordLoader;
 import de.ingrid.utils.IngridHit;
 import de.ingrid.utils.IngridHitDetail;
@@ -70,10 +70,10 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	
 	private IdfRecordCreator dscRecordProducer = null;
 
-	private final IngridIndexSearcher _indexSearcher;
+	private final IndexImpl _indexSearcher;
 
 	@Autowired
-	public WfsDscSearchPlug(final IngridIndexSearcher indexSearcher, IPlugdescriptionFieldFilter[] fieldFilters,
+	public WfsDscSearchPlug(final IndexImpl indexSearcher, IPlugdescriptionFieldFilter[] fieldFilters,
 			IMetadataInjector[] injector, IPreProcessor[] preProcessors, IPostProcessor[] postProcessors)
 					throws IOException {
 		super(60000, new PlugDescriptionFieldFilters(fieldFilters), injector, preProcessors, postProcessors);
@@ -103,7 +103,7 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 */
 	@Override
 	public Record getRecord(IngridHit hit) throws Exception {
-		Document document = this._indexSearcher.doc(hit.getDocumentId());
+		ElasticDocument document = this._indexSearcher.getDocById( hit.getDocumentId() );
 		return this.dscRecordProducer.getRecord(document);
 	}
 
@@ -166,7 +166,7 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 * @throws Exception
 	 */
 	protected void setDirectData(IngridHitDetail document) throws Exception {
-		Document luceneDoc = this._indexSearcher.doc(document.getDocumentId());
+		ElasticDocument luceneDoc = this._indexSearcher.getDocById( document.getDocumentId() );
 		long startTime = 0;
 		if (log.isDebugEnabled()) {
 			startTime = System.currentTimeMillis();

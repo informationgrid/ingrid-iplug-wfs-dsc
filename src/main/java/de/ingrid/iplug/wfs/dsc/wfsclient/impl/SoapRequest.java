@@ -127,7 +127,8 @@ public class SoapRequest implements WFSRequest {
 		OMFactory fac = OMAbstractFactory.getOMFactory();
 		OMNamespace wfsNs = fac.createOMNamespace(Namespace.WFS.getQName().getNamespaceURI(),
 				Namespace.WFS.getQName().getPrefix());
-		OMNamespace ogcNs = fac.createOMNamespace(Namespace.OGC.getQName().getNamespaceURI(),
+		@SuppressWarnings("unused")
+        OMNamespace ogcNs = fac.createOMNamespace(Namespace.OGC.getQName().getNamespaceURI(),
 				Namespace.OGC.getQName().getPrefix()); // needed for filter definition
 
 		// create method
