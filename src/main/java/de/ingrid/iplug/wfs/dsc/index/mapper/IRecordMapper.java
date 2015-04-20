@@ -25,9 +25,8 @@
  */
 package de.ingrid.iplug.wfs.dsc.index.mapper;
 
-import org.apache.lucene.document.Document;
-
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
+import de.ingrid.utils.ElasticDocument;
 
 /**
  * Interface for all source record to lucene document mapper classes.
@@ -47,6 +46,6 @@ public interface IRecordMapper {
 	 * @param doc
 	 * @return
 	 */
-	void map(SourceRecord record, Document doc) throws Exception;
+	void map(SourceRecord record, ElasticDocument doc) throws Exception;
 
 }

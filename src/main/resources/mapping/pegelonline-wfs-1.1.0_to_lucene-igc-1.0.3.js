@@ -128,7 +128,7 @@ var transformationDescriptions = [
 	}	
 ];
 
-document.add(new Field("datatype", "default", Field.Store.NO, Field.Index.ANALYZED));
+document.put( "datatype", "default" );
 
 // iterate over all transformation descriptions
 var value;

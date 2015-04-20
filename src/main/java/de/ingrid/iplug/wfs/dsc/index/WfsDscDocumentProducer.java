@@ -29,7 +29,6 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.lucene.document.Document;
 
 import de.ingrid.admin.object.IDocumentProducer;
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
@@ -38,6 +37,7 @@ import de.ingrid.iplug.wfs.dsc.index.mapper.IRecordMapper;
 import de.ingrid.iplug.wfs.dsc.index.producer.IWfsCacheRecordSetProducer;
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
+import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
 
 /**
@@ -122,8 +122,8 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	 * @see de.ingrid.admin.object.IDocumentProducer#next()
 	 */
 	@Override
-	public Document next() {
-		Document doc = new Document();
+	public ElasticDocument next() {
+		ElasticDocument doc = new ElasticDocument();
 		try {
 			SourceRecord record = this.recordSetProducer.next();
 			for (IRecordMapper mapper : this.recordMapperList) {

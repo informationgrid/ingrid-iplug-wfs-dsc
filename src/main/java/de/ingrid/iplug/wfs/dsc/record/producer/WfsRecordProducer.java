@@ -29,13 +29,12 @@ import java.io.IOException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
 
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
+import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
 
 /**
@@ -66,13 +65,13 @@ public class WfsRecordProducer implements IRecordProducer {
 	 * .document.Document)
 	 */
 	@Override
-	public SourceRecord getRecord(Document doc) {
+	public SourceRecord getRecord(ElasticDocument doc) {
 		// TODO make the field configurable
-		Field field = doc.getField("t01_object.obj_id");
+		String field = (String) doc.get("t01_object.obj_id");
 		try {
-			return new WfsCacheSourceRecord(this.cache.getRecord(field.stringValue()));
+			return new WfsCacheSourceRecord(this.cache.getRecord(field));
 		} catch (IOException e) {
-			log.error("Error reading record '" + field.stringValue() + "' from cache '"
+			log.error("Error reading record '" + field + "' from cache '"
 					+ this.cache.toString() + "'.");
 		}
 		return null;

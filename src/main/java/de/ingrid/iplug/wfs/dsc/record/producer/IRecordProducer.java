@@ -25,9 +25,8 @@
  */
 package de.ingrid.iplug.wfs.dsc.record.producer;
 
-import org.apache.lucene.document.Document;
-
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
+import de.ingrid.utils.ElasticDocument;
 
 /**
  * Defines all aspects a record producer must implement. The record producer is
@@ -59,9 +58,9 @@ public interface IRecordProducer {
 	 * Get a record from the data source. How the record must be derived from
 	 * the fields of the lucene document.
 	 * 
-	 * @param doc
+	 * @param document
 	 * @return
 	 */
-	SourceRecord getRecord(Document doc);
+	SourceRecord getRecord(ElasticDocument document);
 
 }

@@ -30,12 +30,12 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.apache.lucene.document.Document;
 
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.xpath.XPathUtils;
 
 /**
@@ -58,7 +58,7 @@ public class WfsDocumentMapper implements IRecordMapper {
 	private static final Logger log = Logger.getLogger(WfsDocumentMapper.class);
 
 	@Override
-	public void map(SourceRecord record, Document doc) throws Exception {
+	public void map(SourceRecord record, ElasticDocument doc) throws Exception {
 		if (this.mappingScripts == null) {
 			log.error("Mapping scripts are not set!");
 			throw new IllegalArgumentException("Mapping scripts are not set!");

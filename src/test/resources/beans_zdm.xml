@@ -268,9 +268,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="compile" value="false"/>
     </bean>
     
-    <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
+    <!-- <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
         <property name="dscRecordProducer" ref="dscRecordProducer" />
-    </bean>
+    </bean> -->
     
     <bean id="dscRecordProducer" class="de.ingrid.iplug.wfs.dsc.record.IdfRecordCreator">
         <property name="recordProducer" ref="recordProducer" />
