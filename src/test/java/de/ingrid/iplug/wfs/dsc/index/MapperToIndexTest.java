@@ -22,6 +22,7 @@
  */
 package de.ingrid.iplug.wfs.dsc.index;
 
+import de.ingrid.admin.JettyStarter;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
@@ -41,6 +42,7 @@ public class MapperToIndexTest extends TestCase {
 	 */
 	public void testMapper() throws Exception {
 
+	    new JettyStarter( false );
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
 		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 
