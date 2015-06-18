@@ -38,8 +38,21 @@
     ***************************************************************************************
 
     -->
+    
+    <target name="patchFromVersion3.5.0">
+        <compareVersion value1="${oldVersion}" value2="3.5.0" prop="compResult"/>
+        <if>
+            <not>
+                <equals arg1="${compResult}" arg2="1" />
+            </not>
+            <then>
+                <echo>Removing old index directory, which is replaced by ElasticSearch </echo>
+                <delete dir="${installDir}/index" />
+            </then>
+        </if>
+    </target>
 
-    <target name="doPatch" depends="">
+    <target name="doPatch" depends="patchFromVersion3.5.0">
 
     </target>
 
