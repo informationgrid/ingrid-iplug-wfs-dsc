@@ -28,6 +28,12 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="3.6.0" date="2015-06-19" description="Release 3.6.0">
+      <action type="add" dev="wemove" issue="REDMINE-6">
+        Added elastic search as new indexing method.
+      </action>
+    </release>
+    
     <release version="3.5.0" date="2015-02-02" description="Release InGrid 3.5.0">
       <action type="fix" dev="wemove" issue="REDMINE-595">
         Update URL on Wadaba mapping.
