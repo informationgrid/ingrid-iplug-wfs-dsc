@@ -28,6 +28,15 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="3.6.0.3" date="2015-09-10" description="Bugfix-Release 3.6.0.3">
+      <action type="fix" dev="wemove" issue="REDMINE-130">
+        Fixed mapping of index to handle UUIDs and other fields as whole, otherwise a wrong dataset could be fetched.
+      </action>
+      <action type="fix" dev="wemove" issue="REDMINE-142,REDMINE-89">
+        Fixed query generation and request of index fields.
+      </action>
+    </release>
+    
     <release version="3.6.0" date="2015-06-19" description="Release 3.6.0">
       <action type="add" dev="wemove" issue="REDMINE-6">
         Added elastic search as new indexing method.

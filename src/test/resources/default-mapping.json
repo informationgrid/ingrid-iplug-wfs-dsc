@@ -1,0 +1,31 @@
+{ 
+    "_default_" : { 
+        "_source" : { "enabled" : true }, 
+        "properties": {
+            "t01_object.obj_id": {
+                "type": "string",
+                "index" : "not_analyzed"
+            },
+            "boost": {
+                "type": "float",
+                "store": true,
+                "null_value" : 0.0
+            },
+            "title": {
+                "analyzer": "german",
+                "type": "string"
+            },
+            "station_id": {
+                "type": "string",
+                "index" : "not_analyzed"
+            },
+            "comment": {
+                "analyzer": "german",
+                "type": "string"
+            },
+            "kilometer": {
+                "type": "double"
+            }
+        }
+    } 
+}
