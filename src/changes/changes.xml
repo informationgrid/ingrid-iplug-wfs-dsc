@@ -32,6 +32,9 @@
       <action type="update" dev="wemove" issue="REDMINE-15">
         Remove all references to PortalU.
       </action>
+    </release>
+
+    <release version="3.6.0.3" date="2015-09-10" description="Bugfix-Release 3.6.0.3">
       <action type="fix" dev="wemove" issue="REDMINE-130">
         Fixed mapping of index to handle UUIDs and other fields as whole, otherwise a wrong dataset could be fetched.
       </action>
