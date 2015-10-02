@@ -28,6 +28,15 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="3.6.0.4" date="2015-09-29" description="Bugfix-Release 3.6.0.4">
+      <action type="update" dev="wemove" issue="REDMINE-168">
+        Move specific local configuration to new override directory to be safe from update of component.
+      </action>
+      <action type="fix" dev="wemove" issue="REDMINE-167">
+        Create a new index with automatic IDs when indexing to prevent dublicates.
+      </action>
+    </release>
+    
     <release version="3.6.0.3" date="2015-09-10" description="Bugfix-Release 3.6.0.3">
       <action type="fix" dev="wemove" issue="REDMINE-130">
         Fixed mapping of index to handle UUIDs and other fields as whole, otherwise a wrong dataset could be fetched.

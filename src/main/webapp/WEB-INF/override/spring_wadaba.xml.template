@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.PagingUpdateStrategy">
+        <property name="requestPause" value="100" />
+        <property name="maxFeatures" value="1000" />
+    </bean>
+
+    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
+        <property name="mappingScripts">
+	    	<list>
+	    		<value>classpath:mapping/lib.js</value>
+	    		<value>classpath:mapping/lucene_helper.js</value>
+	    		<value>classpath:mapping/wadaba-wfs-1.1.0_to_lucene-igc-1.0.3.js</value>
+	    	</list>
+        </property> 
+        <property name="compile" value="true"/>
+    </bean>
+
+    <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
+        <property name="mappingScripts">
+	    	<list>
+	    		<value>classpath:mapping/lib.js</value>
+	    		<value>classpath:mapping/document_helper.js</value>
+	    		<value>classpath:mapping/wadaba-wfs-1.1.0_to_idf-1.0.0.js</value>
+	    	</list>
+        </property> 
+        <property name="compile" value="true"/>
+    </bean>
+
+</beans>
