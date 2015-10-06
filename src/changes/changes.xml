@@ -32,6 +32,9 @@
       <action type="update" dev="wemove" issue="REDMINE-15">
         Remove all references to PortalU.
       </action>
+      <action type="fix" dev="wemove" issue="REDMINE-176">
+        Fixed query problem with wildcards.
+      </action>
     </release>
     
     <release version="3.6.0.4" date="2015-09-29" description="Bugfix-Release 3.6.0.4">
