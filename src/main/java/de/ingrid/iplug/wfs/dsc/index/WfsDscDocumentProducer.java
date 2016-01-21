@@ -30,6 +30,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import de.ingrid.admin.elasticsearch.IndexInfo;
 import de.ingrid.admin.object.IDocumentProducer;
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
 import de.ingrid.iplug.wfs.dsc.cache.UpdateJob;
@@ -197,5 +198,15 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	public void setJob(UpdateJob job) {
 		this.job = job;
 	}
+
+    @Override
+    public IndexInfo getIndexInfo() {
+        return null;
+    }
+
+    @Override
+    public Integer getDocumentCount() {
+        return null;
+    }
 
 }

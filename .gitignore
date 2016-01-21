@@ -3,4 +3,4 @@
 /.settings
 /conf
 /target
-wfs_cache/
+wfs_cache*/
