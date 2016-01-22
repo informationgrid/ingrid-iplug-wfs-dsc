@@ -28,6 +28,12 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="3.6.1.2" date="2016-01-22" description="Release 3.6.1.2">
+      <action type="fix" dev="wemove" issue="REDMINE-255">
+        Fixed setting of initial ranking type.
+      </action>
+    </release>
+
     <release version="3.6.1" date="2015-11-18" description="Release 3.6.1">
       <action type="update" dev="wemove" issue="REDMINE-15">
         Remove all references to PortalU.
