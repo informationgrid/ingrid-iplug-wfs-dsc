@@ -28,6 +28,12 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="3.6.2-SNAPSHOT" date="2016-xx-xx" description="Release 3.6.2">
+      <action type="fix" dev="wemove" issue="REDMINE-269">
+        Fixed redirect to welcome page for a logged in user.
+      </action>
+    </release>
+    
     <release version="3.6.1.2" date="2016-01-22" description="Release 3.6.1.2">
       <action type="fix" dev="wemove" issue="REDMINE-255">
         Fixed setting of initial ranking type.
