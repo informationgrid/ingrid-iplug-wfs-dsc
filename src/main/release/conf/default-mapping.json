@@ -25,6 +25,10 @@
             },
             "kilometer": {
                 "type": "double"
+             },
+            "idf": {
+                "type": "string",
+                "index": "no"
             }
         }
     } 
