@@ -261,8 +261,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="compile" value="true"/>
     </bean>
 
-    <bean id="idfProducerIndexMapper" class="de.ingrid.iplug.wfs.dsc.record.IdfProducerDocumentMapper">
-        <property name="dscRecordCreator" ref="dscRecordProducer" />
+    <bean id="idfProducerIndexMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.IdfProducerDocumentMapper">
+        <property name="idfRecordCreator" ref="dscRecordProducer" />
     </bean>
 
     
