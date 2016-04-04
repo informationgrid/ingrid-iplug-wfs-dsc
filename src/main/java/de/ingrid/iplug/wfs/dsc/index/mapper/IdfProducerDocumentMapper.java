@@ -57,7 +57,7 @@ public class IdfProducerDocumentMapper implements IRecordMapper {
             throw new IllegalArgumentException( "Source Record is not a WfsCacheSourceRecord!" );
         }
 
-        Record rec = idfRecordCreator.getRecord( doc );
+        Record rec = idfRecordCreator.getRecord(doc, record );
         doc.put( DOCUMENT_FIELD_IDF, IdfTool.getIdfDataFromRecord( rec ) );
 
     }

@@ -44,8 +44,8 @@ import de.ingrid.utils.xml.XMLUtils;
 
 /**
  * This class manages to get a {@link Record} from a data source based on data
- * from a lucene document. The IDF document will be taken from index field 'idf' 
- * if exist. Otherwise it will be created by the IDF record producer. 
+ * from a lucene document. The IDF document will be taken from index field 'idf'
+ * if exist. Otherwise it will be created by the IDF record producer.
  * <p/>
  * The Class can be configured with a data source specific record producer
  * implementing the {@link IRecordProducer} interface. And a list of IDF (InGrid
@@ -72,14 +72,17 @@ public class IdfRecordCreator {
      * "compressed" is set to "true" if the IDF document is compressed, "false"
      * if the IDF document is not compressed.
      * 
-     * The IDF document will be taken from index field 'idf' if exist. Otherwise 
+     * The IDF document will be taken from index field 'idf' if exist. Otherwise
      * it will be created by the IDF record mappers.
      * 
      * @param document
+     * @param record
+     *            The source record. If null it will be created by the injected
+     *            IRecordProducer.
      * @return
      * @throws Exception
      */
-    public Record getRecord(ElasticDocument document) throws Exception {
+    public Record getRecord(ElasticDocument document, SourceRecord record) throws Exception {
         String data;
 
         if (document.containsKey( IdfProducerDocumentMapper.DOCUMENT_FIELD_IDF ) && document.get( IdfProducerDocumentMapper.DOCUMENT_FIELD_IDF ) != null) {
@@ -89,8 +92,13 @@ public class IdfRecordCreator {
             data = (String) document.get( IdfProducerDocumentMapper.DOCUMENT_FIELD_IDF );
         } else {
             try {
-                this.recordProducer.openDatasource();
-                SourceRecord sourceRecord = this.recordProducer.getRecord( document );
+                SourceRecord sourceRecord = null;
+                if (record == null) {
+                    this.recordProducer.openDatasource();
+                    sourceRecord = this.recordProducer.getRecord( document );
+                } else {
+                    sourceRecord = record;
+                }
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder docBuilder = dbf.newDocumentBuilder();
                 org.w3c.dom.Document idfDoc = docBuilder.newDocument();
@@ -116,6 +124,23 @@ public class IdfRecordCreator {
             log.debug( "Resulting IDF document:\n" + data );
         }
         return IdfTool.createIdfRecord( data, this.compressed );
+    }
+
+    /**
+     * Retrieves a record with an IDF document in property "data". The property
+     * "compressed" is set to "true" if the IDF document is compressed, "false"
+     * if the IDF document is not compressed.
+     * 
+     * The IDF document will be taken from index field 'idf' if exist. Otherwise
+     * it will be created by the IDF record mappers.
+     * 
+     * @param document
+     * 
+     * @return
+     * @throws Exception
+     */
+    public Record getRecord(ElasticDocument document) throws Exception {
+        return this.getRecord( document, null );
     }
 
     public IRecordProducer getRecordProducer() {
