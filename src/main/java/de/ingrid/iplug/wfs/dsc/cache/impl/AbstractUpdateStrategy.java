@@ -41,9 +41,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.logging.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
+import de.ingrid.admin.elasticsearch.StatusProvider;
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
 import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
 import de.ingrid.iplug.wfs.dsc.cache.UpdateStrategy;
@@ -57,7 +59,10 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.constants.ResultType;
 
 public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 
-	DocumentBuilder docBuilder = null;
+    @Autowired
+    protected StatusProvider statusProvider;
+
+    DocumentBuilder docBuilder = null;
 
 	// The time in msec the strategy pauses between requests to the WFS server.
 	int requestPause = 1000;

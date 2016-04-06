@@ -74,12 +74,15 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
 		List<String> allRecordIds = new ArrayList<String>();
-
+        
+		statusProvider.addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
+		
 //		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
 			if (log.isInfoEnabled()) {
 				log.info("Fetching features of type "+typeName+"...");
 			}
+            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
 
 			// fetch total number of features of the current type
 			int totalNumRecords = 0;
@@ -107,6 +110,7 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 					log.info("Fetching features of type "+typeName+", maxFeatures=" +
 						maxFeatures + ", startIndex=" + startIndex + " ...");
 				}
+	            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching features of type '" + typeName + "' ... " + startIndex + "-" + (startIndex + maxFeatures));
 				try {
 					List<String> fetchedIds = fetchRecordsPaged(client, typeName, filterSet, true, maxFeatures, startIndex);
 					allRecordIds.addAll(fetchedIds);
@@ -116,7 +120,8 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 						maxFeatures + ", startIndex=" + startIndex + ", we skip these ones !", ex);
 				}
 			}
-
+            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetched " + totalNumRecords + " features of type '" + typeName + "'.");
+			
 			// activate this for local testing of restricted number of feature types !
 /*
 			numFeatureTypesFetched++;

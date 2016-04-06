@@ -40,7 +40,9 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import de.ingrid.admin.elasticsearch.StatusProvider;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 
 /**
@@ -60,6 +62,9 @@ public class UpdateJob {
 	private Set<String> filterStrSet;
 
 	private UpdateStrategy updateStrategy;
+
+	@Autowired
+    private StatusProvider statusProvider;
 
 
 	/**
@@ -112,6 +117,7 @@ public class UpdateJob {
 		// summary
 		Date end = new Date();
 		long diff = end.getTime()-start.getTime();
+        statusProvider.addState( "FETCH", "Fetched " + allRecordIds.size() + " records of " + allRecordIds.size() + " from " + this.factory.getServiceUrl() + ". Duplicates: " + duplicates);
 		log.info("Fetched "+allRecordIds.size()+" records of "+allRecordIds.size()+". Duplicates: "+duplicates);
 		log.info("Job executed within "+diff+" ms.");
 	}

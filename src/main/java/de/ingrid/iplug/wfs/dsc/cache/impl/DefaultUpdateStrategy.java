@@ -70,6 +70,8 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 		WFSCapabilities capabilities = client.getCapabilities();
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
+        statusProvider.addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
+		
 		List<String> allRecordIds = new ArrayList<String>();
 //		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
@@ -77,8 +79,13 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 			if (log.isInfoEnabled()) {
 				log.info("Fetching features of type "+typeName+"...");
 			}
+
+            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
+			
 			try {
-				allRecordIds.addAll(this.fetchRecords(client, typeName, filterSet, true));				
+				List<String> l = this.fetchRecords(client, typeName, filterSet, true);
+			    allRecordIds.addAll(l);				
+	            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
 			} catch (Exception ex) {
 				log.error("Problems fetching features of type '" + typeName + "', we skip these ones !", ex);
 			}

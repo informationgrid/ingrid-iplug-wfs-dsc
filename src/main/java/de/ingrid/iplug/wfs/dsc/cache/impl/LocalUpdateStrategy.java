@@ -83,13 +83,20 @@ public class LocalUpdateStrategy extends AbstractUpdateStrategy {
 		// get all feature types from the capabilities document
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
+        statusProvider.addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
+		
 		List<String> allRecordIds = new ArrayList<String>();
 		for (String typeName : typeNames) {
+            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
 			// fetch all features for the current type
 			if (log.isInfoEnabled()) {
 				log.info("Fetching features of type "+typeName+"...");
 			}
+			List<String> l = this.fetchRecords(factory, typeName);
 			allRecordIds.addAll(this.fetchRecords(factory, typeName));
+			
+            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
+
 		}
 		return allRecordIds;
 	}
