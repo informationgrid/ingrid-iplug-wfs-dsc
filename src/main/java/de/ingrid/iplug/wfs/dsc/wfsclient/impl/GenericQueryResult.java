@@ -73,17 +73,25 @@ public class GenericQueryResult implements WFSQueryResult {
 				"/wfs:FeatureCollection/gml:featureMembers/child::*|/wfs:FeatureCollection/gml:featureMember/child::*");
 		if (featureNodes != null) {
 			for (int i=0; i<featureNodes.getLength(); i++) {
-				// create the feature
+			    boolean error = false;
 				try {
+	                // create the feature
 					WFSFeature feature = this.factory.createFeature();
 					feature.initialize(featureNodes.item(i));
 					this.features.add(feature);										
 				} catch (Exception ex) {
-					String msg = "Problems creating WFSFeature from feature node '" + featureNodes.item(i) + "', we skip this one !";
-					log.error(msg + " -> " + ex.getMessage());
-					if (log.isDebugEnabled()) {
-						log.debug("Caused Exception:", ex);
-					}
+					String msg = "Problems creating WFSFeature from " + i + ". feature node '" + featureNodes.item(i) + "', we skip this one !";
+                    // only log as error with full exception with first exception to avoid lots of repeating errors / exceptions in log file with every feature !
+                    if (!error) {
+                        error = true;
+                        log.error(msg, ex);
+                        log.error("NOTICE: We do NOT log further exceptions of this feature type as ERROR to avoid huge log output ! Switch to DEBUG to see all exceptions !");
+                    } else {
+                        // log as debug to avoid huge chunk of messages !
+                        if (log.isDebugEnabled()) {
+                            log.debug("ERROR: " + msg, ex);
+                        }                        
+                    }
 				}
 			}
 			this.featuresTotal = this.features.size();
