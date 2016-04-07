@@ -58,7 +58,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	WFSFactory factory;
 
 	UpdateJob job;
-
+	
 	final private static Log log = LogFactory.getLog(WfsDscDocumentProducer.class);
 
 	public WfsDscDocumentProducer() {
@@ -94,6 +94,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 					if (this.tmpCache != null) {
 						this.tmpCache.rollbackTransaction();
 					}
+					throw e;
 				}
 			}
 			if (this.recordSetProducer.hasNext()) {
