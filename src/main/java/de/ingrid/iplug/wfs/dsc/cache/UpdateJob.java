@@ -117,8 +117,9 @@ public class UpdateJob {
 		// summary
 		Date end = new Date();
 		long diff = end.getTime()-start.getTime();
-        statusProvider.addState( "FETCH", "Fetched " + allRecordIds.size() + " records from " + this.factory.getServiceUrl() + ". Duplicates: " + duplicates);
-		log.info("Fetched " + allRecordIds.size() + " records from " + this.factory.getServiceUrl() + ". Duplicates: " + duplicates);
+		String msg = "Fetched " + allRecordIds.size() + " records from " + this.factory.getServiceUrl() + ". Duplicates: " + duplicates;
+        statusProvider.addState( "FETCH", msg);
+		log.info(msg);
 		log.info("Job executed within "+diff+" ms.");
 	}
 
