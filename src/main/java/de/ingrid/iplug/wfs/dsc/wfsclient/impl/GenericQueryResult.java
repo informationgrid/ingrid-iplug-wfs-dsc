@@ -72,8 +72,8 @@ public class GenericQueryResult implements WFSQueryResult {
 		NodeList featureNodes = xPathUtils.getNodeList(document,
 				"/wfs:FeatureCollection/gml:featureMembers/child::*|/wfs:FeatureCollection/gml:featureMember/child::*");
 		if (featureNodes != null) {
+            boolean error = false;
 			for (int i=0; i<featureNodes.getLength(); i++) {
-			    boolean error = false;
 				try {
 	                // create the feature
 					WFSFeature feature = this.factory.createFeature();

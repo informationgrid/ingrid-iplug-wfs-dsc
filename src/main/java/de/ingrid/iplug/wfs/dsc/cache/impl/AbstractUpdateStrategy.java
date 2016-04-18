@@ -190,7 +190,9 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 				// process
 				currentFetchedRecordIds.addAll(this.processResult(result, doCache));
             } else {
-                log.warn("ERROR?: Fetched 0 records from chunk with filter "+filterIndex+": "+filterString+".");
+                String msg = "Fetched 0 features of type '" + typeName +"' from chunk " + startIndex + "-" + (startIndex + maxNumFeatures) + " with filter "+filterIndex+": "+filterString+".";
+                log.error(msg);
+                throw new RuntimeException(msg);
 			}
 
 			// collect record ids

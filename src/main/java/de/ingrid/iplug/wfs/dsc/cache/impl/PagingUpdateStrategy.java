@@ -119,7 +119,7 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 					allRecordIds.addAll(fetchedIds);
 
 				} catch (Exception ex) {
-                    String msg = "Problems fetching features of type '" + typeName +", maxFeatures=" +
+                    String msg = "Problems fetching features of type '" + typeName +"', maxFeatures=" +
                             maxFeatures + ", startIndex=" + startIndex + ", we skip these ones !";
                     // only log as error with full exception with first exception to avoid lots of repeating errors / exceptions in log file with every chunk !
                     if (!errorInChunk) {
