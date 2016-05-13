@@ -41,9 +41,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.logging.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
+import de.ingrid.admin.elasticsearch.StatusProvider;
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
 import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
 import de.ingrid.iplug.wfs.dsc.cache.UpdateStrategy;
@@ -57,7 +59,10 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.constants.ResultType;
 
 public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 
-	DocumentBuilder docBuilder = null;
+    @Autowired
+    protected StatusProvider statusProvider;
+
+    DocumentBuilder docBuilder = null;
 
 	// The time in msec the strategy pauses between requests to the WFS server.
 	int requestPause = 1000;
@@ -156,8 +161,12 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 		// iterate over all filters
 		int filterIndex = 1;
 		for (Document filter : filterSet) {
+            String filterString = "''";
+            if (filter != null) {
+                filterString = StringUtils.nodeToString(filter).replace("\n", "");
+            }
 			if (log.isDebugEnabled()) {
-				log.debug("Processing filter "+filterIndex+": "+StringUtils.nodeToString(filter).replace("\n", "")+".");
+                log.debug("Processing filter "+filterIndex+": "+filterString+".");
 			}
 			// variables for current fetch process (current filter)
 			int numCurrentTotal = 0;
@@ -174,12 +183,16 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 			// do request
 			WFSQueryResult result = client.getFeature(query);
 			numCurrentTotal = result.getNumberOfFeatures();
-			if (log.isInfoEnabled()) {
-				log.info(numCurrentTotal+" record(s) from filter "+filterIndex+":");
+            if (log.isDebugEnabled()) {
+                log.debug("Fetched "+numCurrentTotal+" record(s) from chunk with filter "+filterIndex+": "+filterString+".");
 			}
 			if (numCurrentTotal > 0) {
 				// process
 				currentFetchedRecordIds.addAll(this.processResult(result, doCache));
+            } else {
+                String msg = "Fetched 0 features of type '" + typeName +"' from chunk " + startIndex + "-" + (startIndex + maxNumFeatures) + " with filter "+filterIndex+": "+filterString+".";
+                log.error(msg);
+                throw new RuntimeException(msg);
 			}
 
 			// collect record ids
@@ -243,8 +256,13 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 				cache.putRecord(record);
 			}
 		}
-		if (log.isInfoEnabled()) {
-			log.info("Fetched "+fetchedRecordIds.size()+" of "+result.getNumberOfFeatures());
+        String msg = "Fetched "+fetchedRecordIds.size()+" of "+result.getNumberOfFeatures();
+        if (fetchedRecordIds.size() != result.getNumberOfFeatures()) {
+            log.warn("ERROR?: Could not fetch all records of chunk -> " + msg);
+        } else {
+            if (log.isDebugEnabled()) {
+                log.debug(msg);
+            }                       
 		}
 		return fetchedRecordIds;
 	}

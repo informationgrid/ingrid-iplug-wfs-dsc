@@ -61,9 +61,8 @@ public class WfsParameterController extends AbstractController {
 			@ModelAttribute("plugDescription") final PlugdescriptionCommandObject commandObject) {
 
 		WfsConfiguration wfsConfig = new WfsConfiguration();
-
-		this.mapConfigFromPD(wfsConfig, commandObject);
-
+		wfsConfig.setServiceUrl( WfsDscSearchPlug.conf.serviceUrl );
+		
 		// write object into session
 		modelMap.addAttribute("wfsConfig", wfsConfig);
 
@@ -99,14 +98,5 @@ public class WfsParameterController extends AbstractController {
 		//pdCommandObject.addDataType("wfs");
 		//pdCommandObject.addDataType("IDF_1.0");
 	}
-
-	private void mapConfigFromPD(WfsConfiguration mapConfig,
-			PlugdescriptionCommandObject commandObject) {
-
-		if (commandObject.containsKey("serviceUrl")) {
-			mapConfig.setServiceUrl(commandObject.getString("serviceUrl"));
-		}
-	}
-
 
 }

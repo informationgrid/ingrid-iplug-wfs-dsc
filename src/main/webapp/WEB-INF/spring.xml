@@ -240,6 +240,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="recordMapperList">
             <list>
                 <ref bean="recordMapper"/>
+                <ref bean="idfProducerIndexMapper"/>
             </list>
         </property>
         <property name="cache" ref="wfsCache" />
@@ -259,6 +260,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </property> 
         <property name="compile" value="true"/>
     </bean>
+
+    <bean id="idfProducerIndexMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.IdfProducerDocumentMapper">
+        <property name="idfRecordCreator" ref="dscRecordProducer" />
+    </bean>
+
     
     <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
         <property name="dscRecordProducer" ref="dscRecordProducer" />

@@ -35,6 +35,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 
+import de.ingrid.admin.elasticsearch.StatusProvider.Classification;
 import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSCapabilities;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSClient;
@@ -67,9 +68,17 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 		WFSClient client = factory.createClient();
 
 		// get all feature types from the capabilities document
-		WFSCapabilities capabilities = client.getCapabilities();
+		WFSCapabilities capabilities = null;
+		try {
+		    capabilities = client.getCapabilities();
+		} catch (Exception ex) {
+		    statusProvider.addState( "ERROR_NEXT", "Could not fetch service URL. Index will be empty!", Classification.ERROR );
+		    throw ex;
+		}
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
+        statusProvider.addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
+		
 		List<String> allRecordIds = new ArrayList<String>();
 //		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
@@ -77,10 +86,17 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 			if (log.isInfoEnabled()) {
 				log.info("Fetching features of type "+typeName+"...");
 			}
+
+            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
+			
 			try {
-				allRecordIds.addAll(this.fetchRecords(client, typeName, filterSet, true));				
+				List<String> l = this.fetchRecords(client, typeName, filterSet, true);
+			    allRecordIds.addAll(l);				
+	            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
 			} catch (Exception ex) {
-				log.error("Problems fetching features of type '" + typeName + "', we skip these ones !", ex);
+				String msg = "Problems fetching features of type '" + typeName + "', we skip these ones !";
+                log.error(msg, ex);
+				statusProvider.addState( "ERROR_FEATURE_" + typeName, msg, Classification.ERROR );
 			}
 
 			// activate this for local testing !
