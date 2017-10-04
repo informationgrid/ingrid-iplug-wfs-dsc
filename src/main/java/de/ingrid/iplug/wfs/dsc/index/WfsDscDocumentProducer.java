@@ -76,6 +76,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	 */
 	@Override
 	public boolean hasNext() {
+        boolean result = false;
 		try {
 			if (this.tmpCache == null) {
 				try {
@@ -98,7 +99,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 				}
 			}
 			if (this.recordSetProducer.hasNext()) {
-				return true;
+                result = true;
 			} else {
 			    // prevent runtime exception if the cache was not in transaction
 			    // this can happen if the harvest process throws an exception and the
@@ -107,15 +108,20 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 			        tmpCache.commitTransaction();
 			    }				
 				this.tmpCache = null;
-				return false;
+                result = false;
 			}
 		} catch (Exception e) {
 			log.error("Error obtaining information about a next record. Skip all records.", e);
             // make sure the tmp cache is released after exception occurs
             // otherwise the indexer will never "heal" from this exception
             tmpCache = null;
-			return false;
-		}
+            throw new RuntimeException("Error harvesting WFS datasource");
+        } finally {
+            if (!result) {
+                tmpCache = null;
+            }
+        }
+        return result;
 	}
 
 	/*
@@ -126,8 +132,9 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	@Override
 	public ElasticDocument next() {
 		ElasticDocument doc = new ElasticDocument();
+		SourceRecord record = null;
 		try {
-			SourceRecord record = this.recordSetProducer.next();
+			record = this.recordSetProducer.next();
 			for (IRecordMapper mapper : this.recordMapperList) {
 				long start = 0;
 				if (log.isDebugEnabled()) {
@@ -140,12 +147,16 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 			}
 			return doc;
 		} catch (Exception e) {
-			log.error("Error obtaining next record.", e);
-			if (this.tmpCache != null) {
-				this.tmpCache.rollbackTransaction();
-				this.tmpCache = null;
-			}
-			return null;
+            if (record == null) {
+                log.error("Error obtaining next record.", e);
+            } else {
+                log.error("Error mapping record.", e);
+            }
+
+            // DO NOT EMPTY CACHE !!! We want to continue indexing the fetched records !!!
+            // if tmpCache is set to null the fetching process is started from scratch (see this.hasNext() method) !
+
+            return null;
 		}
 	}
 
