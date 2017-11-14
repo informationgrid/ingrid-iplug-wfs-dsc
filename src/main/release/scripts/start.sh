@@ -7,12 +7,12 @@
 # Licensed under the EUPL, Version 1.1 or – as soon they will be
 # approved by the European Commission - subsequent versions of the
 # EUPL (the "Licence");
-# 
+#
 # You may not use this work except in compliance with the Licence.
 # You may obtain a copy of the Licence at:
-# 
+#
 # http://ec.europa.eu/idabc/eupl5
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the Licence is distributed on an "AS IS" basis,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -81,10 +81,10 @@ stopIplug()
 				echo "process is still running. force kill -9."
 				kill -9 `cat $PID`
 				exit 0
-			fi 
+			fi
 		else
 			echo "process is not running. Exit."
-			unlink $PID 
+			unlink $PID
 		fi
 	else
 		echo "process is not running. Exit."
@@ -178,13 +178,17 @@ startIplug()
         exit 1
       fi
   fi
-  
+
   prepareJavaStatement
 
   CLASS=de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug
 
-  exec nohup "$JAVA" $INGRID_OPTS $CLASS > console.log &
-  
+  if [ "$RUN_DIRECTLY" ]; then
+    exec "$JAVA" $INGRID_OPTS $CLASS
+  else
+    exec nohup "$JAVA" $INGRID_OPTS $CLASS > console.log &
+  fi
+
   echo "jetty ($INGRID_HOME) started."
   echo $! > $PID
 }
@@ -198,7 +202,7 @@ STARTING_USER=`whoami`
 if [ "$STARTING_USER" != "$INGRID_USER" ]; then
   echo "You must be user '$INGRID_USER' to start that script! Set INGRID_USER in environment to overwrite this."
   exit 1
-fi 
+fi
 
 case "$1" in
   start)
