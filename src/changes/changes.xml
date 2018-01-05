@@ -28,6 +28,13 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+
+    <release version="4.2.0" date="2018-01-05" description="Release 4.2.0">
+      <action type="add" dev="wemove">
+        Added docker integration.
+      </action>
+    </release>
+    
     <release version="4.1.0" date="2017-10-04" description="Release 4.1.0">
       <action type="fix" dev="wemove" issue="REDMINE-843">
         Fixed endless loop when mapping of record to index leads to error, then job fetching all records was executed again due to reset of cache. 
