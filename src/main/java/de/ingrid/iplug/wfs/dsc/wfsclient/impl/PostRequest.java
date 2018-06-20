@@ -191,6 +191,9 @@ public class PostRequest implements WFSRequest {
 			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			// causes problems on wadaba wsv service with filter containing umlaute ?
+	        log.debug("Content-Length: "+Integer.toString(payload.getBytes().length) +
+	                " (NOTICE: Caused problems on wadaba wfs with filter containing Umlaute !)");
 			conn.setRequestProperty("Content-Length", "" + Integer.toString(payload.getBytes().length));
 			conn.setAllowUserInteraction(false);
 			conn.setReadTimeout(300000); // 5 minutes

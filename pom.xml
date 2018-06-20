@@ -32,6 +32,11 @@
     </dependency>
     <dependency>
       <groupId>de.ingrid</groupId>
+      <artifactId>ingrid-utils-geo</artifactId>
+      <version>4.4.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>de.ingrid</groupId>
       <artifactId>ingrid-base-webapp</artifactId>
       <version>4.2.2</version>
     </dependency>

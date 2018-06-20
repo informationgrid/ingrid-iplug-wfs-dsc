@@ -31,4 +31,16 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="compile" value="true"/>
     </bean>
 
+<!-- NOTICE: Filter may deliver 403 error when containing umlaut ! Caused from Content-Length header ? -->
+<!--
+    <bean id="wfsHarvestFilter" class="org.springframework.beans.factory.config.SetFactoryBean">
+        <property name="sourceSet">
+            <set>
+                <value>
+                    <![CDATA[<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc"><ogc:PropertyIsEqualTo matchCase="true"><ogc:PropertyName>ms:WADABA_ID</ogc:PropertyName><ogc:Literal>1124310002</ogc:Literal></ogc:PropertyIsEqualTo></ogc:Filter>]]>
+                </value>
+            </set>
+        </property>
+    </bean>
+-->
 </beans>

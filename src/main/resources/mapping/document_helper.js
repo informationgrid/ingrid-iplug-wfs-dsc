@@ -70,3 +70,12 @@ function addLink(parent, name, url, target) {
 	parent.appendChild(link);
 	return link;
 }
+
+function addOutputWithAttributes(parent, elementName, attrNames, attrValues) {
+	var element = document.createElement(elementName);
+	for (var i=0, count=attrNames.length; i<count; i++) {
+		element.setAttribute(attrNames[i], attrValues[i]);
+	}
+	parent.appendChild(element);
+	return element;
+}
