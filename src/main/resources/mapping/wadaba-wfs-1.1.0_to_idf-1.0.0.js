@@ -45,6 +45,7 @@ importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);
 importPackage(Packages.de.ingrid.utils.udk);
 importPackage(Packages.de.ingrid.utils.xml);
 importPackage(Packages.org.w3c.dom);
+importPackage(Packages.de.ingrid.geo.utils.transformation);
 
 if (log.isDebugEnabled()) {
 	log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
@@ -56,28 +57,42 @@ var recordNode = wfsRecord.getOriginalResponse();
 //---------- <idf:body> ----------
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
 
+// add elements/styles for correct display in portal (header)
+var myElem = addOutputWithAttributes(idfBody, "section", ["class"], ["block block--light block--pad-top"]);
+myElem = addOutputWithAttributes(myElem, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center"]);
+myElem = addOutputWithAttributes(myElem, "article", ["id","class"], ["detail_meta_header","content ob-container"]);
+myElem = addOutputWithAttributes(myElem, "form", ["class"], ["box box--medium"]);
+myElem = addOutputWithAttributes(myElem, "div", ["class"], ["box__content ob-container"]);
+
 // add the title
-addOutput(idfBody, "h1", getTitle(recordNode));
+addOutput(myElem, "h1", getTitle(recordNode));
 
 //add the summary
-addOutput(idfBody, "p", getSummary(recordNode));
+addOutput(myElem, "p", getSummary(recordNode));
 
 //add the bounding box
 var boundingBox = getBoundingBox(recordNode);
-addOutput(idfBody, "h2", "Ort:");
-var coordList = addOutput(idfBody, "ul");
+addOutput(myElem, "h2", "Ort:");
+var coordList = addOutput(myElem, "ul");
 addOutput(coordList, "li", "Nord: "+boundingBox.y2);
 addOutput(coordList, "li", "West: "+boundingBox.x1);
 addOutput(coordList, "li", "Ost: "+boundingBox.x2);
 addOutput(coordList, "li", "S&uuml;d: "+boundingBox.y1);
 
 // add the map preview
-addOutput(idfBody, "div", getMapPreview(recordNode));
-addOutput(idfBody, "br");
+addOutput(myElem, "div", getMapPreview(recordNode));
+
+
+//add elements/styles for correct display in portal (details)
+myElem = addOutputWithAttributes(idfBody, "section", ["id","class"], ["detail_meta","block"]);
+myElem = addOutputWithAttributes(myElem, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center ob-rel"]);
+myElem = addOutputWithAttributes(myElem, "article", ["class"], ["content ob-container ob-box-wide"]);
+myElem = addOutputWithAttributes(myElem, "form", ["class"], ["box box--medium"]);
+myElem = addOutputWithAttributes(myElem, "div", ["class"], ["box__content ob-container"]);
 
 // add details (content of all child nodes)
-addOutput(idfBody, "h2", "Details:");
-var detailList = addOutput(idfBody, "ul");
+addOutput(myElem, "h2", "Details:");
+var detailList = addOutput(myElem, "ul");
 var detailNodes = recordNode.getChildNodes();
 for (var i=0, count=detailNodes.length; i<count; i++) {
 	var detailNode = detailNodes.item(i);
@@ -86,7 +101,6 @@ for (var i=0, count=detailNodes.length; i<count; i++) {
 		addOutputWithLinks(detailList, "li", detailNode.getLocalName()+": "+detailNode.getTextContent());
 	}
 }
-addOutput(idfBody, "br");
 
 // functions
 function getTitle(recordNode) {
@@ -124,23 +138,27 @@ function getMapPreview(recordNode) {
         // BBOX
         var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
         var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-        var S = Number(lowerCoords[0]); // SOUTH
-        var E = Number(upperCoords[1]); // EAST
+        // Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
+        var S = Number(lowerCoords[0]); // SOUTH y1
+        var E = Number(upperCoords[1]); // EAST, x2
         // NOTICE: 
         // lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
         var BBOX = "" + (E - 0.048) + "," + (S - 0.012) + "," + (E + 0.048) + "," + (S + 0.012);
 
-        //  Fields for link
-        var BWSTR = xPathUtils.getString(recordNode, "//ms:BWSTR");
-        var KM_ANF_D = xPathUtils.getString(recordNode, "//ms:KM_ANF_D");
+        // transform "WGS 84 (EPSG:4326)" to "ETRS89 / UTM zone 32N (EPSG:25832)"
+        var transfCoords = CoordTransformUtil.getInstance().transform(
+                E, S,
+                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode("4326"),
+                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode("25832"));
+        var E_25832 = transfCoords[0];
+        var S_25832 = transfCoords[1];
+//        log.warn("transfCoords: IN(" + E + "," + S + "), OUT(" + E_25832 + "," + S_25832 + ")");
 
-        var addHtml = "<a href=\"http://atlas.wsv.bvbs.bund.de/positionfinder/map/index.html?bwastr=" + BWSTR.trim() + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
-            "<div style=\"background-image: url(http://atlas.wsv.bvbs.bund.de/tk/wms?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;BBOX=" + BBOX +
-            "&amp;LAYERS=TK1000,TK500,TK200,TK100,TK50,TK25&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
-            "<div style=\"background-image: url(http://atlas.wsv.bund.de/ienc/group/wms?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
-            "&amp;Layers=Harbour&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px;\">" +
+        var addHtml = "<a href=\"/kartendienste?lang=de&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + E_25832 + "&N=" + S_25832 + "&zoom=15&crosshair=marker\" style=\"padding: 0 0 0 0;\">" +
+            "<div style=\"background-image: url(http://sgx.geodatenzentrum.de/wms_topplus_web_open?VERSION=1.3.0&amp;REQUEST=GetMap&amp;CRS=CRS:84&amp;BBOX=" + BBOX +
+            "&amp;LAYERS=web&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
             "<img src=\"/ingrid-portal-apps/images/map_punkt.png\" alt=\"\">" +
-            "</div></div></a>";
+            "</div></a>";
 
         if (log.isDebugEnabled()) {
             log.debug("MapPreview Html: " + addHtml);
