@@ -29,9 +29,9 @@
   </properties>
   <body>
 
-    <release version="4.4.0-SNAPSHOT" date="2018-??-??" description="??">
-      <action type="update" dev="wemove">
-        Update mapping templates of Wadaba (GeoPortal.WSV AF-00423).
+    <release version="4.4.0" date="2018-06-21" description="Release 4.4.0">
+      <action type="update" dev="wemove" issue="REDMINE-1114">
+        Update mapping templates of Wadaba (GeoPortal.WSV).
       </action>
     </release>
 
