@@ -246,6 +246,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
         <property name="job" ref="wfsUpdateJob" />
+        <property name="indexInfo" ref="indexInfo" />
+    </bean>
+
+    <bean id="indexInfo" class="de.ingrid.elasticsearch.IndexInfo">
+      <property name="toAlias" value="ingrid"/>
+      <property name="toIndex" value="wfs-dsc-test"/>
+      <property name="toType" value="default"/>
+      <!--<property name="docIdField" value="" />-->
     </bean>
 
     <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.WfsRecordSetProducer"/>
