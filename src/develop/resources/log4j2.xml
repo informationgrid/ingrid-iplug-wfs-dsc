@@ -6,7 +6,13 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Logger name="de.ingrid" level="debug" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Root level="error">
             <AppenderRef ref="Console" />
         </Root>
     </Loggers>
