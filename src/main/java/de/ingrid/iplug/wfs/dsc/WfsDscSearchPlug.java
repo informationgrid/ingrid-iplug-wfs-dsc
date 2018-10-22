@@ -26,33 +26,24 @@
 
 package de.ingrid.iplug.wfs.dsc;
 
-import java.io.IOException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.tngtech.configbuilder.ConfigBuilder;
-
 import de.ingrid.admin.JettyStarter;
+import de.ingrid.admin.elasticsearch.IndexScheduler;
 import de.ingrid.elasticsearch.search.IndexImpl;
 import de.ingrid.iplug.HeartBeatPlug;
 import de.ingrid.iplug.IPlugdescriptionFieldFilter;
 import de.ingrid.iplug.PlugDescriptionFieldFilters;
 import de.ingrid.iplug.wfs.dsc.record.IdfRecordCreator;
-import de.ingrid.utils.ElasticDocument;
-import de.ingrid.utils.IRecordLoader;
-import de.ingrid.utils.IngridCall;
-import de.ingrid.utils.IngridDocument;
-import de.ingrid.utils.IngridHit;
-import de.ingrid.utils.IngridHitDetail;
-import de.ingrid.utils.IngridHits;
+import de.ingrid.utils.*;
 import de.ingrid.utils.dsc.Record;
 import de.ingrid.utils.metadata.IMetadataInjector;
 import de.ingrid.utils.processor.IPostProcessor;
 import de.ingrid.utils.processor.IPreProcessor;
 import de.ingrid.utils.query.IngridQuery;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * This iPlug connects to the iBus delivers search results based on a index.
@@ -73,13 +64,14 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	private IdfRecordCreator dscRecordProducer = null;
 
 	private final IndexImpl _indexSearcher;
+	private IndexScheduler indexScheduler;
 
 	@Autowired
 	public WfsDscSearchPlug(final IndexImpl indexSearcher, IPlugdescriptionFieldFilter[] fieldFilters,
-			IMetadataInjector[] injector, IPreProcessor[] preProcessors, IPostProcessor[] postProcessors)
-					throws IOException {
+			IMetadataInjector[] injector, IPreProcessor[] preProcessors, IPostProcessor[] postProcessors, IndexScheduler indexScheduler) {
 		super(60000, new PlugDescriptionFieldFilters(fieldFilters), injector, preProcessors, postProcessors);
 		this._indexSearcher = indexSearcher;
+		this.indexScheduler = indexScheduler;
 	}
 
 	/*
@@ -115,7 +107,7 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 * @see de.ingrid.iplug.HeartBeatPlug#close()
 	 */
 	@Override
-	public void close() throws Exception {
+	public void close() {
 		this._indexSearcher.close();
 	}
 
@@ -164,8 +156,8 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	/**
 	 * Set the original idf data in an IngridHitDetail
 	 * 
-	 * @param document
-	 * @throws Exception
+	 * @param document is the document to extend with idf data
+	 * @throws Exception if record could not be found
 	 */
 	protected void setDirectData(IngridHitDetail document) throws Exception {
 		ElasticDocument luceneDoc = this._indexSearcher.getDocById( document.getDocumentId() );
@@ -181,12 +173,21 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	}
 
 	public static void main(String[] args) throws Exception {
-        conf = new ConfigBuilder<Configuration>(Configuration.class).withCommandLineArgs(args).build();
+        conf = new ConfigBuilder<>(Configuration.class).withCommandLineArgs(args).build();
         new JettyStarter( conf );
     }
 
-    @Override
-    public IngridDocument call(IngridCall targetInfo) throws Exception {
-        throw new RuntimeException( "call-function not implemented in WFS-DSC-iPlug" );
-    }
+	@Override
+	public IngridDocument call(IngridCall info) {
+		IngridDocument doc = null;
+
+		if ("index".equals(info.getMethod())) {
+			indexScheduler.triggerManually();
+			doc = new IngridDocument();
+			doc.put("success", true);
+		}
+		log.warn("The following method is not supported: " + info.getMethod());
+
+		return doc;
+	}
 }
