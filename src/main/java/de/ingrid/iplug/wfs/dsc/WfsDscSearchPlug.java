@@ -26,7 +26,6 @@
 
 package de.ingrid.iplug.wfs.dsc;
 
-import com.tngtech.configbuilder.ConfigBuilder;
 import de.ingrid.admin.JettyStarter;
 import de.ingrid.admin.elasticsearch.IndexScheduler;
 import de.ingrid.elasticsearch.search.IndexImpl;
@@ -52,8 +51,6 @@ import org.springframework.stereotype.Service;
  * @author joachim@wemove.com
  * 
  */
-@org.springframework.context.annotation.Configuration
-@PropertySource(value = {"classpath:config.properties", "classpath:config.override.properties"})
 @Service
 public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 
@@ -62,8 +59,6 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 */
 	private static Log log = LogFactory.getLog(WfsDscSearchPlug.class);
 
-	public static Configuration conf;
-	
 	private IdfRecordCreator dscRecordProducer = null;
 
 	private final IndexImpl _indexSearcher;
@@ -176,8 +171,7 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	}
 
 	public static void main(String[] args) throws Exception {
-        conf = new ConfigBuilder<>(Configuration.class).withCommandLineArgs(args).build();
-        new JettyStarter( conf );
+        new JettyStarter();
     }
 
 	@Override
