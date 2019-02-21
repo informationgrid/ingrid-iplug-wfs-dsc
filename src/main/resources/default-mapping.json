@@ -1,53 +1,53 @@
 {
-    "_default_" : {
-        "_source" : { "enabled" : true },
-        "properties": {
-            "iPlugId": {
-                "type": "keyword",
-                "store": true
-            },
-            "partner": {
-                "type": "keyword",
-                "store": true
-            },
-            "provider": {
-                "type": "keyword",
-                "store": true
-            },
-            "datatype": {
-                "type": "keyword",
-                "store": true
-            },
-            "dataSourceName": {
-                "type": "keyword",
-                "store": true
-            },
-            "t01_object.obj_id": {
-                "type": "keyword"
-            },
-            "boost": {
-                "type": "float",
-                "store": true,
-                "null_value" : 0.0
-            },
-            "title": {
-                "analyzer": "german",
-                "type": "text"
-            },
-            "station_id": {
-                "type": "keyword"
-            },
-            "comment": {
-                "analyzer": "german",
-                "type": "text"
-            },
-            "kilometer": {
-                "type": "double"
-            },
-            "idf": {
-                "type": "text",
-                "index": false
-            }
-        }
+  "_source": {
+    "enabled": true
+  },
+  "properties": {
+    "iPlugId": {
+      "type": "keyword",
+      "store": true
+    },
+    "partner": {
+      "type": "keyword",
+      "store": true
+    },
+    "provider": {
+      "type": "keyword",
+      "store": true
+    },
+    "datatype": {
+      "type": "keyword",
+      "store": true
+    },
+    "dataSourceName": {
+      "type": "keyword",
+      "store": true
+    },
+    "t01_object.obj_id": {
+      "type": "keyword"
+    },
+    "boost": {
+      "type": "float",
+      "store": true,
+      "null_value": 0.0
+    },
+    "title": {
+      "analyzer": "german",
+      "type": "text"
+    },
+    "station_id": {
+      "type": "keyword"
+    },
+    "comment": {
+      "analyzer": "german",
+      "type": "text"
+    },
+    "kilometer": {
+      "type": "double"
+    },
+    "idf": {
+      "type": "text",
+      "index": false
     }
+  }
 }
