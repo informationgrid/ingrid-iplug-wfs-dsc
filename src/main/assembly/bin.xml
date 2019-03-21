@@ -22,7 +22,9 @@
   **************************************************#
   -->
 
-<assembly>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
   <id>installer</id>
   <formats>
     <format>jar</format>
@@ -30,8 +32,14 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-      <directory>src/main/release/conf</directory>
+      <directory>src/main/resources</directory>
       <outputDirectory>${project.artifactId}-${project.version}/conf</outputDirectory>
+      <includes>
+        <include>config.properties</include>
+        <include>elasticsearch.properties</include>
+        <include>ingrid.auth</include>
+        <include>log4j2.xml</include>
+      </includes>
     </fileSet>
     <fileSet>
       <directory>src/main/resources</directory>
@@ -43,12 +51,12 @@
     </fileSet>
     <fileSet>
       <directory>src/main/release/ant-installer</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory/>
       <filtered>true</filtered>
     </fileSet>
     <fileSet>
       <directory>target/installer</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory/>
     </fileSet>
     <fileSet>
       <directory>target/installer/resources/scripts</directory>
@@ -88,7 +96,6 @@
       <unpack>false</unpack>
       <scope>runtime</scope>
       <excludes>
-        <exclude>de.ingrid:ingrid-installer</exclude>
         <exclude>de.ingrid:ingrid-base-webapp:zip:res</exclude>
       </excludes>
     </dependencySet>

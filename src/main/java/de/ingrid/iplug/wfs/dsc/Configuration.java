@@ -22,25 +22,19 @@
  */
 package de.ingrid.iplug.wfs.dsc;
 
-import java.util.Properties;
-
-import com.tngtech.configbuilder.annotation.propertyloaderconfiguration.PropertiesFiles;
-import com.tngtech.configbuilder.annotation.propertyloaderconfiguration.PropertyLocations;
-import com.tngtech.configbuilder.annotation.valueextractor.DefaultValue;
-import com.tngtech.configbuilder.annotation.valueextractor.PropertyValue;
-
 import de.ingrid.admin.IConfig;
 import de.ingrid.admin.command.PlugdescriptionCommandObject;
 import de.ingrid.utils.PlugDescription;
+import org.springframework.beans.factory.annotation.Value;
 
-@PropertiesFiles( {"config"} )
-@PropertyLocations(directories = {"conf"}, fromClassLoader = true)
+import java.util.Properties;
+
+@org.springframework.context.annotation.Configuration
 public class Configuration implements IConfig {
     
     //private static Log log = LogFactory.getLog(Configuration.class);
     
-    @PropertyValue("plugdescription.serviceUrl")
-    @DefaultValue("")
+    @Value("${plugdescription.serviceUrl:}")
     public String serviceUrl;
    
     @Override

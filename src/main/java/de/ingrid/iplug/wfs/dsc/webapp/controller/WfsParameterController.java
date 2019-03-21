@@ -22,6 +22,11 @@
  */
 package de.ingrid.iplug.wfs.dsc.webapp.controller;
 
+import de.ingrid.admin.command.PlugdescriptionCommandObject;
+import de.ingrid.admin.controller.AbstractController;
+import de.ingrid.iplug.wfs.dsc.Configuration;
+import de.ingrid.iplug.wfs.dsc.webapp.object.WfsConfiguration;
+import de.ingrid.iplug.wfs.dsc.webapp.validation.WfsParameterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,13 +35,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import de.ingrid.admin.command.PlugdescriptionCommandObject;
-import de.ingrid.admin.controller.AbstractController;
-import de.ingrid.iplug.wfs.dsc.Configuration;
-import de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug;
-import de.ingrid.iplug.wfs.dsc.webapp.object.WfsConfiguration;
-import de.ingrid.iplug.wfs.dsc.webapp.validation.WfsParameterValidator;
 
 /**
  * Control the wfs parameter page.
@@ -49,9 +47,12 @@ import de.ingrid.iplug.wfs.dsc.webapp.validation.WfsParameterValidator;
 public class WfsParameterController extends AbstractController {
 	private final WfsParameterValidator _validator;
 
+	private final Configuration wfsPropertiesConfig;
+
 	@Autowired
-	public WfsParameterController(WfsParameterValidator validator) {
+	public WfsParameterController(WfsParameterValidator validator, Configuration wfsPropertiesConfig) {
 		this._validator = validator;
+		this.wfsPropertiesConfig = wfsPropertiesConfig;
 	}
 
 	@RequestMapping(value = { "/iplug-pages/welcome.html",
@@ -61,7 +62,7 @@ public class WfsParameterController extends AbstractController {
 			@ModelAttribute("plugDescription") final PlugdescriptionCommandObject commandObject) {
 
 		WfsConfiguration wfsConfig = new WfsConfiguration();
-		wfsConfig.setServiceUrl( WfsDscSearchPlug.conf.serviceUrl );
+		wfsConfig.setServiceUrl( wfsPropertiesConfig.serviceUrl );
 		
 		// write object into session
 		modelMap.addAttribute("wfsConfig", wfsConfig);
@@ -89,8 +90,7 @@ public class WfsParameterController extends AbstractController {
 	private void mapParamsToPD(WfsConfiguration commandObject,
 			PlugdescriptionCommandObject pdCommandObject) {
 
-	    Configuration conf = WfsDscSearchPlug.conf;
-		conf.serviceUrl = commandObject.getServiceUrl();
+		wfsPropertiesConfig.serviceUrl = commandObject.getServiceUrl();
 
 		// add required datatypes to PD
 		// -> is added in GeneralController with forced added datatype!
