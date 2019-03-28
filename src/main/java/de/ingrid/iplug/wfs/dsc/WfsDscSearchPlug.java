@@ -30,6 +30,7 @@ import de.ingrid.admin.JettyStarter;
 import de.ingrid.admin.elasticsearch.IndexScheduler;
 import de.ingrid.elasticsearch.ElasticConfig;
 import de.ingrid.elasticsearch.IBusIndexManager;
+import de.ingrid.elasticsearch.IndexManager;
 import de.ingrid.elasticsearch.search.IndexImpl;
 import de.ingrid.iplug.HeartBeatPlug;
 import de.ingrid.iplug.IPlugdescriptionFieldFilter;
@@ -68,6 +69,9 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 
 	@Autowired
 	private IBusIndexManager iBusIndexManager;
+
+	@Autowired
+	private IndexManager indexManager;
 
 	private IdfRecordCreator dscRecordProducer = null;
 
@@ -117,7 +121,13 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 */
 	@Override
 	public Record getRecord(IngridHit hit) throws Exception {
-		ElasticDocument document = this._indexSearcher.getDocById( hit.getDocumentId() );
+		ElasticDocument document;
+		if (elasticConfig.esCommunicationThroughIBus) {
+			document = this.iBusIndexManager.getDocById(hit.getDocumentId());
+		} else {
+			document = indexManager.getDocById(hit.getDocumentId());
+		}
+
 		return this.dscRecordProducer.getRecord(document);
 	}
 
@@ -188,7 +198,13 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 	 * @throws Exception if record could not be found
 	 */
 	protected void setDirectData(IngridHitDetail document) throws Exception {
-		ElasticDocument luceneDoc = this._indexSearcher.getDocById( document.getDocumentId() );
+		ElasticDocument luceneDoc;
+		if (elasticConfig.esCommunicationThroughIBus) {
+			luceneDoc = this.iBusIndexManager.getDocById(document.getDocumentId());
+		} else {
+			luceneDoc = indexManager.getDocById(document.getDocumentId());
+		}
+
 		long startTime = 0;
 		if (log.isDebugEnabled()) {
 			startTime = System.currentTimeMillis();
