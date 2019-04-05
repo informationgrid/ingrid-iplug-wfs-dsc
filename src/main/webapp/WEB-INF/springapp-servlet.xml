@@ -37,9 +37,9 @@
     
     <!-- the application context definition for the springapp DispatcherServlet -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-        <property name="prefix" value="/WEB-INF/jsp/"></property>
-        <property name="suffix" value=".jsp"></property>
+      <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+      <property name="prefix" value="/WEB-INF/jsp/"/>
+      <property name="suffix" value=".jsp"/>
     </bean>
 
 	<bean id="messageSource"
@@ -51,7 +51,7 @@
 			</list>
 		</property>
 		<property name="cacheSeconds" value="0" />
-		<property name="fallbackToSystemLocale" value="false"></property>
+    <property name="fallbackToSystemLocale" value="false"/>
         <property name="defaultEncoding">
             <value>UTF-8</value>
         </property>
@@ -61,9 +61,10 @@
 
     <!-- Single parsers are injected explicitly (but created via annotation mechanism) -->
     <!-- Adapt number, type and order of parsers dependent from iPlug -->
-    <bean id="queryConverter" class="de.ingrid.admin.elasticsearch.converter.QueryConverter">
+    <bean id="queryConverter" class="de.ingrid.elasticsearch.search.converter.QueryConverter">
         <property name="queryParsers">
             <list>
+                <ref bean="IPlugIdQueryConverter"/>
                 <ref bean="defaultFieldsQueryConverter" />
                 <ref bean="datatypePartnerProviderQueryConverter" />
                 <ref bean="fieldQueryIGCConverter" />
@@ -76,6 +77,9 @@
     </bean>
 
     <context:component-scan base-package="de.ingrid">
+      <context:exclude-filter type="regex" expression="de.ingrid.admin.object.DefaultDataType"/>
+      <context:exclude-filter type="regex" expression="de.ingrid.admin.object.BasePlug"/>
+      <context:exclude-filter type="regex" expression="de.ingrid.admin.controller.RedirectController"/>
     </context:component-scan>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
@@ -83,7 +87,7 @@
 	</bean> 
     
     <mvc:annotation-driven/>
-    <mvc:resources mapping="/css/**" location="/css/" />
-    <mvc:resources mapping="/img/**" location="/img/" />
+    <mvc:resources mapping="/css/**" location="css" />
+    <mvc:resources mapping="/img/**" location="images" />
     
 </beans>

@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2018 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2019 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -30,7 +30,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import de.ingrid.admin.elasticsearch.IndexInfo;
+import de.ingrid.elasticsearch.IndexInfo;
 import de.ingrid.admin.object.IDocumentProducer;
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
 import de.ingrid.iplug.wfs.dsc.cache.UpdateJob;
@@ -40,6 +40,7 @@ import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author joachim
@@ -58,6 +59,8 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	WFSFactory factory;
 
 	UpdateJob job;
+
+	private IndexInfo indexInfo;
 	
 	final private static Log log = LogFactory.getLog(WfsDscDocumentProducer.class);
 
@@ -213,7 +216,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 
     @Override
     public IndexInfo getIndexInfo() {
-        return null;
+        return indexInfo;
     }
 
     @Override
@@ -221,4 +224,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
         return null;
     }
 
+	public void setIndexInfo(IndexInfo indexInfo) {
+		this.indexInfo = indexInfo;
+	}
 }
