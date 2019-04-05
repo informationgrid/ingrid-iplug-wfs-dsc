@@ -251,7 +251,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
     <bean id="indexInfo" class="de.ingrid.elasticsearch.IndexInfo">
       <property name="toAlias" value="ingrid"/>
-      <property name="toIndex" value="wfs-dsc-test"/>
+      <property name="toIndex" value="wfs-dsc"/>
       <property name="toType" value="default"/>
       <!--<property name="docIdField" value="" />-->
     </bean>
