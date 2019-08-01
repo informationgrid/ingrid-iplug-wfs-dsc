@@ -26,41 +26,31 @@
 
 package de.ingrid.iplug.wfs.dsc.cache.impl;
 
-import java.io.StringReader;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
+import de.ingrid.iplug.wfs.dsc.cache.Cache;
+import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
+import de.ingrid.iplug.wfs.dsc.cache.UpdateStrategy;
+import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
+import de.ingrid.iplug.wfs.dsc.wfsclient.*;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.ResultType;
+import de.ingrid.utils.statusprovider.StatusProviderService;
 import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-import de.ingrid.admin.elasticsearch.StatusProvider;
-import de.ingrid.iplug.wfs.dsc.cache.Cache;
-import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
-import de.ingrid.iplug.wfs.dsc.cache.UpdateStrategy;
-import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSClient;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
-import de.ingrid.iplug.wfs.dsc.wfsclient.constants.ResultType;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.StringReader;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 
     @Autowired
-    protected StatusProvider statusProvider;
+    protected StatusProviderService statusProviderService;
 
     DocumentBuilder docBuilder = null;
 

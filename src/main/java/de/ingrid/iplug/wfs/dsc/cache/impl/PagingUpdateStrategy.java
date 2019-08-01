@@ -75,7 +75,7 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 
 		List<String> allRecordIds = new ArrayList<String>();
         
-		statusProvider.addState( "FETCHED_FEATURES", "Start fetching " + typeNames.length + " featuretype(s).");
+		statusProviderService.getDefaultStatusProvider().addState( "FETCHED_FEATURES", "Start fetching " + typeNames.length + " featuretype(s).");
 		
 //		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
@@ -90,11 +90,11 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 				if (log.isInfoEnabled()) {
 					log.info("Start fetching " + totalNumRecords + " features of type '" + typeName + "'");
 				}
-                statusProvider.addState( "FETCH_FEATURE_INTRO_" + typeName, "Start fetching " + totalNumRecords + " features of type '" + typeName + "'");
+                statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_INTRO_" + typeName, "Start fetching " + totalNumRecords + " features of type '" + typeName + "'");
 
 			} catch (Exception ex) {
 				log.error("Problems fetching total number of features of type '" + typeName + "', we skip this feature type !", ex);
-	            statusProvider.addState( "FETCH_FEATURE_INTRO_" + typeName, "Problems fetching total number of features of type '" + typeName + "', we skip this feature type !");
+	            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_INTRO_" + typeName, "Problems fetching total number of features of type '" + typeName + "', we skip this feature type !");
 				continue;
 			}
 
@@ -113,7 +113,7 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
                     log.debug("Fetching features of type "+typeName+", maxFeatures=" +
 						maxFeatures + ", startIndex=" + startIndex + " ...");
 				}
-	            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching features of type '" + typeName + "' ... " + startIndex + "-" + (startIndex + maxFeatures));
+	            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetching features of type '" + typeName + "' ... " + startIndex + "-" + (startIndex + maxFeatures));
 				try {
 					List<String> fetchedIds = fetchRecordsPaged(client, typeName, filterSet, true, maxFeatures, startIndex);
 					allRecordIds.addAll(fetchedIds);
@@ -132,14 +132,14 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
                         // log as debug to avoid huge chunk of messages !
                         log.debug("Caused Exception:", ex);                     
                     }
-                    statusProvider.addState( "FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "', we skip these ones: " + startIndex + "-" + (startIndex + maxFeatures));
+                    statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "', we skip these ones: " + startIndex + "-" + (startIndex + maxFeatures));
 				}
 			}
 
 			if (errorInFeaturetype) {
-	            statusProvider.addState( "FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "' !");
+	            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "' !");
 			} else {
-                statusProvider.addState( "FETCH_FEATURE_" + typeName, "OK, fetched all features of type '" + typeName + "' !");
+                statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "OK, fetched all features of type '" + typeName + "' !");
 			}
 
 			// activate this for local testing of restricted number of feature types !

@@ -38,11 +38,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import de.ingrid.utils.statusprovider.StatusProviderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import de.ingrid.admin.elasticsearch.StatusProvider;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 
 /**
@@ -64,7 +64,7 @@ public class UpdateJob {
 	private UpdateStrategy updateStrategy;
 
 	@Autowired
-    private StatusProvider statusProvider;
+    private StatusProviderService statusProviderService;
 
 
 	/**
@@ -118,7 +118,7 @@ public class UpdateJob {
 		Date end = new Date();
 		long diff = end.getTime()-start.getTime();
 		String msg = "Fetched " + allRecordIds.size() + " records from " + this.factory.getServiceUrl() + ". Duplicates: " + duplicates;
-        statusProvider.addState( "FETCH", msg);
+        statusProviderService.getDefaultStatusProvider().addState( "FETCH", msg);
 		log.info(msg);
 		log.info("Job executed within "+diff+" ms.");
 	}

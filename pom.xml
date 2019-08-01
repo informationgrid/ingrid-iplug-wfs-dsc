@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ingrid-iplug-wfs-dsc</artifactId>
-  <version>5.1.0-SNAPSHOT</version>
+  <version>5.2.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>InGrid iPlug WFS-DSC</name>
   <description>This iPlug indexes documents from a WFS-service and can be queried by the iBus.</description>
@@ -32,7 +32,7 @@
   <!-- ==================== PROPERTIES ==================== -->
   <properties>
     <iplug.type>IPLUG_WFS_DSC</iplug.type>
-    <ingrid-base-webapp.version>5.0.1</ingrid-base-webapp.version>
+    <ingrid-base-webapp.version>5.2.0-SNAPSHOT</ingrid-base-webapp.version>
     <spring.version>4.3.20.RELEASE</spring.version>
     <log4j2.version>2.8.2</log4j2.version>
   </properties>
@@ -68,7 +68,7 @@
     <dependency>
       <groupId>de.ingrid</groupId>
       <artifactId>ingrid-utils</artifactId>
-      <version>5.0.0</version>
+      <version>5.2.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>de.ingrid</groupId>
