@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2019 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2020 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -35,7 +35,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 
-import de.ingrid.admin.elasticsearch.StatusProvider.Classification;
+import de.ingrid.utils.statusprovider.StatusProvider.Classification;
 import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSCapabilities;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSClient;
@@ -72,12 +72,12 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 		try {
 		    capabilities = client.getCapabilities();
 		} catch (Exception ex) {
-		    statusProvider.addState( "ERROR_NEXT", "Could not fetch service URL. Index will be empty!", Classification.ERROR );
+			statusProviderService.getDefaultStatusProvider().addState( "ERROR_NEXT", "Could not fetch service URL. Index will be empty!", Classification.ERROR );
 		    throw ex;
 		}
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
-        statusProvider.addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
+		statusProviderService.getDefaultStatusProvider().addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
 		
 		List<String> allRecordIds = new ArrayList<String>();
 //		int numFeatureTypesFetched=0;
@@ -87,16 +87,16 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 				log.info("Fetching features of type "+typeName+"...");
 			}
 
-            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
+			statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
 			
 			try {
 				List<String> l = this.fetchRecords(client, typeName, filterSet, true);
-			    allRecordIds.addAll(l);				
-	            statusProvider.addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
+			    allRecordIds.addAll(l);
+				statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
 			} catch (Exception ex) {
 				String msg = "Problems fetching features of type '" + typeName + "', we skip these ones !";
                 log.error(msg, ex);
-				statusProvider.addState( "ERROR_FEATURE_" + typeName, msg, Classification.ERROR );
+				statusProviderService.getDefaultStatusProvider().addState( "ERROR_FEATURE_" + typeName, msg, Classification.ERROR );
 			}
 
 			// activate this for local testing !
