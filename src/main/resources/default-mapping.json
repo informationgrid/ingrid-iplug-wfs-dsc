@@ -33,7 +33,8 @@
     },
     "title": {
       "analyzer": "german",
-      "type": "text"
+      "type": "text",
+      "store": true
     },
     "station_id": {
       "type": "keyword"
@@ -45,6 +46,10 @@
     "kilometer": {
       "type": "double"
     },
+    "additional_html_1": {
+      "type": "text",
+      "store": true
+    }, 
     "idf": {
       "type": "text",
       "index": false
