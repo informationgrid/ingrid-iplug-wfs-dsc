@@ -24,7 +24,8 @@
       "store": true
     },
     "t01_object.obj_id": {
-      "type": "keyword"
+      "type": "keyword",
+      "store": true
     },
     "boost": {
       "type": "float",
@@ -32,9 +33,17 @@
       "null_value": 0.0
     },
     "title": {
+      "type": "text",
+      "store": true
+    },
+    "summary": {
       "analyzer": "german",
       "type": "text",
       "store": true
+    },
+    "content": {
+      "analyzer": "german",
+      "type": "text"
     },
     "station_id": {
       "type": "keyword"
@@ -49,7 +58,7 @@
     "additional_html_1": {
       "type": "text",
       "store": true
-    }, 
+    },
     "idf": {
       "type": "text",
       "index": false
