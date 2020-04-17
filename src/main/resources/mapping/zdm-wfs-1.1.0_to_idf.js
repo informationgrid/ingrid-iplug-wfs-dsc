@@ -45,6 +45,7 @@ importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);
 importPackage(Packages.de.ingrid.utils.udk);
 importPackage(Packages.de.ingrid.utils.xml);
 importPackage(Packages.org.w3c.dom);
+importPackage(Packages.de.ingrid.geo.utils.transformation);
 
 if (log.isDebugEnabled()) {
 	log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
@@ -131,25 +132,32 @@ function getMapPreview(recordNode) {
         // BBOX
         var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
         var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-        var S = Number(lowerCoords[0]); // SOUTH
-        var E = Number(upperCoords[1]); // EAST
+        // Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
+        var S = Number(lowerCoords[1]); // SOUTH y1
+        var E = Number(upperCoords[0]); // EAST, x2
         // NOTICE: 
-        // lowerCorner and upperCorner have same coordinates !? -> BBOX is a POINT !
-        var BBOX = "" + (E - 0.048) + "," + (S - 0.012) + "," + (E + 0.048) + "," + (S + 0.012);
+
+        // transform "WGS 84 (EPSG:4326)" to "ETRS89 / UTM zone 32N (EPSG:25832)"
+        var transfCoords = CoordTransformUtil.getInstance().transform(
+                E, S,
+                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode("25832"),
+                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode("4326"));
+        var E_4326 = transfCoords[0];
+        var S_4326 = transfCoords[1];
 
         //  Fields for link
 //        var BWSTR = xPathUtils.getString(recordNode, "//ms:BWSTR");
 //        var KM_ANF_D = xPathUtils.getString(recordNode, "//ms:KM_ANF_D");
 
-        var addHtml = "" +
+        // lowerCorner and upperCorner have same coordinates !? -> BBOX is a POINT !
+        var BBOX = "" + (E_4326 - 0.048) + "," + (S_4326 - 0.012) + "," + (E_4326 + 0.048) + "," + (S_4326 + 0.012);
+
+        var addHtml = "" + 
 //            "<a href=\"http://wsvmapserv.wsv.bvbs.bund.de/ol_bwastr/index.html?bwastr=" + BWSTR + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
-            "<div style=\"background-image: url(http://atlas.wsv.bvbs.bund.de/tkgroup/wms?LAYERS=TK&amp;EXCEPTIONS=application%2Fvnd.ogc.se_inimage&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=TRUE" + 
-            "&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetMap&amp;STYLES=&amp;INFO_FORMAT=&amp;SRS=EPSG%3A4326&amp;BBOX=" + BBOX + "&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; " +
-            "width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
-            "<div style=\"background-image: url(http://atlas.wsv.bund.de/ienc/group/wms?VERSION=1.1.1&amp;REQUEST=GetMap&amp;SRS=EPSG:4326&amp;Transparent=True&amp;BBOX=" + BBOX +
-            "&amp;Layers=Harbour&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px;\">" +
+            "<div style=\"background-image: url(http://sgx.geodatenzentrum.de/wms_topplus_web_open?VERSION=1.3.0&amp;REQUEST=GetMap&amp;CRS=CRS:84&amp;BBOX=" + BBOX +
+            "&amp;LAYERS=web&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
             "<img src=\"/ingrid-portal-apps/images/map_punkt.png\" alt=\"\">" +
-            "</div></div>";
+            "</div>";
 //            + "</a>";
 
         if (log.isDebugEnabled()) {
