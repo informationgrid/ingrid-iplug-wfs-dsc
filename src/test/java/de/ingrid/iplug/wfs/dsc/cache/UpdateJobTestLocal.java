@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,12 +26,12 @@
 
 package de.ingrid.iplug.wfs.dsc.cache;
 
-import junit.framework.TestCase;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.PlugDescription;
+import junit.framework.TestCase;
 
 public class UpdateJobTestLocal extends TestCase {
 
@@ -48,6 +48,6 @@ public class UpdateJobTestLocal extends TestCase {
 		job.execute();
 
 		Cache cache = job.getCache();
-		assertEquals(487, cache.getCachedRecordIds().size());
+		assertEquals("Number of cached features matches", 536, cache.getCachedRecordIds().size());
 	}
 }

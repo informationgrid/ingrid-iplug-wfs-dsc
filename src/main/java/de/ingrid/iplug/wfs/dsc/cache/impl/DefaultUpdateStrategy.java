@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,7 +35,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 
-import de.ingrid.utils.statusprovider.StatusProvider.Classification;
 import de.ingrid.iplug.wfs.dsc.cache.ExecutionContext;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSCapabilities;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSClient;
@@ -70,15 +69,15 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 		// get all feature types from the capabilities document
 		WFSCapabilities capabilities = null;
 		try {
-		    capabilities = client.getCapabilities();
+			capabilities = client.getCapabilities();
 		} catch (Exception ex) {
-			statusProviderService.getDefaultStatusProvider().addState( "ERROR_NEXT", "Could not fetch service URL. Index will be empty!", Classification.ERROR );
-		    throw ex;
+			updateState("ERROR_NEXT", "Could not fetch service URL. Index will be empty!", true);
+			throw ex;
 		}
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
-		statusProviderService.getDefaultStatusProvider().addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
-		
+		updateState("FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.", false);
+
 		List<String> allRecordIds = new ArrayList<String>();
 //		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
@@ -87,16 +86,16 @@ public class DefaultUpdateStrategy extends AbstractUpdateStrategy {
 				log.info("Fetching features of type "+typeName+"...");
 			}
 
-			statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
-			
+			updateState("FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...", false);
+
 			try {
 				List<String> l = this.fetchRecords(client, typeName, filterSet, true);
-			    allRecordIds.addAll(l);
-				statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
+				allRecordIds.addAll(l);
+				updateState("FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.", false);
 			} catch (Exception ex) {
 				String msg = "Problems fetching features of type '" + typeName + "', we skip these ones !";
-                log.error(msg, ex);
-				statusProviderService.getDefaultStatusProvider().addState( "ERROR_FEATURE_" + typeName, msg, Classification.ERROR );
+				log.error(msg, ex);
+				updateState("ERROR_FEATURE_" + typeName, msg, true);
 			}
 
 			// activate this for local testing !

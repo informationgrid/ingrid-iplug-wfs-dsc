@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,7 +25,6 @@ package de.ingrid.iplug.wfs.dsc.record;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import junit.framework.TestCase;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
@@ -36,6 +35,7 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLUtils;
+import junit.framework.TestCase;
 
 public class ZDMMapperToIngridTestLocal extends TestCase {
 
@@ -71,7 +71,7 @@ public class ZDMMapperToIngridTestLocal extends TestCase {
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
 		assertTrue(documentString.contains("<h1>abfluss.78351782</h1>"));
-		assertTrue(documentString.contains("<p>EPSG:4326: 53.456649, 10.068015 / 53.456649, 10.068015</p>"));
+		assertTrue(documentString.contains("<p>EPSG:4326: 10.068015, 53.456649 / 10.068015, 53.456649</p>"));
 		assertTrue(documentString.contains("<li>STATION_NAME: Bunthaus Süd</li>"));
 	}
 }

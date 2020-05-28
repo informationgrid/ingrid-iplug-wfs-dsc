@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,8 +33,6 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import junit.framework.TestCase;
-
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
@@ -43,6 +41,7 @@ import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 import de.ingrid.utils.PlugDescription;
+import junit.framework.TestCase;
 
 public class WFSClientTestLocal extends TestCase {
 
@@ -133,7 +132,6 @@ public class WFSClientTestLocal extends TestCase {
 	public void testGetFeature() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
-		int recordCount = 483;
 
 		// set up client
 		WFSClient client = this.factory.createClient();
@@ -147,14 +145,12 @@ public class WFSClientTestLocal extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertEquals("Fetched "+recordCount+" records from the server",
-				recordCount, result.getNumberOfFeatures());
+		assertEquals("Number of fetched features matches", 536, result.getNumberOfFeatures());
 	}
 
 	public void testGetFeatureWithFilter() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
-		int recordCount = 59;
 
 		// set up client
 		WFSClient client = this.factory.createClient();
@@ -177,7 +173,6 @@ public class WFSClientTestLocal extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertEquals("Fetched "+recordCount+" records from the server",
-				recordCount, result.getNumberOfFeatures());
+		assertEquals("Number of fetched features matches", 70, result.getNumberOfFeatures());
 	}
 }

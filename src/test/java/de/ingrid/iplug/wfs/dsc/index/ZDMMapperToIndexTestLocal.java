@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -62,21 +62,21 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 			} catch (Throwable t) {
 				System.out.println(t);
 			}
-			
+
 			assertTrue("Lucene doc found.", doc != null);
 			assertEquals(testRecordId, doc.get("t01_object.obj_id"));
 			System.out.println(doc);
 
 			if (testRecordId.equals("955299742e63f37188188b862290ee")) {
 				assertEquals("abfluss.78351782", doc.get("title"));
-				assertEquals("EPSG:4326: 53.456649, 10.068015 / 53.456649, 10.068015", doc.get("summary"));
-				assertEquals("Bunthaus Süd", doc.get("station_name"));				
+				assertEquals("EPSG:4326: 10.068015, 53.456649 / 10.068015, 53.456649", doc.get("summary"));
+				assertEquals("Bunthaus Süd", doc.get("station_name"));
 			}
 			if (testRecordId.equals("40a385f3895512bc48c9e2a95d92fea6")) {
 				assertEquals("NebenflussKm.26,8", doc.get("title"));
-				assertEquals("EPSG:4326: 53.628519, 9.229423 / 53.628519, 9.229423", doc.get("summary"));
-				assertEquals("Oste", doc.get("gewaesser"));				
-				assertEquals("26,8 - Oste - 024", doc.get("suchfeld"));				
+				assertEquals("EPSG:4326: 9.229423, 53.628519 / 9.229423, 53.628519", doc.get("summary"));
+				assertEquals("Oste", doc.get("gewaesser"));
+				assertEquals("26,8 - Oste - 024", doc.get("suchfeld"));
 			}
 		}
 	}

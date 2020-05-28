@@ -91,6 +91,7 @@
   <Operations>
     <Query/>
   </Operations>
+  	<!-- // Removed, because local store only provides data for one feature type
     <FeatureType>
         <Name>kanalbrueckenanlagen</Name>
         <Title>112 Kanalbrueckenanlagen</Title>
@@ -409,12 +410,14 @@
         <SRS>EPSG:4326</SRS>
         <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
     </FeatureType>
+    -->
     <FeatureType>
         <Name>abflussmessstellen</Name>
         <Title>252 Abflussmessstellen</Title>
         <SRS>EPSG:4326</SRS>
         <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
     </FeatureType>
+  	<!-- // Removed, because local store only provides data for one feature type
     <FeatureType>
         <Name>wasserbeschaffenheitsmessstellen</Name>
         <Title>253 Wasserbeschaffenheitsmessstellen</Title>
@@ -427,6 +430,7 @@
         <SRS>EPSG:4326</SRS>
         <LatLongBoundingBox minx="5.18555" miny="46.8457" maxx="15.4688" maxy="55.6348" />
     </FeatureType>
+    -->
 </FeatureTypeList>
 
 <ogc:Filter_Capabilities>
