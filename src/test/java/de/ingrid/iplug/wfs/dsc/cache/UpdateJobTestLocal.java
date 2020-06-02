@@ -48,6 +48,6 @@ public class UpdateJobTestLocal extends TestCase {
 		job.execute();
 
 		Cache cache = job.getCache();
-		assertEquals("Number of cached features matches", 536, cache.getCachedRecordIds().size());
+		assertEquals("Number of cached features matches", 535, cache.getCachedRecordIds().size());
 	}
 }

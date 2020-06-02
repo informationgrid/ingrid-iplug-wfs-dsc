@@ -145,7 +145,7 @@ public class WFSClientTestLocal extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertEquals("Number of fetched features matches", 536, result.getNumberOfFeatures());
+		assertEquals("Number of fetched features matches", 535, result.getNumberOfFeatures());
 	}
 
 	public void testGetFeatureWithFilter() throws Exception {

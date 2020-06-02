@@ -23,44 +23,31 @@
 /**
  * 
  */
-package de.ingrid.iplug.wfs.dsc.record.producer;
+package de.ingrid.iplug.wfs.dsc.record.mapper;
+
+import org.w3c.dom.Document;
 
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
-import de.ingrid.utils.ElasticDocument;
 
 /**
- * Defines all aspects a record producer must implement. The record producer is
- * used to retrieve ONE record from the data source for further processing.
+ * Must be implemented by all mapper classes that map a {@link SourceRecord} to
+ * an InGrid Detail data Format (IDF).
  * 
  * 
  * @author joachim@wemove.com
  * 
  */
-public interface IRecordProducer {
+public interface IdfMapper {
 
 	/**
-	 * Open the data source. The functionality depends on the type of data
-	 * source.
+	 * Map a {@link SourceRecord} to an InGrid Detail data Format (IDF). The
+	 * implementing class must take care that all required parameters are
+	 * present in the {@link SourceRecord}.
 	 * 
-	 * The parameters in {@link SourceRecord} returned by {@link getRecord} may
-	 * contain a reference to the data source, so that the following mapping
-	 * step can access the data source as well.
-	 * 
+	 * @param record
+	 * @param doc
+	 * @throws Exception
 	 */
-	void openDatasource();
-
-	/**
-	 * Close the data source.
-	 */
-	void closeDatasource();
-
-	/**
-	 * Get a record from the data source. How the record must be derived from
-	 * the fields of the lucene document.
-	 * 
-	 * @param document
-	 * @return
-	 */
-	SourceRecord getRecord(ElasticDocument document);
+	public void map(SourceRecord record, Document doc) throws Exception;
 
 }

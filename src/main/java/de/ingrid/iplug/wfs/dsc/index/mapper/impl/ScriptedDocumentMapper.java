@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,9 +21,9 @@
  * **************************************************#
  */
 /**
- * 
+ *
  */
-package de.ingrid.iplug.wfs.dsc.index.mapper;
+package de.ingrid.iplug.wfs.dsc.index.mapper.impl;
 
 import java.io.File;
 import java.util.Hashtable;
@@ -31,8 +31,9 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import de.ingrid.iplug.wfs.dsc.index.mapper.RecordMapper;
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.ElasticDocument;
@@ -46,16 +47,15 @@ import de.ingrid.utils.xpath.XPathUtils;
  * <p />
  * If the {@link compile} parameter is set to true, the script is compiled, if
  * the ScriptEngine supports compilation.
- * 
+ *
  * @author ingo@wemove.com
- * 
  */
-public class WfsDocumentMapper implements IRecordMapper {
+public class ScriptedDocumentMapper implements RecordMapper {
 
 	private File[] mappingScripts;
 	private boolean compile = false;
 
-	private static final Logger log = Logger.getLogger(WfsDocumentMapper.class);
+	private static final Logger log = Logger.getLogger(ScriptedDocumentMapper.class);
 
 	@Override
 	public void map(SourceRecord record, ElasticDocument doc) throws Exception {
@@ -64,12 +64,12 @@ public class WfsDocumentMapper implements IRecordMapper {
 			throw new IllegalArgumentException("Mapping scripts are not set!");
 		}
 
-		if (!(record instanceof WfsCacheSourceRecord)) {
+		if (!(record instanceof WfsSourceRecord)) {
 			log.error("Source Record is not a WfsCacheSourceRecord!");
 			throw new IllegalArgumentException("Source Record is not a WfsCacheSourceRecord!");
 		}
 
-		WFSFeature wfsRecord = (WFSFeature)record.get(WfsCacheSourceRecord.WFS_RECORD);
+		WFSFeature wfsRecord = (WFSFeature)record.get(WfsSourceRecord.WFS_RECORD);
 		XPathUtils xPathUtils = new XPathUtils(wfsRecord.getNamespaceContext());
 
 		try {

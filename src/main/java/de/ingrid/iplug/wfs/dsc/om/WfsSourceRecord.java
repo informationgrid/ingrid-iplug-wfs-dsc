@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,47 +20,28 @@
  * limitations under the Licence.
  * **************************************************#
  */
-/**
- * 
- */
-package de.ingrid.iplug.wfs.dsc.index.producer;
+package de.ingrid.iplug.wfs.dsc.om;
 
-import de.ingrid.iplug.wfs.dsc.cache.Cache;
-import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
-
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 
 /**
- * This interface must be implemented from all record producing classes. Record
- * producer are objects that know how to produce a list of source records, that
- * can be mapped into other formats later.
- * 
+ * Represents a record from a wfs cache.
+ *
  * @author joachim@wemove.com
- * 
  */
-public interface IWfsCacheRecordSetProducer {
+public class WfsSourceRecord extends SourceRecord {
+
+	private static final long serialVersionUID = 5660303708840795055L;
+
+	public static final String WFS_RECORD = "wfsRecord";
 
 	/**
-	 * Returns true if more records are available and false if not.
-	 * 
-	 * @return
+	 * Creates a WfsSourceRecord. It holds the source record id and
+	 * the original wfs record for further usage.
+	 * @param record
 	 */
-	public boolean hasNext() throws Exception;
-
-	/**
-	 * Retrieves the next record from the data source and returns it.
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public SourceRecord next() throws Exception;
-
-
-	/**
-	 * Set the cache the producer operates on.
-	 * 
-	 * @param cache
-	 */
-	public void setCache(Cache cache);
-
-
+	public WfsSourceRecord(WFSFeature record) {
+		super(record.getId());
+		this.put(WFS_RECORD, record);
+	}
 }

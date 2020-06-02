@@ -27,9 +27,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
-import de.ingrid.iplug.wfs.dsc.record.mapper.CreateIdfMapper;
-import de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
+import de.ingrid.iplug.wfs.dsc.record.mapper.impl.CreateIdfMapper;
+import de.ingrid.iplug.wfs.dsc.record.mapper.impl.WfsIdfMapper;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
@@ -61,8 +61,8 @@ public class ZDMMapperToIngridTestLocal extends TestCase {
 		DocumentBuilder docBuilder = dbf.newDocumentBuilder();
 		org.w3c.dom.Document idfDoc = docBuilder.newDocument();
 		try {
-			createIdfMapper.map(new WfsCacheSourceRecord(wfsRecord), idfDoc);
-			wfsIdfMapper.map(new WfsCacheSourceRecord(wfsRecord), idfDoc);
+			createIdfMapper.map(new WfsSourceRecord(wfsRecord), idfDoc);
+			wfsIdfMapper.map(new WfsSourceRecord(wfsRecord), idfDoc);
 		} catch (Throwable t) {
 			System.out.println(t);
 		}

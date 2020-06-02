@@ -24,8 +24,8 @@ package de.ingrid.iplug.wfs.dsc.index;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
-import de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
@@ -47,7 +47,7 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 		desc.put("serviceUrl", "");
 		factory.configure(desc);
 
-		WfsDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", WfsDocumentMapper.class);
+		ScriptedDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", ScriptedDocumentMapper.class);
 
 		String[] testRecordIds = new String[] {
 				"955299742e63f37188188b862290ee",
@@ -58,7 +58,7 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 			WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
 			ElasticDocument doc = new ElasticDocument();
 			try {
-				mapper.map(new WfsCacheSourceRecord(wfsRecord), doc);
+				mapper.map(new WfsSourceRecord(wfsRecord), doc);
 			} catch (Throwable t) {
 				System.out.println(t);
 			}

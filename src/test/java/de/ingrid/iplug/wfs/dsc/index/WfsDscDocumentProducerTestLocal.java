@@ -22,49 +22,41 @@
  */
 package de.ingrid.iplug.wfs.dsc.index;
 
-import de.ingrid.admin.JettyStarter;
+import java.util.ArrayList;
+import java.util.List;
+
+import de.ingrid.admin.object.IDocumentProducer;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
-import de.ingrid.iplug.wfs.dsc.TestUtil;
-import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
-import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
 import junit.framework.TestCase;
 
-public class MapperToIndexTest extends TestCase {
+public class WfsDscDocumentProducerTestLocal extends TestCase {
 
 	/**
 	 * @throws Exception
 	 */
-	public void testMapper() throws Exception {
-
-		new JettyStarter( false );
-		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
-		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
+	public void testAll() throws Exception {
 
 		PlugDescription desc = new PlugDescription();
 		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
+
+		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
+
+		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 		factory.configure(desc);
 
-		ScriptedDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", ScriptedDocumentMapper.class);
+		IDocumentProducer documentProducer = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_DOCUMENT_PRODUCER, IDocumentProducer.class);
+		documentProducer.configure(desc);
 
-		String testRecordId = "21212262e8a1112a80f26f18255da2e0";
-		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
-		ElasticDocument doc = new ElasticDocument();
-		try {
-			mapper.map(new WfsSourceRecord(wfsRecord), doc);
-		} catch (Throwable t) {
-			System.out.println(t);
+		List<ElasticDocument> docs = new ArrayList<>();
+		while (documentProducer.hasNext()) {
+			ElasticDocument doc = documentProducer.next();
+			docs.add(doc);
 		}
-
-		assertTrue("Lucene doc found.", doc != null);
-		assertEquals(testRecordId, doc.get("t01_object.obj_id"));
-		System.out.println(doc);
-		assertEquals("RHEIN RUHRORT (km 780.8)", doc.get("title"));
-		assertEquals("19.09.2011 16:15:00: 280.0cm", doc.get("summary"));
+		assertEquals("Number of mapped documents matches", 535, docs.size());
 	}
 }

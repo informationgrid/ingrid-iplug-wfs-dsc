@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -65,15 +65,30 @@ public class GenericClient implements WFSClient {
 				Document capDoc = this.factory.createRequest(Operation.GET_CAPABILITIES).doGetCapabilities(serviceUrl);
 				this.capabilities.initialize(capDoc);
 			}
-			else
+			else {
 				throw new RuntimeException("WFSClient is not configured properly. Make sure to call WFSClient.configure.");
+			}
 		}
 		return this.capabilities;
 	}
 
 	@Override
-	public WFSFeatureType describeFeatureType() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet.");
+	public WFSFeatureType describeFeatureType(WFSQuery query) throws Exception {
+		if (this.factory != null) {
+			WFSCapabilities cap = this.getCapabilities();
+			String opUrl = cap.getOperationUrl(Operation.DESCRIBE_FEATURE_TYPE);
+			if (opUrl == null) {
+				opUrl = this.factory.getServiceUrl();
+			}
+			Document responseDoc = this.factory.createRequest(Operation.DESCRIBE_FEATURE_TYPE).doDescribeFeatureType(opUrl, query);
+
+			WFSFeatureType type = this.factory.createFeatureType();
+			type.initialize(responseDoc);
+			return type;
+		}
+		else {
+			throw new RuntimeException("WFSClient is not configured properly. Make sure to call WFSClient.configure.");
+		}
 	}
 
 	@Override
@@ -90,7 +105,8 @@ public class GenericClient implements WFSClient {
 			result.initialize(responseDoc, query);
 			return result;
 		}
-		else
+		else {
 			throw new RuntimeException("WFSClient is not configured properly. Make sure to call WFSClient.configure.");
+		}
 	}
 }
