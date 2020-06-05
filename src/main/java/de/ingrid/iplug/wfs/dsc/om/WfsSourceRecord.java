@@ -22,10 +22,10 @@
  */
 package de.ingrid.iplug.wfs.dsc.om;
 
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSRecord;
 
 /**
- * Represents a record from a wfs cache.
+ * Represents a record from a WFS source.
  *
  * @author joachim@wemove.com
  */
@@ -40,7 +40,7 @@ public class WfsSourceRecord extends SourceRecord {
 	 * the original wfs record for further usage.
 	 * @param record
 	 */
-	public WfsSourceRecord(WFSFeature record) {
+	public WfsSourceRecord(WFSRecord record) {
 		super(record.getId());
 		this.put(WFS_RECORD, record);
 	}

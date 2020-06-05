@@ -39,7 +39,7 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 	/**
 	 * @throws Exception
 	 */
-	public void testAll() throws Exception {
+	public void testFeaturesWithCache() throws Exception {
 
 		PlugDescription desc = new PlugDescription();
 		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
@@ -58,5 +58,35 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 			docs.add(doc);
 		}
 		assertEquals("Number of mapped documents matches", 535, docs.size());
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void testFeaturesTypes() throws Exception {
+
+		PlugDescription desc = new PlugDescription();
+		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
+
+		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_zdm_feature-types.xml");
+
+		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
+		factory.configure(desc);
+
+		IDocumentProducer documentProducer = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_DOCUMENT_PRODUCER, IDocumentProducer.class);
+		documentProducer.configure(desc);
+
+		List<ElasticDocument> docs = new ArrayList<>();
+		while (documentProducer.hasNext()) {
+			ElasticDocument doc = documentProducer.next();
+			docs.add(doc);
+		}
+		assertEquals("Number of mapped documents matches", 1, docs.size());
+
+		ElasticDocument doc = docs.get(0);
+		assertEquals("70aa386652857405492ad7bf322b27", doc.get("t01_object.obj_id"));
+		assertEquals("German Water Levels", doc.get("title"));
+		assertEquals("German water levels of federal waterways from pegelonline.wsv.de.", doc.get("summary"));
+		assertEquals(535, doc.get("number_of_features"));
 	}
 }

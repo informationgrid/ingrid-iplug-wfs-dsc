@@ -35,7 +35,7 @@ import de.ingrid.iplug.wfs.dsc.index.mapper.RecordMapper;
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSRecord;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.xpath.XPathUtils;
 
@@ -65,11 +65,11 @@ public class ScriptedDocumentMapper implements RecordMapper {
 		}
 
 		if (!(record instanceof WfsSourceRecord)) {
-			log.error("Source Record is not a WfsCacheSourceRecord!");
-			throw new IllegalArgumentException("Source Record is not a WfsCacheSourceRecord!");
+			log.error("Source Record is not a WfsSourceRecord!");
+			throw new IllegalArgumentException("Source Record is not a WfsSourceRecord!");
 		}
 
-		WFSFeature wfsRecord = (WFSFeature)record.get(WfsSourceRecord.WFS_RECORD);
+		WFSRecord wfsRecord = (WFSRecord)record.get(WfsSourceRecord.WFS_RECORD);
 		XPathUtils xPathUtils = new XPathUtils(wfsRecord.getNamespaceContext());
 
 		try {

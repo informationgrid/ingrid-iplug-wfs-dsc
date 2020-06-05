@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,6 +27,7 @@
 package de.ingrid.iplug.wfs.dsc.wfsclient;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 
@@ -42,6 +43,12 @@ public interface WFSCapabilities {
 	 * @param capDoc The capabilities document received from a WFS server
 	 */
 	public void initialize(Document capDoc);
+
+	/**
+	 * Get the original capabilities document received from a WFS server
+	 * @return Node
+	 */
+	public Node getOriginalResponse();
 
 	/**
 	 * Check if the WFS server supports the given operations.

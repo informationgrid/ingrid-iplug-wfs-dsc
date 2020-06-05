@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,7 +31,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
-import junit.framework.TestCase;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
@@ -41,6 +40,7 @@ import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
+import junit.framework.TestCase;
 
 public class CacheTest extends TestCase {
 
@@ -326,9 +326,8 @@ public class CacheTest extends TestCase {
 
 		// create original set
 		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
-		String xml = StringUtils.nodeToString(originalRecord.getOriginalResponse());
+		String xml = StringUtils.nodeToString(originalRecord.getOriginalResponse().get(0));
 		assertTrue("The String '53.568523252032215 9.703319238921454' is in the transformed original response string.", xml.indexOf("53.568523252032215 9.703319238921454") > -1);
-
 	}
 
 	/**

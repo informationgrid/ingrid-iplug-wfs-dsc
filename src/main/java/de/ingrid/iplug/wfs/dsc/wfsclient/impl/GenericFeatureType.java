@@ -26,14 +26,80 @@
 
 package de.ingrid.iplug.wfs.dsc.wfsclient.impl;
 
+import java.io.File;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
 import org.w3c.dom.Node;
 
+import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.ResultType;
 
-public class GenericFeatureType implements WFSFeatureType {
+/**
+ * Implementation of a WFS feature type.
+ *
+ * The feature type is defined by the following XML documents:
+ * - GetCapabilities response (<FeatureType> node)
+ * - DescribeFeatureType response
+ */
+public class GenericFeatureType extends GenericRecord implements WFSFeatureType {
+
+	private static final int NUM_SOURCE_NODES = 2;
+
+	private static final Logger log = Logger.getLogger(GenericFeatureType.class);
+
+	private String name;
+	private int numberOfFeatures;
 
 	@Override
-	public void initialize(Node node) throws Exception {
-		// TODO Implement initialization
+	protected int getNumberOfSourceNodes() {
+		return NUM_SOURCE_NODES;
+	}
+
+	@Override
+	protected String extractRecordId(List<Node> nodes) throws Exception {
+		if (this.idMappingScript == null) {
+			throw new RuntimeException(this.getClass().getName() + " is not configured properly. Parameter 'idMappingScript' is missing or wrong.");
+		}
+		Map<String, Object> parameters = new Hashtable<String, Object>();
+		parameters.put("featureTypeNode", nodes.get(0));
+		parameters.put("featureTypeDescNode", nodes.get(1));
+		parameters.put("xPathUtils", this.xPathUtils);
+		parameters.put("javaVersion", System.getProperty( "java.version" ));
+		parameters.put("log", log);
+		File[] scripts = new File[]{ this.idMappingScript };
+		Map<String, Object> results = ScriptEngine.execute(scripts, parameters, this.compile);
+		String id = (String)results.get(this.idMappingScript.getAbsolutePath());
+		return id;
+	}
+
+	@Override
+	public void initialize(Node... nodes) throws Exception {
+		super.initialize(nodes);
+
+		// get the name
+		this.name = this.xPathUtils.getString(this.nodes.get(0), "//wfs:FeatureType/wfs:Name");
+
+		// get the number of features
+		WFSQuery query = factory.createQuery();
+		query.setTypeName(this.name);
+		query.setResultType(ResultType.HITS);
+		WFSQueryResult result = factory.createClient().getFeature(query);
+		this.numberOfFeatures = result.getNumberOfFeaturesTotal();
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	@Override
+	public int getNumberOfFeatures() {
+		return this.numberOfFeatures;
 	}
 }

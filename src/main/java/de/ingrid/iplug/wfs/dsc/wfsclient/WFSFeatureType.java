@@ -26,17 +26,22 @@
 
 package de.ingrid.iplug.wfs.dsc.wfsclient;
 
-import org.w3c.dom.Node;
-
 /**
  * Representation of a feature type returned by a WFS server.
+ *
  * @author ingo herwig <ingo@wemove.com>
  */
-public interface WFSFeatureType {
+public interface WFSFeatureType extends WFSRecord {
 
 	/**
-	 * Initialize the feature type.
-	 * @param node The DOM Node describing the feature type
+	 * Get the name of this type
+	 * @return String
 	 */
-	public void initialize(Node node) throws Exception;
+	public String getName();
+
+	/**
+	 * Get the number of features of this type
+	 * @return int
+	 */
+	public int getNumberOfFeatures();
 }

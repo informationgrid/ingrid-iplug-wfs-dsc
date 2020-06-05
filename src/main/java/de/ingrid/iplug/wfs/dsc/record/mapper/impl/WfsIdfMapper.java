@@ -33,7 +33,7 @@ import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.record.mapper.IdfMapper;
 import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
-import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSRecord;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.xml.IDFNamespaceContext;
 import de.ingrid.utils.xpath.XPathUtils;
@@ -62,7 +62,7 @@ public class WfsIdfMapper implements IdfMapper {
 			throw new IllegalArgumentException("Source Record is not a WfsCacheSourceRecord!");
 		}
 
-		WFSFeature wfsRecord = (WFSFeature)record.get(WfsSourceRecord.WFS_RECORD);
+		WFSRecord wfsRecord = (WFSRecord)record.get(WfsSourceRecord.WFS_RECORD);
 		WfsNamespaceContext nsc = wfsRecord.getNamespaceContext();
 		nsc.addNamespace("idf", IDFNamespaceContext.NAMESPACE_URI_IDF);
 		XPathUtils xPathUtils = new XPathUtils(nsc);

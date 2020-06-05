@@ -44,6 +44,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
         <property name="queryTemplate" ref="wfsQueryTemplate" />    
         <property name="featureTemplate" ref="wfsFeatureTemplate" />    
+        <property name="featureTypeTemplate" ref="wfsFeatureTypeTemplate" />    
     </bean>
 
     <bean id="wfsRequestImpl" class="org.springframework.beans.factory.config.MapFactoryBean">
@@ -64,6 +65,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
     <bean id="wfsFeatureTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature">
         <property name="idMappingScript" value="src/main/resources/mapping/generic-feature_to_feature-id.js" />
+    </bean> 
+
+    <bean id="wfsFeatureTypeTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeatureType">
+        <property name="idMappingScript" value="src/main/resources/mapping/generic-feature-type_to_feature-id.js" />
     </bean> 
 
     <bean id="wfsCache" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultFileCache">
@@ -252,7 +257,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </property>
     </bean>
 
-    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.CacheRecordSetProducer">
+    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.CachedFeatureRecordSetProducer">
         <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
         <property name="job" ref="wfsUpdateJob" />

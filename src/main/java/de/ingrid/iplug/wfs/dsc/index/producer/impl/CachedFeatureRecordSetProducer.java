@@ -35,31 +35,31 @@ import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 
 /**
- * Takes care of selecting all source record Ids from the configured cache.
+ * CachedFeatureRecordSetProducer provides WFS feature records from a pre-build cache.
  *
- * This implementation fetches all wfs records into a temporary cache first and
+ * The implementation fetches all WFS feature records into a temporary cache first and
  * commits them into the application cache after the iteration of all records completed.
  *
  * @author joachim@wemove.com
  */
-public class CacheRecordSetProducer implements RecordSetProducer {
+public class CachedFeatureRecordSetProducer implements RecordSetProducer {
 
-	WFSFactory factory;
+	private WFSFactory factory;
 
-	Cache cache;
-	Cache tmpCache = null;
+	private Cache cache;
+	private Cache tmpCache = null;
 
-	UpdateJob job;
+	private UpdateJob job;
 
-	Iterator<String> recordIdIterator = null;
+	private Iterator<String> recordIdIterator = null;
 
-	final private static Log log = LogFactory.getLog(CacheRecordSetProducer.class);
+	final private static Log log = LogFactory.getLog(CachedFeatureRecordSetProducer.class);
 
 	/**
 	 * Constructor
 	 */
-	public CacheRecordSetProducer() {
-		log.info("CacheRecordSetProducer started.");
+	public CachedFeatureRecordSetProducer() {
+		log.info("CachedFeatureRecordSetProducer started.");
 	}
 
 	/**

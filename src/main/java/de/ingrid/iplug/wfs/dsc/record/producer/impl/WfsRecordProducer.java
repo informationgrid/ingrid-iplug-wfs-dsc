@@ -49,9 +49,9 @@ public class WfsRecordProducer implements RecordProducer {
 
 	final private static Log log = LogFactory.getLog(WfsRecordProducer.class);
 
-	Cache cache;
+	private Cache cache;
 
-	WFSFactory factory;
+	private WFSFactory factory;
 
 	@Override
 	public SourceRecord getRecord(ElasticDocument doc) {

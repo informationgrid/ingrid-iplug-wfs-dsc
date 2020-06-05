@@ -29,6 +29,7 @@ package de.ingrid.iplug.wfs.dsc.wfsclient.impl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSCapabilities;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSClient;
@@ -37,6 +38,8 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
+import de.ingrid.utils.xpath.XPathUtils;
 
 public class GenericClient implements WFSClient {
 
@@ -80,10 +83,24 @@ public class GenericClient implements WFSClient {
 			if (opUrl == null) {
 				opUrl = this.factory.getServiceUrl();
 			}
+
+			// NOTE we construct the featureType from two documents, because information about feature types is provided in two WFS responses
+			// 1. the getCapabilities document contains a list of <FeatureType> nodes consisting of name, title, abstract, ...
+			// 2. the describeFeatureType document contains the fields of features of the feature type
+
+			// 1. extract <FeatureType> node from capabilities document
+			XPathUtils xPathUtils = new XPathUtils(new WfsNamespaceContext());
+			String xPath = "/wfs:WFS_Capabilities/wfs:FeatureTypeList/wfs:FeatureType[./wfs:Name='" + query.getTypeName() + "']";
+			Node featureTypeNode = xPathUtils.getNode(cap.getOriginalResponse(), xPath);
+			if (featureTypeNode == null) {
+				throw new RuntimeException("FeatureType with name '" + query.getTypeName() + "' does not exist in capabilities document.");
+			}
+
+			// 2. get describe feature response
 			Document responseDoc = this.factory.createRequest(Operation.DESCRIBE_FEATURE_TYPE).doDescribeFeatureType(opUrl, query);
 
 			WFSFeatureType type = this.factory.createFeatureType();
-			type.initialize(responseDoc);
+			type.initialize(featureTypeNode, responseDoc.getFirstChild());
 			return type;
 		}
 		else {

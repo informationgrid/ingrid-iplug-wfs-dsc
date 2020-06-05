@@ -48,7 +48,7 @@ if (log.isDebugEnabled()) {
 }
 
 // get the xml content of the record
-var recordNode = wfsRecord.getOriginalResponse();
+var recordNode = wfsRecord.getOriginalResponse().get(0);
 
 // add id field
 addToDoc(document, "t01_object.obj_id", wfsRecord.getId(), true);

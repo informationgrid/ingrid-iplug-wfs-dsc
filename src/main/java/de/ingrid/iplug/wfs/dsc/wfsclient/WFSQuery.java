@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,7 +33,7 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.constants.ResultType;
 
 /**
  * Representation of a WFS query. Encapsulates the varying parts of a query.
- * Instances may be used for the GetFeatureType or the GetFeature requests.
+ * Instances may be used for the DescribeFeatureType or the GetFeature requests.
  * Properties that are not needed for the specific request are ignored.
  * @see OpenGIS Web Feature Service Implementation Specification 1.1.0
  * @author ingo herwig <ingo@wemove.com>

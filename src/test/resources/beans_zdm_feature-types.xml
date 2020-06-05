@@ -3,7 +3,7 @@
   **************************************************-
   ingrid-iplug-wfs-dsc:war
   ==================================================
-  Copyright (C) 2014 wemove digital solutions GmbH
+  Copyright (C) 2020 wemove digital solutions GmbH
   ==================================================
   Licensed under the EUPL, Version 1.1 or – as soon they will be
   approved by the European Commission - subsequent versions of the
@@ -25,7 +25,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
     <bean id="wfsFactory" class="de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory">
         <property name="clientImpl"
@@ -64,7 +64,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     </bean>
 
     <bean id="wfsFeatureTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature">
-        <property name="idMappingScript" value="classpath:mapping/generic-feature_to_feature-id.js" />
+        <property name="idMappingScript" value="src/main/resources/mapping/generic-feature_to_feature-id.js" />
     </bean> 
 
     <bean id="wfsFeatureTypeTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeatureType">
@@ -223,17 +223,25 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="sourceMap">
             <map>
                 <entry key="default" value="wfsDefaultUpdateStrategy"/>
+                <entry key="local" value="wfsLocalUpdateStrategy"/>
             </map>
         </property>
     </bean>
 
-    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultUpdateStrategy">
-        <property name="requestPause" value="1000" />
+    <bean id="wfsDefaultUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.PagingUpdateStrategy">
+        <property name="requestPause" value="100" />
+        <property name="maxFeatures" value="1000" />
+    </bean>
+    
+    
+    <bean id="wfsLocalUpdateStrategy" class="de.ingrid.iplug.wfs.dsc.cache.impl.LocalUpdateStrategy">
+        <property name="capabilitiesFile" value="src/test/resources/zdm/capabilities.xml" />
+        <property name="contentDirectory" value="src/test/resources/zdm/content/" />
     </bean>
     
     
     <bean id="wfsUpdateJob" class="de.ingrid.iplug.wfs.dsc.cache.UpdateJob" init-method="init">
-        <property name="updateStrategy" ref="wfsDefaultUpdateStrategy" />
+        <property name="updateStrategy" ref="wfsLocalUpdateStrategy" />
         <property name="filterStrSet" ref="wfsHarvestFilter" />
         <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
@@ -245,44 +253,28 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="recordMapperList">
             <list>
                 <ref bean="recordMapper"/>
-                <ref bean="idfProducerIndexMapper"/>
             </list>
         </property>
-        <property name="indexInfo" ref="indexInfo" />
     </bean>
 
-    <bean id="indexInfo" class="de.ingrid.elasticsearch.IndexInfo">
-      <property name="toAlias" value="ingrid"/>
-      <property name="toIndex" value="wfs-dsc"/>
-      <property name="toType" value="default"/>
-      <!--<property name="docIdField" value="" />-->
-    </bean>
-
-    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.CachedFeatureRecordSetProducer">
-        <property name="cache" ref="wfsCache" />
+    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.FeatureTypeRecordSetProducer">
         <property name="factory" ref="wfsFactory" />
-        <property name="job" ref="wfsUpdateJob" />
     </bean>
 
     <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper">
         <property name="mappingScripts">
 	    	<list>
-	    		<value>classpath:mapping/lib.js</value>
-	    		<value>classpath:mapping/lucene_helper.js</value>
-	    		<value>classpath:mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js</value>
+	    		<value>src/main/resources/mapping/lib.js</value>
+	    		<value>src/main/resources/mapping/lucene_helper.js</value>
+	    		<value>src/main/resources/mapping/zdm-wfs-1.1.0_to_lucene-igc.js</value>
 	    	</list>
         </property> 
-        <property name="compile" value="true"/>
+        <property name="compile" value="false"/>
     </bean>
-
-    <bean id="idfProducerIndexMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.impl.IdfProducerDocumentMapper">
-        <property name="idfRecordCreator" ref="dscRecordProducer" />
-    </bean>
-
     
-    <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
+    <!-- <bean id="wfsDscSearchPlug" class="de.ingrid.iplug.wfs.dsc.WfsDscSearchPlug">
         <property name="dscRecordProducer" ref="dscRecordProducer" />
-    </bean>
+    </bean> -->
     
     <bean id="dscRecordProducer" class="de.ingrid.iplug.wfs.dsc.record.IdfRecordCreator">
         <property name="recordProducer" ref="recordProducer" />
@@ -292,7 +284,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
                 <ref bean="idfMapper"/>
             </list>
         </property>
-        <property name="compressed" value="true" />
+        <property name="compressed" value="false" />
     </bean>
     
     <bean id="recordProducer" class="de.ingrid.iplug.wfs.dsc.record.producer.impl.WfsRecordProducer">
@@ -305,11 +297,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.impl.WfsIdfMapper">
         <property name="mappingScripts">
 	    	<list>
-	    		<value>classpath:mapping/lib.js</value>
-	    		<value>classpath:mapping/document_helper.js</value>
-	    		<value>classpath:mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js</value>
+	    		<value>src/main/resources/mapping/lib.js</value>
+	    		<value>src/main/resources/mapping/document_helper.js</value>
+	    		<value>src/main/resources/mapping/zdm-wfs-1.1.0_to_idf.js</value>
 	    	</list>
         </property> 
-        <property name="compile" value="true"/>
+        <property name="compile" value="false"/>
     </bean>
 </beans>

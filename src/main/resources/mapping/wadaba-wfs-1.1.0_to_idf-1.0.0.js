@@ -52,7 +52,7 @@ if (log.isDebugEnabled()) {
 }
 
 // get the xml content of the record
-var recordNode = wfsRecord.getOriginalResponse();
+var recordNode = wfsRecord.getOriginalResponse().get(0);
 
 //---------- <idf:body> ----------
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
