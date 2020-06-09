@@ -68,7 +68,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     </bean> 
 
     <bean id="wfsFeatureTypeTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeatureType">
-        <property name="idMappingScript" value="src/main/resources/mapping/generic-feature-type_to_feature-id.js" />
+        <property name="idMappingScript" value="classpath:mapping/generic-feature-type_to_feature-id.js" />
     </bean> 
 
     <bean id="wfsCache" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultFileCache">
@@ -258,10 +258,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
       <!--<property name="docIdField" value="" />-->
     </bean>
 
-    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.CachedFeatureRecordSetProducer">
-        <property name="cache" ref="wfsCache" />
+    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.FeatureTypeRecordSetProducer">
         <property name="factory" ref="wfsFactory" />
-        <property name="job" ref="wfsUpdateJob" />
     </bean>
 
     <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper">
@@ -269,7 +267,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	    	<list>
 	    		<value>classpath:mapping/lib.js</value>
 	    		<value>classpath:mapping/lucene_helper.js</value>
-	    		<value>classpath:mapping/pegelonline-wfs-1.1.0_to_lucene-igc-1.0.3.js</value>
+	    		<value>classpath:mapping/zdm-wfs-1.1.0_to_lucene-igc.js</value>
 	    	</list>
         </property> 
         <property name="compile" value="true"/>
@@ -307,7 +305,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	    	<list>
 	    		<value>classpath:mapping/lib.js</value>
 	    		<value>classpath:mapping/document_helper.js</value>
-	    		<value>classpath:mapping/pegelonline-wfs-1.1.0_to_idf-1.0.0.js</value>
+	    		<value>classpath:mapping/zdm-wfs-1.1.0_to_idf.js</value>
 	    	</list>
         </property> 
         <property name="compile" value="true"/>
