@@ -66,7 +66,7 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 	public void testFeaturesTypes() throws Exception {
 
 		PlugDescription desc = new PlugDescription();
-		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
+		desc.put("serviceUrl", TestServer.ZDM.getCapUrl());
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_zdm_feature-types.xml");
 
@@ -81,12 +81,12 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 			ElasticDocument doc = documentProducer.next();
 			docs.add(doc);
 		}
-		assertEquals("Number of mapped documents matches", 1, docs.size());
+		assertEquals("Number of mapped documents matches", 118, docs.size());
 
 		ElasticDocument doc = docs.get(0);
-		assertEquals("70aa386652857405492ad7bf322b27", doc.get("t01_object.obj_id"));
-		assertEquals("German Water Levels", doc.get("title"));
-		assertEquals("German water levels of federal waterways from pegelonline.wsv.de.", doc.get("summary"));
-		assertEquals(535, doc.get("number_of_features"));
+		assertEquals("c08f644f3e7e5e33de1db4f4e5e3d8b9", doc.get("t01_object.obj_id"));
+		assertEquals("Fahrrinne (1999)", doc.get("title"));
+		assertEquals("Verlauf der Fahrrinne an der Unterelbe nach der Fahrrinnenanpassung 1999/2000 - Herausgeber: WSA Hamburg - Beweissicherung Stand: Planfeststellung Fahrrinnenanpassung an der Unter- und Außenelbe 1999/2000 - Aktuelle Daten erhalten Sie ausschließlich über das nautische Büro des zuständigen Wasserstraßen- und Schifffahrtsamtes.", doc.get("summary"));
+		assertEquals(1, doc.get("number_of_features"));
 	}
 }
