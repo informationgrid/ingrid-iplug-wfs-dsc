@@ -102,6 +102,7 @@ public class WfsDscDocumentProducer implements IDocumentProducer {
 	@Override
 	public void configure(PlugDescription arg0) {
 		log.info("WfsDscDocumentProducer: configure called.");
+		this.recordSetProducer.reset();
 	}
 
 	public RecordSetProducer getRecordSetProducer() {

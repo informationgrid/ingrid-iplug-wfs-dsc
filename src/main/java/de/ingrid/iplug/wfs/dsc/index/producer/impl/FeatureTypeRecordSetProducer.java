@@ -25,6 +25,7 @@ package de.ingrid.iplug.wfs.dsc.index.producer.impl;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -69,43 +70,58 @@ public class FeatureTypeRecordSetProducer implements RecordSetProducer {
 	}
 
 	@Override
-	public boolean hasNext() {
+	public void reset() {
 		try {
 			// initialize iterator for WFS feature type names
-			if (typeNameIterator == null) {
-				log.info("Initializing feature type iterator...");
+			log.info("Initializing feature type iterator...");
 
-				// set up client
-				client = factory.createClient();
+			// set up client
+			client = factory.createClient();
 
-				// get all feature types from the capabilities document
-				WFSCapabilities capabilities = client.getCapabilities();
-				List<String> typeNames = Arrays.asList(capabilities.getFeatureTypeNames());
-				typeNameIterator = typeNames.iterator();
-				log.info("Found "+typeNames.size()+" feature type(s).");
-			}
+			// get all feature types from the capabilities document
+			WFSCapabilities capabilities = client.getCapabilities();
+			List<String> typeNames = Arrays.asList(capabilities.getFeatureTypeNames());
+			typeNameIterator = typeNames.iterator();
+			log.info("Found "+typeNames.size()+" feature type(s).");
 		}
 		catch (Exception e) {
 			log.error("Error obtaining information about a next record. Skip all records.", e);
 			throw new RuntimeException("Error harvesting WFS datasource");
 		}
+	}
+
+	@Override
+	public boolean hasNext() {
+		if (typeNameIterator == null) {
+			this.reset();
+		}
+
 		return typeNameIterator.hasNext();
 	}
 
 	@Override
 	public SourceRecord next() {
-		SourceRecord result = null;
-		String currentTypeName = typeNameIterator.next();
-		try {
-			// get the current feature type record
-			WFSQuery query = factory.createQuery();
-			query.setTypeName(currentTypeName);
-
-			WFSFeatureType featureType = client.describeFeatureType(query);
-			result = new WfsSourceRecord(featureType);
+		if (typeNameIterator == null) {
+			this.reset();
 		}
-		catch (Exception e) {
-			log.error("Error reading record '" + currentTypeName + "'.", e);
+
+		SourceRecord result = null;
+		if (typeNameIterator.hasNext()) {
+			String currentTypeName = typeNameIterator.next();
+			try {
+				// get the current feature type record
+				WFSQuery query = factory.createQuery();
+				query.setTypeName(currentTypeName);
+
+				WFSFeatureType featureType = client.describeFeatureType(query);
+				result = new WfsSourceRecord(featureType);
+			}
+			catch (Exception e) {
+				log.error("Error reading record '" + currentTypeName + "'.", e);
+			}
+		}
+		else {
+			throw new NoSuchElementException();
 		}
 		return result;
 	}

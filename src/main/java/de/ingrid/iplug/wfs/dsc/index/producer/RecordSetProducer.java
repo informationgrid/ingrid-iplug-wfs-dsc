@@ -34,6 +34,11 @@ import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
 public interface RecordSetProducer {
 
 	/**
+	 * Resets the internal state of this instance
+	 */
+	public void reset();
+
+	/**
 	 * Returns true if more records are available and false if not.
 	 *
 	 * @return

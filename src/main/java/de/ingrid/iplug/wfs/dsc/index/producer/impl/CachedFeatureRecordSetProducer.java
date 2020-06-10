@@ -107,6 +107,11 @@ public class CachedFeatureRecordSetProducer implements RecordSetProducer {
 	}
 
 	@Override
+	public void reset() {
+		this.tmpCache = null;
+	}
+
+	@Override
 	public boolean hasNext() {
 		boolean result = false;
 		try {
