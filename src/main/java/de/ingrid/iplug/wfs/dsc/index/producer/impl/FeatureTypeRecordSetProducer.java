@@ -73,6 +73,8 @@ public class FeatureTypeRecordSetProducer implements RecordSetProducer {
 		try {
 			// initialize iterator for WFS feature type names
 			if (typeNameIterator == null) {
+				log.info("Initializing feature type iterator...");
+
 				// set up client
 				client = factory.createClient();
 
@@ -80,6 +82,7 @@ public class FeatureTypeRecordSetProducer implements RecordSetProducer {
 				WFSCapabilities capabilities = client.getCapabilities();
 				List<String> typeNames = Arrays.asList(capabilities.getFeatureTypeNames());
 				typeNameIterator = typeNames.iterator();
+				log.info("Found "+typeNames.size()+" feature type(s).");
 			}
 		}
 		catch (Exception e) {
