@@ -164,7 +164,7 @@ prepareJavaStatement()
 
     # run it
     export CLASSPATH="$CLASSPATH"
-    INGRID_OPTS="-Dingrid_home=$INGRID_HOME $INGRID_OPTS"
+    INGRID_OPTS="-Dingrid_home=$INGRID_HOME $INGRID_OPTS $JAVA_OPTS"
 }
 
 startIplug()
