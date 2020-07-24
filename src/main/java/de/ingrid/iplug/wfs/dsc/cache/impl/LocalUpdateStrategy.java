@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,7 +42,7 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
 /**
  * This UpdateStrategy processes local files. Filter queries are not supported.
  * Each feature type is fetched in one call.
- * 
+ *
  * @author ingo@wemove.com
  */
 public class LocalUpdateStrategy extends AbstractUpdateStrategy {
@@ -83,20 +83,18 @@ public class LocalUpdateStrategy extends AbstractUpdateStrategy {
 		// get all feature types from the capabilities document
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
-        statusProviderService.getDefaultStatusProvider().addState( "FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.");
-		
+		updateState("FETCHED_FEATURES", "Fetching " + typeNames.length + " featuretypes.", false);
+
 		List<String> allRecordIds = new ArrayList<String>();
 		for (String typeName : typeNames) {
-            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...");
+			updateState("FETCH_FEATURE_" + typeName, "Fetching featuretype '" + typeName + "' ...", false);
 			// fetch all features for the current type
 			if (log.isInfoEnabled()) {
 				log.info("Fetching features of type "+typeName+"...");
 			}
 			List<String> l = this.fetchRecords(factory, typeName);
 			allRecordIds.addAll(this.fetchRecords(factory, typeName));
-			
-            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.");
-
+			updateState("FETCH_FEATURE_" + typeName, "Fetched " + l.size() + " features of type '" + typeName + "'.", false);
 		}
 		return allRecordIds;
 	}

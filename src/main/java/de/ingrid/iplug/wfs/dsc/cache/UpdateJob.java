@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,12 +38,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import de.ingrid.utils.statusprovider.StatusProviderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
+import de.ingrid.utils.statusprovider.StatusProvider.Classification;
+import de.ingrid.utils.statusprovider.StatusProviderService;
 
 /**
  * The update job.
@@ -64,8 +65,7 @@ public class UpdateJob {
 	private UpdateStrategy updateStrategy;
 
 	@Autowired
-    private StatusProviderService statusProviderService;
-
+	private StatusProviderService statusProviderService;
 
 	/**
 	 * Constructor
@@ -118,7 +118,7 @@ public class UpdateJob {
 		Date end = new Date();
 		long diff = end.getTime()-start.getTime();
 		String msg = "Fetched " + allRecordIds.size() + " records from " + this.factory.getServiceUrl() + ". Duplicates: " + duplicates;
-        statusProviderService.getDefaultStatusProvider().addState( "FETCH", msg);
+		updateState("FETCH", msg, false);
 		log.info(msg);
 		log.info("Job executed within "+diff+" ms.");
 	}
@@ -202,4 +202,15 @@ public class UpdateJob {
 		this.filterStrSet = filterStrSet;
 	}
 
+	/**
+	 * Add state to the status provider
+	 * @param key
+	 * @param value
+	 * @param isError
+	 */
+	protected void updateState(final String key, final String value, final boolean isError) {
+		if (statusProviderService != null) {
+			statusProviderService.getDefaultStatusProvider().addState(key, value, isError ? Classification.ERROR : Classification.INFO);
+		}
+	}
 }

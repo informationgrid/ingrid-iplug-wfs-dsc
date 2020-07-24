@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -74,9 +74,9 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 		String[] typeNames = capabilities.getFeatureTypeNames();
 
 		List<String> allRecordIds = new ArrayList<String>();
-        
-		statusProviderService.getDefaultStatusProvider().addState( "FETCHED_FEATURES", "Start fetching " + typeNames.length + " featuretype(s).");
-		
+
+		updateState("FETCHED_FEATURES", "Start fetching " + typeNames.length + " featuretype(s).", false);
+
 //		int numFeatureTypesFetched=0;
 		for (String typeName : typeNames) {
 			if (log.isInfoEnabled()) {
@@ -90,11 +90,11 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 				if (log.isInfoEnabled()) {
 					log.info("Start fetching " + totalNumRecords + " features of type '" + typeName + "'");
 				}
-                statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_INTRO_" + typeName, "Start fetching " + totalNumRecords + " features of type '" + typeName + "'");
+				updateState("FETCH_FEATURE_INTRO_" + typeName, "Start fetching " + totalNumRecords + " features of type '" + typeName + "'", false);
 
 			} catch (Exception ex) {
 				log.error("Problems fetching total number of features of type '" + typeName + "', we skip this feature type !", ex);
-	            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_INTRO_" + typeName, "Problems fetching total number of features of type '" + typeName + "', we skip this feature type !");
+				updateState("FETCH_FEATURE_INTRO_" + typeName, "Problems fetching total number of features of type '" + typeName + "', we skip this feature type !", false);
 				continue;
 			}
 
@@ -105,41 +105,41 @@ public class PagingUpdateStrategy extends AbstractUpdateStrategy {
 				numRequests++;
 			}
 
-            boolean errorInFeaturetype = false;
+			boolean errorInFeaturetype = false;
 			for (int i=0; i<numRequests; i++) {
-                boolean errorInChunk = false;
+				boolean errorInChunk = false;
 				int startIndex = i * maxFeatures;
-                if (log.isDebugEnabled()) {
-                    log.debug("Fetching features of type "+typeName+", maxFeatures=" +
+				if (log.isDebugEnabled()) {
+					log.debug("Fetching features of type "+typeName+", maxFeatures=" +
 						maxFeatures + ", startIndex=" + startIndex + " ...");
 				}
-	            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "Fetching features of type '" + typeName + "' ... " + startIndex + "-" + (startIndex + maxFeatures));
+				updateState("FETCH_FEATURE_" + typeName, "Fetching features of type '" + typeName + "' ... " + startIndex + "-" + (startIndex + maxFeatures), false);
 				try {
 					List<String> fetchedIds = fetchRecordsPaged(client, typeName, filterSet, true, maxFeatures, startIndex);
 					allRecordIds.addAll(fetchedIds);
 
 				} catch (Exception ex) {
-                    String msg = "Problems fetching features of type '" + typeName +"', maxFeatures=" +
-                            maxFeatures + ", startIndex=" + startIndex + ", we skip these ones !";
-                    // only log as error with full exception with first exception to avoid lots of repeating errors / exceptions in log file with every chunk !
-                    if (!errorInChunk) {
-                        errorInChunk = true;
-                        errorInFeaturetype = true;
-                        log.error(msg, ex);
-                        log.error("NOTICE: We do NOT log further full exceptions of this feature type to avoid huge log output ! Switch to DEBUG to see full exceptions !");
-                    } else {
-                        log.error(msg + " -> " + ex.getMessage());
-                        // log as debug to avoid huge chunk of messages !
-                        log.debug("Caused Exception:", ex);                     
-                    }
-                    statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "', we skip these ones: " + startIndex + "-" + (startIndex + maxFeatures));
+					String msg = "Problems fetching features of type '" + typeName +"', maxFeatures=" +
+							maxFeatures + ", startIndex=" + startIndex + ", we skip these ones !";
+					// only log as error with full exception with first exception to avoid lots of repeating errors / exceptions in log file with every chunk !
+					if (!errorInChunk) {
+						errorInChunk = true;
+						errorInFeaturetype = true;
+						log.error(msg, ex);
+						log.error("NOTICE: We do NOT log further full exceptions of this feature type to avoid huge log output ! Switch to DEBUG to see full exceptions !");
+					} else {
+						log.error(msg + " -> " + ex.getMessage());
+						// log as debug to avoid huge chunk of messages !
+						log.debug("Caused Exception:", ex);
+					}
+					updateState("FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "', we skip these ones: " + startIndex + "-" + (startIndex + maxFeatures), false);
 				}
 			}
 
 			if (errorInFeaturetype) {
-	            statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "' !");
+				updateState("FETCH_FEATURE_" + typeName, "PROBLEMS fetching features of type '" + typeName + "' !", false);
 			} else {
-                statusProviderService.getDefaultStatusProvider().addState( "FETCH_FEATURE_" + typeName, "OK, fetched all features of type '" + typeName + "' !");
+				updateState("FETCH_FEATURE_" + typeName, "OK, fetched all features of type '" + typeName + "' !", false);
 			}
 
 			// activate this for local testing of restricted number of feature types !
