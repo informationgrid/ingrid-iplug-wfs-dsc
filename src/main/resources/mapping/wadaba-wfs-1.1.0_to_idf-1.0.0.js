@@ -57,42 +57,33 @@ var recordNode = wfsRecord.getOriginalResponse().get(0);
 //---------- <idf:body> ----------
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
 
-// add elements/styles for correct display in portal (header)
-var myElem = addOutputWithAttributes(idfBody, "section", ["class"], ["block block--light block--pad-top"]);
-myElem = addOutputWithAttributes(myElem, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center"]);
-myElem = addOutputWithAttributes(myElem, "article", ["id","class"], ["detail_meta_header","content ob-container"]);
-myElem = addOutputWithAttributes(myElem, "form", ["class"], ["box box--medium"]);
-myElem = addOutputWithAttributes(myElem, "div", ["class"], ["box__content ob-container"]);
+// header
+var header = addDetailHeaderWrapper(idfBody);
 
 // add the title
-addOutput(myElem, "h1", getTitle(recordNode));
+addOutput(header, "h1", getTitle(recordNode));
 
 //add the summary
-addOutput(myElem, "p", getSummary(recordNode));
+addOutput(header, "p", getSummary(recordNode));
 
 //add the bounding box
 var boundingBox = getBoundingBox(recordNode);
-addOutput(myElem, "h2", "Ort:");
-var coordList = addOutput(myElem, "ul");
+addOutput(header, "h2", "Ort:");
+var coordList = addOutput(header, "ul");
 addOutput(coordList, "li", "Nord: "+boundingBox.y2);
 addOutput(coordList, "li", "West: "+boundingBox.x1);
 addOutput(coordList, "li", "Ost: "+boundingBox.x2);
 addOutput(coordList, "li", "S&uuml;d: "+boundingBox.y1);
 
 // add the map preview
-addOutput(myElem, "div", getMapPreview(recordNode));
+addOutput(header, "div", getMapPreview(recordNode));
 
-
-//add elements/styles for correct display in portal (details)
-myElem = addOutputWithAttributes(idfBody, "section", ["id","class"], ["detail_meta","block"]);
-myElem = addOutputWithAttributes(myElem, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center ob-rel"]);
-myElem = addOutputWithAttributes(myElem, "article", ["class"], ["content ob-container ob-box-wide"]);
-myElem = addOutputWithAttributes(myElem, "form", ["class"], ["box box--medium"]);
-myElem = addOutputWithAttributes(myElem, "div", ["class"], ["box__content ob-container"]);
+// details
+var details = addDetailDetailsWrapper(idfBody);
 
 // add details (content of all child nodes)
-addOutput(myElem, "h2", "Details:");
-var detailList = addOutput(myElem, "ul");
+addOutput(details, "h2", "Details:");
+var detailList = addOutput(details, "ul");
 var detailNodes = recordNode.getChildNodes();
 for (var i=0, count=detailNodes.length; i<count; i++) {
 	var detailNode = detailNodes.item(i);
@@ -123,7 +114,7 @@ function getBoundingBox(recordNode) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
 		return {
-            // Latitude first (Breitengrad = y), longitude second (L�ngengrad = x)
+			// Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
 			y1: lowerCoords[0], // south
 			x1: lowerCoords[1], // west
 			y2: upperCoords[0], // north

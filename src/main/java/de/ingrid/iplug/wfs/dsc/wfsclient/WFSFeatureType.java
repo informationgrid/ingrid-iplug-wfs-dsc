@@ -26,6 +26,8 @@
 
 package de.ingrid.iplug.wfs.dsc.wfsclient;
 
+import java.util.List;
+
 /**
  * Representation of a feature type returned by a WFS server.
  *
@@ -44,4 +46,12 @@ public interface WFSFeatureType extends WFSRecord {
 	 * @return int
 	 */
 	public int getNumberOfFeatures();
+
+	/**
+	 * Get the of features of this type
+	 * @note This list might only be populated, if the number of features does not 
+	 * exceed the value set in the configuration value 'featurePreviewLimit'
+	 * @return List<WFSFeature>
+	 */
+	public List<WFSFeature> getFeatures();
 }

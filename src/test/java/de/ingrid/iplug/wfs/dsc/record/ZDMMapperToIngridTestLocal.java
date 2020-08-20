@@ -26,6 +26,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
@@ -109,7 +110,7 @@ public class ZDMMapperToIngridTestLocal extends TestCase {
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
 		assertTrue(documentString.contains("<h1>German Water Levels</h1>"));
-		assertTrue(documentString.contains("<p>German water levels of federal waterways from pegelonline.wsv.de.</p>"));
-		assertTrue(documentString.contains("<p>535 Feature(s)</p>"));
+		assertTrue(documentString.contains("German water levels of federal waterways from pegelonline.wsv.de."));
+		assertTrue(documentString.contains(TestConstants.PEGELONLINE_FEATURES + " Feature(s)"));
 	}
 }

@@ -56,25 +56,31 @@ var recordNode = wfsRecord.getOriginalResponse().get(0);
 //---------- <idf:body> ----------
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
 
+// header
+var header = addDetailHeaderWrapper(idfBody);
+
 // add the title
-addOutput(idfBody, "h1", getTitle(recordNode));
+addOutput(header, "h1", getTitle(recordNode));
 
 //add the summary
-addOutput(idfBody, "p", getSummary(recordNode));
+addOutput(header, "p", getSummary(recordNode));
 
 //add the bounding box
 var boundingBox = getBoundingBox(recordNode);
-addOutput(idfBody, "h2", "Ort:");
-var coordList = addOutput(idfBody, "ul");
+addOutput(header, "h2", "Ort:");
+var coordList = addOutput(header, "ul");
 addOutput(coordList, "li", "Nord: "+boundingBox.y2);
 addOutput(coordList, "li", "West: "+boundingBox.x1);
 addOutput(coordList, "li", "Ost: "+boundingBox.x2);
 addOutput(coordList, "li", "Süd: "+boundingBox.y1);
-addOutput(idfBody, "br");
+addOutput(header, "br");
+
+// details
+var details = addDetailDetailsWrapper(idfBody);
 
 // add details
-addOutput(idfBody, "h2", "Details:");
-var detailList = addOutput(idfBody, "ul");
+addOutput(details, "h2", "Details:");
+var detailList = addOutput(details, "ul");
 addOutput(detailList, "li", "Gewässer: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:water"));
 addOutput(detailList, "li", "Station: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station"));
 addOutput(detailList, "li", "Station ID: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:station_id"));
@@ -88,7 +94,7 @@ addLink(chartElement, chartUrl, chartUrl);
 addOutput(detailList, "li", "Trend: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:trend"));
 addOutput(detailList, "li", "Status: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:status"));
 addOutput(detailList, "li", "Kommentar: "+xPathUtils.getString(recordNode, "/gk:waterlevels/gk:comment"));
-addOutput(idfBody, "br");
+addOutput(details, "br");
 
 // functions
 function getTitle(recordNode) {
@@ -111,7 +117,7 @@ function getBoundingBox(recordNode) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
 		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
 		return {
-            // Latitude first (Breitengrad = y), longitude second (Längengrad = x)
+			// Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
 			y1: lowerCoords[0], // south
 			x1: lowerCoords[1], // west
 			y2: upperCoords[0], // north

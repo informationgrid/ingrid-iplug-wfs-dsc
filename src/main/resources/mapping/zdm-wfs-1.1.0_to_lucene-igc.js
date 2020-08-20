@@ -65,10 +65,10 @@ if (wfsRecord instanceof WFSFeature) {
 	mapFeatureSummary(recordNode);
 
 	//add the bounding box
-	mapBoundingBox(recordNode);
+	mapFeatureBoundingBox(recordNode);
 
 	//add the map preview
-	mapPreview(recordNode);
+	mapFeaturePreview(recordNode);
 
 	// add details (content of all child nodes)
 	var detailNodes = recordNode.getChildNodes();
@@ -86,6 +86,7 @@ if (wfsRecord instanceof WFSFeature) {
 else if (wfsRecord instanceof WFSFeatureType) {
 	// get the xml content of the record
 	var recordNode = wfsRecord.getOriginalResponse().get(0);
+	var detailNode = wfsRecord.getOriginalResponse().get(1);
 
 	// add id field
 	addToDoc(document, "t01_object.obj_id", wfsRecord.getId(), true);
@@ -94,11 +95,15 @@ else if (wfsRecord instanceof WFSFeatureType) {
 	mapFeatureTypeTitle(recordNode);
 
 	//add the summary
-	mapFeatureTypeSummary(recordNode);
+	mapFeatureTypeSummary(recordNode, wfsRecord.getNumberOfFeatures());
 	
 	// add number of features
 	addToDoc(document, "number_of_features", wfsRecord.getNumberOfFeatures(), true);
 }
+
+//
+// WFSFeature functions
+//
 
 function mapFeatureTitle(recordNode) {
 	var title = xPathUtils.getString(recordNode, "/*/@gml:id");
@@ -121,17 +126,7 @@ function mapFeatureSummary(recordNode) {
 	addToDoc(document, "summary", result, true);
 }
 
-function mapFeatureTypeTitle(recordNode) {
-	var title = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Title");
-	addToDoc(document, "title", title, true);
-}
-
-function mapFeatureTypeSummary(recordNode) {
-	var summary = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Abstract");
-	addToDoc(document, "summary", summary, true);
-}
-
-function mapBoundingBox(recordNode) {
+function mapFeatureBoundingBox(recordNode) {
 	var gmlEnvelope = xPathUtils.getNode(recordNode, "//gml:boundedBy/gml:Envelope");
 	if (hasValue(gmlEnvelope)) {
 		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
@@ -144,7 +139,7 @@ function mapBoundingBox(recordNode) {
 	}
 }
 
-function mapPreview(recordNode) {
+function mapFeaturePreview(recordNode) {
 	var gmlEnvelope = xPathUtils.getNode(recordNode, "//gml:boundedBy/gml:Envelope");
 	if (hasValue(gmlEnvelope)) {
 		// BBOX
@@ -185,3 +180,19 @@ function mapPreview(recordNode) {
 		addToDoc(document, "additional_html_1", addHtml, false);
 	}
 }
+
+//
+// WFSFeatureType functions
+//
+
+function mapFeatureTypeTitle(recordNode) {
+	var title = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Title");
+	addToDoc(document, "title", title, true);
+}
+
+function mapFeatureTypeSummary(recordNode, numFeatures) {
+	var summary = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Abstract");
+	var featureSummary = numFeatures+" Feature(s)";
+	addToDoc(document, "summary", (hasValue(summary) ? summary+" - " : "") + featureSummary, true);
+}
+

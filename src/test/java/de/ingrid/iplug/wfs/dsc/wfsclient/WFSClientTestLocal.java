@@ -37,6 +37,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
@@ -145,7 +146,7 @@ public class WFSClientTestLocal extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertEquals("Number of fetched features matches", 535, result.getNumberOfFeatures());
+		assertEquals("Number of fetched features matches", TestConstants.PEGELONLINE_FEATURES, result.getNumberOfFeatures());
 	}
 
 	public void testGetFeatureWithFilter() throws Exception {

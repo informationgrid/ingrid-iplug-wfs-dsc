@@ -23,6 +23,7 @@
 package de.ingrid.iplug.wfs.dsc.index;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
@@ -117,8 +118,8 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 			if (testRecordId.equals("70aa386652857405492ad7bf322b27")) {
 				assertEquals("70aa386652857405492ad7bf322b27", doc.get("t01_object.obj_id"));
 				assertEquals("German Water Levels", doc.get("title"));
-				assertEquals("German water levels of federal waterways from pegelonline.wsv.de.", doc.get("summary"));
-				assertEquals(535, doc.get("number_of_features"));
+				assertEquals("German water levels of federal waterways from pegelonline.wsv.de. - "+TestConstants.PEGELONLINE_FEATURES+" Feature(s)", doc.get("summary"));
+				assertEquals(TestConstants.PEGELONLINE_FEATURES, doc.get("number_of_features"));
 			}
 		}
 	}

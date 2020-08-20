@@ -95,9 +95,9 @@ public abstract class GenericRecord implements WFSRecord {
 		}
 		this.xPathUtils = new XPathUtils(this.namespaceContext);
 
-		// get the feature id
-		String featureId = this.extractRecordId(this.nodes);
-		this.id = encodeId(this.factory.getServiceUrl()+":"+featureId);
+		// get the record id
+		String recordId = this.extractRecordId(this.nodes);
+		this.id = encodeId(this.factory.getServiceUrl()+":"+recordId);
 	}
 
 	@Override

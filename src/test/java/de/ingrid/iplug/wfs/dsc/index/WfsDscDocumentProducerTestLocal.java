@@ -27,6 +27,7 @@ import java.util.List;
 
 import de.ingrid.admin.object.IDocumentProducer;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
@@ -57,13 +58,13 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 			ElasticDocument doc = documentProducer.next();
 			docs.add(doc);
 		}
-		assertEquals("Number of mapped documents matches", 535, docs.size());
+		assertEquals("Number of mapped documents matches", TestConstants.PEGELONLINE_FEATURES, docs.size());
 	}
 
 	/**
 	 * @throws Exception
 	 */
-	public void testFeaturesTypes() throws Exception {
+	public void testFeatureTypes() throws Exception {
 
 		PlugDescription desc = new PlugDescription();
 		desc.put("serviceUrl", TestServer.ZDM.getCapUrl());
@@ -86,7 +87,7 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 		ElasticDocument doc = docs.get(0);
 		assertEquals("c08f644f3e7e5e33de1db4f4e5e3d8b9", doc.get("t01_object.obj_id"));
 		assertEquals("Fahrrinne (1999)", doc.get("title"));
-		assertEquals("Verlauf der Fahrrinne an der Unterelbe nach der Fahrrinnenanpassung 1999/2000 - Herausgeber: WSA Hamburg - Beweissicherung Stand: Planfeststellung Fahrrinnenanpassung an der Unter- und Außenelbe 1999/2000 - Aktuelle Daten erhalten Sie ausschließlich über das nautische Büro des zuständigen Wasserstraßen- und Schifffahrtsamtes.", doc.get("summary"));
+		assertEquals("Verlauf der Fahrrinne an der Unterelbe nach der Fahrrinnenanpassung 1999/2000 - Herausgeber: WSA Hamburg - Beweissicherung Stand: Planfeststellung Fahrrinnenanpassung an der Unter- und Außenelbe 1999/2000 - Aktuelle Daten erhalten Sie ausschließlich über das nautische Büro des zuständigen Wasserstraßen- und Schifffahrtsamtes. - 1 Feature(s)", doc.get("summary"));
 		assertEquals(1, doc.get("number_of_features"));
 	}
 }

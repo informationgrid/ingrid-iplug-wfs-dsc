@@ -35,6 +35,8 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Node;
 
 import de.ingrid.iplug.wfs.dsc.tools.ScriptEngine;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSClient;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQuery;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSQueryResult;
@@ -55,6 +57,7 @@ public class GenericFeatureType extends GenericRecord implements WFSFeatureType 
 
 	private String name;
 	private int numberOfFeatures;
+	private List<WFSFeature> features;
 
 	@Override
 	protected int getNumberOfSourceNodes() {
@@ -86,11 +89,22 @@ public class GenericFeatureType extends GenericRecord implements WFSFeatureType 
 		this.name = this.xPathUtils.getString(this.nodes.get(0), "//wfs:FeatureType/wfs:Name");
 
 		// get the number of features
+		WFSClient client = factory.createClient();
 		WFSQuery query = factory.createQuery();
 		query.setTypeName(this.name);
 		query.setResultType(ResultType.HITS);
-		WFSQueryResult result = factory.createClient().getFeature(query);
+		WFSQueryResult result = client.getFeature(query);
 		this.numberOfFeatures = result.getNumberOfFeaturesTotal();
+
+		// get features, if number below limit and get an empty response else
+		int featurePreviewLimit = factory.getFeaturePreviewLimit();
+		if (this.numberOfFeatures <= featurePreviewLimit) {
+			query.setResultType(ResultType.RESULTS);
+			query.setMaxFeatures(this.numberOfFeatures);
+			query.setStartIndex(0);
+			WFSQueryResult queryResult = client.getFeature(query);
+			this.features = queryResult.getFeatureList();
+		}
 	}
 
 	@Override
@@ -101,5 +115,10 @@ public class GenericFeatureType extends GenericRecord implements WFSFeatureType 
 	@Override
 	public int getNumberOfFeatures() {
 		return this.numberOfFeatures;
+	}
+
+	@Override
+	public List<WFSFeature> getFeatures() {
+		return this.features;
 	}
 }
