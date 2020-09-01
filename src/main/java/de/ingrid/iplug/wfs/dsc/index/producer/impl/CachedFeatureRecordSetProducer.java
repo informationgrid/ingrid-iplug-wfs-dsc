@@ -109,6 +109,7 @@ public class CachedFeatureRecordSetProducer implements RecordSetProducer {
 	@Override
 	public void reset() {
 		this.tmpCache = null;
+		this.recordIdIterator = null;
 	}
 
 	@Override
