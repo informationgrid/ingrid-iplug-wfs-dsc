@@ -258,8 +258,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
       <!--<property name="docIdField" value="" />-->
     </bean>
 
-    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.FeatureTypeRecordSetProducer">
+    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.CachedFeatureRecordSetProducer">
+        <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
+        <property name="job" ref="wfsUpdateJob" />
     </bean>
 
     <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper">
