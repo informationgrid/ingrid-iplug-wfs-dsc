@@ -50,8 +50,8 @@ public class LocalUpdateStrategy extends AbstractUpdateStrategy {
 	final protected static Log log = LogFactory.getLog(DefaultUpdateStrategy.class);
 	protected ExecutionContext context = null;
 
-	File capabilitiesFile = null;
-	File contentDirectory = null;
+	private File capabilitiesFile = null;
+	private File contentDirectory = null;
 
 	/**
 	 * Configuration parameter.

@@ -47,7 +47,11 @@ import de.ingrid.utils.statusprovider.StatusProvider.Classification;
 import de.ingrid.utils.statusprovider.StatusProviderService;
 
 /**
- * The update job.
+ * Update job is used to fill a cache with WFS feature records.
+ *
+ * It is configured with an UpdateStrategy instance, that is responsible
+ * for fetching the records from the service.
+ *
  * @author ingo herwig <ingo@wemove.com>
  */
 public class UpdateJob {

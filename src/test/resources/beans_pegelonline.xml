@@ -44,6 +44,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
         <property name="queryTemplate" ref="wfsQueryTemplate" />    
         <property name="featureTemplate" ref="wfsFeatureTemplate" />    
+        <property name="featureTypeTemplate" ref="wfsFeatureTypeTemplate" />    
     </bean>
 
     <bean id="wfsRequestImpl" class="org.springframework.beans.factory.config.MapFactoryBean">
@@ -64,6 +65,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
     <bean id="wfsFeatureTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeature">
         <property name="idMappingScript" value="src/main/resources/mapping/generic-feature_to_feature-id.js" />
+    </bean> 
+
+    <bean id="wfsFeatureTypeTemplate" class="de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericFeatureType">
+        <property name="idMappingScript" value="src/main/resources/mapping/generic-feature-type_to_feature-id.js" />
     </bean> 
 
     <bean id="wfsCache" class="de.ingrid.iplug.wfs.dsc.cache.impl.DefaultFileCache">
@@ -235,21 +240,22 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     </bean>
     
     
-    <bean id="wfsDscDocumentProducer" class="de.ingrid.iplug.wfs.dsc.index.WfsDscDocumentProducer" init-method="init">
+    <bean id="wfsDscDocumentProducer" class="de.ingrid.iplug.wfs.dsc.index.WfsDscDocumentProducer">
         <property name="recordSetProducer" ref="recordSetProducer" />
         <property name="recordMapperList">
             <list>
                 <ref bean="recordMapper"/>
             </list>
         </property>
+    </bean>
+
+    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.impl.CachedFeatureRecordSetProducer">
         <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
         <property name="job" ref="wfsUpdateJob" />
     </bean>
 
-    <bean id="recordSetProducer" class="de.ingrid.iplug.wfs.dsc.index.producer.WfsRecordSetProducer"/>
-
-    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
+    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper">
         <property name="mappingScripts">
 	    	<list>
 	    		<value>src/main/resources/mapping/lib.js</value>
@@ -275,14 +281,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="compressed" value="false" />
     </bean>
     
-    <bean id="recordProducer" class="de.ingrid.iplug.wfs.dsc.record.producer.WfsRecordProducer">
+    <bean id="recordProducer" class="de.ingrid.iplug.wfs.dsc.record.producer.impl.WfsRecordProducer">
         <property name="cache" ref="wfsCache" />
         <property name="factory" ref="wfsFactory" />
     </bean>
     
-    <bean id="createIdfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.CreateIdfMapper" />
+    <bean id="createIdfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.impl.CreateIdfMapper" />
     
-    <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
+    <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.impl.WfsIdfMapper">
         <property name="mappingScripts">
 	    	<list>
 	    		<value>src/main/resources/mapping/lib.js</value>

@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -126,7 +126,7 @@ public class PostRequest implements WFSRequest {
 		OMNamespace wfsNs = fac.createOMNamespace(Namespace.WFS.getQName().getNamespaceURI(),
 				Namespace.WFS.getQName().getPrefix());
 		@SuppressWarnings("unused")
-        OMNamespace ogcNs = fac.createOMNamespace(Namespace.OGC.getQName().getNamespaceURI(),
+		OMNamespace ogcNs = fac.createOMNamespace(Namespace.OGC.getQName().getNamespaceURI(),
 				Namespace.OGC.getQName().getPrefix()); // needed for filter definition
 
 		// create method
@@ -192,8 +192,8 @@ public class PostRequest implements WFSRequest {
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			// causes problems on wadaba wsv service with filter containing umlaute ?
-	        log.debug("Content-Length: "+Integer.toString(payload.getBytes().length) +
-	                " (NOTICE: Caused problems on wadaba wfs with filter containing Umlaute !)");
+			log.debug("Content-Length: "+Integer.toString(payload.getBytes().length) +
+					" (NOTICE: Caused problems on wadaba wfs with filter containing Umlaute !)");
 			conn.setRequestProperty("Content-Length", "" + Integer.toString(payload.getBytes().length));
 			conn.setAllowUserInteraction(false);
 			conn.setReadTimeout(300000); // 5 minutes
