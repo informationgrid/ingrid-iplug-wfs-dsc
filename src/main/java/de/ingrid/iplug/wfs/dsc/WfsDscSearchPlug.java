@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,6 +26,11 @@
 
 package de.ingrid.iplug.wfs.dsc;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import de.ingrid.admin.JettyStarter;
 import de.ingrid.admin.elasticsearch.IndexScheduler;
 import de.ingrid.elasticsearch.ElasticConfig;
@@ -36,7 +41,13 @@ import de.ingrid.iplug.HeartBeatPlug;
 import de.ingrid.iplug.IPlugdescriptionFieldFilter;
 import de.ingrid.iplug.PlugDescriptionFieldFilters;
 import de.ingrid.iplug.wfs.dsc.record.IdfRecordCreator;
-import de.ingrid.utils.*;
+import de.ingrid.utils.ElasticDocument;
+import de.ingrid.utils.IRecordLoader;
+import de.ingrid.utils.IngridCall;
+import de.ingrid.utils.IngridDocument;
+import de.ingrid.utils.IngridHit;
+import de.ingrid.utils.IngridHitDetail;
+import de.ingrid.utils.IngridHits;
 import de.ingrid.utils.dsc.Record;
 import de.ingrid.utils.metadata.IMetadataInjector;
 import de.ingrid.utils.processor.IPostProcessor;
@@ -44,17 +55,11 @@ import de.ingrid.utils.processor.IPreProcessor;
 import de.ingrid.utils.query.ClauseQuery;
 import de.ingrid.utils.query.FieldQuery;
 import de.ingrid.utils.query.IngridQuery;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Service;
 
 /**
  * This iPlug connects to the iBus delivers search results based on a index.
- * 
+ *
  * @author joachim@wemove.com
- * 
  */
 @Service
 public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
@@ -86,12 +91,6 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 		this.indexScheduler = indexScheduler;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.utils.ISearcher#search(de.ingrid.utils.query.IngridQuery,
-	 * int, int)
-	 */
 	@Override
 	public final IngridHits search(final IngridQuery query, final int start, final int length) throws Exception {
 
@@ -114,11 +113,6 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 		return this._indexSearcher.search(query, start, length);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.utils.IRecordLoader#getRecord(de.ingrid.utils.IngridHit)
-	 */
 	@Override
 	public Record getRecord(IngridHit hit) throws Exception {
 		ElasticDocument document;
@@ -131,21 +125,11 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 		return this.dscRecordProducer.getRecord(document);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.iplug.HeartBeatPlug#close()
-	 */
 	@Override
 	public void close() {
 		this._indexSearcher.close();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.iplug.HeartBeatPlug#close()
-	 */
 	@Override
 	public IngridHitDetail getDetail(IngridHit hit, IngridQuery query, String[] fields) throws Exception {
 		IngridHitDetail detail;
@@ -167,11 +151,6 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 		return detail;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.iplug.HeartBeatPlug#close()
-	 */
 	@Override
 	public IngridHitDetail[] getDetails(IngridHit[] hits, IngridQuery query, String[] fields) throws Exception {
 		IngridHitDetail[] details = new IngridHitDetail[hits.length];
@@ -193,7 +172,7 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
 
 	/**
 	 * Set the original idf data in an IngridHitDetail
-	 * 
+	 *
 	 * @param document is the document to extend with idf data
 	 * @throws Exception if record could not be found
 	 */

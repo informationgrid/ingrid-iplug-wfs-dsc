@@ -9,7 +9,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="maxFeatures" value="1000" />
     </bean>
 
-    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper">
+    <bean id="recordMapper" class="de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper">
         <property name="mappingScripts">
 	    	<list>
 	    		<value>classpath:mapping/lib.js</value>
@@ -20,7 +20,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="compile" value="true"/>
     </bean>
 
-    <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.WfsIdfMapper">
+    <bean id="idfMapper" class="de.ingrid.iplug.wfs.dsc.record.mapper.impl.WfsIdfMapper">
         <property name="mappingScripts">
 	    	<list>
 	    		<value>classpath:mapping/lib.js</value>

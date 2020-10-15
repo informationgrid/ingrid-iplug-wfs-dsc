@@ -20,16 +20,30 @@
  * limitations under the Licence.
  * **************************************************#
  */
-/*
- * Copyright (c) 2008 wemove digital solutions. All rights reserved.
+/**
+ *
  */
+package de.ingrid.iplug.wfs.dsc.index.mapper;
 
-package de.ingrid.iplug.wfs.dsc.wfsclient;
+import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
+import de.ingrid.utils.ElasticDocument;
 
 /**
- * Representation of a feature returned by a WFS server.
+ * Interface for all source record to lucene document mapper classes.
  *
- * @author ingo herwig <ingo@wemove.com>
+ * @author joachim@wemove.com
  */
-public interface WFSFeature extends WFSRecord {
+public interface RecordMapper {
+
+	/**
+	 * Maps a source record into a lucene document. The content of the source
+	 * record may vary. It is up to the implementing class to interpret the
+	 * source record and throw exceptions, if the record does not comply with
+	 * the needs of the mapper.
+	 *
+	 * @param record
+	 * @param doc
+	 * @return
+	 */
+	void map(SourceRecord record, ElasticDocument doc) throws Exception;
 }

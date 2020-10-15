@@ -24,8 +24,8 @@ package de.ingrid.iplug.wfs.dsc.index;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
-import de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
@@ -47,13 +47,13 @@ public class WadabaMapperToIndexTestLocal extends TestCase {
 		desc.put("serviceUrl", "");
 		factory.configure(desc);
 
-		WfsDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", WfsDocumentMapper.class);
+		ScriptedDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", ScriptedDocumentMapper.class);
 
 		String testRecordId = "0129b32b06679f8f71326d65669deb5";
 		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
 		ElasticDocument doc = new ElasticDocument();
 		try {
-			mapper.map(new WfsCacheSourceRecord(wfsRecord), doc);
+			mapper.map(new WfsSourceRecord(wfsRecord), doc);
 		} catch (Throwable t) {
 			System.out.println(t);
 		}

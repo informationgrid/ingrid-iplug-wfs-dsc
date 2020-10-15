@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,11 +33,11 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 
 public class ExecutionContext {
 
-	WFSFactory factory;
-	Cache cache;
-	Set<String> filterStrSet;
-	Date lastExecutionDate;
-	int requestPause;
+	private WFSFactory factory;
+	private Cache cache;
+	private Set<String> filterStrSet;
+	private Date lastExecutionDate;
+	private int requestPause;
 
 	/**
 	 * @return the factory

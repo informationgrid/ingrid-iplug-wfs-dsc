@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,13 +34,13 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 
 /**
- * Cache interface.
+ * Interface for a cache that stores WFS feature records.
  *
  * Transaction support. A transaction allows to do all cache operations in a temporary
  * store. The cache guarantees that changes do not affect the content of the cache from
  * which the transaction started until the transaction is committed. A rollback ends the
  * transaction without changing the original content.
- * 
+ *
  * @author ingo herwig <ingo@wemove.com>
  */
 public interface Cache {

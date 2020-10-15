@@ -27,6 +27,7 @@
 package de.ingrid.iplug.wfs.dsc.cache;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
@@ -48,6 +49,6 @@ public class UpdateJobTestLocal extends TestCase {
 		job.execute();
 
 		Cache cache = job.getCache();
-		assertEquals("Number of cached features matches", 536, cache.getCachedRecordIds().size());
+		assertEquals("Number of cached features matches", TestConstants.PEGELONLINE_FEATURES, cache.getCachedRecordIds().size());
 	}
 }

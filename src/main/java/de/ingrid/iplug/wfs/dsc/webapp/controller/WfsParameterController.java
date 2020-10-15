@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,11 +22,6 @@
  */
 package de.ingrid.iplug.wfs.dsc.webapp.controller;
 
-import de.ingrid.admin.command.PlugdescriptionCommandObject;
-import de.ingrid.admin.controller.AbstractController;
-import de.ingrid.iplug.wfs.dsc.Configuration;
-import de.ingrid.iplug.wfs.dsc.webapp.object.WfsConfiguration;
-import de.ingrid.iplug.wfs.dsc.webapp.validation.WfsParameterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,11 +31,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import de.ingrid.admin.command.PlugdescriptionCommandObject;
+import de.ingrid.admin.controller.AbstractController;
+import de.ingrid.iplug.wfs.dsc.Configuration;
+import de.ingrid.iplug.wfs.dsc.webapp.object.WfsConfiguration;
+import de.ingrid.iplug.wfs.dsc.webapp.validation.WfsParameterValidator;
+
 /**
  * Control the wfs parameter page.
- * 
+ *
  * @author joachim@wemove.com
- * 
+ *
  */
 @Controller
 @SessionAttributes("plugDescription")
@@ -63,7 +64,8 @@ public class WfsParameterController extends AbstractController {
 
 		WfsConfiguration wfsConfig = new WfsConfiguration();
 		wfsConfig.setServiceUrl( wfsPropertiesConfig.serviceUrl );
-		
+		wfsConfig.setFeaturePreviewLimit( wfsPropertiesConfig.featurePreviewLimit );
+
 		// write object into session
 		modelMap.addAttribute("wfsConfig", wfsConfig);
 
@@ -91,6 +93,7 @@ public class WfsParameterController extends AbstractController {
 			PlugdescriptionCommandObject pdCommandObject) {
 
 		wfsPropertiesConfig.serviceUrl = commandObject.getServiceUrl();
+		wfsPropertiesConfig.featurePreviewLimit = commandObject.getFeaturePreviewLimit();
 
 		// add required datatypes to PD
 		// -> is added in GeneralController with forced added datatype!

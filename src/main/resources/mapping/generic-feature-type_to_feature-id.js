@@ -21,12 +21,13 @@
  * **************************************************#
  */
 /**
- * Generic WFS Feature to Id mapping
- * Copyright (c) 2011 wemove digital solutions. All rights reserved.
+ * Generic WFS Feature Type to Id mapping
+ * Copyright (c) 2020 wemove digital solutions. All rights reserved.
  *
  * The following global variable are passed from the application:
  *
- * @param featureNode A Node instance, that defines the input as received from the WFS GetFeature operation
+ * @param featureTypeNode A Node instance, that defines the input extracted from the WFS GetCapabilities response
+ * @param featureTypeDescNode A Node instance, that defines the input as received from the WFS DescribeFeatureType operation
  * @param xPathUtils A de.ingrid.utils.xpath.XPathUtils instance
  * @param log A Log instance
  * @return String
@@ -38,14 +39,13 @@ if (javaVersion.indexOf( "1.8" ) === 0) {
 importPackage(Packages.org.w3c.dom);
 
 if (log.isDebugEnabled()) {
-	log.debug("Extracting wfs feature id");
+	log.debug("Extracting wfs feature type id");
 }
 
-// get the gml:id attribute value of the root element
+// get the wfs:FeatureType/wfs:Name text value of the root element
 // last evaluated expression is the return value
-var rootNode = xPathUtils.getNode(featureNode, "/*");
-var idAttr = rootNode.getAttributes().getNamedItem("gml:id");
-if (idAttr == null) {
-	log.error("Id Attribute 'gml:id' not set in feature " + rootNode);
+var nameNode = xPathUtils.getNode(featureTypeNode, "/wfs:FeatureType/wfs:Name");
+if (nameNode == null) {
+	log.error("Name node 'wfs:Name' not set in feature type " + featureTypeNode);
 }
-idAttr.getNodeValue();
+nameNode.getTextContent();

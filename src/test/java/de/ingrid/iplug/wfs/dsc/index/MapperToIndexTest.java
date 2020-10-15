@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,8 +26,8 @@ import de.ingrid.admin.JettyStarter;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
-import de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
@@ -42,7 +42,7 @@ public class MapperToIndexTest extends TestCase {
 	 */
 	public void testMapper() throws Exception {
 
-	    new JettyStarter( false );
+		new JettyStarter( false );
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
 		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 
@@ -50,13 +50,13 @@ public class MapperToIndexTest extends TestCase {
 		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
 		factory.configure(desc);
 
-		WfsDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", WfsDocumentMapper.class);
+		ScriptedDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", ScriptedDocumentMapper.class);
 
 		String testRecordId = "21212262e8a1112a80f26f18255da2e0";
 		WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
 		ElasticDocument doc = new ElasticDocument();
 		try {
-			mapper.map(new WfsCacheSourceRecord(wfsRecord), doc);
+			mapper.map(new WfsSourceRecord(wfsRecord), doc);
 		} catch (Throwable t) {
 			System.out.println(t);
 		}

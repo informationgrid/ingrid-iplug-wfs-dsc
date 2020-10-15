@@ -84,6 +84,16 @@
                             <p style="color: gray;"><fmt:message key="WfsConfiguration.serviceUrl.help.example"/></p>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="leftCol">Anzahl Features in Detaildarstellung</td>
+                        <td>
+                            <div class="input full"><form:input path="featurePreviewLimit" /></div>
+                            <form:errors path="featurePreviewLimit" cssClass="error" element="div" />
+                            <br />
+                            <fmt:message key="WfsConfiguration.featurePreviewLimit.help"/>
+                            <p style="color: gray;"><fmt:message key="WfsConfiguration.featurePreviewLimit.help.example"/></p>
+                        </td>
+                    </tr>
                 </table>
             </form:form>
         </div>

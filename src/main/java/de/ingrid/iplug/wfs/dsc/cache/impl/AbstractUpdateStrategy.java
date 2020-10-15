@@ -65,7 +65,7 @@ public abstract class AbstractUpdateStrategy implements UpdateStrategy {
 	private StatusProviderService statusProviderService;
 	private StatusProvider statusProvider;
 
-	DocumentBuilder docBuilder = null;
+	private DocumentBuilder docBuilder = null;
 
 	// The time in msec the strategy pauses between requests to the WFS server.
 	int requestPause = 1000;

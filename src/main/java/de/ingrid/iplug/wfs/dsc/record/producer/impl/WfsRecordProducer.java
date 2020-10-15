@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,10 +20,7 @@
  * limitations under the Licence.
  * **************************************************#
  */
-/**
- * 
- */
-package de.ingrid.iplug.wfs.dsc.record.producer;
+package de.ingrid.iplug.wfs.dsc.record.producer.impl;
 
 import java.io.IOException;
 
@@ -32,7 +29,8 @@ import org.apache.commons.logging.LogFactory;
 
 import de.ingrid.iplug.wfs.dsc.cache.Cache;
 import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
+import de.ingrid.iplug.wfs.dsc.record.producer.RecordProducer;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
@@ -42,34 +40,25 @@ import de.ingrid.utils.PlugDescription;
  * database id from a lucene document ({@link getRecord}) and creates a
  * {@link DatabaseSourceRecord} containing the database ID that identifies the
  * database record and the open connection to the database.
- * 
+ *
  * The database connection is configured via the {@link PlugDescription}.
- * 
- * 
+ *
  * @author joachim@wemove.com
- * 
  */
-public class WfsRecordProducer implements IRecordProducer {
+public class WfsRecordProducer implements RecordProducer {
 
 	final private static Log log = LogFactory.getLog(WfsRecordProducer.class);
 
-	Cache cache;
+	private Cache cache;
 
-	WFSFactory factory;
+	private WFSFactory factory;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.ingrid.iplug.dsc.record.IRecordProducer#getRecord(org.apache.lucene
-	 * .document.Document)
-	 */
 	@Override
 	public SourceRecord getRecord(ElasticDocument doc) {
 		// TODO make the field configurable
 		String field = (String) doc.get("t01_object.obj_id");
 		try {
-			return new WfsCacheSourceRecord(this.cache.getRecord(field));
+			return new WfsSourceRecord(this.cache.getRecord(field));
 		} catch (IOException e) {
 			log.error("Error reading record '" + field + "' from cache '"
 					+ this.cache.toString() + "'.");
@@ -77,20 +66,10 @@ public class WfsRecordProducer implements IRecordProducer {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.iplug.dsc.record.IRecordProducer#closeDatasource()
-	 */
 	@Override
 	public void closeDatasource() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.ingrid.iplug.dsc.record.IRecordProducer#openDatasource()
-	 */
 	@Override
 	public void openDatasource() {
 		this.cache.configure(this.factory);
@@ -111,6 +90,4 @@ public class WfsRecordProducer implements IRecordProducer {
 	public void setFactory(WFSFactory factory) {
 		this.factory = factory;
 	}
-
-
 }

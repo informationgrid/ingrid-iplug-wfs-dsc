@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:gk="http://gkinfo.wsv.de" xmlns:gml="http://www.opengis.net/gml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gkinfo.wsv.de">
+    <xsd:import namespace="http://www.opengis.net/gml" schemaLocation="http://www.pegelonline.wsv.de:80/webservices/gis/aktuell/schemas/gml/3.1.1/base/gml.xsd"/>
+    <xsd:complexType name="waterlevelsType">
+        <xsd:complexContent>
+            <xsd:extension base="gml:AbstractFeatureType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="the_geom" nillable="true" type="gml:PointPropertyType"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="water" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="station" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="station_id" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="kilometer" nillable="true" type="xsd:double"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="date" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="value" nillable="true" type="xsd:double"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="unit" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="chart_url" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="trend" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="status" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="comment" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="mnwmhw_st" nillable="true" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="nswhsw_st" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="waterlevels" substitutionGroup="gml:_Feature" type="gk:waterlevelsType"/>
+</xsd:schema>

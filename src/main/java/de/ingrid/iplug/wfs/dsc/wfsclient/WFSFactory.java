@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -44,6 +44,7 @@ public class WFSFactory implements IConfigurable, Serializable {
 
 	private static final long serialVersionUID = WFSFactory.class.getName().hashCode();
 	private static final String serviceUrlKey = "serviceUrl";
+	private static final String featurePreviewLimitKey = "featurePreviewLimit";
 
 	private PlugDescription plugDescription;
 
@@ -56,9 +57,11 @@ public class WFSFactory implements IConfigurable, Serializable {
 	private String featureImpl;
 	private WFSQuery queryTemplate;
 	private WFSFeature featureTemplate;
+	private WFSFeatureType featureTypeTemplate;
 
 	/**
-	 * Get the service url.
+	 * Get the service url
+	 * @note The value is defined in the plugdescription key 'serviceUrl'
 	 * @return The service url
 	 * @throws RuntimeException
 	 */
@@ -74,6 +77,24 @@ public class WFSFactory implements IConfigurable, Serializable {
 		}
 	}
 
+	/**
+	 * Get the maximum number of features for creating a feature preview in the feature type details
+	 * @note If a feature type has more features than this limit, no feature preview will be created
+	 * @note The value is defined in the plugdescription key 'featurePreviewLimit' and defaults to 0
+	 * @return The maximum number of features
+	 * @throws RuntimeException
+	 */
+	public int getFeaturePreviewLimit() throws Exception {
+		if (this.plugDescription != null) {
+			if (this.plugDescription.get(featurePreviewLimitKey) != null) {
+				return Integer.valueOf(this.plugDescription.getString(featurePreviewLimitKey));
+			} else {
+				return 0;
+			}
+		} else {
+			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'plugDescription' is missing.");
+		}
+	}
 
 	/**
 	 * Set the WFSClient implementation
@@ -164,6 +185,22 @@ public class WFSFactory implements IConfigurable, Serializable {
 	}
 
 	/**
+	 * Set the feature type template, which will be used when creating feature types
+	 * @param featureTypeTemplate
+	 */
+	public void setFeatureTypeTemplate(WFSFeatureType featureTypeTemplate) {
+		this.featureTypeTemplate = featureTypeTemplate;
+	}
+
+	/**
+	 * Get the feature type template, which will be used when creating feature types
+	 * @return WFSFeatureType
+	 */
+	public WFSFeatureType getFeatureTypeTemplate() {
+		return this.featureTypeTemplate;
+	}
+
+	/**
 	 * Factory methods
 	 */
 
@@ -218,6 +255,12 @@ public class WFSFactory implements IConfigurable, Serializable {
 		WFSFeatureType featureType;
 		try {
 			featureType = (WFSFeatureType)Class.forName(this.featureTypeImpl).newInstance();
+			featureType.configure(this);
+
+			// set default config values from the template feature type
+			if (this.featureTypeTemplate != null) {
+				featureType.setIdMappingScript(this.featureTypeTemplate.getIdMappingScript());
+			}
 		} catch (Exception e) {
 			throw new RuntimeException("WFSFactory is not configured properly. Parameter 'featureTypeImpl' is missing or wrong.");
 		}

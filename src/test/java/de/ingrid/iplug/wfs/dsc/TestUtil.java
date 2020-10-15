@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,6 +42,7 @@ import de.ingrid.iplug.wfs.dsc.tools.FileUtils;
 import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLSerializer;
@@ -137,7 +138,16 @@ public class TestUtil {
 
 	public static WFSFeature getRecord(String id, WFSFeature record, WFSFactory factory) {
 		try {
-			log.debug("getting Record '"+id+"'");
+			log.debug("getting feature Record '"+id+"'");
+			return getRecordNode(id, record, factory);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static WFSFeatureType getRecord(String id, WFSFeatureType record, WFSFactory factory) {
+		try {
+			log.debug("getting feature type Record '"+id+"'");
 			return getRecordNode(id, record, factory);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -145,17 +155,33 @@ public class TestUtil {
 	}
 
 	public static String getRecordValue(WFSFeature record) {
-		return xPathUtils.getString(record.getOriginalResponse(), "//*");
+		return xPathUtils.getString(record.getOriginalResponse().get(0), "//*");
 	}
 
 	public static void setRecordValue(WFSFeature record, String value) {
-		Node valueNode = xPathUtils.getNode(record.getOriginalResponse(), "//*");
+		Node valueNode = xPathUtils.getNode(record.getOriginalResponse().get(0), "//*");
 		valueNode.setTextContent(value);
 	}
 
 	private static WFSFeature getRecordNode(String id, WFSFeature record, WFSFactory factory) throws Exception {
+		String content = readFile(new File(dataFolder+"/"+FileUtils.encodeFileName(id)+".xml"));
+		Document document = StringUtils.stringToDocument(content.toString());
+		record.initialize(document.getFirstChild());
+		return record;
+	}
 
-		File file = new File(dataFolder+"/"+FileUtils.encodeFileName(id)+".xml");
+	private static WFSFeatureType getRecordNode(String id, WFSFeatureType record, WFSFactory factory) throws Exception {
+		String contentCap = readFile(new File(dataFolder+"/"+FileUtils.encodeFileName(id)+"_feature-type_cap.xml"));
+		Document documentCap = StringUtils.stringToDocument(contentCap.toString());
+
+		String contentDesc = readFile(new File(dataFolder+"/"+FileUtils.encodeFileName(id)+"_feature-type_desc.xml"));
+		Document documentDesc = StringUtils.stringToDocument(contentDesc.toString());
+
+		record.initialize(documentCap.getFirstChild(), documentDesc.getFirstChild());
+		return record;
+	}
+
+	private static String readFile(File file) throws Exception {
 		StringBuilder content = new StringBuilder();
 		BufferedReader input = new BufferedReader(new FileReader(file));
 		try {
@@ -168,9 +194,7 @@ public class TestUtil {
 			input = null;
 
 			log.debug("content: \n"+content.toString());
-			Document document = StringUtils.stringToDocument(content.toString());
-			record.initialize(document.getFirstChild());
-			return record;
+			return content.toString();
 		}
 		finally {
 			if (input != null) {

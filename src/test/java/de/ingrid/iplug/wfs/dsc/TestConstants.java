@@ -1,6 +1,6 @@
-/*
+/*-
  * **************************************************-
- * ingrid-iplug-wfs-dsc:war
+ * InGrid iPlug WFS-DSC
  * ==================================================
  * Copyright (C) 2014 - 2020 wemove digital solutions GmbH
  * ==================================================
@@ -20,32 +20,9 @@
  * limitations under the Licence.
  * **************************************************#
  */
-/**
- * 
- */
-package de.ingrid.iplug.wfs.dsc.index.mapper;
+package de.ingrid.iplug.wfs.dsc;
 
-import de.ingrid.iplug.wfs.dsc.om.SourceRecord;
-import de.ingrid.utils.ElasticDocument;
+public class TestConstants {
 
-/**
- * Interface for all source record to lucene document mapper classes.
- * 
- * @author joachim@wemove.com
- * 
- */
-public interface IRecordMapper {
-
-	/**
-	 * Maps a source record into a lucene document. The content of the source
-	 * record may vary. It is up to the implementing class to interpret the
-	 * source record and throw exceptions, if the record does not comply with
-	 * the needs of the mapper.
-	 * 
-	 * @param record
-	 * @param doc
-	 * @return
-	 */
-	void map(SourceRecord record, ElasticDocument doc) throws Exception;
-
+	public static final int PEGELONLINE_FEATURES = 534;
 }

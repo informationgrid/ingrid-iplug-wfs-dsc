@@ -23,12 +23,15 @@
 package de.ingrid.iplug.wfs.dsc.index;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+import de.ingrid.iplug.wfs.dsc.TestConstants;
+import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
-import de.ingrid.iplug.wfs.dsc.index.mapper.WfsDocumentMapper;
-import de.ingrid.iplug.wfs.dsc.om.WfsCacheSourceRecord;
+import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
+import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
+import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
 import junit.framework.TestCase;
@@ -47,7 +50,7 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 		desc.put("serviceUrl", "");
 		factory.configure(desc);
 
-		WfsDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", WfsDocumentMapper.class);
+		ScriptedDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", ScriptedDocumentMapper.class);
 
 		String[] testRecordIds = new String[] {
 				"955299742e63f37188188b862290ee",
@@ -58,7 +61,7 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 			WFSFeature wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeature(), factory);
 			ElasticDocument doc = new ElasticDocument();
 			try {
-				mapper.map(new WfsCacheSourceRecord(wfsRecord), doc);
+				mapper.map(new WfsSourceRecord(wfsRecord), doc);
 			} catch (Throwable t) {
 				System.out.println(t);
 			}
@@ -77,6 +80,46 @@ public class ZDMMapperToIndexTestLocal extends TestCase {
 				assertEquals("EPSG:4326: 9.229423, 53.628519 / 9.229423, 53.628519", doc.get("summary"));
 				assertEquals("Oste", doc.get("gewaesser"));
 				assertEquals("26,8 - Oste - 024", doc.get("suchfeld"));
+			}
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void testMapperFeatureTypes() throws Exception {
+
+		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_zdm.xml");
+		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
+
+		PlugDescription desc = new PlugDescription();
+		desc.put("serviceUrl", TestServer.PEGELONLINE.getCapUrl());
+		factory.configure(desc);
+
+		ScriptedDocumentMapper mapper = SimpleSpringBeanFactory.INSTANCE.getBean("recordMapper", ScriptedDocumentMapper.class);
+
+		String[] testRecordIds = new String[] {
+				"70aa386652857405492ad7bf322b27",
+				};
+
+		for (String testRecordId : testRecordIds) {
+			WFSFeatureType wfsRecord = TestUtil.getRecord(testRecordId, factory.createFeatureType(), factory);
+			ElasticDocument doc = new ElasticDocument();
+			try {
+				mapper.map(new WfsSourceRecord(wfsRecord), doc);
+			} catch (Throwable t) {
+				System.out.println(t);
+			}
+
+			assertTrue("Lucene doc found.", doc != null);
+			assertEquals(testRecordId, doc.get("t01_object.obj_id"));
+			System.out.println(doc);
+
+			if (testRecordId.equals("70aa386652857405492ad7bf322b27")) {
+				assertEquals("70aa386652857405492ad7bf322b27", doc.get("t01_object.obj_id"));
+				assertEquals("German Water Levels", doc.get("title"));
+				assertEquals("German water levels of federal waterways from pegelonline.wsv.de. - "+TestConstants.PEGELONLINE_FEATURES+" Feature(s)", doc.get("summary"));
+				assertEquals(TestConstants.PEGELONLINE_FEATURES, doc.get("number_of_features"));
 			}
 		}
 	}

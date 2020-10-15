@@ -21,53 +21,64 @@
  * **************************************************#
  */
 /*
- * Copyright (c) 2008 wemove digital solutions. All rights reserved.
+ * Copyright (c) 2020 wemove digital solutions. All rights reserved.
  */
 
 package de.ingrid.iplug.wfs.dsc.wfsclient;
 
+import java.io.File;
+import java.util.List;
+
+import org.w3c.dom.Node;
+
+import de.ingrid.iplug.wfs.dsc.wfsclient.constants.WfsNamespaceContext;
 
 /**
- * Interface definition for a WFS server.
+ * Representation of a feature or feature type returned by a WFS server.
+ *
  * @author ingo herwig <ingo@wemove.com>
  */
-public interface WFSClient {
+public interface WFSRecord {
 
 	/**
-	 * Configure the WFSClient
+	 * Configure the record
 	 * @param factory
 	 */
 	public void configure(WFSFactory factory);
 
 	/**
-	 * Get the WFSFactory
-	 * @return A WFSFactory instance
+	 * Initialize the record.
+	 * @param nodes The DOM Node instances describing the record
 	 */
-	public WFSFactory getFactory();
+	public void initialize(Node... nodes) throws Exception;
 
 	/**
-	 * Do the OGCWebService.getCapabilities request
-	 * @note The request url is the service url
-	 * @return A WFSCapabilities instance
+	 * Get the id of the record
+	 * @return String
 	 */
-	public WFSCapabilities getCapabilities() throws Exception;
+	public String getId();
 
 	/**
-	 * Do the WebFeatureService.describeFeatureType request
-	 * given WFSQuery instance
-	 * @note The request url is the taken from the capabilities document
-	 * and defaults to service url, if not defined there
-	 * @return A WFSFeatureType instance
+	 * Get the original DOM Node instances describing the record
+	 * @return List<Node>
 	 */
-	public WFSFeatureType describeFeatureType(WFSQuery query) throws Exception;
+	public List<Node> getOriginalResponse();
 
 	/**
-	 * Do the WebFeatureService.GetFeature request using a
-	 * given WFSQuery instance
-	 * @note The request url is the taken from the capabilities document
-	 * and defaults to service url, if not defined there
-	 * @param query
-	 * @return A WFSQueryResult instance
+	 * Set the file of the mapping script for mapping the record to an id
+	 * @param idMappingScript
 	 */
-	public WFSQueryResult getFeature(WFSQuery query) throws Exception;
+	public void setIdMappingScript(File idMappingScript);
+
+	/**
+	 * Get the file of the mapping script for mapping the record to an id
+	 * @return File
+	 */
+	public File getIdMappingScript();
+
+	/**
+	 * Get the namespace context for this record
+	 * @return NamespaceContext
+	 */
+	public WfsNamespaceContext getNamespaceContext();
 }

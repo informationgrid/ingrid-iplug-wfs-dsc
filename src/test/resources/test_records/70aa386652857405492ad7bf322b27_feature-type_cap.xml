@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<FeatureType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.opengis.net/wfs" xmlns:wfs="http://www.opengis.net/wfs" xmlns:ows="http://www.opengis.net/ows" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:gk="http://gkinfo.wsv.de">
+    <Name>gk:waterlevels</Name>
+    <Title>German Water Levels</Title>
+    <Abstract>German water levels of federal waterways from pegelonline.wsv.de.</Abstract>
+    <ows:Keywords>
+        <ows:Keyword>water level</ows:Keyword>
+        <ows:Keyword>river level</ows:Keyword>
+        <ows:Keyword>water gauge</ows:Keyword>
+        <ows:Keyword>waterways</ows:Keyword>
+    </ows:Keywords>
+    <DefaultSRS>urn:x-ogc:def:crs:EPSG:4326</DefaultSRS>
+    <ows:WGS84BoundingBox>
+        <ows:LowerCorner>6.246 48.028</ows:LowerCorner>
+        <ows:UpperCorner>14.753 54.083</ows:UpperCorner>
+    </ows:WGS84BoundingBox>
+</FeatureType>

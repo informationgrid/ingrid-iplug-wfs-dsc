@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * http://ec.europa.eu/idabc/eupl5
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -65,38 +65,38 @@ public class GenericQueryResult implements WFSQueryResult {
 		this.query = query;
 		this.document = document;
 		this.features = new ArrayList<WFSFeature>();
-		
+
 		// parse the document and create the feature list
 		// NOTE: in version 1.1.0 all features are encapsulated in a featureMembers node
-		//       in version 1.0.0 each feature is encapsulated in a featureMember node
+		//	   in version 1.0.0 each feature is encapsulated in a featureMember node
 		NodeList featureNodes = xPathUtils.getNodeList(document,
 				"/wfs:FeatureCollection/gml:featureMembers/child::*|/wfs:FeatureCollection/gml:featureMember/child::*");
 		if (featureNodes != null) {
-            boolean error = false;
+			boolean error = false;
 			for (int i=0; i<featureNodes.getLength(); i++) {
 				try {
-	                // create the feature
+					// create the feature
 					WFSFeature feature = this.factory.createFeature();
 					feature.initialize(featureNodes.item(i));
-					this.features.add(feature);										
+					this.features.add(feature);
 				} catch (Exception ex) {
 					String msg = "Problems creating WFSFeature from " + i + ". feature node '" + featureNodes.item(i) + "', we skip this one !";
-                    // only log as error with full exception with first exception to avoid lots of repeating errors / exceptions in log file with every feature !
-                    if (!error) {
-                        error = true;
-                        log.error(msg, ex);
-                        log.error("NOTICE: We do NOT log further exceptions of this feature type as ERROR to avoid huge log output ! Switch to DEBUG to see all exceptions !");
-                    } else {
-                        // log as debug to avoid huge chunk of messages !
-                        if (log.isDebugEnabled()) {
-                            log.debug("ERROR: " + msg, ex);
-                        }                        
-                    }
+					// only log as error with full exception with first exception to avoid lots of repeating errors / exceptions in log file with every feature !
+					if (!error) {
+						error = true;
+						log.error(msg, ex);
+						log.error("NOTICE: We do NOT log further exceptions of this feature type as ERROR to avoid huge log output ! Switch to DEBUG to see all exceptions !");
+					} else {
+						// log as debug to avoid huge chunk of messages !
+						if (log.isDebugEnabled()) {
+							log.debug("ERROR: " + msg, ex);
+						}
+					}
 				}
 			}
 			this.featuresTotal = this.features.size();
 		}
-		
+
 		// Check whether only total number of features was queried (e.g. ...SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=xxx&RESULTTYPE=hits).
 		// Then total number is in numberOfFeatures attribute in top FeatureCollection node
 		if (featureNodes == null || featureNodes.getLength() == 0) {

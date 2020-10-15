@@ -79,3 +79,23 @@ function addOutputWithAttributes(parent, elementName, attrNames, attrValues) {
 	parent.appendChild(element);
 	return element;
 }
+
+// add elements/styles for correct display in portal (header)
+function addDetailHeaderWrapper(parent) {
+	var result = addOutputWithAttributes(parent, "section", ["class"], ["block block--light block--pad-top"]);
+	result = addOutputWithAttributes(result, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center"]);
+	result = addOutputWithAttributes(result, "article", ["id", "class"], ["detail_meta_header", "content ob-container"]);
+	result = addOutputWithAttributes(result, "form", ["class"], ["box box--medium"]);
+	result = addOutputWithAttributes(result, "div", ["class"], ["box__content ob-container"]);
+	return result;
+}
+
+//add elements/styles for correct display in portal (details)
+function addDetailDetailsWrapper(parent) {
+	var result = addOutputWithAttributes(parent, "section", ["id","class"], ["detail_meta","block"]);
+	result = addOutputWithAttributes(result, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center ob-rel"]);
+	result = addOutputWithAttributes(result, "article", ["class"], ["content ob-container ob-box-wide"]);
+	result = addOutputWithAttributes(result, "form", ["class"], ["box box--medium"]);
+	result = addOutputWithAttributes(result, "div", ["class"], ["box__content ob-container"]);
+	return result;
+}
