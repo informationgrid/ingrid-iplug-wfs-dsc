@@ -254,9 +254,13 @@ function getFeatureTypeTitle(recordNode) {
 }
 
 function getFeatureTypeSummary(recordNode, numFeatures) {
-	var summary = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Abstract");
-	var featureSummary = numFeatures+" Feature(s)";
-	return summary + "<br>" + featureSummary;
+    var summary = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Abstract");
+    if(hasValue(summary)) {
+        summary = summary + "<br>";
+    } else {
+        summary = "";
+    }
+    return summary + numFeatures + " Feature(s)";
 }
 
 function getFeatureTypeBoundingBox(recordNode) {
