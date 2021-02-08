@@ -5,12 +5,18 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="5.8.0" date="2021-xx-xx" description="Release 5.8.0">
+      <action type="add" dev="wemove">
+        Fix error when abstract is null
+      </action>
+    </release>
+
     <release version="5.7.0" date="2021-01-18" description="Release 5.7.0">
       <action type="add" dev="wemove" issue="2211">
         Fix Redmine issue link generation for changes.
       </action>
     </release>
-	
+
     <release version="5.6.0" date="2020-10-15" description="Release 5.6.0">
       <action type="add" dev="wemove" issue="2779">
         Update feature type result and detail view
@@ -73,10 +79,10 @@
         Added docker integration.
       </action>
     </release>
-    
+
     <release version="4.1.0" date="2017-10-04" description="Release 4.1.0">
       <action type="fix" dev="wemove" issue="REDMINE-843">
-        Fixed endless loop when mapping of record to index leads to error, then job fetching all records was executed again due to reset of cache. 
+        Fixed endless loop when mapping of record to index leads to error, then job fetching all records was executed again due to reset of cache.
       </action>
       <action type="fix" dev="wemove" issue="REDMINE-842">
         Fixed display of last line in admin gui when indexing and displaying lots of status lines.
@@ -94,7 +100,7 @@
         Fixed wrong path to save data when using cygwin.
       </action>
     </release>
-    
+
     <release version="3.6.2" date="2016-05-13" description="Release 3.6.2">
       <action type="add" dev="wemove" issue="REDMINE-34">
         Improved status messages while indexing.
@@ -109,7 +115,7 @@
         Fixed redirect to welcome page for a logged in user.
       </action>
     </release>
-    
+
     <release version="3.6.1.2" date="2016-01-22" description="Release 3.6.1.2">
       <action type="fix" dev="wemove" issue="REDMINE-255">
         Fixed setting of initial ranking type.
@@ -127,7 +133,7 @@
         Use encrypted password for web interface.
       </action>
     </release>
-    
+
     <release version="3.6.0.4" date="2015-09-29" description="Bugfix-Release 3.6.0.4">
       <action type="update" dev="wemove" issue="REDMINE-168">
         Move specific local configuration to new override directory to be safe from update of component.
@@ -136,7 +142,7 @@
         Create a new index with automatic IDs when indexing to prevent dublicates.
       </action>
     </release>
-    
+
     <release version="3.6.0.3" date="2015-09-10" description="Bugfix-Release 3.6.0.3">
       <action type="fix" dev="wemove" issue="REDMINE-130">
         Fixed mapping of index to handle UUIDs and other fields as whole, otherwise a wrong dataset could be fetched.
@@ -145,13 +151,13 @@
         Fixed query generation and request of index fields.
       </action>
     </release>
-    
+
     <release version="3.6.0" date="2015-06-19" description="Release 3.6.0">
       <action type="add" dev="wemove" issue="REDMINE-6">
         Added elastic search as new indexing method.
       </action>
     </release>
-    
+
     <release version="3.5.0" date="2015-02-02" description="Release InGrid 3.5.0">
       <action type="fix" dev="wemove" issue="REDMINE-595">
         Update URL on Wadaba mapping.
