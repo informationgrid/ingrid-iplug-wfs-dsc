@@ -65,10 +65,10 @@ if (wfsRecord instanceof WFSFeature) {
 	mapFeatureSummary(recordNode);
 
 	//add the bounding box
-	mapFeatureBoundingBox(recordNode);
+	mapFeatureBoundingBox(recordNode, "//gml:boundedBy/gml:Envelope", "gml:lowerCorner", "gml:upperCorner");
 
 	//add the map preview
-	mapFeaturePreview(recordNode);
+	mapFeaturePreview(recordNode, "//gml:boundedBy/gml:Envelope", "gml:lowerCorner", "gml:upperCorner");
 
 	// add details (content of all child nodes)
 	var detailNodes = recordNode.getChildNodes();
@@ -96,7 +96,13 @@ else if (wfsRecord instanceof WFSFeatureType) {
 
 	//add the summary
 	mapFeatureTypeSummary(recordNode, wfsRecord.getNumberOfFeatures());
-	
+
+    //add the bounding box
+    mapFeatureBoundingBox(recordNode, "//wfs:FeatureType/ows:WGS84BoundingBox", "ows:LowerCorner", "ows:LowerCorner");
+
+    //add the map preview
+    mapFeaturePreview(recordNode, "//wfs:FeatureType/ows:WGS84BoundingBox", "ows:LowerCorner", "ows:LowerCorner");
+
 	// add number of features
 	addToDoc(document, "number_of_features", wfsRecord.getNumberOfFeatures(), true);
 }
@@ -126,11 +132,11 @@ function mapFeatureSummary(recordNode) {
 	addToDoc(document, "summary", result, true);
 }
 
-function mapFeatureBoundingBox(recordNode) {
-	var gmlEnvelope = xPathUtils.getNode(recordNode, "//gml:boundedBy/gml:Envelope");
+function mapFeatureBoundingBox(recordNode, xpathBoundingBox, xpathLowerCorner, xpathUpperCorner) {
+	var gmlEnvelope = xPathUtils.getNode(recordNode, xpathBoundingBox);
 	if (hasValue(gmlEnvelope)) {
-		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
-		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
+		var lowerCoords = xPathUtils.getString(gmlEnvelope, xpathLowerCorner).split(" ");
+		var upperCoords = xPathUtils.getString(gmlEnvelope, xpathUpperCorner).split(" ");
 		// Latitude first (Breitengrad = y), longitude second (L�ngengrad = x)
 		addNumericToDoc(document, "y1", lowerCoords[0], false); // south
 		addNumericToDoc(document, "x1", lowerCoords[1], false); // west
@@ -139,12 +145,12 @@ function mapFeatureBoundingBox(recordNode) {
 	}
 }
 
-function mapFeaturePreview(recordNode) {
-	var gmlEnvelope = xPathUtils.getNode(recordNode, "//gml:boundedBy/gml:Envelope");
+function mapFeaturePreview(recordNode, xpathBoundingBox, xpathLowerCorner, xpathUpperCorner) {
+	var gmlEnvelope = xPathUtils.getNode(recordNode, xpathBoundingBox);
 	if (hasValue(gmlEnvelope)) {
 		// BBOX
-		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
-		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
+		var lowerCoords = xPathUtils.getString(gmlEnvelope, xpathLowerCorner).split(" ");
+		var upperCoords = xPathUtils.getString(gmlEnvelope, xpathUpperCorner).split(" ");
 		// Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
 		var S = Number(lowerCoords[1]); // SOUTH y1
 		var E = Number(upperCoords[0]); // EAST, x2
@@ -166,11 +172,8 @@ function mapFeaturePreview(recordNode) {
 		var BBOX = "" + (E_4326 - 0.048) + "," + (S_4326 - 0.012) + "," + (E_4326 + 0.048) + "," + (S_4326 + 0.012);
 
 		var addHtml = "" + 
-//			"<a href=\"http://wsvmapserv.wsv.bvbs.bund.de/ol_bwastr/index.html?bwastr=" + BWSTR + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
-			"<div style=\"background-image: url(https://sgx.geodatenzentrum.de/wms_topplus_open?VERSION=1.3.0&amp;REQUEST=GetMap&amp;CRS=CRS:84&amp;BBOX=" + BBOX +
-			"&amp;LAYERS=web&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
-			"</div>";
-//			+ "</a>";
+			"https://sgx.geodatenzentrum.de/wms_topplus_open?VERSION=1.3.0&amp;REQUEST=GetMap&amp;CRS=CRS:84&amp;BBOX=" + BBOX +
+			"&amp;LAYERS=web&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120";
 
 		if (log.isDebugEnabled()) {
 			log.debug("Mapping field \"additional_html_1\": " + addHtml);
