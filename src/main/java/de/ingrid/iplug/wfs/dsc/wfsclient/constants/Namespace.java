@@ -47,5 +47,5 @@ public enum Namespace {
 	private static final QName nsWFS = new QName("http://www.opengis.net/wfs", "", "wfs");
 	private static final QName nsOGC = new QName("http://www.opengis.net/ogc", "", "ogc");
 	private static final QName nsOWS = new QName("http://www.opengis.net/ows", "", "ows");
-	private static final QName nsGML = new QName("http://www.opengis.net/gml", "", "gml");
+	private static final QName nsGML = new QName("http://www.opengis.net/gml/3.2", "", "gml");
 }
