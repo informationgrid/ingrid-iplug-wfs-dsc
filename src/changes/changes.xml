@@ -6,17 +6,17 @@
   </properties>
   <body>
     <release version="5.7.2-SNAPSHOT" date="2021-xx-xx" description="Release 5.7.2-SNAPSHOT">
-    </release>
-
-    <release version="5.7.1" date="2021-02-08" description="Release 5.7.1">
-      <action type="fix" dev="wemove">
-        Fix error when abstract is null
-      </action>
       <action type="update" dev="wemove">
         Update geo utils
       </action>
       <action type="fix" dev="wemove" issue="2287">
         Fix search map
+      </action>
+    </release>
+
+    <release version="5.7.1" date="2021-02-08" description="Release 5.7.1">
+      <action type="fix" dev="wemove">
+        Fix error when abstract is null
       </action>
     </release>
 
