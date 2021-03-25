@@ -96,7 +96,10 @@ else if (wfsRecord instanceof WFSFeatureType) {
 
 	//add the summary
 	mapFeatureTypeSummary(recordNode, wfsRecord.getNumberOfFeatures());
-	
+
+	//add bbox
+	mapFeatureTypeBoundingBox(recordNode);
+
 	// add number of features
 	addToDoc(document, "number_of_features", wfsRecord.getNumberOfFeatures(), true);
 }
@@ -195,3 +198,15 @@ function mapFeatureTypeSummary(recordNode, numFeatures) {
 	addToDoc(document, "summary", (hasValue(summary) ? summary+" - " : "") + featureSummary, true);
 }
 
+function mapFeatureTypeBoundingBox(recordNode) {
+  var gmlEnvelope = xPathUtils.getNode(recordNode, "//ows:WGS84BoundingBox");
+  if (hasValue(gmlEnvelope)) {
+      var lowerCoords = xPathUtils.getString(gmlEnvelope, "ows:lowerCorner").split(" ");
+      var upperCoords = xPathUtils.getString(gmlEnvelope, "ows:upperCorner").split(" ");
+      // Latitude first (Breitengrad = y), longitude second (L�ngengrad = x)
+      addNumericToDoc(document, "y1", lowerCoords[0], false); // south
+      addNumericToDoc(document, "x1", lowerCoords[1], false); // west
+      addNumericToDoc(document, "y2", upperCoords[0], false); // north
+      addNumericToDoc(document, "x2", upperCoords[1], false); // east
+  }
+}
