@@ -204,9 +204,9 @@ function mapFeatureTypeBoundingBox(recordNode) {
       var lowerCoords = xPathUtils.getString(gmlEnvelope, "ows:LowerCorner").split(" ");
       var upperCoords = xPathUtils.getString(gmlEnvelope, "ows:UpperCorner").split(" ");
       // Latitude first (Breitengrad = y), longitude second (L�ngengrad = x)
-      addNumericToDoc(document, "y1", lowerCoords[0], false); // south
-      addNumericToDoc(document, "x1", lowerCoords[1], false); // west
-      addNumericToDoc(document, "y2", upperCoords[0], false); // north
-      addNumericToDoc(document, "x2", upperCoords[1], false); // east
+      addNumericToDoc(document, "y1", lowerCoords[1], false); // south
+      addNumericToDoc(document, "x1", lowerCoords[0], false); // west
+      addNumericToDoc(document, "y2", upperCoords[1], false); // north
+      addNumericToDoc(document, "x2", upperCoords[0], false); // east
   }
 }
