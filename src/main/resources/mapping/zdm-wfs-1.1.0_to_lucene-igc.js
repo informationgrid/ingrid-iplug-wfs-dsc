@@ -65,7 +65,7 @@ if (wfsRecord instanceof WFSFeature) {
 	mapFeatureSummary(recordNode);
 
 	//add the bounding box
-	mapFeatureBoundingBox(recordNode);
+	mapFeatureBoundingBox(recordNode, "//gml:boundedBy/gml:Envelope", "gml:lowerCorner", "gml:upperCorner");
 
 	//add the map preview
 	mapFeaturePreview(recordNode);
@@ -97,8 +97,8 @@ else if (wfsRecord instanceof WFSFeatureType) {
 	//add the summary
 	mapFeatureTypeSummary(recordNode, wfsRecord.getNumberOfFeatures());
 
-	//add bbox
-	mapFeatureTypeBoundingBox(recordNode);
+    //add the bounding box
+    mapFeatureBoundingBox(recordNode, "//wfs:FeatureType/ows:WGS84BoundingBox", "ows:LowerCorner", "ows:UpperCorner");
 
 	// add number of features
 	addToDoc(document, "number_of_features", wfsRecord.getNumberOfFeatures(), true);
@@ -129,17 +129,17 @@ function mapFeatureSummary(recordNode) {
 	addToDoc(document, "summary", result, true);
 }
 
-function mapFeatureBoundingBox(recordNode) {
-	var gmlEnvelope = xPathUtils.getNode(recordNode, "//gml:boundedBy/gml:Envelope");
-	if (hasValue(gmlEnvelope)) {
-		var lowerCoords = xPathUtils.getString(gmlEnvelope, "gml:lowerCorner").split(" ");
-		var upperCoords = xPathUtils.getString(gmlEnvelope, "gml:upperCorner").split(" ");
-		// Latitude first (Breitengrad = y), longitude second (L�ngengrad = x)
-		addNumericToDoc(document, "y1", lowerCoords[0], false); // south
-		addNumericToDoc(document, "x1", lowerCoords[1], false); // west
-		addNumericToDoc(document, "y2", upperCoords[0], false); // north
-		addNumericToDoc(document, "x2", upperCoords[1], false); // east
-	}
+function mapFeatureBoundingBox(recordNode, xpathBoundingBox, xpathLowerCorner, xpathUpperCorner) {
+  var gmlEnvelope = xPathUtils.getNode(recordNode, xpathBoundingBox);
+  if (hasValue(gmlEnvelope)) {
+      var lowerCoords = xPathUtils.getString(gmlEnvelope, xpathLowerCorner).split(" ");
+      var upperCoords = xPathUtils.getString(gmlEnvelope, xpathUpperCorner).split(" ");
+      // Latitude first (Breitengrad = y), longitude second (L�ngengrad = x)
+      addNumericToDoc(document, "y1", lowerCoords[1], false); // south
+      addNumericToDoc(document, "x1", lowerCoords[0], false); // west
+      addNumericToDoc(document, "y2", upperCoords[1], false); // north
+      addNumericToDoc(document, "x2", upperCoords[0], false); // east
+  }
 }
 
 function mapFeaturePreview(recordNode) {
