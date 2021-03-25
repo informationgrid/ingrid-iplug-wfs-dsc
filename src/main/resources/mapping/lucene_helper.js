@@ -42,7 +42,7 @@ function addNumericToDoc(document, field, content) {
     		if (log.isDebugEnabled()) {
     			log.debug("Add numeric '" + field + "'='" + content + "' to lucene index.");
     		}
-            document.put( field, setDoubleValue(content) );
+            document.put( field, content );
         } catch (e) {
             if (log.isDebugEnabled()) {
                 log.debug("Value '" + content + "' is not a number. Ignoring field '" + field + "'.");
