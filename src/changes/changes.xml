@@ -12,6 +12,12 @@
       <action type="fix" dev="wemove">
         Fix error when abstract is null
       </action>
+      <action type="update" dev="wemove">
+        Update geo utils
+      </action>
+      <action type="fix" dev="wemove" issue="2287">
+        Fix search map
+      </action>
     </release>
 
     <release version="5.7.0" date="2021-01-18" description="Release 5.7.0">
