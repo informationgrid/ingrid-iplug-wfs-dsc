@@ -254,9 +254,13 @@ function getFeatureTypeTitle(recordNode) {
 }
 
 function getFeatureTypeSummary(recordNode, numFeatures) {
-	var summary = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Abstract");
-	var featureSummary = numFeatures+" Feature(s)";
-	return summary + "<br>" + featureSummary;
+    var summary = xPathUtils.getString(recordNode, "//wfs:FeatureType/wfs:Abstract");
+    if(hasValue(summary)) {
+        summary = summary + "<br>";
+    } else {
+        summary = "";
+    }
+    return summary + numFeatures + " Feature(s)";
 }
 
 function getFeatureTypeBoundingBox(recordNode) {
@@ -287,10 +291,10 @@ function getFeatureTypeMapPreview(recordNode) {
 function getBoundingBox(lowerCoords, upperCoords) {
 	return {
 		// Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
-		y1: lowerCoords[0], // south
-		x1: lowerCoords[1], // west
-		y2: upperCoords[0], // north
-		x2: upperCoords[1]  // east
+		y1: lowerCoords[1], // south
+		x1: lowerCoords[0], // west
+		y2: upperCoords[1], // north
+		x2: upperCoords[0]  // east
 	}
 }
 

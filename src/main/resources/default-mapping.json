@@ -59,6 +59,22 @@
       "type": "text",
       "store": true
     },
+    "x1": {
+      "type": "double",
+      "store": true
+    },
+    "x2": {
+      "type": "double",
+      "store": true
+    },
+    "y1": {
+      "type": "double",
+      "store": true
+    },
+    "y2": {
+      "type": "double",
+      "store": true
+    },
     "idf": {
       "type": "text",
       "index": false
