@@ -5,6 +5,12 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="5.8.9" date="2022-01-18" description="Release 5.8.9">
+      <action type="fix" dev="wemove" issue="3596">
+        IT-Sicherheitsmängel in Docker Basis Images beseitigen
+      </action>
+    </release>
+
     <release version="5.8.0" date="2021-04-15" description="Release 5.8.0">
       <action type="add" dev="wemove">
         Fix error when abstract is null
