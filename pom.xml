@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ingrid-iplug-wfs-dsc</artifactId>
-  <version>5.11.2.1</version>
+  <version>5.11.4-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>InGrid iPlug WFS-DSC</name>
   <description>This iPlug indexes documents from a WFS-service and can be queried by the iBus.</description>
