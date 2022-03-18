@@ -100,20 +100,20 @@ if(getMapPreview(recordNode)) {
 
 if(getSummary(recordNode)) {
     var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
-    addOutputWithAttributes(detailNavContent, "a", ["class", "id"], ["anchor", "detail_description"]);
-    addOutput(detailNavContentDataRight, "h3", "Beschreibung");
+    addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_description"]);
+    addOutput(detailNavContentSection, "h3", "Beschreibung");
 }
 
 var detailNodes = recordNode.getChildNodes();
 if(detailNodes.length > 0) {
     var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
-    addOutputWithAttributes(detailNavContent, "a", ["class", "id"], ["anchor", "detail_details"]);
-    addOutput(detailNavContent, "h3", "Details");
+    addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_details"]);
+    addOutput(detailNavContentSection, "h3", "Details");
     for (var i=0, count=detailNodes.length; i<count; i++) {
         var detailNode = detailNodes.item(i);
         var nodeName = detailNode.getLocalName();
         if (hasValue(nodeName)) {
-            addDetailTableRowWrapperNewLayout(detailNavContent, detailNode.getLocalName(), detailNode.getTextContent());
+            addDetailTableRowWrapperNewLayout(detailNavContentSection, detailNode.getLocalName(), detailNode.getTextContent());
         }
     }
 }
