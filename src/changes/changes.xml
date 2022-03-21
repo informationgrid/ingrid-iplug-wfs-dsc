@@ -6,6 +6,9 @@
   </properties>
   <body>
     <release version="5.12.0-SNAPSHOT" date="2021-xx-xx" description="Release 5.12.0-SNAPSHOT">
+      <action type="update" dev="wemove" issue="3636">
+        Aktualisierung Portal-Layout für das GeoPortal.WSV
+      </action>
       <action type="fix" dev="wemove" issue="3596">
         IT-Sicherheitsmängel in Docker Basis Images beseitigen
       </action>
