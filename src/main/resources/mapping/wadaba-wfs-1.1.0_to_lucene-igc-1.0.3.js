@@ -125,12 +125,7 @@ function mapPreview(recordNode) {
         var S_25832 = transfCoords[1];
 //        log.warn("transfCoords: IN(" + E + "," + S + "), OUT(" + E_25832 + "," + S_25832 + ")");
 
-        var addHtml = "<a href=\"/kartendienste?lang=de&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + E_25832 + "&N=" + S_25832 + "&zoom=15&crosshair=marker\" style=\"padding: 0 0 0 0;\">" +
-            "<div style=\"background-image: url(http://sgx.geodatenzentrum.de/wms_topplus_web_open?VERSION=1.3.0&amp;REQUEST=GetMap&amp;CRS=CRS:84&amp;BBOX=" + BBOX +
-            "&amp;LAYERS=web&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +
-            "<img src=\"/ingrid-portal-apps/images/map_punkt.png\" alt=\"\">" +
-            "</div></a>";
-
+        var addHtml = "<iframe class=\"map-ingrid\" src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + E_25832 + "&N=" + S_25832 + "&crosshair=marker\" style=\"height:320px\"></iframe>";
         if (log.isDebugEnabled()) {
             log.debug("Mapping field \"additional_html_1\": " + addHtml);
         }

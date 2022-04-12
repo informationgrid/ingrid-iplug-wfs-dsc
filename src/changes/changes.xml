@@ -5,6 +5,18 @@
     <author email="joachim@wemove.com">Joachim Müller</author>
   </properties>
   <body>
+    <release version="5.12.0" date="2021-04-12" description="Release 5.12.0">
+      <action type="update" dev="wemove" issue="3636">
+        Aktualisierung Portal-Layout für das GeoPortal.WSV
+      </action>
+      <action type="fix" dev="wemove" issue="3596">
+        IT-Sicherheitsmängel in Docker Basis Images beseitigen
+      </action>
+      <action type="fix" dev="wemove" issue="3492">
+        Reduce elasticsearch memoryusage - Change Phrase Analyzer
+      </action>
+    </release>
+
     <release version="5.11.0" date="2022-01-18" description="Release 5.11.0">
       <action type="fix" dev="wemove" issue="3292">
         Kritische Sicherheitslücke Log4Shell in der weitverbreiteten Java-Logging-Bibliothek log4j
