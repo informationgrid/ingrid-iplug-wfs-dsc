@@ -110,6 +110,8 @@ if(getSummary(recordNode)) {
     var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
     addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_description"]);
     addOutput(detailNavContentSection, "h3", "Beschreibung");
+    var result = addOutputWithAttributes(detailNavContentSection, "div", ["class"], ["row columns"]);
+    result = addOutput(result, "p", getSummary(recordNode));
 }
 
 var detailNodes = recordNode.getChildNodes();
