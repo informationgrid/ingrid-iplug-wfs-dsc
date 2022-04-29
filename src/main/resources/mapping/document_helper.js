@@ -138,7 +138,7 @@ function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail
     var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "detail_overview-accordion", "true", "detail_overview-accordion-label"]);
     addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
     
-    if(summary.length > 0) {
+    if(summary) {
         var filterEntry = addOutputWithAttributes(filterList, "li", ["class", "data-accordion-item"], ["accordion-item ", ""]);
         var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#detail_description", "tab", "detail_description-accordion-label", "false", "false", "detail_description-accordion"]);
         addOutput(filterEntryHref, "span", "Beschreibung");
