@@ -81,4 +81,6 @@ public interface WFSRecord {
 	 * @return NamespaceContext
 	 */
 	public WfsNamespaceContext getNamespaceContext();
+	
+	public WFSFactory getFactory();
 }

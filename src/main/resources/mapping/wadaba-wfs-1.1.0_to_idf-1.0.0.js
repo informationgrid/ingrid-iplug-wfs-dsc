@@ -54,6 +54,14 @@ if (log.isDebugEnabled()) {
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
 
+var plugDescrDataSourceName = "";
+var plugDescrOrganisation = "";
+
+if(wfsRecord.getFactory() && wfsRecord.getFactory().getPlugDescription()) {
+    plugDescrDataSourceName = wfsRecord.getFactory().getPlugDescription().getDataSourceName();
+    plugDescrOrganisation = wfsRecord.getFactory().getPlugDescription().getOrganisation();
+}
+
 //---------- <idf:body> ----------
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
 
@@ -73,7 +81,7 @@ addDetailHeaderWrapperNewLayoutTitle(header, getTitle(recordNode));
 var detailNavContent = addOutputWithAttributes(detail, "section", ["class"], ["row nav-content search-filtered"]);
 
 // navigation
-addDetailHeaderWrapperNewLayoutDetailNavigation(detailNavContent, getSummary(recordNode), recordNode.getChildNodes())
+addDetailHeaderWrapperNewLayoutDetailNavigation(detailNavContent, getSummary(recordNode), recordNode.getChildNodes(), plugDescrDataSourceName, plugDescrOrganisation)
 
 // content
 addOutputWithAttributes(detailNavContent, "a", ["class", "id"], ["anchor", "detail_overview"]);
@@ -115,6 +123,25 @@ if(detailNodes.length > 0) {
         if (hasValue(nodeName)) {
             addDetailTableRowWrapperNewLayout(detailNavContentSection, detailNode.getLocalName(), detailNode.getTextContent());
         }
+    }
+}
+
+if(hasValue(plugDescrDataSourceName) || hasValue(plugDescrOrganisation)) {
+    var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
+    addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "metadata_info"]);
+    addOutput(detailNavContentSection, "h3", "Informationen zum Metadatensatz");
+    var result = addOutputWithAttributes(detailNavContentSection, "div", ["class"], ["table table--lined"]);
+    result = addOutput(result, "table", "");
+    result = addOutput(result, "tbody", "");
+    result = addOutput(result, "tr", "");
+    addOutput(result, "th", "Informationen zum Metadatensatz");
+    result = addOutput(result, "td", "");
+    if(hasValue(plugDescrDataSourceName)) {
+        addOutput(result, "p", plugDescrDataSourceName);
+        addOutput(result, "br", "");
+    }
+    if(hasValue(plugDescrOrganisation)) {
+        addOutput(result, "p", plugDescrOrganisation);
     }
 }
 
