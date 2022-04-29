@@ -134,7 +134,7 @@ if(hasValue(plugDescrDataSourceName) || hasValue(plugDescrOrganisation)) {
     result = addOutput(result, "table", "");
     result = addOutput(result, "tbody", "");
     result = addOutput(result, "tr", "");
-    addOutput(result, "th", "Informationen zum Metadatensatz");
+    addOutput(result, "th", "Metadatenquelle");
     result = addOutput(result, "td", "");
     if(hasValue(plugDescrDataSourceName)) {
         addOutput(result, "p", plugDescrDataSourceName);
