@@ -138,7 +138,7 @@ if(hasValue(plugDescrDataSourceName) || hasValue(plugDescrOrganisation)) {
     result = addOutput(result, "td", "");
     if(hasValue(plugDescrDataSourceName)) {
         addOutput(result, "p", plugDescrDataSourceName);
-        addOutput(result, "br", "");
+        addOutput(result, "span", "&nbsp;");
     }
     if(hasValue(plugDescrOrganisation)) {
         addOutput(result, "p", plugDescrOrganisation);
