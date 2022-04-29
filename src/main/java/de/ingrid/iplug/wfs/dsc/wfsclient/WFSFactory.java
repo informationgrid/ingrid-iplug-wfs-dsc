@@ -327,4 +327,8 @@ public class WFSFactory implements IConfigurable, Serializable {
 	public void configure(PlugDescription arg0) {
 		this.plugDescription = arg0;
 	}
+	
+	public PlugDescription getPlugDescription() {
+	    return this.plugDescription;
+	}
 }

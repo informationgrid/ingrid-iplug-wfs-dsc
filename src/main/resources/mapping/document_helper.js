@@ -123,7 +123,7 @@ function addDetailHeaderWrapperNewLayoutTitle(parent, title) {
     addOutput(result, "h2", title);
 }
 
-function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail) {
+function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail, source, organisation) {
     var result = addOutputWithAttributes(parent, "div", ["class"], ["xsmall-24 large-6 xlarge-6 columns"]);
     result = addOutputWithAttributes(result, "div", ["class", "data-accordion", "data-allow-all-closed", "role"], ["accordion accordion-filter-group filter", "", "true", "tablist"]);
     var filter = addOutputWithAttributes(result, "div", ["class", "data-accordion-item"], ["accordion-item accordion-item-filter-group", ""]);
@@ -138,7 +138,7 @@ function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail
     var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "detail_overview-accordion", "true", "detail_overview-accordion-label"]);
     addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
     
-    if(summary) {
+    if(summary.length > 0) {
         var filterEntry = addOutputWithAttributes(filterList, "li", ["class", "data-accordion-item"], ["accordion-item ", ""]);
         var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#detail_description", "tab", "detail_description-accordion-label", "false", "false", "detail_description-accordion"]);
         addOutput(filterEntryHref, "span", "Beschreibung");
@@ -151,6 +151,14 @@ function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail
         var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#detail_details", "tab", "detail_details-accordion-label", "false", "false", "detail_details-accordion"]);
         addOutput(filterEntryHref, "span", "Details");
         var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "detail_details-accordion", "true", "detail_details-accordion-label"]);
+        addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
+    }
+    
+    if(source.length > 0 || organisation.length > 0) {
+        var filterEntry = addOutputWithAttributes(filterList, "li", ["class", "data-accordion-item"], ["accordion-item ", ""]);
+        var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#metadata_info", "tab", "metadata_info-accordion-label", "false", "false", "metadata_info-accordion"]);
+        addOutput(filterEntryHref, "span", "Metadatensatz");
+        var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "metadata_info-accordion", "true", "metadata_info-accordion-label"]);
         addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
     }
 }
