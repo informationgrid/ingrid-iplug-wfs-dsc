@@ -108,16 +108,21 @@ if (wfsRecord instanceof WFSFeature) {
         addDetailTableRowWrapperNewLayout(detailNavContentDataLeft, "S&uuml;d", boundingBox.y1);
     }
 
+    if(getFeatureMapPreview(recordNode, xPathUtils.getString(recordNode, "//ms:OBJEKT_ID"))) {
+        var dataMap = "<div class=\"xsmall-24 small-24 medium-10 columns\">";
+        dataMap += "<h4 class=\"text-center\">Vorschau</h4>";
+        dataMap += "<div class=\"swiper-container-background\"><div class=\"swiper-slide\"><div class=\"caption\"><div class=\"preview_image\">";
+        dataMap += getFeatureMapPreview(recordNode, xPathUtils.getString(recordNode, "//ms:OBJEKT_ID"));
+        dataMap += "</div></div></div></div></div>";
+        detailNavContentData.appendChild(document.createTextNode(dataMap));
+    }
+
     if(getFeatureSummary(recordNode)) {
         var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
         addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_description"]);
         addOutput(detailNavContentSection, "h3", "Beschreibung");
         var result = addOutputWithAttributes(detailNavContentSection, "div", ["class"], ["row columns"]);
         addOutput(result, "p", getFeatureSummary(recordNode));
-    }
-
-    if(getFeatureMapPreview(recordNode, xPathUtils.getString(recordNode, "//ms:OBJEKT_ID"))) {
-        detailNavContentData.appendChild(document.createTextNode(getFeatureTypeMapPreview(recordNode, xPathUtils.getString(recordNode, "//ms:OBJEKT_ID"))));
     }
 
     var detailNodes = recordNode.getChildNodes();
@@ -187,7 +192,7 @@ else if (wfsRecord instanceof WFSFeatureType) {
     var detailNavContentDataLeft = addOutputWithAttributes(detailNavContentData, "div", ["class"], ["xsmall-24 small-24 medium-14 large-14 xlarge-14 columns"]);
     //add the bounding box
     var boundingBox = getFeatureTypeBoundingBox(recordNode);
-    if(boundingBox)  {
+    if(boundingBox) {
         addOutput(detailNavContentDataLeft, "h4", "Ort:");
         addDetailTableRowWrapperNewLayout(detailNavContentDataLeft, "Nord", boundingBox.y2);
         addDetailTableRowWrapperNewLayout(detailNavContentDataLeft, "West", boundingBox.x1);
@@ -196,7 +201,12 @@ else if (wfsRecord instanceof WFSFeatureType) {
     }
 
     if(getFeatureTypeMapPreview(recordNode, wfsRecord.getName())) {
-        detailNavContentData.appendChild(document.createTextNode(getFeatureTypeMapPreview(recordNode, wfsRecord.getName())));
+        var dataMap = "<div class=\"xsmall-24 small-24 medium-10 columns\">";
+        dataMap += "<h4 class=\"text-center\">Vorschau</h4>";
+        dataMap += "<div class=\"swiper-container-background\"><div class=\"swiper-slide\"><div class=\"caption\"><div class=\"preview_image\">";
+        dataMap += getFeatureTypeMapPreview(recordNode, wfsRecord.getName());
+        dataMap += "</div></div></div></div></div>";
+        detailNavContentData.appendChild(document.createTextNode(dataMap));
     }
     if(getFeatureTypeSummary(recordNode, wfsRecord.getNumberOfFeatures())) {
         var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
@@ -467,11 +477,13 @@ function getMapPreview(name, title, lowerCoords, upperCoords, isWGS84, linkUrl) 
     if(marker !== '') {
         addHtml = addHtml +  marker + 
             '.bindTooltip("'+ title + '", {direction: "center"})' +
-            '.addTo(map_' + name +' );';
+            '.addTo(map_' + name + ' );'
     } else {
         addHtml = addHtml + 'map_' + name + '.addLayer(L.rectangle([ ' + BBOX + ' ], {color: "#156570", weight: 1})' +
             '.bindTooltip("'+ title + '", {direction: "center"}));';
     }
+    addHtml = addHtml + 'map_' + name + '.gestureHandling.enable();' +
+        'addLeafletHomeControl(map_' + name + ', \'Zoom auf initialen Kartenausschnitt\', \'topleft\', \'ic-ic-center\', [ ' + BBOX + ' ], \'\', \'23px\');' 
     addHtml = addHtml + '</script>';
 
     if (log.isDebugEnabled()) {
