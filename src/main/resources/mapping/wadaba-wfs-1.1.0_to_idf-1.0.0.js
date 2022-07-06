@@ -81,7 +81,7 @@ addDetailHeaderWrapperNewLayoutTitle(header, getTitle(recordNode));
 var detailNavContent = addOutputWithAttributes(detail, "section", ["class"], ["row nav-content search-filtered"]);
 
 // navigation
-addDetailHeaderWrapperNewLayoutDetailNavigation(detailNavContent, getSummary(recordNode), recordNode.getChildNodes(), plugDescrDataSourceName, plugDescrOrganisation)
+addDetailHeaderWrapperNewLayoutDetailNavigation(detailNavContent, getSummary(recordNode), recordNode.getChildNodes(), undefined, plugDescrDataSourceName, plugDescrOrganisation)
 
 // content
 addOutputWithAttributes(detailNavContent, "a", ["class", "id"], ["anchor", "detail_overview"]);
