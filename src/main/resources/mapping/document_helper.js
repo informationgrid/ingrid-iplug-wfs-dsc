@@ -105,7 +105,7 @@ function addDetailDetailsWrapper(parent) {
 // add elements/styles for correct display in portal (header)
 function addDetailHeaderWrapperNewLayout(parent) {
     var result = addOutputWithAttributes(parent, "div", ["class"], ["banner-noimage m-filter"]);
-    result = addOutputWithAttributes(result, "div", ["class", "style"], ["page-wrapper", "background-image: url('/decorations/layout/uvp/images/template/drops-subpage.svg');"]);
+    result = addOutputWithAttributes(result, "div", ["class", "style"], ["page-wrapper", "background-image: url('/decorations/layout/ingrid/images/template/drops-subpage.svg');"]);
     result = addOutputWithAttributes(result, "div", ["class"], ["row"]);
     return result;
 }
