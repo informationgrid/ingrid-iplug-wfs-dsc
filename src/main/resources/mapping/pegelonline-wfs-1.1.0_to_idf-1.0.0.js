@@ -136,6 +136,25 @@ if(detailNodes.length > 0) {
     addDetailTableRowWrapperNewLayout(detailNavContentSection, "Kommentar", xPathUtils.getString(recordNode, "/gk:waterlevels/gk:comment"));
 }
 
+if(hasValue(plugDescrDataSourceName) || hasValue(plugDescrOrganisation)) {
+    var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
+    addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "metadata_info"]);
+    addOutput(detailNavContentSection, "h3", "Informationen zum Metadatensatz");
+    var result = addOutputWithAttributes(detailNavContentSection, "div", ["class"], ["table table--lined"]);
+    result = addOutput(result, "table", "");
+    result = addOutput(result, "tbody", "");
+    result = addOutput(result, "tr", "");
+    addOutput(result, "th", "Metadatenquelle");
+    result = addOutput(result, "td", "");
+    if(hasValue(plugDescrDataSourceName)) {
+        addOutput(result, "p", plugDescrDataSourceName);
+        addOutput(result, "span", "&nbsp;");
+    }
+    if(hasValue(plugDescrOrganisation)) {
+        addOutput(result, "p", plugDescrOrganisation);
+    }
+}
+
 // functions
 function getTitle(recordNode) {
     var part1 = xPathUtils.getString(recordNode, "/gk:waterlevels/gk:water");
