@@ -178,7 +178,18 @@ function addDetailTableRowWrapperNewLayout (parent, title, content) {
     result = addOutput(result, "tr", "");
     addOutput(result, "th", title);
     result = addOutput(result, "td", "");
-    addOutput(result, "p", content);
+    // add a link for an url
+    if (isUrl(content)) {
+        addLink(result, content, content, "_blank");
+    }
+    // add a mailto link for an email address
+    else if (isEmail(content)) {
+        addLink(result, content, "mailto:"+content);
+    }
+    // default: add the plain text
+    else {
+        addOutput(result, "p", content);
+    }
 }
 
 function addDetailTableListWrapperNewLayout (parent, title, contentList) {
