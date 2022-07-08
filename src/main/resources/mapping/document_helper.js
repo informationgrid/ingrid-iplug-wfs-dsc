@@ -162,7 +162,7 @@ function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail
         addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
     }
 
-    if(source.length > 0 || organisation.length > 0) {
+    if(hasValue(source) || hasValue(organisation)) {
         var filterEntry = addOutputWithAttributes(filterList, "li", ["class", "data-accordion-item"], ["accordion-item ", ""]);
         var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#metadata_info", "tab", "metadata_info-accordion-label", "false", "false", "metadata_info-accordion"]);
         addOutput(filterEntryHref, "span", "Metadatensatz");
