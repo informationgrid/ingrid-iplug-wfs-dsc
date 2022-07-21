@@ -71,7 +71,7 @@ public class MapperToIngridTest extends TestCase {
 		assertTrue("Idf found.", idfDoc.hasChildNodes());
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
-		assertTrue(documentString.contains("<h1>RHEIN RUHRORT (km 780.8)</h1>"));
+		assertTrue(documentString.contains("<h2>RHEIN RUHRORT (km 780.8)</h2>"));
 		assertTrue(documentString.contains("<p>19.09.2011 16:15:00: 280.0cm</p>"));
 	}
 }

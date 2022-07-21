@@ -21,83 +21,83 @@
  * **************************************************#
  */
 function addOutput(parent, elementName, textContent) {
-	var element = document.createElement(elementName);
-	if (textContent != undefined) {
-		element.appendChild(document.createTextNode(textContent));
-	}
-	parent.appendChild(element);
-	return element;
+    var element = document.createElement(elementName);
+    if (textContent != undefined) {
+        element.appendChild(document.createTextNode(textContent));
+    }
+    parent.appendChild(element);
+    return element;
 }
 
 function addOutputWithLinks(parent, elementName, textContent) {
-	var element = document.createElement(elementName);
-	if (textContent != undefined) {
-		// tokenize string and create links if necessary
-		var words = textContent.split(" ");
-		for (var i=0, count=words.length; i<count; i++) {
-			var text = words[i];
-			
-			// add a link for an url
-			if (isUrl(text)) {
-				addLink(element, text, text, "_blank");
-			}
-			// add a mailto link for an email address
-			else if (isEmail(text)) {
-				addLink(element, text, "mailto:"+text);
-			}
-			// default: add the plain text
-			else {
-				element.appendChild(document.createTextNode(text));
-			}
+    var element = document.createElement(elementName);
+    if (textContent != undefined) {
+        // tokenize string and create links if necessary
+        var words = textContent.split(" ");
+        for (var i=0, count=words.length; i<count; i++) {
+            var text = words[i];
+            
+            // add a link for an url
+            if (isUrl(text)) {
+                addLink(element, text, text, "_blank");
+            }
+            // add a mailto link for an email address
+            else if (isEmail(text)) {
+                addLink(element, text, "mailto:"+text);
+            }
+            // default: add the plain text
+            else {
+                element.appendChild(document.createTextNode(text));
+            }
 
-			// add space
-			if (i<count-1) {
-				element.appendChild(document.createTextNode(" "));
-			}
-		}
-	}
-	parent.appendChild(element);
-	return element;
+            // add space
+            if (i<count-1) {
+                element.appendChild(document.createTextNode(" "));
+            }
+        }
+    }
+    parent.appendChild(element);
+    return element;
 }
 
 function addLink(parent, name, url, target) {
-	var link = document.createElement("a");
-	link.setAttribute("href", url);
-	if (target != undefined) {
-		link.setAttribute("target", target);
-	}
-	link.appendChild(document.createTextNode(name));
-	parent.appendChild(link);
-	return link;
+    var link = document.createElement("a");
+    link.setAttribute("href", url);
+    if (target != undefined) {
+        link.setAttribute("target", target);
+    }
+    link.appendChild(document.createTextNode(name));
+    parent.appendChild(link);
+    return link;
 }
 
 function addOutputWithAttributes(parent, elementName, attrNames, attrValues) {
-	var element = document.createElement(elementName);
-	for (var i=0, count=attrNames.length; i<count; i++) {
-		element.setAttribute(attrNames[i], attrValues[i]);
-	}
-	parent.appendChild(element);
-	return element;
+    var element = document.createElement(elementName);
+    for (var i=0, count=attrNames.length; i<count; i++) {
+        element.setAttribute(attrNames[i], attrValues[i]);
+    }
+    parent.appendChild(element);
+    return element;
 }
 
 // add elements/styles for correct display in portal (header)
 function addDetailHeaderWrapper(parent) {
-	var result = addOutputWithAttributes(parent, "section", ["class"], ["block block--light block--pad-top"]);
-	result = addOutputWithAttributes(result, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center"]);
-	result = addOutputWithAttributes(result, "article", ["id", "class"], ["detail_meta_header", "content ob-container"]);
-	result = addOutputWithAttributes(result, "form", ["class"], ["box box--medium"]);
-	result = addOutputWithAttributes(result, "div", ["class"], ["box__content ob-container"]);
-	return result;
+    var result = addOutputWithAttributes(parent, "section", ["class"], ["block block--light block--pad-top"]);
+    result = addOutputWithAttributes(result, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center"]);
+    result = addOutputWithAttributes(result, "article", ["id", "class"], ["detail_meta_header", "content ob-container"]);
+    result = addOutputWithAttributes(result, "form", ["class"], ["box box--medium"]);
+    result = addOutputWithAttributes(result, "div", ["class"], ["box__content ob-container"]);
+    return result;
 }
 
 //add elements/styles for correct display in portal (details)
 function addDetailDetailsWrapper(parent) {
-	var result = addOutputWithAttributes(parent, "section", ["id","class"], ["detail_meta","block"]);
-	result = addOutputWithAttributes(result, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center ob-rel"]);
-	result = addOutputWithAttributes(result, "article", ["class"], ["content ob-container ob-box-wide"]);
-	result = addOutputWithAttributes(result, "form", ["class"], ["box box--medium"]);
-	result = addOutputWithAttributes(result, "div", ["class"], ["box__content ob-container"]);
-	return result;
+    var result = addOutputWithAttributes(parent, "section", ["id","class"], ["detail_meta","block"]);
+    result = addOutputWithAttributes(result, "div", ["class"], ["ob-box-wide ob-box-padded ob-box-center ob-rel"]);
+    result = addOutputWithAttributes(result, "article", ["class"], ["content ob-container ob-box-wide"]);
+    result = addOutputWithAttributes(result, "form", ["class"], ["box box--medium"]);
+    result = addOutputWithAttributes(result, "div", ["class"], ["box__content ob-container"]);
+    return result;
 }
 
 /* New portal layout */ 
@@ -105,7 +105,7 @@ function addDetailDetailsWrapper(parent) {
 // add elements/styles for correct display in portal (header)
 function addDetailHeaderWrapperNewLayout(parent) {
     var result = addOutputWithAttributes(parent, "div", ["class"], ["banner-noimage m-filter"]);
-    result = addOutputWithAttributes(result, "div", ["class", "style"], ["page-wrapper", "background-image: url('/decorations/layout/uvp/images/template/drops-subpage.svg');"]);
+    result = addOutputWithAttributes(result, "div", ["class", "style"], ["page-wrapper", "background-image: url('/decorations/layout/ingrid/images/template/drops-subpage.svg');"]);
     result = addOutputWithAttributes(result, "div", ["class"], ["row"]);
     return result;
 }
@@ -123,7 +123,7 @@ function addDetailHeaderWrapperNewLayoutTitle(parent, title) {
     addOutput(result, "h2", title);
 }
 
-function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail) {
+function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail, features, source, organisation) {
     var result = addOutputWithAttributes(parent, "div", ["class"], ["xsmall-24 large-6 xlarge-6 columns"]);
     result = addOutputWithAttributes(result, "div", ["class", "data-accordion", "data-allow-all-closed", "role"], ["accordion accordion-filter-group filter", "", "true", "tablist"]);
     var filter = addOutputWithAttributes(result, "div", ["class", "data-accordion-item"], ["accordion-item accordion-item-filter-group", ""]);
@@ -153,6 +153,22 @@ function addDetailHeaderWrapperNewLayoutDetailNavigation(parent, summary, detail
         var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "detail_details-accordion", "true", "detail_details-accordion-label"]);
         addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
     }
+
+    if(hasValue(features)) {
+        var filterEntry = addOutputWithAttributes(filterList, "li", ["class", "data-accordion-item"], ["accordion-item ", ""]);
+        var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#detail_features", "tab", "detail_features-accordion-label", "false", "false", "detail_features-accordion"]);
+        addOutput(filterEntryHref, "span", "Features");
+        var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "detail_features-accordion", "true", "detail_features-accordion-label"]);
+        addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
+    }
+
+    if(hasValue(source) || hasValue(organisation)) {
+        var filterEntry = addOutputWithAttributes(filterList, "li", ["class", "data-accordion-item"], ["accordion-item ", ""]);
+        var filterEntryHref = addOutputWithAttributes(filterEntry, "a", ["class", "href", "role", "id", "aria-expanded", "aria-selected", "aria-controls"], ["accordion-title js-anchor-target", "#metadata_info", "tab", "metadata_info-accordion-label", "false", "false", "metadata_info-accordion"]);
+        addOutput(filterEntryHref, "span", "Metadatensatz");
+        var filterEntrySub = addOutputWithAttributes(filterEntry, "div", ["class", "data-tab-content", "role", "id", "aria-hidden", "aria-labelledby"], ["accordion-content is-hidden", "", "tab", "metadata_info-accordion", "true", "metadata_info-accordion-label"]);
+        addOutputWithAttributes(filterEntrySub, "div", ["class"], ["boxes"]);
+    }
 }
 
 function addDetailTableRowWrapperNewLayout (parent, title, content) {
@@ -163,4 +179,33 @@ function addDetailTableRowWrapperNewLayout (parent, title, content) {
     addOutput(result, "th", title);
     result = addOutput(result, "td", "");
     addOutput(result, "p", content);
+}
+
+function addDetailTableLinkRowWrapperNewLayout (parent, title, url, url) {
+    var result = addOutputWithAttributes(parent, "div", ["class"], ["table table--lined"]);
+    result = addOutput(result, "table", "");
+    result = addOutput(result, "tbody", "");
+    result = addOutput(result, "tr", "");
+    addOutput(result, "th", title);
+    result = addOutput(result, "td", "");
+    addLink(result, url, url, "_blank");
+}
+
+function addDetailTableListWrapperNewLayout (parent, title, contentList) {
+    if(contentList && contentList.length > 0) {
+        var result = addOutputWithAttributes(parent, "div", ["class"], ["table list"]);
+        result = addOutput(result, "table", "");
+        result = addOutput(result, "tbody", "");
+        result = addOutput(result, "tr", "");
+        addOutput(result, "th", title);
+        result = addOutput(result, "td", "");
+        for (var i=0, count=contentList.length; i<count; i++) {
+            var content = contentList.item(i);
+            var contentName = content.getAttributeNode("name");
+            if (hasValue(contentName)) {
+                var contentEntry = addOutputWithAttributes(result, "span", ["class"], ["list_entry"]);
+                contentEntry.appendChild(document.createTextNode(contentName.getTextContent()))
+            }
+        }
+    }
 }

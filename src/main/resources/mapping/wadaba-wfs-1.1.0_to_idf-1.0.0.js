@@ -54,6 +54,14 @@ if (log.isDebugEnabled()) {
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
 
+var plugDescrDataSourceName = "";
+var plugDescrOrganisation = "";
+
+if(wfsRecord.getFactory() && wfsRecord.getFactory().getPlugDescription()) {
+    plugDescrDataSourceName = wfsRecord.getFactory().getPlugDescription().getDataSourceName();
+    plugDescrOrganisation = wfsRecord.getFactory().getPlugDescription().getOrganisation();
+}
+
 //---------- <idf:body> ----------
 var idfBody = xPathUtils.getNode(document, "/idf:html/idf:body");
 
@@ -73,7 +81,7 @@ addDetailHeaderWrapperNewLayoutTitle(header, getTitle(recordNode));
 var detailNavContent = addOutputWithAttributes(detail, "section", ["class"], ["row nav-content search-filtered"]);
 
 // navigation
-addDetailHeaderWrapperNewLayoutDetailNavigation(detailNavContent, getSummary(recordNode), recordNode.getChildNodes())
+addDetailHeaderWrapperNewLayoutDetailNavigation(detailNavContent, getSummary(recordNode), recordNode.getChildNodes(), undefined, plugDescrDataSourceName, plugDescrOrganisation)
 
 // content
 addOutputWithAttributes(detailNavContent, "a", ["class", "id"], ["anchor", "detail_overview"]);
@@ -102,6 +110,8 @@ if(getSummary(recordNode)) {
     var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
     addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_description"]);
     addOutput(detailNavContentSection, "h3", "Beschreibung");
+    var result = addOutputWithAttributes(detailNavContentSection, "div", ["class"], ["row columns"]);
+    result = addOutput(result, "p", getSummary(recordNode));
 }
 
 var detailNodes = recordNode.getChildNodes();
@@ -115,6 +125,25 @@ if(detailNodes.length > 0) {
         if (hasValue(nodeName)) {
             addDetailTableRowWrapperNewLayout(detailNavContentSection, detailNode.getLocalName(), detailNode.getTextContent());
         }
+    }
+}
+
+if(hasValue(plugDescrDataSourceName) || hasValue(plugDescrOrganisation)) {
+    var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
+    addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "metadata_info"]);
+    addOutput(detailNavContentSection, "h3", "Informationen zum Metadatensatz");
+    var result = addOutputWithAttributes(detailNavContentSection, "div", ["class"], ["table table--lined"]);
+    result = addOutput(result, "table", "");
+    result = addOutput(result, "tbody", "");
+    result = addOutput(result, "tr", "");
+    addOutput(result, "th", "Metadatenquelle");
+    result = addOutput(result, "td", "");
+    if(hasValue(plugDescrDataSourceName)) {
+        addOutput(result, "p", plugDescrDataSourceName);
+        addOutput(result, "span", "&nbsp;");
+    }
+    if(hasValue(plugDescrOrganisation)) {
+        addOutput(result, "p", plugDescrOrganisation);
     }
 }
 
@@ -161,19 +190,19 @@ function getMapPreview(recordNode) {
         // lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
         var BBOX = "" + (E - 0.012) + "," + (S - 0.012) + "," + (E + 0.012) + "," + (S + 0.012);
 
-        // transform "WGS 84 (EPSG:4326)" to "ETRS89 / UTM zone 32N (EPSG:25832)"
+        var sourceEPSG = "4326";
+        var targetEPSG = "25832";
         var transfCoords = CoordTransformUtil.getInstance().transform(
                 E, S,
-                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode("4326"),
-                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode("25832"));
-        var E_25832 = transfCoords[0];
-        var S_25832 = transfCoords[1];
-//        log.warn("transfCoords: IN(" + E + "," + S + "), OUT(" + E_25832 + "," + S_25832 + ")");
+                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode(sourceEPSG),
+                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode(targetEPSG));
+        var targetE = transfCoords[0];
+        var targetS = transfCoords[1];
 
         var addHtml = "<div class=\"xsmall-24 small-24 medium-10 columns\">";
         addHtml += "<h4 class=\"text-center\">Vorschau</h4>";
         addHtml += "<div class=\"swiper-container-background\"><div class=\"swiper-slide\"><div class=\"caption\"><div class=\"preview_image\">";
-        addHtml += "<iframe src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + E_25832 + "&N=" + S_25832 + "&crosshair=marker\" style=\"height:320px\"></iframe>";
+        addHtml += "<iframe src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + targetE + "&N=" + targetS + "&crosshair=marker\" style=\"height:320px\"></iframe>";
         addHtml += "</div></div></div></div></div>";
         if (log.isDebugEnabled()) {
             log.debug("MapPreview Html: " + addHtml);

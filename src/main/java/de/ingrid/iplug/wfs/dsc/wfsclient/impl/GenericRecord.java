@@ -131,6 +131,11 @@ public abstract class GenericRecord implements WFSRecord {
 		return this.namespaceContext;
 	}
 
+   @Override
+    public WFSFactory getFactory() {
+        return this.factory;
+    }
+
 	/**
 	 * Get the number of Node instances required for this record
 	 * @return int
