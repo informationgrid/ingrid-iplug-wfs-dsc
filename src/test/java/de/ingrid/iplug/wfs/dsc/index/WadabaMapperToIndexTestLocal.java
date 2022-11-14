@@ -22,6 +22,8 @@
  */
 package de.ingrid.iplug.wfs.dsc.index;
 
+import org.junit.jupiter.api.Test;
+
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.index.mapper.impl.ScriptedDocumentMapper;
@@ -31,13 +33,16 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class WadabaMapperToIndexTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class WadabaMapperToIndexTestLocal {
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testMapper() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_wadaba.xml");
@@ -58,7 +63,7 @@ public class WadabaMapperToIndexTestLocal extends TestCase {
 			System.out.println(t);
 		}
 
-		assertTrue("Lucene doc found.", doc != null);
+		assertTrue(doc != null, "Lucene doc found.");
 		assertEquals(testRecordId, doc.get("t01_object.obj_id"));
 		System.out.println(doc);
 		assertEquals("Flussbuhne Nr.2, km 606,802 re.Ufer", doc.get("title"));

@@ -25,7 +25,7 @@ package de.ingrid.iplug.wfs.dsc.record;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
@@ -38,11 +38,14 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLUtils;
 
-public class MapperToIngridTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class MapperToIngridTest {
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testMapper() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
@@ -68,7 +71,7 @@ public class MapperToIngridTest extends TestCase {
 			System.out.println(t);
 		}
 
-		assertTrue("Idf found.", idfDoc.hasChildNodes());
+		assertTrue(idfDoc.hasChildNodes(), "Idf found.");
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
 		assertTrue(documentString.contains("<h2>RHEIN RUHRORT (km 780.8)</h2>"));

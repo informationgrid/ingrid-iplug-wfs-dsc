@@ -22,6 +22,8 @@
  */
 package de.ingrid.iplug.wfs.dsc.index;
 
+import org.junit.jupiter.api.Test;
+
 import de.ingrid.admin.JettyStarter;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
@@ -33,13 +35,16 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class MapperToIndexTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class MapperToIndexTest {
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testMapper() throws Exception {
 
 		new JettyStarter( false );
@@ -61,7 +66,7 @@ public class MapperToIndexTest extends TestCase {
 			System.out.println(t);
 		}
 
-		assertTrue("Lucene doc found.", doc != null);
+		assertTrue(doc != null, "Lucene doc found.");
 		assertEquals(testRecordId, doc.get("t01_object.obj_id"));
 		System.out.println(doc);
 		assertEquals("RHEIN RUHRORT (km 780.8)", doc.get("title"));

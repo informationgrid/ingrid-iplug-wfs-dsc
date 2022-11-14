@@ -33,6 +33,8 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
@@ -42,14 +44,17 @@ import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class WFSClientTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class WFSClientTestLocal {
 
 	private WFSFactory factory;
 
-	@Override
-	protected void setUp() {
+	@BeforeEach
+	public void setUp() {
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
 		this.factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 
@@ -58,6 +63,7 @@ public class WFSClientTestLocal extends TestCase {
 		this.factory.configure(desc);
 	}
 
+	@Test
 	public void testGetCapabilitiesKVPGet() throws Exception {
 
 		// set up factory - KVPGet requests
@@ -72,14 +78,15 @@ public class WFSClientTestLocal extends TestCase {
 		WFSCapabilities cap = client.getCapabilities();
 
 		// tests
-		assertFalse("Server does not support MyFunction",
-				cap.isSupportingOperations(new String[] { "MyFunction" }));
+		assertFalse(cap.isSupportingOperations(new String[] { "MyFunction" }),
+				"Server does not support MyFunction");
 
-		assertTrue("Server supports DescribeFeatureType and GetFeature",
-				cap.isSupportingOperations(new String[] { Operation.DESCRIBE_FEATURE_TYPE.toString(),
-						Operation.GET_FEATURE.toString() }));
+		assertTrue(cap.isSupportingOperations(new String[] { Operation.DESCRIBE_FEATURE_TYPE.toString(),
+						Operation.GET_FEATURE.toString() }),
+				"Server supports DescribeFeatureType and GetFeature");
 	}
 
+	@Test
 	public void testGetCapabilitiesPost() throws Exception {
 
 		// set up factory - Post requests
@@ -94,14 +101,15 @@ public class WFSClientTestLocal extends TestCase {
 		WFSCapabilities cap = client.getCapabilities();
 
 		// tests
-		assertFalse("Server does not support MyFunction",
-				cap.isSupportingOperations(new String[] { "MyFunction" }));
+		assertFalse(cap.isSupportingOperations(new String[] { "MyFunction" }),
+				"Server does not support MyFunction");
 
-		assertTrue("Server supports DescribeFeatureType and GetFeature",
-				cap.isSupportingOperations(new String[] { Operation.DESCRIBE_FEATURE_TYPE.toString(),
-						Operation.GET_FEATURE.toString() }));
+		assertTrue(cap.isSupportingOperations(new String[] { Operation.DESCRIBE_FEATURE_TYPE.toString(),
+						Operation.GET_FEATURE.toString() }),
+				"Server supports DescribeFeatureType and GetFeature");
 	}
 
+	@Test
 	public void testGetOperationUrl() throws Exception {
 
 		// set up client
@@ -111,11 +119,12 @@ public class WFSClientTestLocal extends TestCase {
 		WFSCapabilities cap = client.getCapabilities();
 
 		// tests
-		assertTrue("GetFeature URL is correct",
-				"http://www.pegelonline.wsv.de:80/webservices/gis/aktuell/wfs".
-				equals(cap.getOperationUrl(Operation.GET_FEATURE)));
+		assertTrue("http://www.pegelonline.wsv.de:80/webservices/gis/aktuell/wfs".
+				equals(cap.getOperationUrl(Operation.GET_FEATURE)),
+				"GetFeature URL is correct");
 	}
 
+	@Test
 	public void testGetTypeNames() throws Exception {
 
 		// set up client
@@ -126,10 +135,21 @@ public class WFSClientTestLocal extends TestCase {
 
 		// tests
 		String[] typeNames = cap.getFeatureTypeNames();
-		assertTrue("Expected type names found",
-				typeNames.length == 1 && typeNames[0].equals("gk:waterlevels"));
+		/*~~(Recipe failed with an exception.
+java.lang.ClassCastException: class org.openrewrite.java.tree.J$Binary cannot be cast to class org.openrewrite.java.tree.J$MethodInvocation (org.openrewrite.java.tree.J$Binary and org.openrewrite.java.tree.J$MethodInvocation are in unnamed module of loader org.codehaus.plexus.classworlds.realm.ClassRealm @2e78213c)
+  org.openrewrite.java.testing.cleanup.AssertTrueEqualsToAssertEquals$1.visitMethodInvocation(AssertTrueEqualsToAssertEquals.java:76)
+  org.openrewrite.java.testing.cleanup.AssertTrueEqualsToAssertEquals$1.visitMethodInvocation(AssertTrueEqualsToAssertEquals.java:51)
+  org.openrewrite.java.tree.J$MethodInvocation.acceptJava(J.java:3611)
+  org.openrewrite.java.tree.J.accept(J.java:63)
+  org.openrewrite.TreeVisitor.visit(TreeVisitor.java:277)
+  org.openrewrite.TreeVisitor.visitAndCast(TreeVisitor.java:356)
+  org.openrewrite.java.JavaVisitor.visitRightPadded(JavaVisitor.java:1264)
+  org.openrewrite.java.JavaVisitor.lambda$visitBlock$4(JavaVisitor.java:367)
+  ...)~~>*/assertTrue(typeNames.length == 1 && typeNames[0].equals("gk:waterlevels"),
+				"Expected type names found");
 	}
 
+	@Test
 	public void testGetFeature() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
@@ -146,9 +166,10 @@ public class WFSClientTestLocal extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertEquals("Number of fetched features matches", TestConstants.PEGELONLINE_FEATURES, result.getNumberOfFeatures());
+		assertEquals(TestConstants.PEGELONLINE_FEATURES, result.getNumberOfFeatures(), "Number of fetched features matches");
 	}
 
+	@Test
 	public void testGetFeatureWithFilter() throws Exception {
 
 		TestServer server = TestServer.PEGELONLINE;
@@ -174,6 +195,6 @@ public class WFSClientTestLocal extends TestCase {
 		WFSQueryResult result = client.getFeature(query);
 
 		// tests
-		assertEquals("Number of fetched features matches", 70, result.getNumberOfFeatures());
+		assertEquals(70, result.getNumberOfFeatures(), "Number of fetched features matches");
 	}
 }

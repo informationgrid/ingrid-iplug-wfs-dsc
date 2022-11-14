@@ -25,7 +25,7 @@ package de.ingrid.iplug.wfs.dsc.record;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.om.WfsSourceRecord;
@@ -37,11 +37,14 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLUtils;
 
-public class WadabaMapperToIngridTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class WadabaMapperToIngridTestLocal {
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testMapper() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_wadaba.xml");
@@ -67,7 +70,7 @@ public class WadabaMapperToIngridTestLocal extends TestCase {
 			System.out.println(t);
 		}
 
-		assertTrue("Idf found.", idfDoc.hasChildNodes());
+		assertTrue(idfDoc.hasChildNodes(), "Idf found.");
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
 		assertTrue(documentString.contains("<h1>Flussbuhne Nr.2, km 606,802 re.Ufer</h1>"));

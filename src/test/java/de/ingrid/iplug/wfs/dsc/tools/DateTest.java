@@ -22,10 +22,13 @@
  */
 package de.ingrid.iplug.wfs.dsc.tools;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
-public class DateTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+public class DateTest {
+
+	@Test
 	public void testFormat() throws Exception {
 		String input = "2011-09-19T15:15:00+01:00";
 		String output = "19.09.2011 16:15:00";
