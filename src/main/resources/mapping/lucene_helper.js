@@ -20,17 +20,10 @@
  * limitations under the Licence.
  * **************************************************#
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
-
-//importPackage(Packages.org.apache.lucene.document);
 
 function addToDoc(document, field, content, tokenized) {
 	if (typeof content != "undefined" && content != null) {
-		if (log.isDebugEnabled()) {
-			log.debug("Add '" + field + "'='" + content + "' to lucene index");
-		}
+		log.debug("Add '" + field + "'='" + content + "' to lucene index");
 		document.put( field, content );
 		document.put( "content", content );
 	}
@@ -39,14 +32,10 @@ function addToDoc(document, field, content, tokenized) {
 function addNumericToDoc(document, field, content) {
 	if (typeof content != "undefined" && content != null) {
         try {
-    		if (log.isDebugEnabled()) {
-    			log.debug("Add numeric '" + field + "'='" + content + "' to lucene index.");
-    		}
+			log.debug("Add numeric '" + field + "'='" + content + "' to lucene index.");
             document.put( field, content );
         } catch (e) {
-            if (log.isDebugEnabled()) {
-                log.debug("Value '" + content + "' is not a number. Ignoring field '" + field + "'.");
-            }
+			log.debug("Value '" + content + "' is not a number. Ignoring field '" + field + "'.");
         }
 	}
 }

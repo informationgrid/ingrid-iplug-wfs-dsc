@@ -35,21 +35,8 @@
  * @param log
  *            A Log instance
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.apache.lucene.document);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);
-importPackage(Packages.de.ingrid.utils.udk);
-importPackage(Packages.de.ingrid.utils.xml);
-importPackage(Packages.org.w3c.dom);
-importPackage(Packages.de.ingrid.geo.utils.transformation);
-
-if (log.isDebugEnabled()) {
-	log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
-}
+log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
 
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
@@ -204,9 +191,7 @@ function getMapPreview(recordNode) {
         addHtml += "<div class=\"swiper-container-background\"><div class=\"swiper-slide\"><div class=\"caption\"><div class=\"preview_image\">";
         addHtml += "<iframe src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + targetE + "&N=" + targetS + "&crosshair=marker\" style=\"height:320px\"></iframe>";
         addHtml += "</div></div></div></div></div>";
-        if (log.isDebugEnabled()) {
-            log.debug("MapPreview Html: " + addHtml);
-        }
+        log.debug("MapPreview Html: " + addHtml);
         return addHtml;
     }
 }

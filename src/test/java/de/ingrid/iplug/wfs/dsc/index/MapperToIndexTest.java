@@ -24,7 +24,6 @@ package de.ingrid.iplug.wfs.dsc.index;
 
 import org.junit.jupiter.api.Test;
 
-import de.ingrid.admin.JettyStarter;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
@@ -47,7 +46,6 @@ public class MapperToIndexTest {
 	@Test
 	public void testMapper() throws Exception {
 
-		new JettyStarter( false );
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
 		WFSFactory factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 
