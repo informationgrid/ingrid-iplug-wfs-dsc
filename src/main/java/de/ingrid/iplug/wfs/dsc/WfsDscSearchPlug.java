@@ -46,6 +46,7 @@ import de.ingrid.utils.query.FieldQuery;
 import de.ingrid.utils.query.IngridQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.tomcat.util.scan.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -224,6 +225,9 @@ public class WfsDscSearchPlug extends HeartBeatPlug implements IRecordLoader {
     }
 
     public static void main(String[] args) throws Exception {
+        // avoid FileNotFound exceptions by TomCat's JarScanner
+        System.setProperty(Constants.SKIP_JARS_PROPERTY, "jai*.jar,common*.jar,Geo*.jar,jgr*.jar,si*.jar,uom*.jar,unit*.jar,system*.jar,gt*.jar,org*.jar,ejml*.jar,jts*.jar,net*.jar");
+
         SpringApplication.run(WfsDscSearchPlug.class, args);
     }
 
