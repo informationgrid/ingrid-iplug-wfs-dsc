@@ -20,9 +20,6 @@
  * limitations under the Licence.
  * **************************************************#
  */
-/**
- *
- */
 package de.ingrid.iplug.wfs.dsc.index.mapper.impl;
 
 import java.io.File;
@@ -45,7 +42,7 @@ import de.ingrid.utils.xpath.XPathUtils;
  * engine will be automatically determined from the extension of the mapping
  * script.
  * <p />
- * If the {@link compile} parameter is set to true, the script is compiled, if
+ * If the compile-parameter is set to true, the script is compiled, if
  * the ScriptEngine supports compilation.
  *
  * @author ingo@wemove.com
@@ -73,7 +70,7 @@ public class ScriptedDocumentMapper implements RecordMapper {
 		XPathUtils xPathUtils = new XPathUtils(wfsRecord.getNamespaceContext());
 
 		try {
-			Map<String, Object> parameters = new Hashtable<String, Object>();
+			Map<String, Object> parameters = new Hashtable<>();
 			parameters.put("wfsRecord", wfsRecord);
 			parameters.put("document", doc);
 			parameters.put("xPathUtils", xPathUtils);

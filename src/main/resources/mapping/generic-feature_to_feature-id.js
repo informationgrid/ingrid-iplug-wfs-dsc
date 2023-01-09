@@ -31,15 +31,8 @@
  * @param log A Log instance
  * @return String
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.w3c.dom);
-
-if (log.isDebugEnabled()) {
-	log.debug("Extracting wfs feature id");
-}
+log.debug("Extracting wfs feature id");
 
 // get the gml:id attribute value of the root element
 // last evaluated expression is the return value

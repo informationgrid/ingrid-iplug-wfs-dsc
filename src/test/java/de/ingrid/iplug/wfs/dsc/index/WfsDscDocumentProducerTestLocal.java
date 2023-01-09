@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.ingrid.admin.object.IDocumentProducer;
+
+import org.junit.jupiter.api.Test;
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
@@ -33,13 +35,15 @@ import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.ElasticDocument;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class WfsDscDocumentProducerTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class WfsDscDocumentProducerTestLocal {
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testFeaturesWithCache() throws Exception {
 
 		PlugDescription desc = new PlugDescription();
@@ -58,12 +62,13 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 			ElasticDocument doc = documentProducer.next();
 			docs.add(doc);
 		}
-		assertEquals("Number of mapped documents matches", TestConstants.PEGELONLINE_FEATURES, docs.size());
+		assertEquals(TestConstants.PEGELONLINE_FEATURES, docs.size(), "Number of mapped documents matches");
 	}
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testFeatureTypes() throws Exception {
 
 		PlugDescription desc = new PlugDescription();
@@ -82,7 +87,7 @@ public class WfsDscDocumentProducerTestLocal extends TestCase {
 			ElasticDocument doc = documentProducer.next();
 			docs.add(doc);
 		}
-		assertEquals("Number of mapped documents matches", 118, docs.size());
+		assertEquals(118, docs.size(), "Number of mapped documents matches");
 
 		ElasticDocument doc = docs.get(0);
 		assertEquals("c08f644f3e7e5e33de1db4f4e5e3d8b9", doc.get("t01_object.obj_id"));

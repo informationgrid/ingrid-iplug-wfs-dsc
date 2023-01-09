@@ -54,13 +54,9 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 public class SoapRequest implements WFSRequest {
 
 	final protected static Log log = LogFactory.getLog(WFSRequest.class);
-
+	
 	/**
-	 * WFSRequest implementation
-	 */
-
-	/**
-	 * @see OpenGIS Web Feature Service Implementation Specification 1.1.0 - 14.7.7
+	 * see OpenGIS Web Feature Service Implementation Specification 1.1.0 - 14.7.7
 	 */
 	@Override
 	public Document doGetCapabilities(String serverURL) throws Exception {
@@ -84,7 +80,7 @@ public class SoapRequest implements WFSRequest {
 	}
 
 	/**
-	 * @see OpenGIS Web Feature Service Implementation Specification 1.1.0 - 14.7.2
+	 * see OpenGIS Web Feature Service Implementation Specification 1.1.0 - 14.7.2
 	 */
 	@Override
 	public Document doDescribeFeatureType(String serverURL, WFSQuery query) throws Exception {
@@ -118,7 +114,7 @@ public class SoapRequest implements WFSRequest {
 	}
 
 	/**
-	 * @see OpenGIS Web Feature Service Implementation Specification 1.1.0 - 14.7.3
+	 * see OpenGIS Web Feature Service Implementation Specification 1.1.0 - 14.7.3
 	 */
 	@Override
 	public Document doGetFeature(String serverURL, WFSQuery query) throws Exception {
@@ -150,7 +146,7 @@ public class SoapRequest implements WFSRequest {
 
 		// create Query element
 		OMElement queryElem = fac.createOMElement("Query", wfsNs);
-		queryElem.addAttribute("typeName", query.getTypeName().toString(), null);
+		queryElem.addAttribute("typeName", query.getTypeName(), null);
 
 		// add the Filter
 		if (query.getFilter() != null) {
@@ -169,16 +165,10 @@ public class SoapRequest implements WFSRequest {
 	}
 
 	/**
-	 * Helper methods
-	 */
-
-	/**
 	 * Create a soap client for the given server url
-	 * @param serverURL
 	 * @return ServiceClient
-	 * @throws AxisFault
 	 */
-	protected ServiceClient createClient(String serverURL) throws AxisFault, Exception {
+	protected ServiceClient createClient(String serverURL) throws Exception {
 		// set up the client
 		ConfigurationContext configContext =
 				ConfigurationContextFactory.createConfigurationContextFromFileSystem((new ClassPathResource("axis2.xml")).getURI().getPath());
@@ -186,7 +176,7 @@ public class SoapRequest implements WFSRequest {
 
 		Options opts = new Options();
 		opts.setTo(new EndpointReference(serverURL));
-		opts.setProperty(org.apache.axis2.transport.http.HTTPConstants.CHUNKED, false);
+		opts.setProperty(org.apache.axis2.kernel.http.HTTPConstants.CHUNKED, false);
 		opts.setProperty(org.apache.axis2.Constants.Configuration.CHARACTER_SET_ENCODING, "UTF-8");
 		/*
 		opts.setProperty(org.apache.axis2.transport.http.HTTPConstants.HTTP_PROTOCOL_VERSION,
@@ -202,10 +192,7 @@ public class SoapRequest implements WFSRequest {
 
 	/**
 	 * Send the given request to the server.
-	 * @param serverURL
-	 * @param payload
 	 * @return Document
-	 * @throws Exception
 	 */
 	protected Document sendRequest(String serverURL, OMElement payload) throws Exception {
 		// set up the client
@@ -220,7 +207,7 @@ public class SoapRequest implements WFSRequest {
 		if (log.isDebugEnabled()) {
 			log.debug("Request: "+this.serializeElement(payload.cloneOMElement()));
 		}
-		OMElement result = null;
+		OMElement result;
 		result = serviceClient.sendReceive(payload);
 		if (log.isDebugEnabled()) {
 			log.debug("Response: "+this.serializeElement(result.cloneOMElement()));
@@ -234,9 +221,7 @@ public class SoapRequest implements WFSRequest {
 
 	/**
 	 * Get a string representation for an OMElement
-	 * @param element
 	 * @return String
-	 * @throws XMLStreamException
 	 */
 	protected String serializeElement(OMElement element) throws XMLStreamException {
 		return element.toStringWithConsume();
@@ -245,9 +230,7 @@ public class SoapRequest implements WFSRequest {
 	/**
 	 * Convert an OMElement to a w3c DOM Document
 	 * TODO: possible performance bottleneck
-	 * @param element
 	 * @return Document
-	 * @throws Exception
 	 */
 	protected Document convertToDOM(OMElement element) throws Exception {
 		String xmlString = this.serializeElement(element);
