@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -35,18 +35,11 @@
  * @param log
  *			A Log instance
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-	load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.apache.lucene.document);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.wfsclient);
-importPackage(Packages.de.ingrid.geo.utils.transformation);
+let WFSFeature = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature");
+let WFSFeatureType = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType");
 
-if (log.isDebugEnabled()) {
-	log.debug("Mapping wfs record "+wfsRecord.getId()+" of type "+wfsRecord.getClass().getName()+" to lucene document");
-}
+log.debug("Mapping wfs record "+wfsRecord.getId()+" of type "+wfsRecord.getClass().getName()+" to lucene document");
 
 //
 // WFSFeature mapping
@@ -175,9 +168,7 @@ function mapFeaturePreview(recordNode) {
 			"</div>";
 //			+ "</a>";
 
-		if (log.isDebugEnabled()) {
-			log.debug("Mapping field \"additional_html_1\": " + addHtml);
-		}
+		log.debug("Mapping field \"additional_html_1\": " + addHtml);
 
 		addToDoc(document, "additional_html_1", addHtml, false);
 	}

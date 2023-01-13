@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -35,20 +35,10 @@
  * @param log
  *            A Log instance
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.apache.lucene.document);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);
-importPackage(Packages.de.ingrid.utils.udk);
-importPackage(Packages.de.ingrid.utils.xml);
-importPackage(Packages.org.w3c.dom);
+let DateUtil = Java.type("de.ingrid.iplug.wfs.dsc.tools.DateUtil");
 
-if (log.isDebugEnabled()) {
-    log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
-}
+log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
 
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
@@ -223,9 +213,7 @@ function getMapPreview(recordNode) {
             'addLeafletHomeControl(map, \'Zoom auf initialen Kartenausschnitt\', \'topleft\', \'ic-ic-center\', [ ' + BBOX + ' ], \'\', \'23px\');' 
         addHtml = addHtml + '</script>';
 
-        if (log.isDebugEnabled()) {
-            log.debug("MapPreview Html: " + addHtml);
-        }
+        log.debug("MapPreview Html: " + addHtml);
     }
     return addHtml;
 }

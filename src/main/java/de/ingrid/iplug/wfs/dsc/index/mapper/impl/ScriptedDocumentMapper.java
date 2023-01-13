@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -19,9 +19,6 @@
  * See the Licence for the specific language governing permissions and
  * limitations under the Licence.
  * **************************************************#
- */
-/**
- *
  */
 package de.ingrid.iplug.wfs.dsc.index.mapper.impl;
 
@@ -45,7 +42,7 @@ import de.ingrid.utils.xpath.XPathUtils;
  * engine will be automatically determined from the extension of the mapping
  * script.
  * <p />
- * If the {@link compile} parameter is set to true, the script is compiled, if
+ * If the compile-parameter is set to true, the script is compiled, if
  * the ScriptEngine supports compilation.
  *
  * @author ingo@wemove.com
@@ -73,7 +70,7 @@ public class ScriptedDocumentMapper implements RecordMapper {
 		XPathUtils xPathUtils = new XPathUtils(wfsRecord.getNamespaceContext());
 
 		try {
-			Map<String, Object> parameters = new Hashtable<String, Object>();
+			Map<String, Object> parameters = new Hashtable<>();
 			parameters.put("wfsRecord", wfsRecord);
 			parameters.put("document", doc);
 			parameters.put("xPathUtils", xPathUtils);

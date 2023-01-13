@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -26,16 +26,20 @@
 
 package de.ingrid.iplug.wfs.dsc.cache;
 
+import org.junit.jupiter.api.Test;
+
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class UpdateJobTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+public class UpdateJobTestLocal {
+
+	@Test
 	public void testExecute() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
@@ -49,6 +53,6 @@ public class UpdateJobTestLocal extends TestCase {
 		job.execute();
 
 		Cache cache = job.getCache();
-		assertEquals("Number of cached features matches", TestConstants.PEGELONLINE_FEATURES, cache.getCachedRecordIds().size());
+		assertEquals(TestConstants.PEGELONLINE_FEATURES, cache.getCachedRecordIds().size(), "Number of cached features matches");
 	}
 }

@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -116,6 +116,7 @@ public class ScriptEngine {
 		String extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length());
 		if (!engines.containsKey(extension)) {
 			javax.script.ScriptEngine engine = scriptEngineManager.getEngineByExtension(extension);
+			engine.createBindings().put("polyglot.js.allowAllAccess", true);
 			engines.put(extension, engine);
 		}
 		return engines.get(extension);

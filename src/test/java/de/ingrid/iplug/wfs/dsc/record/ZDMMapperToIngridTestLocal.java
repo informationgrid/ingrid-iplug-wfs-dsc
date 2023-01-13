@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -26,6 +26,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+
+import org.junit.jupiter.api.Test;
 import de.ingrid.iplug.wfs.dsc.TestConstants;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
@@ -38,13 +40,15 @@ import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType;
 import de.ingrid.utils.PlugDescription;
 import de.ingrid.utils.xml.XMLUtils;
-import junit.framework.TestCase;
 
-public class ZDMMapperToIngridTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class ZDMMapperToIngridTestLocal {
 
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testMapper() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_zdm.xml");
@@ -70,7 +74,7 @@ public class ZDMMapperToIngridTestLocal extends TestCase {
 			System.out.println(t);
 		}
 
-		assertTrue("Idf found.", idfDoc.hasChildNodes());
+		assertTrue(idfDoc.hasChildNodes(), "Idf found.");
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
 		assertTrue(documentString.contains("<h1>abfluss.78351782</h1>"));
@@ -81,6 +85,7 @@ public class ZDMMapperToIngridTestLocal extends TestCase {
 	/**
 	 * @throws Exception
 	 */
+	@Test
 	public void testMapperFeatureTypes() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_zdm.xml");
@@ -106,7 +111,7 @@ public class ZDMMapperToIngridTestLocal extends TestCase {
 			System.out.println(t);
 		}
 
-		assertTrue("Idf found.", idfDoc.hasChildNodes());
+		assertTrue(idfDoc.hasChildNodes(), "Idf found.");
 		String documentString = XMLUtils.toString(idfDoc);
 		System.out.println(documentString);
 		assertTrue(documentString.contains("<h1>German Water Levels</h1>"));

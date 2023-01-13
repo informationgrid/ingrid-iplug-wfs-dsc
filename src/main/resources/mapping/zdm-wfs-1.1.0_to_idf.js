@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -35,23 +35,11 @@
  * @param log
  *            A Log instance
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.apache.lucene.document);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.index);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.wfsclient);
-importPackage(Packages.de.ingrid.utils.udk);
-importPackage(Packages.de.ingrid.utils.xml);
-importPackage(Packages.org.w3c.dom);
-importPackage(Packages.de.ingrid.geo.utils.transformation);
-importPackage(Packages.de.ingrid.geo.utils.boundingbox);
+let WFSFeature = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature");
+let WFSFeatureType = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType");
 
-if (log.isDebugEnabled()) {
-    log.debug("Mapping wfs record "+wfsRecord.getId()+" of type "+wfsRecord.getClass().getName()+" to idf document");
-}
+log.debug("Mapping wfs record "+wfsRecord.getId()+" of type "+wfsRecord.getClass().getName()+" to idf document");
 
 var plugDescrDataSourceName = "";
 var plugDescrOrganisation = "";
@@ -486,9 +474,7 @@ function getMapPreview(name, title, lowerCoords, upperCoords, isWGS84, linkUrl) 
         'addLeafletHomeControl(map_' + name + ', \'Zoom auf initialen Kartenausschnitt\', \'topleft\', \'ic-ic-center\', [ ' + BBOX + ' ], \'\', \'23px\');' 
     addHtml = addHtml + '</script>';
 
-    if (log.isDebugEnabled()) {
-        log.debug("MapPreview Html: " + addHtml);
-    }
+    log.debug("MapPreview Html: " + addHtml);
 
     return addHtml;
 }

@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -29,11 +29,13 @@ package de.ingrid.iplug.wfs.dsc.wfsclient;
 import java.util.Hashtable;
 import java.util.Map;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 import de.ingrid.iplug.wfs.dsc.wfsclient.constants.Operation;
 import de.ingrid.utils.PlugDescription;
 
-public class WFSFactoryTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class WFSFactoryTest {
 
 	public static final String wfsClientImpl = "de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericClient";
 	public static final String wfsCapabilitiesImpl = "de.ingrid.iplug.wfs.dsc.wfsclient.impl.GenericCapabilities";
@@ -114,29 +116,30 @@ public class WFSFactoryTest extends TestCase {
 		return f;
 	}
 
+	@Test
 	public void testCreation() throws Exception {
 		WFSFactory f = createFactory(new PlugDescription());
 
 		// tests
-		assertTrue("createClient returns a WFSClient implementation",
-				f.createClient() instanceof WFSClient);
+		assertTrue(f.createClient() instanceof WFSClient,
+				"createClient returns a WFSClient implementation");
 
-		assertTrue("createCapabilities returns a WFSCapabilities implementation",
-				f.createCapabilities() instanceof WFSCapabilities);
+		assertTrue(f.createCapabilities() instanceof WFSCapabilities,
+				"createCapabilities returns a WFSCapabilities implementation");
 
-		assertTrue("createFeatureType returns a WFSFeatureType implementation",
-				f.createFeatureType() instanceof WFSFeatureType);
+		assertTrue(f.createFeatureType() instanceof WFSFeatureType,
+				"createFeatureType returns a WFSFeatureType implementation");
 
-		assertTrue("createRequest returns a WFSRequest implementation",
-				f.createRequest(Operation.GET_CAPABILITIES) instanceof WFSRequest);
+		assertTrue(f.createRequest(Operation.GET_CAPABILITIES) instanceof WFSRequest,
+				"createRequest returns a WFSRequest implementation");
 
-		assertTrue("createQuery returns a WFSQuery implementation",
-				f.createQuery() instanceof WFSQuery);
+		assertTrue(f.createQuery() instanceof WFSQuery,
+				"createQuery returns a WFSQuery implementation");
 
-		assertTrue("createQueryResult returns a WFSQueryResult implementation",
-				f.createQueryResult() instanceof WFSQueryResult);
+		assertTrue(f.createQueryResult() instanceof WFSQueryResult,
+				"createQueryResult returns a WFSQueryResult implementation");
 
-		assertTrue("createFeature returns a WFSFeature implementation",
-				f.createFeature() instanceof WFSFeature);
+		assertTrue(f.createFeature() instanceof WFSFeature,
+				"createFeature returns a WFSFeature implementation");
 	}
 }

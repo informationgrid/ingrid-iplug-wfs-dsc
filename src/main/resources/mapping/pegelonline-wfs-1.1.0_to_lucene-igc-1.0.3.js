@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -36,16 +36,10 @@
  * @param log
  *            A Log instance
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.apache.lucene.document);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
+let DateUtil = Java.type("de.ingrid.iplug.wfs.dsc.tools.DateUtil");
 
-if (log.isDebugEnabled()) {
-    log.debug("Mapping wfs record "+wfsRecord.getId()+" to lucene document");
-}
+log.debug("Mapping wfs record "+wfsRecord.getId()+" to lucene document");
 
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
@@ -137,14 +131,10 @@ for (var i in transformationDescriptions) {
     
     // check for execution (special function)
     if (hasValue(t.execute)) {
-        if (log.isDebugEnabled()) {
-            log.debug("Execute function: " + t.execute.funct.name)
-        }
+        log.debug("Execute function: " + t.execute.funct.name)
         call_f(t.execute.funct, t.execute.params)
     } else {
-        if (log.isDebugEnabled()) {
-            log.debug("Working on " + t.indexField)
-        }
+        log.debug("Working on " + t.indexField)
         var tokenized = true;
         // iterate over all xpath results
         var nodeList = xPathUtils.getNodeList(recordNode, t.xpath);

@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -26,14 +26,18 @@
 
 package de.ingrid.iplug.wfs.dsc.cache;
 
+import org.junit.jupiter.api.Test;
+
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
 import de.ingrid.iplug.wfs.dsc.tools.SimpleSpringBeanFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class LocalUpdateJobTestLocal extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+public class LocalUpdateJobTestLocal {
+
+	@Test
 	public void testExecute() throws Exception {
 
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_wadaba.xml");

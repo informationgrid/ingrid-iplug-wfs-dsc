@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -36,17 +36,8 @@
  * @param log
  *            A Log instance
  */
-if (javaVersion.indexOf( "1.8" ) === 0) {
-    load("nashorn:mozilla_compat.js");
-}
 
-importPackage(Packages.org.apache.lucene.document);
-importPackage(Packages.de.ingrid.iplug.wfs.dsc.tools);
-importPackage(Packages.de.ingrid.geo.utils.transformation);
-
-if (log.isDebugEnabled()) {
-	log.debug("Mapping wfs record "+wfsRecord.getId()+" to lucene document");
-}
+log.debug("Mapping wfs record "+wfsRecord.getId()+" to lucene document");
 
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
@@ -126,9 +117,7 @@ function mapPreview(recordNode) {
         var targetS = transfCoords[1];
 
         var addHtml = "<iframe class=\"map-ingrid\" src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + targetE + "&N=" + targetS + "&crosshair=marker\" style=\"height:320px\"></iframe>";
-        if (log.isDebugEnabled()) {
-            log.debug("Mapping field \"additional_html_1\": " + addHtml);
-        }
+		log.debug("Mapping field \"additional_html_1\": " + addHtml);
 
         addToDoc(document, "additional_html_1", addHtml, false);
     }

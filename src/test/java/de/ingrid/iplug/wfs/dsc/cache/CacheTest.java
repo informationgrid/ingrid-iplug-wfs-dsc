@@ -2,7 +2,7 @@
  * **************************************************-
  * ingrid-iplug-wfs-dsc:war
  * ==================================================
- * Copyright (C) 2014 - 2022 wemove digital solutions GmbH
+ * Copyright (C) 2014 - 2023 wemove digital solutions GmbH
  * ==================================================
  * Licensed under the EUPL, Version 1.1 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
@@ -32,6 +32,10 @@ import java.util.Date;
 import java.util.Set;
 
 import de.ingrid.iplug.wfs.dsc.ConfigurationKeys;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import de.ingrid.iplug.wfs.dsc.TestServer;
 import de.ingrid.iplug.wfs.dsc.TestUtil;
 import de.ingrid.iplug.wfs.dsc.cache.impl.DefaultFileCache;
@@ -40,14 +44,18 @@ import de.ingrid.iplug.wfs.dsc.tools.StringUtils;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFactory;
 import de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature;
 import de.ingrid.utils.PlugDescription;
-import junit.framework.TestCase;
 
-public class CacheTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class CacheTest {
 
 	private final String cachePath = "./test_case_cache";
 	private Cache cache = null;
 	private WFSFactory factory = null;
 
+	@Test
 	public void testPut() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -56,9 +64,10 @@ public class CacheTest extends TestCase {
 
 		DefaultFileCache cache = (DefaultFileCache)this.setupCache();
 		File file = new File(cache.getAbsoluteFilename(id));
-		assertTrue("The record exists in the filesystem.", file.exists());
+		assertTrue(file.exists(), "The record exists in the filesystem.");
 	}
 
+	@Test
 	public void testExists() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -66,10 +75,11 @@ public class CacheTest extends TestCase {
 		this.putRecord(id);
 
 		Cache cache = this.setupCache();
-		assertTrue("The record exists in the cache.", cache.isCached(id));
-		assertFalse("The record does not exist in the cache.", cache.isCached("12345"));
+		assertTrue(cache.isCached(id), "The record exists in the cache.");
+		assertFalse(cache.isCached("12345"), "The record does not exist in the cache.");
 	}
 
+	@Test
 	public void testGet() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -78,9 +88,10 @@ public class CacheTest extends TestCase {
 
 		Cache cache = this.setupCache();
 		WFSFeature record = cache.getRecord(id);
-		assertTrue("The cached record has the requested id.", id.equals(record.getId()));
+		assertEquals(id,record.getId(),"The cached record has the requested id.");
 	}
 
+	@Test
 	public void testGetIds() throws Exception {
 
 		String[] ids = new String[] {
@@ -93,11 +104,12 @@ public class CacheTest extends TestCase {
 
 		Cache cache = this.setupCache();
 		Set<String> cachedIds = cache.getCachedRecordIds();
-		assertTrue("The first record is cached.", cachedIds.contains(ids[0]));
-		assertTrue("The second record is cached.", cachedIds.contains(ids[1]));
-		assertFalse("The record is not cached.", cachedIds.contains("12345"));
+		assertTrue(cachedIds.contains(ids[0]), "The first record is cached.");
+		assertTrue(cachedIds.contains(ids[1]), "The second record is cached.");
+		assertFalse(cachedIds.contains("12345"), "The record is not cached.");
 	}
 
+	@Test
 	public void testRemoveRecord() throws Exception {
 
 		String[] ids = new String[]{
@@ -111,10 +123,11 @@ public class CacheTest extends TestCase {
 		Cache cache = this.setupCache();
 		cache.removeRecord(ids[1]);
 		Set<String> cachedIds = cache.getCachedRecordIds();
-		assertTrue("The first record is cached.", cachedIds.contains(ids[0]));
-		assertTrue("The second record is removed.", !cachedIds.contains(ids[1]));
+		assertTrue(cachedIds.contains(ids[0]), "The first record is cached.");
+		assertFalse(cachedIds.contains(ids[1]),"The second record is removed.");
 	}
 
+	@Test
 	public void testEncoding() throws Exception {
 
 		String id = "21212262e8a1112a80f26f18255da2e0";
@@ -123,22 +136,23 @@ public class CacheTest extends TestCase {
 
 		DefaultFileCache cache = (DefaultFileCache)this.setupCache();
 		File file = new File(cache.getAbsoluteFilename(id));
-		assertTrue("The record exists in the filesystem.", file.exists());
-		assertTrue("The record exists in the cache.", cache.isCached(id));
+		assertTrue(file.exists(), "The record exists in the filesystem.");
+		assertTrue(cache.isCached(id), "The record exists in the cache.");
 
 		// test get
 		WFSFeature record = cache.getRecord(id);
-		assertTrue("The cached record has the requested id.", id.equals(record.getId()));
+		assertEquals(id,record.getId(),"The cached record has the requested id.");
 
 		// test get ids
 		Set<String> cachedIds = cache.getCachedRecordIds();
-		assertTrue("The record is cached.", cachedIds.contains(id));
+		assertTrue(cachedIds.contains(id), "The record is cached.");
 
 		// test remove
 		cache.removeRecord(id);
-		assertTrue("The record is removed from the cache.", !cache.isCached(id));
+		assertFalse(cache.isCached(id),"The record is removed from the cache.");
 	}
 
+	@Test
 	public void testRemoveAllRecords() throws Exception {
 
 		String[] ids = new String[]{
@@ -152,9 +166,10 @@ public class CacheTest extends TestCase {
 		Cache cache = this.setupCache();
 		cache.removeAllRecords();
 		Set<String> cachedIds = cache.getCachedRecordIds();
-		assertTrue("No files are cached.", cachedIds.size() == 0);
+		assertEquals(cachedIds.size(),0,"No files are cached.");
 	}
 
+	@Test
 	public void testTransactionModifyWithCommit() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -175,22 +190,21 @@ public class CacheTest extends TestCase {
 
 		// get original record while transaction is open
 		WFSFeature originalRecordInTransaction = cache.getRecord(id);
-		assertTrue("The cached record value has not changed, since the transaction is not committet.",
-				originalValue.equals(TestUtil.getRecordValue(originalRecordInTransaction)));
+		assertEquals(originalValue,TestUtil.getRecordValue(originalRecordInTransaction),"The cached record value has not changed, since the transaction is not committet.");
 
 		// commit the transaction
 		tmpCache.commitTransaction();
 
 		// get original record after transaction is committed
 		WFSFeature originalRecordAfterTransaction = cache.getRecord(id);
-		assertTrue("The cached record value is changed after the transaction is committet.",
-				modifiedValue.equals(TestUtil.getRecordValue(originalRecordAfterTransaction)));
+		assertEquals(modifiedValue,TestUtil.getRecordValue(originalRecordAfterTransaction),"The cached record value is changed after the transaction is committet.");
 
 		// check if the cache temporary cache is deleted
 		File tmpPath = new File(((DefaultFileCache)tmpCache).getTempPath());
-		assertTrue("The temporary cache is deleted.", !tmpPath.exists());
+		assertFalse(tmpPath.exists(),"The temporary cache is deleted.");
 	}
 
+	@Test
 	public void testTransactionModifyWithRollback() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -211,22 +225,21 @@ public class CacheTest extends TestCase {
 
 		// get original record while transaction is open
 		WFSFeature originalRecordInTransaction = cache.getRecord(id);
-		assertTrue("The cached record value has not changed, since the transaction is not committet.",
-				originalTitle.equals(TestUtil.getRecordValue(originalRecordInTransaction)));
+		assertEquals(originalTitle,TestUtil.getRecordValue(originalRecordInTransaction),"The cached record value has not changed, since the transaction is not committet.");
 
 		// rollback the transaction
 		tmpCache.rollbackTransaction();
 
 		// get original record after transaction is committed
 		WFSFeature originalRecordAfterTransaction = cache.getRecord(id);
-		assertTrue("The cached record value is changed after the transaction is committet.",
-				originalTitle.equals(TestUtil.getRecordValue(originalRecordAfterTransaction)));
+		assertEquals(originalTitle,TestUtil.getRecordValue(originalRecordAfterTransaction),"The cached record value is changed after the transaction is committet.");
 
 		// check if the cache temporary cache is deleted
 		File tmpPath = new File(((DefaultFileCache)tmpCache).getTempPath());
-		assertTrue("The temporary cache is deleted.", !tmpPath.exists());
+		assertFalse(tmpPath.exists(),"The temporary cache is deleted.");
 	}
 
+	@Test
 	public void testTransactionRemoveWithCommit() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -242,22 +255,23 @@ public class CacheTest extends TestCase {
 		tmpCache.removeRecord(id);
 
 		// check if the record is removed from the tmp cache
-		assertTrue("The record is deleted from temp cache.", !tmpCache.isCached(id));
+		assertFalse(tmpCache.isCached(id),"The record is deleted from temp cache.");
 
 		// check if the record is still in the original cache
-		assertTrue("The cached record still exists, since the transaction is not committet.", cache.isCached(id));
+		assertTrue(cache.isCached(id), "The cached record still exists, since the transaction is not committet.");
 
 		// commit the transaction
 		tmpCache.commitTransaction();
 
 		// check if the original record is deleted after transaction is committed
-		assertTrue("The cached record deleted after the transaction is committet.", !cache.isCached(id));
+		assertFalse(cache.isCached(id),"The cached record deleted after the transaction is committet.");
 
 		// check if the cache temporary cache is deleted
 		File tmpPath = new File(((DefaultFileCache)tmpCache).getTempPath());
-		assertTrue("The temporary cache is deleted.", !tmpPath.exists());
+		assertFalse(tmpPath.exists(),"The temporary cache is deleted.");
 	}
 
+	@Test
 	public void testTransactionRemoveWithRollback() throws Exception {
 
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
@@ -273,22 +287,23 @@ public class CacheTest extends TestCase {
 		tmpCache.removeRecord(id);
 
 		// check if the record is removed from the tmp cache
-		assertTrue("The record is deleted from temp cache.", !tmpCache.isCached(id));
+		assertFalse(tmpCache.isCached(id),"The record is deleted from temp cache.");
 
 		// check if the record is still in the original cache
-		assertTrue("The cached record still exists, since the transaction is not committet.", cache.isCached(id));
+		assertTrue(cache.isCached(id), "The cached record still exists, since the transaction is not committet.");
 
 		// rollback the transaction
 		tmpCache.rollbackTransaction();
 
 		// check if the original record is deleted after transaction is committed
-		assertTrue("The cached record still exists after the transaction is committet.", cache.isCached(id));
+		assertTrue(cache.isCached(id), "The cached record still exists after the transaction is committet.");
 
 		// check if the cache temporary cache is deleted
 		File tmpPath = new File(((DefaultFileCache)tmpCache).getTempPath());
-		assertTrue("The temporary cache is deleted.", !tmpPath.exists());
+		assertFalse(tmpPath.exists(),"The temporary cache is deleted.");
 	}
 
+	@Test
 	public void testLastCommitDate() throws Exception {
 
 		Cache cache = this.setupCache();
@@ -301,9 +316,10 @@ public class CacheTest extends TestCase {
 
 		// check if commit date is today
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		assertTrue("The comit date is today.", df.format(cache.getLastCommitDate()).equals(df.format(new Date())));
+		assertEquals(df.format(cache.getLastCommitDate()),df.format(new Date()),"The comit date is today.");
 	}
 
+	@Test
 	public void testInitialCache() throws Exception {
 
 		Cache cache = this.setupCache();
@@ -312,30 +328,31 @@ public class CacheTest extends TestCase {
 		Cache tmpCache = cache.startTransaction();
 
 		// check if the tmp cache instance is not the initial cache instance
-		assertTrue("The temp cache is not the initial cache.", tmpCache != cache);
+		assertTrue(tmpCache != cache, "The temp cache is not the initial cache.");
 
 		// check if the tmp cache's initial instance is the initial cache instance
-		assertTrue("The temp cache's initial instance is the initial cache.", tmpCache.getInitialCache() == cache);
+		assertEquals(tmpCache.getInitialCache(),cache,"The temp cache's initial instance is the initial cache.");
 
 		// rollback the transaction
 		tmpCache.rollbackTransaction();
 	}
 
+	@Test
 	public void testGetOriginalResponse() throws Exception {
 		String id = "60ddc975c8b9af7e8fa61ebe967e5eb7";
 
 		// create original set
 		WFSFeature originalRecord = TestUtil.getRecord(id, this.factory.createFeature(), this.factory);
 		String xml = StringUtils.nodeToString(originalRecord.getOriginalResponse().get(0));
-		assertTrue("The String '53.568523252032215 9.703319238921454' is in the transformed original response string.", xml.indexOf("53.568523252032215 9.703319238921454") > -1);
+		assertTrue(xml.indexOf("53.568523252032215 9.703319238921454") > -1, "The String '53.568523252032215 9.703319238921454' is in the transformed original response string.");
 	}
 
 	/**
 	 * Helper methods
 	 */
 
-	@Override
-	protected void setUp() {
+	@BeforeEach
+	public void setUp() {
 		SimpleSpringBeanFactory.INSTANCE.setBeanConfig("beans_pegelonline.xml");
 		this.factory = SimpleSpringBeanFactory.INSTANCE.getBean(ConfigurationKeys.WFS_FACTORY, WFSFactory.class);
 
@@ -344,8 +361,8 @@ public class CacheTest extends TestCase {
 		this.factory.configure(desc);
 	}
 
-	@Override
-	protected void tearDown() {
+	@AfterEach
+	public void tearDown() {
 		// delete cache
 		TestUtil.deleteDirectory(new File(this.cachePath));
 	}
