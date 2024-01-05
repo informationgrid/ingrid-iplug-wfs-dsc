@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>de.ingrid</groupId>
     <artifactId>ingrid-releases-pom</artifactId>
-    <version>6.2.0</version>
+    <version>7.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ingrid-iplug-wfs-dsc</artifactId>
-  <version>6.3.0</version>
+  <version>7.0.0</version>
   <packaging>jar</packaging>
   <name>InGrid iPlug WFS-DSC</name>
   <description>This iPlug indexes documents from a WFS-service and can be queried by the iBus.</description>
@@ -32,9 +32,9 @@
   <!-- ==================== PROPERTIES ==================== -->
   <properties>
     <iplug.type>IPLUG_WFS_DSC</iplug.type>
-    <ingrid-base-webapp.version>6.3.0</ingrid-base-webapp.version>
-    <spring.version>2.7.14</spring.version>
-    <log4j2.version>2.19.0</log4j2.version>
+    <ingrid-base-webapp.version>7.0.0</ingrid-base-webapp.version>
+    <spring.version>2.7.17</spring.version>
+    <log4j2.version>2.22.1</log4j2.version>
   </properties>
 
   <!-- ==================== DEPENDENCY MANAGEMENT ==================== -->
@@ -57,6 +57,11 @@
         <artifactId>snakeyaml</artifactId>
         <version>2.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.7.2</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -65,12 +70,12 @@
     <dependency>
       <groupId>de.ingrid</groupId>
       <artifactId>ingrid-utils</artifactId>
-      <version>6.3.0</version>
+      <version>7.0.0</version>
     </dependency>
     <dependency>
       <groupId>de.ingrid</groupId>
       <artifactId>ingrid-utils-geo</artifactId>
-      <version>6.0.0</version>
+      <version>7.0.0</version>
       <exclusions>
         <exclusion>
           <groupId>junit</groupId>
@@ -93,7 +98,7 @@
     <dependency>
       <groupId>de.ingrid</groupId>
       <artifactId>ingrid-iplug</artifactId>
-      <version>6.0.0</version>
+      <version>7.0.0</version>
       <exclusions>
         <exclusion>
           <groupId>ant</groupId>
