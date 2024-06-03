@@ -102,11 +102,11 @@ if(getSummary(recordNode)) {
 }
 
 var detailNodes = recordNode.getChildNodes();
-if(detailNodes.length > 0) {
+if(detailNodes.getLength() > 0) {
     var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
     addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_details"]);
     addOutput(detailNavContentSection, "h3", "Details");
-    for (var i=0, count=detailNodes.length; i<count; i++) {
+    for (var i=0, count=detailNodes.getLength(); i<count; i++) {
         var detailNode = detailNodes.item(i);
         var nodeName = detailNode.getLocalName();
         if (hasValue(nodeName)) {

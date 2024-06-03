@@ -59,7 +59,7 @@ mapPreview(recordNode);
 
 // add details (content of all child nodes)
 var detailNodes = recordNode.getChildNodes();
-for (var i=0, count=detailNodes.length; i<count; i++) {
+for (var i=0, count=detailNodes.getLength(); i<count; i++) {
 	var detailNode = detailNodes.item(i);
 	var nodeName = detailNode.getLocalName();
 	if (hasValue(nodeName)) {
