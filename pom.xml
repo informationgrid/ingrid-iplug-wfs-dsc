@@ -33,7 +33,7 @@
   <properties>
     <iplug.type>IPLUG_WFS_DSC</iplug.type>
     <ingrid-base-webapp.version>7.1.0</ingrid-base-webapp.version>
-    <spring.version>2.7.17</spring.version>
+    <spring.version>2.7.18</spring.version>
     <log4j2.version>2.22.1</log4j2.version>
   </properties>
 
@@ -308,7 +308,7 @@
           <defaultOriginUrl>https://github.com/informationgrid/ingrid-iplug-wfs-dsc</defaultOriginUrl>
         </configuration>
       </plugin>
-      
+
     </plugins>
   </build>
 </project>
