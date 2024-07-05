@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.2 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * https://joinup.ec.europa.eu/software/page/eupl
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,9 +23,9 @@
 /**
  * ZDM WFS to Lucene Document mapping
  * Copyright (c) 2013 wemove digital solutions. All rights reserved.
- * 
+ *
  * The following global variable are passed from the application:
- * 
+ *
  * @param wfsRecord
  *			A WFSFeature/WFSFeatureType instance, that defines the input
  * @param document
@@ -38,6 +38,7 @@
 
 let WFSFeature = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature");
 let WFSFeatureType = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType");
+let CoordTransformUtil = Java.type('de.ingrid.geo.utils.transformation.CoordTransformUtil');
 
 log.debug("Mapping wfs record "+wfsRecord.getId()+" of type "+wfsRecord.getClass().getName()+" to lucene document");
 
@@ -144,7 +145,7 @@ function mapFeaturePreview(recordNode) {
 		// Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
 		var S = Number(lowerCoords[1]); // SOUTH y1
 		var E = Number(upperCoords[0]); // EAST, x2
-		// NOTICE: 
+		// NOTICE:
 
 		// transform "WGS 84 (EPSG:4326)" to "ETRS89 / UTM zone 32N (EPSG:25832)"
 		var transfCoords = CoordTransformUtil.getInstance().transform(
@@ -161,7 +162,7 @@ function mapFeaturePreview(recordNode) {
 		// lowerCorner and upperCorner have same coordinates !? -> BBOX is a POINT !
 		var BBOX = "" + (E_4326 - 0.048) + "," + (S_4326 - 0.012) + "," + (E_4326 + 0.048) + "," + (S_4326 + 0.012);
 
-		var addHtml = "" + 
+		var addHtml = "" +
 //			"<a href=\"http://wsvmapserv.wsv.bvbs.bund.de/ol_bwastr/index.html?bwastr=" + BWSTR + "&kmwert=" + KM_ANF_D + "&abstand=0&zoom=15\" target=\"_blank\" style=\"padding: 0 0 0 0;\">" +
 			"<div style=\"background-image: url(https://sgx.geodatenzentrum.de/wms_topplus_open?VERSION=1.3.0&amp;REQUEST=GetMap&amp;CRS=CRS:84&amp;BBOX=" + BBOX +
 			"&amp;LAYERS=web&amp;FORMAT=image/png&amp;STYLES=&amp;WIDTH=480&amp;HEIGHT=120); left: 0px; top: 0px; width: 480px; height: 120px; margin: 10px 0 0 0;\">" +

@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.2 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * https://joinup.ec.europa.eu/software/page/eupl
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,9 +23,9 @@
 /**
  * ZDM WFS to IDF Document mapping
  * Copyright (c) 2013 wemove digital solutions. All rights reserved.
- * 
+ *
  * The following global variable are passed from the application:
- * 
+ *
  * @param wfsRecord
  *            A WFSFeature/WFSFeatureType instance, that defines the input
  * @param document
@@ -38,6 +38,7 @@
 
 let WFSFeature = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeature");
 let WFSFeatureType = Java.type("de.ingrid.iplug.wfs.dsc.wfsclient.WFSFeatureType");
+let CoordTransformUtil = Java.type('de.ingrid.geo.utils.transformation.CoordTransformUtil');
 
 log.debug("Mapping wfs record "+wfsRecord.getId()+" of type "+wfsRecord.getClass().getName()+" to idf document");
 
@@ -459,11 +460,11 @@ function getMapPreview(name, title, lowerCoords, upperCoords, isWGS84, linkUrl) 
 
     var addHtml = '' +
     ' <div id="map_' + name + '" style="height: '+ height + 'px;"></div>' +
-    ' <script>' + 
+    ' <script>' +
     'var map_' + name + ' = addLeafletMapWithId(\'map_' + name + '\', getOSMLayer(\'\'), [ ' + BBOX + ' ], null , 10);';
 
     if(marker !== '') {
-        addHtml = addHtml +  marker + 
+        addHtml = addHtml +  marker +
             '.bindTooltip("'+ title + '", {direction: "center"})' +
             '.addTo(map_' + name + ' );'
     } else {
@@ -471,7 +472,7 @@ function getMapPreview(name, title, lowerCoords, upperCoords, isWGS84, linkUrl) 
             '.bindTooltip("'+ title + '", {direction: "center"}));';
     }
     addHtml = addHtml + 'map_' + name + '.gestureHandling.enable();' +
-        'addLeafletHomeControl(map_' + name + ', \'Zoom auf initialen Kartenausschnitt\', \'topleft\', \'ic-ic-center\', [ ' + BBOX + ' ], \'\', \'23px\');' 
+        'addLeafletHomeControl(map_' + name + ', \'Zoom auf initialen Kartenausschnitt\', \'topleft\', \'ic-ic-center\', [ ' + BBOX + ' ], \'\', \'23px\');'
     addHtml = addHtml + '</script>';
 
     log.debug("MapPreview Html: " + addHtml);
