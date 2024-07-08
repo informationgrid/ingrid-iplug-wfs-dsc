@@ -1,4 +1,13 @@
 
+## 7.2.0 (08.07.2024)
+
+### Features
+
+* Regelmäßiges Update der Docker Images (#6300)
+* Upgrade Elasticsearch auf Version 8.x. (#6119)
+* Überarbeitung der Event-Verknüpfungen in Directus und API (#4809)
+
+    
 ## 7.0.0 (05.01.2024)
 
 ### Features
