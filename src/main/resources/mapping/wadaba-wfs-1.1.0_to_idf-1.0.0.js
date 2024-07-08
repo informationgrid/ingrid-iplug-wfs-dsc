@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.2 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * https://joinup.ec.europa.eu/software/page/eupl
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,9 +23,9 @@
 /**
  * Wasserstrassendatenbank WFS to IDF Document mapping
  * Copyright (c) 2011 wemove digital solutions. All rights reserved.
- * 
+ *
  * The following global variable are passed from the application:
- * 
+ *
  * @param wfsRecord
  *            A WFSFeature instance, that defines the input
  * @param document
@@ -40,6 +40,7 @@ log.debug("Mapping wfs record "+wfsRecord.getId()+" to idf document");
 
 // get the xml content of the record
 var recordNode = wfsRecord.getOriginalResponse().get(0);
+var CoordTransformUtil = Java.type('de.ingrid.geo.utils.transformation.CoordTransformUtil');
 
 var plugDescrDataSourceName = "";
 var plugDescrOrganisation = "";
@@ -102,11 +103,11 @@ if(getSummary(recordNode)) {
 }
 
 var detailNodes = recordNode.getChildNodes();
-if(detailNodes.length > 0) {
+if(detailNodes.getLength() > 0) {
     var detailNavContentSection = addOutputWithAttributes(detailNavContent, "div", ["class"], ["section"]);
     addOutputWithAttributes(detailNavContentSection, "a", ["class", "id"], ["anchor", "detail_details"]);
     addOutput(detailNavContentSection, "h3", "Details");
-    for (var i=0, count=detailNodes.length; i<count; i++) {
+    for (var i=0, count=detailNodes.getLength(); i<count; i++) {
         var detailNode = detailNodes.item(i);
         var nodeName = detailNode.getLocalName();
         if (hasValue(nodeName)) {
@@ -173,7 +174,7 @@ function getMapPreview(recordNode) {
         // Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
         var S = Number(lowerCoords[0]); // SOUTH y1
         var E = Number(upperCoords[1]); // EAST, x2
-        // NOTICE: 
+        // NOTICE:
         // lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
         var BBOX = "" + (E - 0.012) + "," + (S - 0.012) + "," + (E + 0.012) + "," + (S + 0.012);
 
