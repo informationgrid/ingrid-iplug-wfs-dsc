@@ -148,7 +148,7 @@ function getSummary(recordNode) {
 	result += " / " + xPathUtils.getString(recordNode, "//wind_wms:WINDBUNDESLAND");
 	result += " / " + xPathUtils.getString(recordNode, "//wind_wms:WINDBWASTRIDNR");
 	var desc = xPathUtils.getString(recordNode, "//wind_wms:WINDBEMERKUNG");
-	if (hasValue(desc)) {
+	if (hasValue(desc) && desc != "null") {
 		result += " / "+desc;
 	}
 	return result;
