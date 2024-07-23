@@ -87,48 +87,97 @@ function mapSummary(recordNode) {
 }
 
 function mapBoundingBox(recordNode) {
+	var x1, y1, x2, y2;
+
 	var gmlPoint = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:Point");
 	if (hasValue(gmlPoint)) {
 		var point = xPathUtils.getString(gmlPoint, "gml:pos").split(" ");
-log.debug("mapBoundingBox: gmlPoint = "+gmlPoint);
-    // ??? Vice Versa ??? Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
-		addNumericToDoc(document, "y1", point[1], false); // south
-		addNumericToDoc(document, "x1", point[0], false); // west
-		addNumericToDoc(document, "y2", point[1], false); // north
-		addNumericToDoc(document, "x2", point[0], false); // east
+log.debug("mapBoundingBox: gmlPoint = "+point);
+		x1 = x2 = point[0];
+		y1 = y2 = point[1];
+	} else {
+		// no Point, Line ?
+		var gmlLine = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:LineString");
+		if (hasValue(gmlLine)) {
+			var line = xPathUtils.getString(gmlLine, "gml:posList").split(" ");
+log.debug("mapBoundingBox: gmlLine = "+line+" / length="+line.length);
+			var x;
+			for (let i = 0; i < line.length; i=i+2) {
+				x = Number(line[i]);
+				if (!hasValue(x1) || x < x1) {
+					x1 = x;
+				}
+				if (!hasValue(x2) || x > x2) {
+					x2 = x;
+				}
+			} 
+			var y;
+			for (let i = 1; i < line.length; i=i+2) {
+				y = Number(line[i]);
+				if (!hasValue(y1) || y < y1) {
+					y1 = y;
+				}
+				if (!hasValue(y2) || y > y2) {
+					y2 = y;
+				}
+			}
+		} 
+	}
+
+log.debug("mapBoundingBox: x1="+x1+"/x2="+x2+" // y1="+y1+"/y2="+y2);
+
+	if (hasValue(x1)) {
+		// ??? Vice Versa ??? Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
+		addNumericToDoc(document, "x1", x1, false); // west
+		addNumericToDoc(document, "y1", y1, false); // south
+		addNumericToDoc(document, "x2", x2, false); // east
+		addNumericToDoc(document, "y2", y2, false); // north
 	}
 }
 
 function mapPreview(recordNode) {
-    var gmlPoint = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:Point");
-    if (hasValue(gmlPoint)) {
-    	  // BBOX
-        var point = xPathUtils.getString(gmlPoint, "gml:pos").split(" ");
-        var S = Number(point[1]); // SOUTH y
-        var E = Number(point[0]); // EAST, x
+	var coordinates
 
-        // we already have targetEPSG "25832", no transformation necessary
+	// Point ?
+	var gmlGeom = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:Point");
+	if (hasValue(gmlGeom)) {
+		coordinates = xPathUtils.getString(gmlGeom, "gml:pos").split(" ");
+	} else {
+		// no Point, Line ?
+		gmlGeom = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:LineString");
+		if (hasValue(gmlGeom)) {
+			coordinates = xPathUtils.getString(gmlGeom, "gml:posList").split(" ");
+		}
+	}
+
+log.debug("mapPreview: coordinates="+coordinates);
+
+	if (hasValue(coordinates)) {
+		var E = Number(coordinates[0]); // EAST, x
+		var S = Number(coordinates[1]); // SOUTH y
+
+		// we already have targetEPSG "25832", no transformation necessary
 /*
-        // NOTICE: 
-        // lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
-        var BBOX = "" + (E - 0.048) + "," + (S - 0.012) + "," + (E + 0.048) + "," + (S + 0.012);
+		// NOTICE: 
+		// lowerCorner and upperCorner have same coordinates in Wadaba !? -> BBOX is a POINT !
+		var BBOX = "" + (E - 0.048) + "," + (S - 0.012) + "," + (E + 0.048) + "," + (S + 0.012);
 
-        var sourceEPSG = "4326";
-        var targetEPSG = "25832";
-        var CoordTransformUtil = Java.type("de.ingrid.geo.utils.transformation.CoordTransformUtil");
-        var transfCoords = CoordTransformUtil.getInstance().transform(
-                E, S,
-                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode(sourceEPSG),
-                CoordTransformUtil.getInstance().getCoordTypeByEPSGCode(targetEPSG));
-        var targetE = transfCoords[0];
-        var targetS = transfCoords[1];
+		var sourceEPSG = "4326";
+		var targetEPSG = "25832";
+		var CoordTransformUtil = Java.type("de.ingrid.geo.utils.transformation.CoordTransformUtil");
+		var transfCoords = CoordTransformUtil.getInstance().transform(
+				E, S,
+				CoordTransformUtil.getInstance().getCoordTypeByEPSGCode(sourceEPSG),
+				CoordTransformUtil.getInstance().getCoordTypeByEPSGCode(targetEPSG));
+		var targetE = transfCoords[0];
+		var targetS = transfCoords[1];
 */
-        var targetE = E;
-        var targetS = S;
+		var targetE = E;
+		var targetS = S;
 
-        var addHtml = "<iframe class=\"map-ingrid\" src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + targetE + "&N=" + targetS + "&crosshair=marker\" style=\"height:320px\"></iframe>";
+		var addHtml = "<iframe class=\"map-ingrid\" src=\"/ingrid-webmap-client/frontend/prd/embed.html?lang=de&zoom=15&topic=favoriten&bgLayer=wmts_topplus_web&layers=bwastr_vnetz&layers_opacity=0.4&E=" + targetE + "&N=" + targetS + "&crosshair=marker\" style=\"height:320px\"></iframe>";
 log.debug("Mapping field \"additional_html_1\": " + addHtml);
 
-        addToDoc(document, "additional_html_1", addHtml, false);
-    }
+		addToDoc(document, "additional_html_1", addHtml, false);
+	}
 }

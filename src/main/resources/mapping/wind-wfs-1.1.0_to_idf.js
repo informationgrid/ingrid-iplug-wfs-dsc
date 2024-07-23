@@ -155,27 +155,83 @@ function getSummary(recordNode) {
 }
 
 function getBoundingBox(recordNode) {
+	var myX1, myY1, myX2, myY2;
+
 	var gmlPoint = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:Point");
 	if (hasValue(gmlPoint)) {
 		var point = xPathUtils.getString(gmlPoint, "gml:pos").split(" ");
-log.debug("getBoundingBox: point = "+point);
+log.debug("getBoundingBox: gmlPoint = "+point);
+		myX1 = myX2 = point[0];
+		myY1 = myY2 = point[1];
+
+	} else {
+		// no Point, Line ?
+		var gmlLine = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:LineString");
+		if (hasValue(gmlLine)) {
+			var line = xPathUtils.getString(gmlLine, "gml:posList").split(" ");
+log.debug("getBoundingBox: gmlLine = "+line);
+			var x;
+			for (let i = 0; i < line.length; i=i+2) {
+				x = Number(line[i]);
+				if (!hasValue(myX1) || x < myX1) {
+					myX1 = x;
+				}
+				if (!hasValue(myX2) || x > myX2) {
+					myX2 = x;
+				}
+			} 
+			var y;
+			for (let i = 1; i < line.length; i=i+2) {
+				y = Number(line[i]);
+				if (!hasValue(myY1) || y < myY1) {
+					myY1 = y;
+				}
+				if (!hasValue(myY2) || y > myY2) {
+					myY2 = y;
+				}
+			}
+		} 
+	}
+
+log.debug("getBoundingBox: x1="+myX1+"/x2="+myX2+" // y1="+myY1+"/y2="+myY2);
+
+	if (hasValue(myX1)) {
+		// we have to convert to String again, otherwise we get errors in Java when converting big Double to String for Output
+		myX1 = "" + myX1;
+		myX2 = "" + myX2;
+		myY1 = "" + myY1;
+		myY2 = "" + myY2;
+
 		return {
-      // ??? Vice Versa ??? Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
-			y1: point[1], // south
-			x1: point[0], // west
-			y2: point[1], // north
-			x2: point[0]  // east
+			// ??? Vice Versa ??? Latitude first (Breitengrad = y), longitude second (Laengengrad = x)
+			y1: myY1, // south
+			x1: myX1, // west
+			y2: myY2, // north
+			x2: myX2  // east
 		}
 	}
 }
 
 function getMapPreview(recordNode) {
-    var gmlPoint = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:Point");
-    if (hasValue(gmlPoint)) {
-        // BBOX
-        var point = xPathUtils.getString(gmlPoint, "gml:pos").split(" ");
-        var S = Number(point[1]); // SOUTH y
-        var E = Number(point[0]); // EAST, x
+	var coordinates
+
+	// Point ?
+	var gmlGeom = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:Point");
+	if (hasValue(gmlGeom)) {
+		coordinates = xPathUtils.getString(gmlGeom, "gml:pos").split(" ");
+	} else {
+		// no Point, Line ?
+		gmlGeom = xPathUtils.getNode(recordNode, "//wind_wms:GEOM/gml:LineString");
+		if (hasValue(gmlGeom)) {
+			coordinates = xPathUtils.getString(gmlGeom, "gml:posList").split(" ");
+		}
+	}
+
+log.debug("mapPreview: coordinates="+coordinates);
+
+	if (hasValue(coordinates)) {
+		var E = Number(coordinates[0]); // EAST, x
+		var S = Number(coordinates[1]); // SOUTH y
 
         // we already have targetEPSG "25832", no transformation necessary
 
