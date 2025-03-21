@@ -160,7 +160,7 @@
     <dependency>
       <groupId>de.ingrid</groupId>
       <artifactId>ingrid-iplug</artifactId>
-      <version>7.5.0-SNAPSHOT</version>
+      <version>7.0.0</version>
       <exclusions>
         <exclusion>
           <groupId>ant</groupId>
