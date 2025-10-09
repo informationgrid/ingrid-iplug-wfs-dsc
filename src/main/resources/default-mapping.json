@@ -117,6 +117,9 @@
       "type": "text",
       "index": false
     },
+    "spatial": {
+      "type": "nested"
+    },
     "sort_hash": {
       "type": "keyword"
     }
